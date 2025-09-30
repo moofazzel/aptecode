@@ -26,10 +26,13 @@ export class AnimationPerformanceManager {
     const cores = navigator.hardwareConcurrency || 4;
 
     // Check memory (if available)
-    const memory = (navigator as any).deviceMemory || 4;
+    const memory =
+      (navigator as Navigator & { deviceMemory?: number }).deviceMemory || 4;
 
     // Check connection speed
-    const connection = (navigator as any).connection;
+    const connection = (
+      navigator as Navigator & { connection?: { effectiveType?: string } }
+    ).connection;
     const effectiveType = connection?.effectiveType || "4g";
 
     // Determine performance mode based on device capabilities
@@ -165,7 +168,9 @@ export class AnimationPerformanceManager {
 
     if (prefersReducedMotion) {
       animation.duration(0.1);
-      animation.ease("none");
+      if ("ease" in animation) {
+        animation.ease("none");
+      }
     }
 
     return animation;
@@ -174,15 +179,23 @@ export class AnimationPerformanceManager {
   // Memory management for animations
   cleanupInactiveAnimations() {
     // Kill all inactive timelines
-    gsap.globalTimeline.getChildren(true, true, false).forEach((tween: any) => {
-      if (!tween.isActive() && tween.progress() === 1) {
-        tween.kill();
-      }
-    });
+    gsap.globalTimeline
+      .getChildren(true, true, false)
+      .forEach((tween: gsap.core.Timeline | gsap.core.Tween) => {
+        if (!tween.isActive() && tween.progress() === 1) {
+          tween.kill();
+        }
+      });
 
-    // Clear unused ScrollTriggers
-    const { ScrollTrigger } = gsap;
-    if (ScrollTrigger) {
+    // Clear unused ScrollTriggers (if available)
+    if ("ScrollTrigger" in gsap) {
+      const ScrollTrigger = (
+        gsap as typeof gsap & {
+          ScrollTrigger: {
+            getAll: () => Array<{ isActive: boolean; kill: () => void }>;
+          };
+        }
+      ).ScrollTrigger;
       ScrollTrigger.getAll().forEach((trigger) => {
         if (!trigger.isActive) {
           trigger.kill();
@@ -261,7 +274,10 @@ export const optimizeAnimationForDevice = (
 
   return {
     ...animation,
-    duration: Math.min(animation.duration || 0.6, config.preferredDuration),
+    duration: Math.min(
+      typeof animation.duration === "number" ? animation.duration : 0.6,
+      config.preferredDuration
+    ),
     force3D: config.useTransforms,
     // Disable complex effects on low-end devices
     ...(config.enableComplexEffects
@@ -278,13 +294,13 @@ export const optimizeAnimationForDevice = (
 export const createPerformantAnimation = (
   target: gsap.TweenTarget,
   vars: gsap.TweenVars
-): gsap.core.Tween => {
+): gsap.core.Tween | gsap.core.Timeline => {
   const optimizedVars = optimizeAnimationForDevice(vars);
   const animation = gsap.to(target, optimizedVars);
 
   return AnimationPerformanceManager.getInstance().optimizeForAccessibility(
     animation
-  );
+  ) as gsap.core.Tween;
 };
 
 // Export singleton instance

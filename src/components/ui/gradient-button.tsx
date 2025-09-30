@@ -11,6 +11,7 @@ interface GradientButtonProps {
   className?: string;
   showArrow?: boolean;
   fullWidth?: boolean;
+  style?: React.CSSProperties;
 }
 
 export function GradientButton({
@@ -20,6 +21,7 @@ export function GradientButton({
   className = "",
   showArrow = false,
   fullWidth = false,
+  style,
 }: GradientButtonProps) {
   const buttonClasses = `text-white bg-gradient-theme group rounded-none relative z-10 ${
     fullWidth ? "w-full" : ""
@@ -52,7 +54,7 @@ export function GradientButton({
         }}
         whileTap={{ scale: 0.98 }}
       >
-        <Button size="lg" className={buttonClasses}>
+        <Button size="lg" className={buttonClasses} style={style}>
           <Link
             href={href}
             className="flex items-center justify-center"
@@ -74,7 +76,12 @@ export function GradientButton({
       }}
       whileTap={{ scale: 0.98 }}
     >
-      <Button size="lg" className={buttonClasses} onClick={onClick}>
+      <Button
+        size="lg"
+        className={buttonClasses}
+        onClick={onClick}
+        style={style}
+      >
         {content}
       </Button>
     </motion.div>

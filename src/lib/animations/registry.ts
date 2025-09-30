@@ -226,6 +226,34 @@ export class AnimationRegistry {
         ease: "power2.out",
       },
     });
+
+    // Running text animations
+    this.presets.set("gsap.runningText", {
+      to: {
+        x: "-50%",
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+      },
+    });
+
+    this.presets.set("gsap.runningTextFast", {
+      to: {
+        x: "-50%",
+        duration: 10,
+        ease: "none",
+        repeat: -1,
+      },
+    });
+
+    this.presets.set("gsap.runningTextSlow", {
+      to: {
+        x: "-50%",
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+      },
+    });
   }
 
   // Register custom animation

@@ -207,6 +207,10 @@ function Navbar() {
                     key={item.href}
                     href={item.href}
                     className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-all duration-200 ease-out hover:scale-105"
+                    style={{
+                      fontFamily:
+                        "var(--font-hind-madurai), system-ui, sans-serif",
+                    }}
                   >
                     {item.label}
                   </Link>
@@ -215,7 +219,15 @@ function Navbar() {
 
               {/* Desktop Actions - Hidden on tablet and mobile */}
               <div ref={actionsRef} className="flex items-center space-x-4">
-                <GradientButton href="/" showArrow className="hidden lg:flex">
+                <GradientButton
+                  href="/"
+                  showArrow
+                  className="hidden lg:flex"
+                  style={{
+                    fontFamily:
+                      "var(--font-hind-madurai), system-ui, sans-serif",
+                  }}
+                >
                   Get Started Now
                 </GradientButton>
                 <Button
