@@ -1,3 +1,4 @@
+import Navbar from "@/components/shared/Navbar";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -36,6 +37,7 @@ export default function RootLayout({
             globalEasing: "power2.out",
           }}
         >
+          <Navbar />
           {children}
         </AnimationProvider>
       </body>
