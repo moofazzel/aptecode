@@ -1,4 +1,6 @@
 import AboutSec from "@/components/modules/about/AboutSec";
+import ProcessSection from "@/components/modules/about/ProcessSection";
+import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
 import PageBanner from "../../components/shared/PageBanner";
 export default function AboutPage() {
   return (
@@ -9,6 +11,8 @@ export default function AboutPage() {
         bgImage="/img/bg-img/bg.png"
       />
       <AboutSec />
+      <ProcessSection />
+      <TestimonialsSection />
     </div>
   );
 }
