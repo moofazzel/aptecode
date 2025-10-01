@@ -1,35 +1,37 @@
 // components/MarqueeProjects.tsx
 "use client";
 
+import "swiper/css";
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css/navigation";
+const BG_IMAGE = "/img/about/marBg.jpg";
 
-type Props = {
-  bgImage: string;
-  line1?: string;
-  line2?: string;
-  line3?: string;
-};
+type Variant = "filled" | "outlined" | "small";
+type Piece = { text: string; variant: Variant };
 
-export default function MarqeeSlider({
-  bgImage = "/img/about/marBg.jpg",
-  line1 = "BEST PROJECTS ☆",
-  line2 = "WEB DEVELOPMENT",
-  line3 = "LATEST PROJECTS",
-}: Props) {
-  const slides = Array.from({ length: 6 });
+const PHRASES: Piece[] = [
+  { text: "BEST PROJECTS ☆", variant: "filled" }, // left chunk (filled)
+  { text: "☆", variant: "outlined" }, // star BEFORE
+  { text: "WEB DEVELOPMENT", variant: "outlined" }, // outlined middle
+  { text: "☆", variant: "outlined" }, // star AFTER
+  { text: "LATEST PROJECTS", variant: "small" }, // right chunk (smaller filled)
+];
+
+export default function MarqueeProjects() {
+  // duplicate groups so the band stays continuous
+  const groups = Array.from({ length: 6 });
 
   return (
     <section
       className="relative isolate w-full overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(rgba(124,58,237,0.35), rgba(124,58,237,0.35)), url(${bgImage})`,
+        backgroundImage: `linear-gradient(rgba(124,58,237,0.35), rgba(124,58,237,0.35)), url(${BG_IMAGE})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
+      {/* thin borders like the ref */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-white/70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-white/70" />
 
@@ -49,33 +51,48 @@ export default function MarqeeSlider({
           spaceBetween={48}
           className="!px-4"
         >
-          {slides.map((_, i) => (
+          {groups.map((_, i) => (
             <SwiperSlide key={i} className="!w-auto">
               <div className="flex items-center gap-8">
-                {/* Line 1 (filled) */}
-                <span
-                  className="uppercase font-extrabold tracking-tight text-white"
-                  style={{ fontSize: "clamp(28px, 9vw, 120px)" }}
-                >
-                  {line1}
-                </span>
+                {PHRASES.map((p, idx) => {
+                  const bigSize = { fontSize: "clamp(28px, 9vw, 120px)" };
+                  const smallSize = { fontSize: "clamp(20px, 6vw, 80px)" };
 
-                {/* Line 2 (outlined) */}
-                <span
-                  className="uppercase font-extrabold tracking-tight text-transparent
-                             [-webkit-text-stroke:2px_white]"
-                  style={{ fontSize: "clamp(28px, 9vw, 120px)" }}
-                >
-                  {line2}
-                </span>
+                  if (p.variant === "outlined") {
+                    return (
+                      <span
+                        key={idx}
+                        className="uppercase font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_white]"
+                        style={bigSize}
+                      >
+                        {p.text}
+                      </span>
+                    );
+                  }
 
-                {/* Line 3 (smaller filled) */}
-                <span
-                  className="uppercase font-bold tracking-tight text-white"
-                  style={{ fontSize: "clamp(20px, 6vw, 80px)" }}
-                >
-                  {line3}
-                </span>
+                  if (p.variant === "small") {
+                    return (
+                      <span
+                        key={idx}
+                        className="uppercase font-bold tracking-tight text-white"
+                        style={smallSize}
+                      >
+                        {p.text}
+                      </span>
+                    );
+                  }
+
+                  // filled (default)
+                  return (
+                    <span
+                      key={idx}
+                      className="uppercase font-extrabold tracking-tight text-white"
+                      style={bigSize}
+                    >
+                      {p.text}
+                    </span>
+                  );
+                })}
               </div>
             </SwiperSlide>
           ))}

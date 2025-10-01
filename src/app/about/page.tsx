@@ -1,4 +1,5 @@
 import AboutSec from "@/components/modules/about/AboutSec";
+import CounterStrip from "@/components/modules/about/CounterStrip";
 import MarqeeSlider from "@/components/modules/about/MarqeeSlider";
 import ProcessSection from "@/components/modules/about/ProcessSection";
 import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
@@ -13,6 +14,7 @@ export default function AboutPage() {
       />
       <AboutSec />
       <ProcessSection />
+      <CounterStrip />
       <MarqeeSlider />
       <TestimonialsSection />
     </div>
