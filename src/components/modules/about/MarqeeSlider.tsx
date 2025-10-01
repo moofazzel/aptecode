@@ -5,23 +5,56 @@ import "swiper/css";
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { FaRegStar, FaStar } from "react-icons/fa";
+
 const BG_IMAGE = "/img/about/marBg.jpg";
 
-type Variant = "filled" | "outlined" | "small";
-type Piece = { text: string; variant: Variant };
+/** -------- Tuning -------- */
+const SPEED_MS = 24000; // higher = slower when delay is 0 (smooth drift)
+const GAP = 48; // space between pieces
+const DUPES = 6; // how many chunks to duplicate to fill the band
+const OUTLINED_TEXT_SIZE = "clamp(28px, 9vw, 120px)";
+const FILLED_TEXT_SIZE = "clamp(28px, 9vw, 120px)";
+const ICON_SIZE = "clamp(28px, 7vw, 96px)";
 
-const PHRASES: Piece[] = [
-  { text: "BEST PROJECTS ☆", variant: "filled" }, // left chunk (filled)
-  { text: "☆", variant: "outlined" }, // star BEFORE
-  { text: "WEB DEVELOPMENT", variant: "outlined" }, // outlined middle
-  { text: "☆", variant: "outlined" }, // star AFTER
-  { text: "LATEST PROJECTS", variant: "small" }, // right chunk (smaller filled)
-];
+/** One chunk so seams never put stars next to each other */
+function Chunk() {
+  return (
+    <div className="flex items-center" style={{ gap: GAP }}>
+      {/* WEB DEVELOPMENT (outlined) */}
+      <span
+        className="uppercase font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_white]"
+        style={{ fontSize: OUTLINED_TEXT_SIZE }}
+      >
+        WEB DEVELOPMENT
+      </span>
+
+      {/* outlined star */}
+      <FaRegStar
+        className="text-white"
+        style={{ width: ICON_SIZE, height: ICON_SIZE }}
+        aria-hidden
+      />
+
+      {/* LATEST PROJECTS (filled) */}
+      <span
+        className="uppercase font-extrabold tracking-tight text-white"
+        style={{ fontSize: FILLED_TEXT_SIZE }}
+      >
+        LATEST PROJECTS
+      </span>
+
+      {/* filled star */}
+      <FaStar
+        className="text-white"
+        style={{ width: ICON_SIZE, height: ICON_SIZE }}
+        aria-hidden
+      />
+    </div>
+  );
+}
 
 export default function MarqueeProjects() {
-  // duplicate groups so the band stays continuous
-  const groups = Array.from({ length: 6 });
-
   return (
     <section
       className="relative isolate w-full overflow-hidden"
@@ -31,7 +64,7 @@ export default function MarqueeProjects() {
         backgroundPosition: "center",
       }}
     >
-      {/* thin borders like the ref */}
+      {/* thin top/bottom borders */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-white/70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-white/70" />
 
@@ -42,58 +75,18 @@ export default function MarqueeProjects() {
           allowTouchMove={false}
           slidesPerView="auto"
           freeMode={{ enabled: true, momentum: false }}
-          speed={12000}
+          speed={SPEED_MS}
           autoplay={{
             delay: 0,
             disableOnInteraction: false,
             pauseOnMouseEnter: false,
           }}
-          spaceBetween={48}
+          spaceBetween={GAP}
           className="!px-4"
         >
-          {groups.map((_, i) => (
+          {Array.from({ length: DUPES }).map((_, i) => (
             <SwiperSlide key={i} className="!w-auto">
-              <div className="flex items-center gap-8">
-                {PHRASES.map((p, idx) => {
-                  const bigSize = { fontSize: "clamp(28px, 9vw, 120px)" };
-                  const smallSize = { fontSize: "clamp(20px, 6vw, 80px)" };
-
-                  if (p.variant === "outlined") {
-                    return (
-                      <span
-                        key={idx}
-                        className="uppercase font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_white]"
-                        style={bigSize}
-                      >
-                        {p.text}
-                      </span>
-                    );
-                  }
-
-                  if (p.variant === "small") {
-                    return (
-                      <span
-                        key={idx}
-                        className="uppercase font-bold tracking-tight text-white"
-                        style={smallSize}
-                      >
-                        {p.text}
-                      </span>
-                    );
-                  }
-
-                  // filled (default)
-                  return (
-                    <span
-                      key={idx}
-                      className="uppercase font-extrabold tracking-tight text-white"
-                      style={bigSize}
-                    >
-                      {p.text}
-                    </span>
-                  );
-                })}
-              </div>
+              <Chunk />
             </SwiperSlide>
           ))}
         </Swiper>

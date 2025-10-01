@@ -1,3 +1,4 @@
+import AboutCta from "@/components/modules/about/AboutCta";
 import AboutSec from "@/components/modules/about/AboutSec";
 import CounterStrip from "@/components/modules/about/CounterStrip";
 import MarqeeSlider from "@/components/modules/about/MarqeeSlider";
@@ -17,6 +18,7 @@ export default function AboutPage() {
       <CounterStrip />
       <MarqeeSlider />
       <TestimonialsSection />
+      <AboutCta />
     </div>
   );
 }

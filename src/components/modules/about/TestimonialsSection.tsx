@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
           <span className="rrd" />
         </div>
         {/* Title */}
-        <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 mb-[150px]">
+        <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 lg:mb-[150px] mb-[113px]">
           Clients Feedback
         </h2>
 
@@ -60,15 +60,15 @@ export default function TestimonialsSection() {
           {ITEMS.map((t, i) => (
             <article
               key={i}
-              className="relative overflow-visible  bg-[#f2f3f4] px-6 pb-[60px] pt-16 text-center md:px-10"
+              className="relative overflow-visible  bg-[#f2f3f4] px-6 pb-[60px] pt-16 text-center md:px-10 mb-[65px] lg:mb-0"
             >
               {/* Avatar (overlapping) */}
-              <div className="absolute -top-[33%] left-1/2 -translate-x-1/2">
-                <div className="rounded-full border-10 border-white ">
+              <div className="absolute lg:-top-[33%] left-1/2 -translate-x-1/2 -top-[22%]">
+                <div className="rounded-full lg:border-10 lg:border-white ">
                   <img
                     src={t.avatar}
                     alt={`${t.name} avatar`}
-                    className="h-[130px] w-[130px] rounded-full object-cover"
+                    className="h-[130px] w-[130px] rounded-full lg:object-cover lg:border-none lg:border-none border-10 border-white"
                   />
                 </div>
               </div>

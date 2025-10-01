@@ -258,6 +258,12 @@
   z-index: 0;
 }
 
+.bg_shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 @media screen and (max-width: 768px) {
   .lg_txt {
     color: #f8f8f8;
