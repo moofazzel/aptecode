@@ -1,28 +1,25 @@
 "use client";
 
 import RunningText from "@/components/shared/RunningText";
-import { useGSAPAnimation, useStaggeredGSAP } from "@/hooks/useAnimations";
-import { motion } from "framer-motion";
+import { GradientButton } from "@/components/ui/gradient-button";
+import { useGSAP } from "@/lib/gsap-utils";
+import { gsap } from "gsap";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useState(2);
-
-  // GSAP animations
-  const titleAnimation = useGSAPAnimation("gsap.fadeInUp", {
-    overrides: { duration: 1.2, ease: "power3.out" },
-  });
-
-  const subtitleAnimation = useGSAPAnimation("gsap.fadeInUp", {
-    overrides: { duration: 1, ease: "power3.out", delay: 0.3 },
-  });
-
-  useStaggeredGSAP("gsap.fadeInUp", {
-    staggerDelay: 0.1,
-    overrides: { duration: 0.8, ease: "power2.out" },
-  });
+  const contentRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [slideDirection, setSlideDirection] = useState<"forward" | "backward">(
+    "forward"
+  );
+  const [autoPlayInterval, setAutoPlayInterval] =
+    useState<NodeJS.Timeout | null>(null);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const slides = [
     {
@@ -31,7 +28,7 @@ const Hero = () => {
       title: "Professional Websites",
       description: "Fast, responsive websites that drive results.",
       buttonText: "Get Started",
-      image: "/img/images/slider-img-1.png",
+      image: "/img/images/hero-img-1.png",
       alt: "modern web development",
     },
     {
@@ -40,7 +37,7 @@ const Hero = () => {
       title: "Beautiful Experiences",
       description: "User-focused design that converts visitors.",
       buttonText: "Get Started",
-      image: "/img/images/hero-img-1.png",
+      image: "/img/images/hero-img-2.png",
       alt: "UI UX design",
     },
     {
@@ -49,232 +46,390 @@ const Hero = () => {
       title: "Get Found Online",
       description: "Optimized websites that rank higher in search.",
       buttonText: "Learn More",
-      image: "/img/images/hero-img-2.png",
+      image: "/img/images/hero-img-1.png",
       alt: "SEO performance optimization",
     },
   ];
+
+  // Navigation functions
+  const goToSlide = useCallback(
+    (index: number, direction: "forward" | "backward" = "forward") => {
+      if (isAnimating || index === activeSection) return;
+
+      setIsAnimating(true);
+      setSlideDirection(direction);
+      setActiveSection(index);
+
+      // Reset animation state after transition (synchronized with animation duration)
+      setTimeout(() => setIsAnimating(false), 1200);
+    },
+    [activeSection, isAnimating]
+  );
+
+  const nextSlide = useCallback(() => {
+    const nextIndex = (activeSection + 1) % slides.length;
+    goToSlide(nextIndex, "forward");
+  }, [activeSection, slides.length, goToSlide]);
+
+  const prevSlide = useCallback(() => {
+    const prevIndex = (activeSection - 1 + slides.length) % slides.length;
+    goToSlide(prevIndex, "backward");
+  }, [activeSection, slides.length, goToSlide]);
+
+  // Auto-play functionality
+  const startAutoPlay = useCallback(() => {
+    if (autoPlayInterval) return;
+
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 5000);
+
+    setAutoPlayInterval(interval);
+  }, [autoPlayInterval, nextSlide]);
+
+  const stopAutoPlay = useCallback(() => {
+    if (autoPlayInterval) {
+      clearInterval(autoPlayInterval);
+      setAutoPlayInterval(null);
+    }
+  }, [autoPlayInterval]);
+
+  // Touch/swipe and mouse drag support
+  const [mouseStart, setMouseStart] = useState<number | null>(null);
+  const [mouseEnd, setMouseEnd] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide(); // Swipe left = forward
+    } else if (isRightSwipe) {
+      prevSlide(); // Swipe right = backward
+    }
+  };
+
+  // Mouse drag support
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setMouseEnd(null);
+    setMouseStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    setMouseEnd(e.clientX);
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging || !mouseStart || !mouseEnd) {
+      setIsDragging(false);
+      return;
+    }
+
+    const distance = mouseStart - mouseEnd;
+    const isLeftDrag = distance > 50;
+    const isRightDrag = distance < -50;
+
+    if (isLeftDrag) {
+      nextSlide(); // Drag left = forward
+    } else if (isRightDrag) {
+      prevSlide(); // Drag right = backward
+    }
+
+    setIsDragging(false);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  // Keyboard navigation
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+      } else if (e.key === "ArrowRight") {
+        nextSlide();
+      }
+    },
+    [prevSlide, nextSlide]
+  );
+
+  // Effects
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, [startAutoPlay, stopAutoPlay]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [handleKeyDown]);
+
+  // GSAP slide animation with micro-animations
+  useGSAP(() => {
+    if (!contentRef.current || !imageRef.current) return;
+
+    const tl = gsap.timeline();
+
+    // Get all text elements within content
+    const subHeading = contentRef.current.querySelector("h3");
+    const title = contentRef.current.querySelector("h2");
+    const description = contentRef.current.querySelector("p");
+    const buttonContainer = contentRef.current.querySelector("div:last-child");
+
+    // Determine slide direction and set initial positions
+    const isForward = slideDirection === "forward";
+
+    // Set specific initial positions for each element
+    gsap.set(subHeading, {
+      y: -100,
+      opacity: 0,
+      scale: 0.9,
+    });
+
+    gsap.set(title, {
+      x: isForward ? -150 : 150,
+      opacity: 0,
+      scale: 0.95,
+    });
+
+    gsap.set([description, buttonContainer], {
+      y: 80,
+      opacity: 0,
+      scale: 0.9,
+    });
+
+    // Water-filling glass effect for image
+    gsap.set(imageRef.current, {
+      y: 200,
+      opacity: 0,
+      scale: 0.8,
+      transformOrigin: "bottom center",
+      clipPath: "inset(100% 0 0 0)", // Start with image completely hidden from top
+    });
+
+    // Animate h3 from top
+    tl.to(subHeading, {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      ease: "power3.out",
+    })
+      // Animate h2 from left/right
+      .to(
+        title,
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: "power3.out",
+        },
+        "-=0.3"
+      )
+      // Animate p and button from bottom
+      .to(
+        [description, buttonContainer],
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          stagger: 0.1,
+        },
+        "-=0.5"
+      )
+      // Water-filling glass effect for image
+      .to(
+        imageRef.current,
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          clipPath: "inset(0% 0 0 0)", // Reveal image from top to bottom like water filling
+          duration: 1.5,
+          ease: "power2.out",
+        },
+        "-=0.6"
+      )
+      // Add subtle bounce to title for emphasis
+      .to(
+        title,
+        {
+          scale: 1.02,
+          duration: 0.2,
+          ease: "power2.out",
+        },
+        "-=0.8"
+      )
+      .to(
+        title,
+        {
+          scale: 1,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+        },
+        "-=0.1"
+      )
+      // Add micro-animation to button
+      .to(
+        buttonContainer,
+        {
+          y: -5,
+          duration: 0.2,
+          ease: "power2.out",
+        },
+        "-=0.6"
+      )
+      .to(
+        buttonContainer,
+        {
+          y: 0,
+          duration: 0.3,
+          ease: "back.out(1.7)",
+        },
+        "-=0.1"
+      );
+
+    return tl;
+  }, [activeSection, slideDirection]);
+
+  const currentSlide = slides[activeSection];
 
   return (
     <>
       <section
         ref={heroRef}
-        className=" -mt-28 container flex items-center relative overflow-hidden"
+        className="-mt-28 relative"
+        onMouseEnter={stopAutoPlay}
+        onMouseLeave={startAutoPlay}
       >
-        {/* Left Section - Content */}
-        <div className="w-1/2 h-screen relative flex items-center pl-16 pr-8">
-          {/* Gradient Background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-purple-100 via-blue-50 to-white" />
+        <div className="flex items-center  overflow-hidden  select-none">
+          {/* Shape background */}
+          <div className="absolute top-0 left-0 z-[-1] inset-0 h-full w-full">
+            <Image
+              className="max-w-full h-full object-cover"
+              src="/img/shapes/slider-shape-3.png"
+              alt="slider shape"
+              fill
+            />
+          </div>
 
-          {/* Small Blue Dot */}
-          <motion.div
-            className="absolute top-1/4 right-1/4 w-3 h-3 bg-blue-500 rounded-full"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.7, 1, 0.7],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-
-          {/* Navigation Indicators */}
-          <div className="absolute left-8 top-1/2 transform -translate-y-1/2 flex flex-col space-y-4">
-            {slides.map((slide) => (
-              <motion.button
+          {/* Navigation Indicators - Desktop */}
+          <div className="hidden lg:flex absolute left-[150px] top-1/2 transform -translate-y-1/2 flex-col space-y-4 z-10">
+            {slides.map((slide, index) => (
+              <button
                 key={slide.id}
-                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-lg font-semibold transition-all duration-300 ${
-                  activeSection === slide.id
-                    ? "bg-blue-500 border-blue-500 text-white"
-                    : "bg-white border-gray-300 text-gray-600 hover:border-blue-300"
+                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-lg ${
+                  activeSection === index
+                    ? "bg-blue-500 border-blue-500 text-white shadow-lg scale-110"
+                    : "bg-white border-gray-300 text-gray-600 hover:border-blue-300 hover:bg-blue-50"
                 }`}
-                onClick={() => setActiveSection(slide.id)}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const direction =
+                    index > activeSection ? "forward" : "backward";
+                  goToSlide(index, direction);
+                }}
+                aria-label={`Go to slide ${index + 1}`}
+                onMouseEnter={(e) => {
+                  if (activeSection !== index) {
+                    gsap.to(e.currentTarget, {
+                      scale: 1.1,
+                      duration: 0.2,
+                      ease: "power2.out",
+                    });
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeSection !== index) {
+                    gsap.to(e.currentTarget, {
+                      scale: 1,
+                      duration: 0.2,
+                      ease: "power2.out",
+                    });
+                  }
+                }}
               >
-                {slide.id}
-              </motion.button>
+                {index + 1}
+              </button>
             ))}
           </div>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-lg">
-            {/* Dynamic Content based on active slide */}
-            {slides.map((slide) => (
-              <motion.div
-                key={slide.id}
-                className={`${activeSection === slide.id ? "block" : "hidden"}`}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{
-                  opacity: activeSection === slide.id ? 1 : 0,
-                  y: activeSection === slide.id ? 0 : 20,
-                }}
-                transition={{ duration: 0.5 }}
-              >
-                {/* Sub Heading */}
-                <motion.div ref={titleAnimation.ref} className="mb-4">
-                  <motion.p
-                    className="text-lg font-medium text-blue-600 uppercase tracking-wide"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                  >
-                    {slide.subHeading}
-                  </motion.p>
-                </motion.div>
+          {/* Loading overlay */}
+          {isAnimating && (
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+            </div>
+          )}
 
-                {/* Main Heading */}
-                <motion.div ref={titleAnimation.ref} className="mb-8">
-                  <motion.h1
-                    className="text-6xl md:text-7xl font-black leading-tight"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                  >
-                    <span className="block text-gray-900">{slide.title}</span>
-                  </motion.h1>
-                </motion.div>
+          {/* Slider Content */}
+          <div
+            className={`flex justify-between w-4/5 mx-auto pt-[320px] pb-[130px] relative transition-opacity duration-300 ${
+              isAnimating ? "opacity-90" : "opacity-100"
+            }`}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            style={{ cursor: isDragging ? "grabbing" : "grab" }}
+          >
+            {/* Content */}
+            <div ref={contentRef} className="pl-10 lg:pl-20 flex-1 max-w-2xl">
+              <h3 className="text-4xl md:text-5xl lg:text-7xl font-extralight mb-5 italic opacity-0">
+                {currentSlide.subHeading}
+              </h3>
+              <h2 className="text-5xl md:text-7xl lg:text-9xl font-extrabold mb-2.5 leading-tight opacity-0">
+                {currentSlide.title}
+              </h2>
+              <p className="text-base md:text-lg text-[#74787C] font-bold mb-8 md:mb-14 max-w-lg opacity-0">
+                {currentSlide.description}
+              </p>
+              <div className="opacity-0">
+                <GradientButton showArrow={true}>
+                  Let&apos;s Talk For Collaboration
+                </GradientButton>
+              </div>
+            </div>
 
-                {/* Description */}
-                <motion.p
-                  ref={subtitleAnimation.ref}
-                  className="text-xl text-gray-600 mb-12 leading-relaxed"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                  {slide.description}
-                </motion.p>
-
-                {/* CTA Button */}
-                <motion.button
-                  className="group flex items-center space-x-3 bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.6 }}
-                >
-                  <span>{slide.buttonText}</span>
-                  <motion.svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{
-                      duration: 1.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </motion.svg>
-                </motion.button>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Right Section - Image */}
-        <div className="w-1/2 relative bg-white flex items-center justify-center overflow-hidden">
-          {/* Dynamic Image Composition */}
-          <div className="relative w-full h-full">
-            {/* Dynamic Slide Images */}
-            {slides.map((slide) => (
-              <motion.div
-                key={slide.id}
-                className={`absolute inset-0 flex items-center justify-center ${
-                  activeSection === slide.id ? "block" : "hidden"
-                }`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{
-                  opacity: activeSection === slide.id ? 1 : 0,
-                  scale: activeSection === slide.id ? 1 : 0.8,
-                }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                {/* Main Image Shape */}
-                <motion.div
-                  className="relative w-80 h-96 rounded-2xl overflow-hidden shadow-2xl"
-                  initial={{ rotate: -5, scale: 0.8, opacity: 0 }}
-                  animate={{ rotate: -5, scale: 1, opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                >
-                  <Image
-                    src={slide.image}
-                    alt={slide.alt}
-                    fill
-                    className="object-cover"
-                    priority={activeSection === slide.id}
-                  />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
-                </motion.div>
-
-                {/* Decorative Elements */}
-                <motion.div
-                  className="absolute -top-4 -right-4 w-8 h-8 bg-blue-400 rounded-full opacity-60"
-                  animate={{
-                    y: [0, -10, 0],
-                    opacity: [0.6, 1, 0.6],
-                    scale: [1, 1.2, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-                <motion.div
-                  className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400 rounded-full opacity-60"
-                  animate={{
-                    y: [0, -15, 0],
-                    opacity: [0.6, 1, 0.6],
-                    scale: [1, 1.3, 1],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5,
-                  }}
-                />
-              </motion.div>
-            ))}
-
-            {/* Floating Elements */}
-            {Array.from({ length: 4 }).map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute w-4 h-4 bg-blue-400 rounded-full opacity-60"
-                style={{
-                  left: `${20 + i * 20}%`,
-                  top: `${30 + (i % 2) * 40}%`,
-                }}
-                animate={{
-                  y: [0, -20, 0],
-                  opacity: [0.6, 1, 0.6],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: 3 + i * 0.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.3,
-                }}
+            {/* Image */}
+            <div
+              ref={imageRef}
+              className="max-w-[577px] w-full h-[577px] hidden lg:block opacity-0"
+              style={{ pointerEvents: "none" }}
+            >
+              <Image
+                src={currentSlide.image}
+                alt={currentSlide.alt}
+                width={600}
+                height={600}
+                className="w-full h-full object-contain"
+                draggable={false}
               />
-            ))}
+            </div>
           </div>
         </div>
+        <RunningText speed={100} />
       </section>
-      <RunningText speed={100} />
     </>
   );
 };
