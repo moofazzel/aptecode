@@ -1,5 +1,6 @@
 // components/ProcessSection.tsx
 import Link from "next/link";
+import { FaChevronRight } from "react-icons/fa";
 
 type Step = {
   id: string; // "01", "02", ...
@@ -87,12 +88,16 @@ export default function ProcessSection() {
               <div className="mt-6">
                 <Link
                   href={step.href || "#"}
-                  className="group inline-flex items-center gap-2 text-[#a868fa] font-[600] text-[16px]"
+                  className="group flex items-center gap-2 text-[#a868fa] font-[600] text-[16px] "
                 >
                   Read More
-                  <span className="transition-transform group-hover:translate-x-0.5">
-                    →
-                  </span>
+                  <FaChevronRight
+                    className="h-3 w-3 mt-[4px]"
+                    aria-hidden="true"
+                  />
+                  {/* <span className="transition-transform group-hover:translate-x-0.5">
+                  
+                  </span> */}
                 </Link>
               </div>
             </article>

@@ -1,4 +1,5 @@
 import AboutSec from "@/components/modules/about/AboutSec";
+import MarqeeSlider from "@/components/modules/about/MarqeeSlider";
 import ProcessSection from "@/components/modules/about/ProcessSection";
 import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
 import PageBanner from "../../components/shared/PageBanner";
@@ -12,6 +13,7 @@ export default function AboutPage() {
       />
       <AboutSec />
       <ProcessSection />
+      <MarqeeSlider />
       <TestimonialsSection />
     </div>
   );

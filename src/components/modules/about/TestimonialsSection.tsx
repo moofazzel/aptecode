@@ -51,7 +51,7 @@ export default function TestimonialsSection() {
           <span className="rrd" />
         </div>
         {/* Title */}
-        <h2 className="text-center text-3xl md:text-5xl font-extrabold tracking-tight text-neutral-900 mb-[150px]">
+        <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 mb-[150px]">
           Clients Feedback
         </h2>
 
@@ -79,12 +79,12 @@ export default function TestimonialsSection() {
               </h3>
 
               {/* Role */}
-              <p className="mt-1 text-[12px] font-semibold uppercase tracking-wider text-indigo-600">
+              <p className="mt-3 text-[12px] font-semibold uppercase tracking-wider text-[#a868fa]">
                 {t.role}
               </p>
 
               {/* Quote */}
-              <p className="mx-auto mt-5 max-w-md leading-relaxed text-neutral-600">
+              <p className="mx-auto mt-5 max-w-md leading-relaxed text-[#74787c]">
                 {t.quote}
               </p>
             </article>
