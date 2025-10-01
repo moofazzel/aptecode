@@ -1,5 +1,6 @@
 "use client";
 
+import SectionHeader from "@/components/shared/SectionHeader";
 import { motion } from "framer-motion";
 import AnimatedStats from "./AnimatedStats";
 
@@ -20,12 +21,7 @@ const AnimatedContent = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="flex items-center mb-4">
-          <div aria-hidden="true" className="accent-line mr-3"></div>
-          <span className="text-sm font-semibold tracking-wider uppercase text-blue-400">
-            Why Choose Us?
-          </span>
-        </div>
+        <SectionHeader title="Why Choose Us?" />
       </motion.header>
 
       {/* Main Title */}

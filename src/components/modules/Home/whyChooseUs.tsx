@@ -8,7 +8,7 @@ const WhyChooseUs = () => {
   return (
     <section
       className="max-w-[1680px] bg-[#11151C] mx-auto p-32 relative"
-      aria-labelledby="why-choose-us-heading"
+      aria-labelledby="why-choose-us-heading "
       itemScope
       itemType="https://schema.org/Organization"
     >
