@@ -143,6 +143,37 @@
   .bg-gradient-theme:hover::before {
     left: 100%;
   }
+
+  /* Gradient accent line utility */
+  .accent-line {
+    width: 37px;
+    height: 10px;
+    background: linear-gradient(270deg, rgba(63, 90, 243, 0.4) 0%, transparent 100%);
+    border-radius: 4px;
+  }
+
+  /* Alternative accent line variants */
+  .accent-line-sm {
+    width: 24px;
+    height: 6px;
+    background: linear-gradient(270deg, rgba(63, 90, 243, 0.4) 0%, transparent 100%);
+    border-radius: 3px;
+  }
+
+  .accent-line-lg {
+    width: 48px;
+    height: 12px;
+    background: linear-gradient(270deg, rgba(63, 90, 243, 0.4) 0%, transparent 100%);
+    border-radius: 6px;
+  }
+
+  .accent-line-primary {
+    background: linear-gradient(270deg, rgba(63, 90, 243, 0.6) 0%, transparent 100%);
+  }
+
+  .accent-line-secondary {
+    background: linear-gradient(270deg, rgba(168, 104, 250, 0.4) 0%, transparent 100%);
+  }
 }
 
 .container {
