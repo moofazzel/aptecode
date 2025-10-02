@@ -17,7 +17,7 @@ const hindMadurai = Hind_Madurai({
 });
 
 export const metadata: Metadata = {
-  title: "Clay - Global Branding and UX Design Agency",
+  title: "Aptecode - Global Branding and UX Design Agency",
   description:
     "We build transformative digital experiences for the world's leading brands by blending AI, design, and technology.",
 };
