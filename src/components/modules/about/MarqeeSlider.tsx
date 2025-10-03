@@ -1,18 +1,17 @@
 // components/MarqueeProjects.tsx
 "use client";
 
+import { FaRegStar } from "react-icons/fa";
 import "swiper/css";
 import { Autoplay, FreeMode } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { FaRegStar, FaStar } from "react-icons/fa";
-
 const BG_IMAGE = "/img/about/marBg.jpg";
 
 /** -------- Tuning -------- */
-const SPEED_MS = 24000; // higher = slower when delay is 0 (smooth drift)
-const GAP = 48; // space between pieces
-const DUPES = 6; // how many chunks to duplicate to fill the band
+const SPEED_MS = 32000; // slower than before (higher = slower when delay is 0)
+const GAP = 48;
+const DUPES = 6;
 const OUTLINED_TEXT_SIZE = "clamp(28px, 9vw, 120px)";
 const FILLED_TEXT_SIZE = "clamp(28px, 9vw, 120px)";
 const ICON_SIZE = "clamp(28px, 7vw, 96px)";
@@ -23,7 +22,7 @@ function Chunk() {
     <div className="flex items-center" style={{ gap: GAP }}>
       {/* WEB DEVELOPMENT (outlined) */}
       <span
-        className="uppercase font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_white]"
+        className="stroke_txt uppercase font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_white]"
         style={{ fontSize: OUTLINED_TEXT_SIZE }}
       >
         WEB DEVELOPMENT
@@ -31,22 +30,23 @@ function Chunk() {
 
       {/* outlined star */}
       <FaRegStar
-        className="text-white"
+        className="text-white stroke_txt"
         style={{ width: ICON_SIZE, height: ICON_SIZE }}
         aria-hidden
       />
 
       {/* LATEST PROJECTS (filled) */}
       <span
-        className="uppercase font-extrabold tracking-tight text-white"
+        className="simple_txt uppercase font-extrabold tracking-tight text-white"
         style={{ fontSize: FILLED_TEXT_SIZE }}
       >
         LATEST PROJECTS
       </span>
 
-      {/* filled star */}
-      <FaStar
-        className="text-white"
+      {/* filled star (keeping your current FaRegStar + stroke_txt styling.
+          If you want truly filled: swap to FaStar and remove stroke_txt) */}
+      <FaRegStar
+        className="text-white stroke_txt"
         style={{ width: ICON_SIZE, height: ICON_SIZE }}
         aria-hidden
       />
@@ -57,9 +57,9 @@ function Chunk() {
 export default function MarqueeProjects() {
   return (
     <section
-      className="relative isolate w-full overflow-hidden"
+      className="relative isolate w-full overflow-hidden overly"
       style={{
-        backgroundImage: `linear-gradient(rgba(124,58,237,0.35), rgba(124,58,237,0.35)), url(${BG_IMAGE})`,
+        backgroundImage: `url(${BG_IMAGE})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -75,16 +75,16 @@ export default function MarqueeProjects() {
           allowTouchMove={false}
           slidesPerView="auto"
           freeMode={{ enabled: true, momentum: false }}
-          speed={SPEED_MS}
+          speed={32000} // slower drift
           autoplay={{
             delay: 0,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: false,
+            disableOnInteraction: false, // keep autoplay running always
+            pauseOnMouseEnter: true, // pause when hovered
           }}
-          spaceBetween={GAP}
+          spaceBetween={48}
           className="!px-4"
         >
-          {Array.from({ length: DUPES }).map((_, i) => (
+          {Array.from({ length: 6 }).map((_, i) => (
             <SwiperSlide key={i} className="!w-auto">
               <Chunk />
             </SwiperSlide>

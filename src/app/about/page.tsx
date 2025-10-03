@@ -2,6 +2,7 @@ import AboutCta from "@/components/modules/about/AboutCta";
 import AboutSec from "@/components/modules/about/AboutSec";
 import CounterStrip from "@/components/modules/about/CounterStrip";
 import MarqeeSlider from "@/components/modules/about/MarqeeSlider";
+import MissionVision from "@/components/modules/about/MissionVision";
 import ProcessSection from "@/components/modules/about/ProcessSection";
 import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
 import PageBanner from "../../components/shared/PageBanner";
@@ -17,6 +18,7 @@ export default function AboutPage() {
       <ProcessSection />
       <CounterStrip />
       <MarqeeSlider />
+      <MissionVision />
       <TestimonialsSection />
       <AboutCta />
     </div>

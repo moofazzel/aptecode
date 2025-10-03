@@ -1,16 +1,15 @@
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { Plus_Jakarta_Sans } from "next/font/google";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"], // keep this minimal
+  weight: ["400", "600", "700"], // only what you actually use
+  variable: "--font-plus", // use a CSS var so Tailwind can hook in
+  preload: true, // default true, keeps it explicit
+  fallback: ["system-ui", "Segoe UI", "Roboto", "Arial"],
 });
 
 export const metadata: Metadata = {
@@ -26,9 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${plusJakarta.variable} antialiased`}>
         <AnimationProvider
           initialSettings={{
             performanceMode: "high",

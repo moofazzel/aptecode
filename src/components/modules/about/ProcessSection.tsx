@@ -36,7 +36,7 @@ export default function ProcessSection() {
       {/* Watermark word behind the heading (optional) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 lg:top-[97px]  top-[65px] flex justify-center text-[18vw] md:text-[11vw] font-extrabold tracking-tight text-black/5 select-none lg_txt"
+        className="ghost_fnt pointer-events-none absolute inset-x-0 lg:top-[100px]  top-[-2px] flex justify-center font-extrabold tracking-tight text-black/5 select-none lg_txt"
       >
         APTECODE
       </div>
@@ -65,7 +65,7 @@ export default function ProcessSection() {
         </h2>
 
         {/* Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 sm:grid-cols-2">
           {STEPS.map((step) => (
             <article
               key={step.id}

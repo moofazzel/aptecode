@@ -11,11 +11,11 @@ export default function AboutCta() {
       </div>
       {/* background waves */}
 
-      <div className="relative mx-auto md:flex max-w-screen-2xl items-center justify-between px-6 py-[60px] sm:py-28 md:px-10 lg:py-36">
+      <div className="relative mx-auto sm:flex max-w-screen-2xl items-center justify-between px-6 py-[60px] sm:py-28 md:px-10 lg:py-36">
         {/* text */}
         <div className="max-w-5xl">
           <h1
-            className="font-[600] leading-[0.95] text-white tracking-tight
+            className="font-[600] lg:leading-[92px] text-white tracking-tight
                          text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-[92px]"
           >
             LET&apos;S START YOUR NEXT

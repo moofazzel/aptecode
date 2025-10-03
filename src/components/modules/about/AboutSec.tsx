@@ -11,30 +11,28 @@ export default function AboutSec() {
       <div className="max-w-[1405px] mx-auto px-[20px] lg:px-0 py-16 md:py-24 mb-[70px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-[129px] items-center">
           {/* LEFT: stacked images */}
-          <div className="order-2 lg:order-1 lg:col-span-5 relative">
+          <div className="order-2 lg:order-1 lg:col-span-5 relative abt_box">
             {/* big image */}
-            <div className="  overflow-hidden ">
+            <div className="  overflow-hidden img1 ">
               <Image
                 src="/img/about/ab1.jpg"
                 alt="Team collaborating"
                 width={880}
                 height={660}
-                className="h-auto w-full object-cover img1"
+                className="h-auto w-full object-cover "
                 priority
               />
             </div>
 
             {/* small image overlaps */}
-            <div className="absolute -bottom-[36%] right-[-6%] w-[68%] max-w-[420px] hidden md:block">
-              <div className=" image_2">
-                <Image
-                  src="/img/about/ab2.jpg"
-                  alt="Team discussing"
-                  width={560}
-                  height={420}
-                  className="h-auto w-full object-cover img2"
-                />
-              </div>
+            <div className="img2">
+              <Image
+                src="/img/about/ab2.jpg"
+                alt="Team discussing"
+                width={560}
+                height={420}
+                className="h-auto w-full object-cover img2"
+              />
             </div>
 
             {/* subtle dotted arc (decor) */}
@@ -137,7 +135,7 @@ function Feature({
   return (
     <div className="flex items-start gap-5">
       <div className="flex h-15 w-15 shrink-0 items-center justify-center ">
-        <img src={icon} alt="" fill />
+        <img src={icon} alt="" />
       </div>
       <div>
         <p className="text-[21px] font-semibold">{title}</p>
