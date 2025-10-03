@@ -12,13 +12,9 @@ const plusJakarta = Plus_Jakarta_Sans({
   preload: true, // default true, keeps it explicit
   fallback: ["system-ui", "Segoe UI", "Roboto", "Arial"],
 import { Hind_Madurai, Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
 
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
+
+
 
 const hindMadurai = Hind_Madurai({
   variable: "--font-hind-madurai",
@@ -39,9 +35,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakarta.variable} antialiased`}>
+   
       <body
-        className={`${plusJakartaSans.variable} ${hindMadurai.variable} antialiased`}
+        className={`${plusJakarta.variable} ${hindMadurai.variable} antialiased`}
       >
         <AnimationProvider
           initialSettings={{
