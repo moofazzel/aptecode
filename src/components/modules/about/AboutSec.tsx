@@ -11,7 +11,19 @@ export default function AboutSec() {
       <div className="max-w-[1405px] mx-auto px-[20px] lg:px-0 py-16 md:py-24 mb-[70px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-[129px] items-center">
           {/* LEFT: stacked images */}
-          <div className="order-2 lg:order-1 lg:col-span-5 relative abt_box">
+          <div className="order-2 lg:order-1 lg:col-span-5  abt_box relative">
+            <div className="shapes">
+              <img
+                className="shape ab_shape1"
+                src="img/about/circ.png"
+                alt="about"
+              />
+              <img
+                className="shape ab_shape2"
+                src="img/about/round.png"
+                alt="about"
+              />
+            </div>
             {/* big image */}
             <div className="  overflow-hidden img1 ">
               <Image
@@ -36,26 +48,6 @@ export default function AboutSec() {
             </div>
 
             {/* subtle dotted arc (decor) */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -left-10 top-1/3 hidden xl:block"
-            >
-              <svg width="220" height="220" viewBox="0 0 220 220" fill="none">
-                <path
-                  d="M10 110a100 100 0 0 1 200 0"
-                  stroke="url(#g)"
-                  strokeDasharray="6 10"
-                  strokeOpacity="0.6"
-                  strokeWidth="2"
-                />
-                <defs>
-                  <linearGradient id="g" x1="0" y1="0" x2="220" y2="0">
-                    <stop stopColor="#4F46E5" />
-                    <stop offset="1" stopColor="#7C3AED" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
           </div>
 
           {/* RIGHT: copy */}

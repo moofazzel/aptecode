@@ -23,13 +23,13 @@ export default function MissionVision() {
             </div>
 
             {/* Title */}
-            <h2 className="mt-4 mb-14  ab_ttl md:text-[48px] font-[700] leading-1.5 text-[32px]">
+            <h2 className="mt-4 md:mb-14 mb-[30px] ab_ttl md:text-[48px] font-[700] md:leading-[60px] leading-[45px] text-[32px]">
               Our Main Goal to Satisfied <br /> local &amp; Global Clients
             </h2>
 
             {/* Tabs (shadcn) */}
             <Tabs defaultValue="mission" className="mt-6">
-              <TabsList className="about-tabs-list lg:flex md:w-[74%] w-[85%] block justify-start gap-3 rounded-none bg-transparent p-0 lg:mb-0 mb-[90px] ">
+              <TabsList className="about-tabs-list lg:flex md:w-[74%] w-[85%] block justify-start gap-3 rounded-none bg-transparent p-0 lg:mb-0  ">
                 <TabsTrigger
                   value="mission"
                   className="mr-[16px] lg:mr-0 mb-[16px] lg:mb-0  cursor-pointer about-tab inline-flex  bg-[#f2f3f4]  px-[20px] py-[21px] text-sm font-[600] text-[#11151c] transition  data-[state=active]:border-[#a868fa] data-[state=active]:bg-[#a868fa] data-[state=active]:text-white"
@@ -50,7 +50,29 @@ export default function MissionVision() {
                 </TabsTrigger>
               </TabsList>
 
-              <TabsContent value="mission" className="pt-6 ">
+              <TabsContent
+                value="mission"
+                className="md:pt-6  mt-[75px] md:mt-0"
+              >
+                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c] ">
+                  Digital Web Design Agency
+                </h3>
+                <p className="mb-[20px] text-[#74787C] text-[16px]">
+                  A web design agency is a multifaceted entity that plays a
+                  pivotal role in shaping the digital presence of businesses and
+                  individuals alike. These agencies are dynamic hubs of
+                  creativity, technical expertise, and strategic thinking.
+                </p>
+                <p className="mb-[20px] text-[#74787C] text-[16px]">
+                  At the core of a web design agency&apos;s essence lies the
+                  artistry of visual storytelling and user experience creation.
+                </p>
+              </TabsContent>
+
+              <TabsContent
+                value="vision"
+                className="md:pt-6  mt-[75px] md:mt-0"
+              >
                 <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]">
                   Digital Web Design Agency
                 </h3>
@@ -66,23 +88,7 @@ export default function MissionVision() {
                 </p>
               </TabsContent>
 
-              <TabsContent value="vision" className="pt-6">
-                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]">
-                  Digital Web Design Agency
-                </h3>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  A web design agency is a multifaceted entity that plays a
-                  pivotal role in shaping the digital presence of businesses and
-                  individuals alike. These agencies are dynamic hubs of
-                  creativity, technical expertise, and strategic thinking.
-                </p>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  At the core of a web design agency&apos;s essence lies the
-                  artistry of visual storytelling and user experience creation.
-                </p>
-              </TabsContent>
-
-              <TabsContent value="goal" className="pt-6">
+              <TabsContent value="goal" className="md:pt-6  mt-[75px] md:mt-0">
                 <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]">
                   Digital Web Design Agency
                 </h3>
