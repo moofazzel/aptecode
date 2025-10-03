@@ -92,11 +92,11 @@ export class AnimationFactory {
         tl.fromTo(
           element,
           mergedConfig.from,
-          animConfig.to,
+          animConfig.to || {},
           index === 0 ? 0 : "<"
         );
       } else if (mergedConfig.to) {
-        tl.to(element, animConfig.to, index === 0 ? 0 : "<");
+        tl.to(element, animConfig.to || {}, index === 0 ? 0 : "<");
       }
     });
 
