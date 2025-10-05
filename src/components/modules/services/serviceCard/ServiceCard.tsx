@@ -1,14 +1,16 @@
 "use client";
 
-import { FaArrowRight, FaLaptopCode } from "react-icons/fa";
+import { FaArrowRight, FaBitcoin, FaCode, FaLaptopCode } from "react-icons/fa";
+import { FaShieldHalved } from "react-icons/fa6";
+import "./serviceCard.css";
 
 export default function ServicesCard() {
   return (
-    <section className="services">
+    <section className="services md:py-[90px] py-[60px]">
       <div className="mx-auto max-w-[1405px]">
         <div className="flex flex-wrap ">
           {/* Item 1 */}
-          <div className="w-full md:w-[25%]">
+          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
                 <a href="/web-development" className="sttl">
@@ -28,19 +30,19 @@ export default function ServicesCard() {
                 />
 
                 <div className="serviceCard__icon">
-                  <FaLaptopCode className="serviceCard__iconSvg" />
+                  <FaLaptopCode className="text-4xl  text-[#74787C]" />
                 </div>
 
                 <a href="/web-development" className="serviceCard__btn">
                   <span>Read Details</span>
-                  <FaArrowRight className="serviceCard__btnIcon" />
+                  <FaArrowRight className="serviceCard__btnIcon rotate" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* Item 2 */}
-          <div className="w-full md:w-[25%]">
+          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
                 <a href="/web-apps" className="sttl">
@@ -61,19 +63,22 @@ export default function ServicesCard() {
                 />
 
                 <div className="serviceCard__icon">
-                  <i className="fa-solid fa-code" />
+                  <FaCode className="text-4xl  text-[#74787C]" />
                 </div>
 
-                <a href="/web-apps" className="serviceCard__btn">
+                <a
+                  href="/web-apps"
+                  className="serviceCard__btn flex items-center gap-2"
+                >
                   <span>Read Details</span>
-                  <i className="fa-regular fa-arrow-right" />
+                  <FaArrowRight className="text-sm rotate" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* Item 3 (highlight) */}
-          <div className="w-full md:w-[25%]">
+          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard serviceCard--highlight m-3 ">
               <h4 className="serviceCard__title serviceCard__title--accent">
                 <a href="/moderation" className="sttl">
@@ -93,19 +98,22 @@ export default function ServicesCard() {
                 />
 
                 <div className="serviceCard__icon">
-                  <i className="fa-solid fa-shield-halved" />
+                  <FaShieldHalved className="text-4xl  text-[#74787C]" />
                 </div>
 
-                <a href="/moderation" className="serviceCard__btn">
+                <a
+                  href="/moderation"
+                  className="serviceCard__btn flex items-center gap-2"
+                >
                   <span>Read Details</span>
-                  <i className="fa-regular fa-arrow-right" />
+                  <FaArrowRight className="text-sm rotate" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* Item 4 */}
-          <div className="w-full md:w-[25%]">
+          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
                 <a href="/crypto-websites" className="sttl">
@@ -125,12 +133,15 @@ export default function ServicesCard() {
                 />
 
                 <div className="serviceCard__icon">
-                  <i className="fa-brands fa-bitcoin" />
+                  <FaBitcoin className="text-4xl  text-[#74787C]" />
                 </div>
 
-                <a href="/crypto-websites" className="serviceCard__btn">
+                <a
+                  href="/crypto-websites"
+                  className="serviceCard__btn flex items-center gap-2"
+                >
                   <span>Read Details</span>
-                  <i className="fa-regular fa-arrow-right" />
+                  <FaArrowRight className="text-sm rotate" />
                 </a>
               </div>
             </div>
