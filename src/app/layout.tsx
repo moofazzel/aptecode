@@ -1,15 +1,25 @@
-import { AnimationProvider } from "@/contexts/AnimationContext";
 import type { Metadata } from "next";
 import "./globals.css";
 
-import { Plus_Jakarta_Sans } from "next/font/google";
+import Navbar from "@/components/shared/Navbar";
+import { AnimationProvider } from "@/contexts/AnimationContext";
 
+// ✅ import each Google font once
+import { Hind_Madurai, Plus_Jakarta_Sans } from "next/font/google";
+
+// ✅ configure fonts
 const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"], // keep this minimal
-  weight: ["400", "600", "700"], // only what you actually use
-  variable: "--font-plus", // use a CSS var so Tailwind can hook in
-  preload: true, // default true, keeps it explicit
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-plus",
+  preload: true,
   fallback: ["system-ui", "Segoe UI", "Roboto", "Arial"],
+});
+
+const hindMadurai = Hind_Madurai({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-hind-madurai",
 });
 
 export const metadata: Metadata = {
@@ -20,12 +30,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${plusJakarta.variable} antialiased`}>
+      <body
+        className={`${plusJakarta.variable} ${hindMadurai.variable} antialiased`}
+      >
         <AnimationProvider
           initialSettings={{
             performanceMode: "high",
@@ -33,6 +43,7 @@ export default function RootLayout({
             globalEasing: "power2.out",
           }}
         >
+          <Navbar />
           {children}
         </AnimationProvider>
       </body>

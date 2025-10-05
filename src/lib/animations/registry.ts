@@ -118,6 +118,142 @@ export class AnimationRegistry {
       duration: 0.3,
       ease: "easeOut",
     });
+
+    // Fast Animation Presets for Snappy Feel
+    this.presets.set("motion.fastSlideIn", {
+      initial: { x: 100, opacity: 0 },
+      animate: { x: 0, opacity: 1 },
+      duration: 0.25,
+      ease: "easeOut",
+    });
+
+    this.presets.set("motion.fastFadeIn", {
+      initial: { opacity: 0, y: 10 },
+      animate: { opacity: 1, y: 0 },
+      duration: 0.2,
+      ease: "easeOut",
+    });
+
+    this.presets.set("motion.fastScaleIn", {
+      initial: { scale: 0.95, opacity: 0 },
+      animate: { scale: 1, opacity: 1 },
+      duration: 0.2,
+      ease: "easeOut",
+    });
+
+    this.presets.set("motion.fastButtonHover", {
+      whileHover: { scale: 1.05, y: -1 },
+      whileTap: { scale: 0.98 },
+      duration: 0.15,
+      ease: "easeInOut",
+    });
+
+    this.presets.set("motion.fastIconHover", {
+      whileHover: { scale: 1.1, rotate: 5 },
+      whileTap: { scale: 0.95 },
+      duration: 0.15,
+      ease: "easeInOut",
+    });
+
+    this.presets.set("motion.fastItemHover", {
+      whileHover: { scale: 1.02, x: 2 },
+      whileTap: { scale: 0.98 },
+      duration: 0.15,
+      ease: "easeInOut",
+    });
+
+    // Sidebar-specific fast animations
+    this.presets.set("motion.sidebarSlide", {
+      initial: { x: "100%", scale: 0.98, opacity: 0 },
+      animate: { x: 0, scale: 1, opacity: 1 },
+      exit: { x: "100%", scale: 0.98, opacity: 0 },
+      duration: 0.3,
+      ease: "easeOut",
+    });
+
+    this.presets.set("motion.sidebarOverlay", {
+      initial: { opacity: 0 },
+      animate: { opacity: 1 },
+      exit: { opacity: 0 },
+      duration: 0.2,
+      ease: "easeOut",
+    });
+
+    this.presets.set("motion.sidebarItem", {
+      initial: { y: 15, opacity: 0 },
+      animate: { y: 0, opacity: 1 },
+      duration: 0.2,
+      ease: "easeOut",
+    });
+
+    // Navbar scroll animations
+    this.presets.set("gsap.navbarSticky", {
+      from: {
+        position: "relative",
+        top: "auto",
+        left: "auto",
+        right: "auto",
+        zIndex: "auto",
+      },
+      to: {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        duration: 0.3,
+        ease: "power2.out",
+      },
+    });
+
+    this.presets.set("gsap.navbarContainer", {
+      from: {
+        margin: "20px",
+        borderRadius: "12px",
+        backgroundColor: "#F2F3F4",
+        backdropFilter: "none",
+        boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+        border: "1px solid #E4E4E4",
+      },
+      to: {
+        margin: 0,
+        borderRadius: 0,
+        backgroundColor: "rgba(255, 255, 255, 0.95)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+        border: "1px solid rgba(255, 255, 255, 0.2)",
+        duration: 0.4,
+        ease: "power2.out",
+      },
+    });
+
+    // Running text animations
+    this.presets.set("gsap.runningText", {
+      to: {
+        x: "-50%",
+        duration: 20,
+        ease: "none",
+        repeat: -1,
+      },
+    });
+
+    this.presets.set("gsap.runningTextFast", {
+      to: {
+        x: "-50%",
+        duration: 10,
+        ease: "none",
+        repeat: -1,
+      },
+    });
+
+    this.presets.set("gsap.runningTextSlow", {
+      to: {
+        x: "-50%",
+        duration: 30,
+        ease: "none",
+        repeat: -1,
+      },
+    });
   }
 
   // Register custom animation
