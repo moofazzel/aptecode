@@ -7,7 +7,7 @@ import "./serviceCard.css";
 export default function ServicesCard() {
   return (
     <section className="services md:py-[90px] py-[60px]">
-      <div className="mx-auto max-w-[1405px]">
+      <div className="mx-auto max-w-[1405px] px-[15px] md:px-0">
         <div className="flex flex-wrap ">
           {/* Item 1 */}
           <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">

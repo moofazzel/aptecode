@@ -31,7 +31,7 @@ export default function CtaSection({
         {/* Purple overlay */}
 
         {/* Content */}
-        <div className="mx-auto flex h-full w-full max-w-[1405px] items-center px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-full w-full max-w-[1405px] items-center px-[15px] md:px-4">
           {/* Left: Title */}
           <div className="flex-1">
             <h2 className="leading-tight text-white">
