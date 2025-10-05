@@ -1,3 +1,4 @@
+import CtaSection from "@/components/modules/services/ctasection/CtaSection";
 import ServicesCard from "@/components/modules/services/serviceCard/ServiceCard";
 import PageBanner from "@/components/shared/PageBanner";
 
@@ -11,6 +12,12 @@ const Servicespage = () => {
       />
 
       <ServicesCard />
+      <CtaSection
+        titleTop="Have Any Projects On Minds!"
+        titleBottom="Contact Us"
+        ctaText="Make Appointment"
+        ctaHref="/contact"
+      />
     </div>
   );
 };
