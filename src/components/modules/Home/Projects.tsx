@@ -1,4 +1,6 @@
+"use client";
 import SectionHeader from "@/components/shared/SectionHeader";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -45,16 +47,41 @@ function Projects() {
   return (
     <section className="py-16 md:py-24 lg:py-32">
       <div className="container px-4">
-        <SectionHeader title="what we do for you" />
-        <h3 className="text-[#171717] text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] mb-8 md:mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+          <SectionHeader title="what we do for you" />
+        </motion.div>
+        <motion.h3
+          className="text-[#171717] text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.2] mb-8 md:mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
           Let&apos;s Look Our Recent <br className="hidden sm:block" /> Project
           Gallery
-        </h3>
+        </motion.h3>
       </div>
       {/* Projects Grid */}
-      <div className="max-w-[1750px] mx-auto px-4 flex flex-col lg:flex-row gap-4">
+      <motion.div
+        className="max-w-[1750px] mx-auto px-4 flex flex-col lg:flex-row gap-4"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+      >
         {/* first image */}
-        <div className="w-full lg:flex-1 grid grid-cols-1 gap-4 relative">
+        <motion.div
+          className="w-full lg:flex-1 grid grid-cols-1 gap-4 relative"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+        >
           <div key={projects[0].id} className="relative group">
             <Image
               src={projects[0].image}
@@ -90,11 +117,28 @@ function Projects() {
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
         {/* others images */}
-        <div className="w-full lg:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {projects.slice(1, 5).map((project) => (
-            <div key={project.id} className="relative group">
+        <motion.div
+          className="w-full lg:flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4"
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+        >
+          {projects.slice(1, 5).map((project, index) => (
+            <motion.div
+              key={project.id}
+              className="relative group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.6,
+                delay: 1.0 + index * 0.1,
+                ease: "easeOut",
+              }}
+            >
               <Image
                 className="w-full h-full object-cover"
                 src={project.image}
@@ -129,10 +173,10 @@ function Projects() {
                   <ArrowRight className="text-[#a868fa] transition-all duration-300 hover:translate-x-1 hover:scale-110 w-3 h-3 md:w-4 md:h-4" />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

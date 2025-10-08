@@ -254,6 +254,149 @@ export class AnimationRegistry {
         repeat: -1,
       },
     });
+
+    // Advanced scroll animations
+    this.presets.set("gsap.slideInUp", {
+      from: { y: 60, opacity: 0, scale: 0.95 },
+      to: { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },
+    });
+
+    this.presets.set("gsap.slideInDown", {
+      from: { y: -60, opacity: 0, scale: 0.95 },
+      to: { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "power3.out" },
+    });
+
+    this.presets.set("gsap.parallaxUp", {
+      to: {
+        y: -100,
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "self",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    });
+
+    this.presets.set("gsap.parallaxDown", {
+      to: {
+        y: 100,
+        duration: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "self",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      },
+    });
+
+    this.presets.set("gsap.revealFromLeft", {
+      from: { x: -100, opacity: 0, rotation: -5 },
+      to: { x: 0, opacity: 1, rotation: 0, duration: 1, ease: "power3.out" },
+    });
+
+    this.presets.set("gsap.revealFromRight", {
+      from: { x: 100, opacity: 0, rotation: 5 },
+      to: { x: 0, opacity: 1, rotation: 0, duration: 1, ease: "power3.out" },
+    });
+
+    this.presets.set("gsap.zoomIn", {
+      from: { scale: 0.5, opacity: 0, rotation: 10 },
+      to: {
+        scale: 1,
+        opacity: 1,
+        rotation: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      },
+    });
+
+    this.presets.set("gsap.flipIn", {
+      from: { rotationX: 90, opacity: 0 },
+      to: { rotationX: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+    });
+
+    this.presets.set("gsap.blurIn", {
+      from: { filter: "blur(10px)", opacity: 0, scale: 1.1 },
+      to: {
+        filter: "blur(0px)",
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power2.out",
+      },
+    });
+
+    this.presets.set("gsap.slideInStagger", {
+      from: { y: 80, opacity: 0, scale: 0.9 },
+      to: {
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        duration: 0.6,
+        ease: "power3.out",
+        stagger: 0.1,
+      },
+    });
+
+    this.presets.set("gsap.textReveal", {
+      from: { y: 100, opacity: 0 },
+      to: { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+    });
+
+    this.presets.set("gsap.imageReveal", {
+      from: { scale: 1.2, opacity: 0, filter: "brightness(0.5)" },
+      to: {
+        scale: 1,
+        opacity: 1,
+        filter: "brightness(1)",
+        duration: 1.2,
+        ease: "power2.out",
+      },
+    });
+
+    this.presets.set("gsap.cardHover", {
+      to: {
+        y: -10,
+        scale: 1.02,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+        duration: 0.3,
+        ease: "power2.out",
+      },
+    });
+
+    this.presets.set("gsap.buttonPulse", {
+      to: {
+        scale: 1.05,
+        duration: 0.2,
+        ease: "power2.out",
+        yoyo: true,
+        repeat: 1,
+      },
+    });
+
+    this.presets.set("gsap.progressBar", {
+      from: { scaleX: 0 },
+      to: { scaleX: 1, duration: 1, ease: "power2.out" },
+    });
+
+    this.presets.set("gsap.counterUp", {
+      from: { innerHTML: 0 },
+      to: {
+        innerHTML: "100%",
+        duration: 2,
+        ease: "power2.out",
+        snap: { innerHTML: 1 },
+        onUpdate: function () {
+          this.targets()[0].innerHTML =
+            Math.ceil(this.targets()[0].innerHTML) + "%";
+        },
+      },
+    });
   }
 
   // Register custom animation
