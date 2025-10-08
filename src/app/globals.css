@@ -173,12 +173,31 @@ body.navbar-sticky {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
-}
 
-/* Fallback for browsers without backdrop-filter support */
-@supports not (backdrop-filter: blur(20px)) {
-  .navbar-backdrop {
-    background-color: rgba(255, 255, 255, 0.98);
+  .accent-line-lg {
+    width: 48px;
+    height: 12px;
+    background: linear-gradient(
+      270deg,
+      rgba(63, 90, 243, 0.4) 0%,
+      transparent 100%
+    );
+  }
+
+  .accent-line-primary {
+    background: linear-gradient(
+      270deg,
+      rgba(63, 90, 243, 0.6) 0%,
+      transparent 100%
+    );
+  }
+
+  .accent-line-secondary {
+    background: linear-gradient(
+      270deg,
+      rgba(168, 104, 250, 0.4) 0%,
+      transparent 100%
+    );
   }
 }
 
