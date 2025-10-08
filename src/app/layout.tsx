@@ -1,5 +1,6 @@
 import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import type { Metadata } from "next";
 import { Hind_Madurai, Plus_Jakarta_Sans } from "next/font/google";
@@ -43,6 +44,8 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          {/* Scroll to top button */}
+          <ScrollToTopButton />
         </AnimationProvider>
       </body>
     </html>
