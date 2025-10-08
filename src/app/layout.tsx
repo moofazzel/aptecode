@@ -1,3 +1,4 @@
+import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import type { Metadata } from "next";
@@ -41,6 +42,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </AnimationProvider>
       </body>
     </html>
