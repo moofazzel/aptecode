@@ -25,7 +25,10 @@ const ContactForm = () => {
   })
   
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [selectedTopic, setSelectedTopic] = useState('Select Query Topic')
+  const [selectedTopic, setSelectedTopic] = useState('General Inquiry')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
 
   const topicOptions = [
     { value: '', label: 'General Inquiry' },
@@ -39,6 +42,12 @@ const ContactForm = () => {
       ...prev,
       [name]: value
     }))
+    
+    // Clear any previous error or success messages when user starts typing
+    if (submitStatus !== 'idle') {
+      setSubmitStatus('idle')
+      setErrorMessage('')
+    }
   }
 
   const handleTopicSelect = (value: string, label: string) => {
@@ -50,10 +59,63 @@ const ContactForm = () => {
     setIsDropdownOpen(false)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
+    
+    // Basic validation
+    if (!formData.email || !formData.phone || !formData.fullname) {
+      setSubmitStatus('error')
+      setErrorMessage('Please fill in all required fields.')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    setErrorMessage('')
+
+    try {
+      const formsparkId = process.env.NEXT_PUBLIC_FORMSPARK_FORM_ID
+      if (!formsparkId) {
+        throw new Error('Formspark form ID not configured')
+      }
+      
+      const response = await fetch(`https://submit-form.com/${formsparkId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: `${formData.fullname} ${formData.lastname}`.trim(),
+          email: formData.email,
+          phone: formData.phone,
+          topic: formData.topic || 'General Inquiry',
+          message: formData.message,
+          _redirect: false, // Prevent Formspark from redirecting
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        // Reset form
+        setFormData({
+          fullname: '',
+          lastname: '',
+          email: '',
+          phone: '',
+          topic: '',
+          message: ''
+        })
+        setSelectedTopic('General Inquiry')
+      } else {
+        throw new Error('Failed to submit form')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      setErrorMessage('Something went wrong. Please try again later.')
+      console.error('Form submission error:', error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleButtonSubmit = () => {
@@ -273,16 +335,42 @@ const ContactForm = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-4">
+                <div className="pt-4 space-y-4">
                   <GradientButton
                     variant="primary"
                     size="lg"
                     fullWidth
                     onClick={handleButtonSubmit}
+                    disabled={isSubmitting}
+                    loading={isSubmitting}
                     className="py-4"
                   >
-                    Submit Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </GradientButton>
+
+                  {/* Success Message */}
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-green-50 border border-green-200 rounded-xl text-green-800 text-center"
+                    >
+                      <p className="font-semibold">Thank you for your message!</p>
+                      <p className="text-sm">We&apos;ll get back to you within 24 hours.</p>
+                    </motion.div>
+                  )}
+
+                  {/* Error Message */}
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-800 text-center"
+                    >
+                      <p className="font-semibold">Oops! Something went wrong.</p>
+                      <p className="text-sm">{errorMessage}</p>
+                    </motion.div>
+                  )}
                 </div>
               </form>
             </motion.div>
