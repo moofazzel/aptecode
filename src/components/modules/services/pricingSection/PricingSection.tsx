@@ -1,6 +1,7 @@
 "use client";
 
 import { GradientButton } from "@/components/ui/gradient-button";
+
 import "./pricingSection.css";
 
 export default function PricingSection() {
@@ -20,7 +21,7 @@ export default function PricingSection() {
             className="text-xs md:text-sm font-semibold uppercase 
       bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)]
       bg-clip-text text-transparent  h-[30px] relative z-50"
-            style={{ WebkitTextFillColor: "transparent" }} // Safari fix
+            style={{ WebkitTextFillColor: "transparent" }}
           >
             our pricing plans
           </h3>

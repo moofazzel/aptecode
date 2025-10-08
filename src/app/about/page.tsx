@@ -1,9 +1,9 @@
-import AboutSec from "@/components/modules/about/AboutSec";
-import CounterStrip from "@/components/modules/about/CounterStrip";
-import MarqeeSlider from "@/components/modules/about/MarqeeSlider";
-import MissionVision from "@/components/modules/about/MissionVision";
-import ProcessSection from "@/components/modules/about/ProcessSection";
-import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
+import AboutSec from "@/components/modules/About/AboutSec";
+import CounterStrip from "@/components/modules/About/CounterStrip";
+import MarqeeSlider from "@/components/modules/About/MarqeeSlider";
+import MissionVision from "@/components/modules/About/MissionVision";
+import ProcessSection from "@/components/modules/About/ProcessSection";
+import TestimonialsSection from "@/components/modules/About/TestimonialsSection";
 import PageBanner from "../../components/shared/PageBanner";
 export default function AboutPage() {
   return (

@@ -14,7 +14,7 @@ export default function ServicesCard() {
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
                 <a href="/web-development" className="sttl">
-                  /WEB DEVELOPMENT
+                  WEB DEVELOPMENT
                 </a>
               </h4>
 
@@ -46,7 +46,7 @@ export default function ServicesCard() {
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
                 <a href="/web-apps" className="sttl">
-                  /WEB APPS
+                  WEB APPS
                 </a>
               </h4>
 
@@ -82,7 +82,7 @@ export default function ServicesCard() {
             <div className="serviceCard serviceCard--highlight m-3 ">
               <h4 className="serviceCard__title serviceCard__title--accent">
                 <a href="/moderation" className="sttl">
-                  /MODERATION
+                  MODERATION
                 </a>
               </h4>
 
@@ -117,7 +117,7 @@ export default function ServicesCard() {
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
                 <a href="/crypto-websites" className="sttl">
-                  /CRYPTO WEBSITES
+                  CRYPTO WEBSITES
                 </a>
               </h4>
 

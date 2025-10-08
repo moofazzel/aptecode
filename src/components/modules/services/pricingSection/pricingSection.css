@@ -36,3 +36,40 @@
   font-size: 16px;
   color: #74787c;
 }
+.lrd {
+  background: linear-gradient(
+    270deg,
+    rgba(63, 90, 243, 0.4) 0%,
+    transparent 100%
+  );
+  content: "";
+  width: 37px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.rrd {
+  background: linear-gradient(
+    90deg,
+    rgba(63, 90, 243, 0.4) 0%,
+    transparent 100%
+  );
+  content: "";
+  width: 37px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
