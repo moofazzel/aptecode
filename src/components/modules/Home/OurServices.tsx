@@ -1,5 +1,6 @@
 "use client";
 import SectionHeader from "@/components/shared/SectionHeader";
+import { motion } from "framer-motion";
 import { ChevronsRight, MoveLeft, MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -63,14 +64,76 @@ function OurServices() {
       {/* service content */}
       <div className="w-full">
         <div className="container flex items-center justify-between">
-          <div>
-            <SectionHeader title="Our Services" />
-            <h3 className="text-[#171717] text-5xl font-bold leading-[1.2] mb-14">
-              What We Do For Your Business
-            </h3>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
+              <SectionHeader title="Our Services" />
+            </motion.div>
+            <motion.h3
+              className="text-[#171717] text-5xl font-bold leading-[1.2] mb-14"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.6,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+              >
+                What We Do
+              </motion.span>
+              <motion.span
+                className="inline-block ml-2"
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.8,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+              >
+                For Your
+              </motion.span>
+              <motion.span
+                className="inline-block ml-2 bg-gradient-to-r from-[#3F5AF3] to-[#8B5CF6] bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 50, rotateX: -90 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 1.0,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+              >
+                Business
+              </motion.span>
+            </motion.h3>
+          </motion.div>
           {/* slider button */}
-          <div className="flex items-center gap-3">
+          <motion.div
+            className="flex items-center gap-3"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          >
             <button
               onClick={prevSlide}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -89,7 +152,7 @@ function OurServices() {
             >
               <MoveRight className="w-4 h-4" />
             </button>
-          </div>
+          </motion.div>
         </div>
         <Swiper
           ref={swiperRef}

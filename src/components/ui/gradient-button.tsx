@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Loader2 } from "lucide-react";
 import Link from "next/link";
-import { ReactNode, forwardRef } from "react";
+import { ReactNode, forwardRef, useState } from "react";
 import { Button } from "./button";
 
 type ButtonVariant =
@@ -65,7 +65,7 @@ const getVariantClasses = (
       );
     case "ghost":
       return cn(
-        "text-gray-700 bg-transparent hover-effect-theme",
+        "text-gray-700 border border-black bg-transparent hover:text-white hover-effect-theme",
         baseClasses,
         disabledClasses
       );
@@ -138,6 +138,9 @@ export const GradientButton = forwardRef<
 
     const isDisabled = disabled || loading;
 
+    // Arrow animation state
+    const [isHovered, setIsHovered] = useState(false);
+
     const renderIcon = (iconComponent: ReactNode, position: IconPosition) => {
       if (!iconComponent) return null;
 
@@ -163,10 +166,10 @@ export const GradientButton = forwardRef<
       return (
         <motion.div
           className="relative ml-2"
-          whileHover={{
-            rotate: 45,
-            transition: { duration: 0.4 },
+          animate={{
+            rotate: isHovered ? 45 : 0,
           }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <ArrowUpRight className="w-4 h-4" />
         </motion.div>
@@ -213,6 +216,8 @@ export const GradientButton = forwardRef<
         : undefined,
       initial: { scale: 1 },
       animate: { scale: 1 },
+      onHoverStart: () => setIsHovered(true),
+      onHoverEnd: () => setIsHovered(false),
     };
 
     const buttonProps = {

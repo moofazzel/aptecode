@@ -1,13 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, ChevronUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const socialLinks = [
     "FACEBOOK",
     "INSTAGRAM",
@@ -31,18 +27,37 @@ function Footer() {
           <div className="container mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wider">
-                  LET&apos;S START YOUR NEXT DREAM PROJECT
+                <h2 className="text-4xl md:text-5xl lg:text-7xl leading-24 font-bold uppercase tracking-wider">
+                  LET&apos;S START YOUR NEXT
+                  <br />
+                  DREAM PROJECT
                 </h2>
               </div>
               <motion.button
                 onClick={() => {}}
-                className="w-16 h-16 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
-                whileHover={{ scale: 1.1 }}
+                className="w-20 h-20 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
+                whileHover={{
+                  scale: 1.1,
+                }}
                 whileTap={{ scale: 0.95 }}
               >
-                <ArrowUpRight className="w-6 h-6 text-white group-hover:text-purple-400 transition-colors" />
+                <motion.div
+                  className="group-hover:rotate-45 transition-transform duration-300 ease-out"
+                  animate={{
+                    color: "#ffffff",
+                  }}
+                  whileHover={{
+                    color: "#a855f7", // purple-400
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25,
+                    duration: 0.4,
+                  }}
+                >
+                  <ArrowUpRight className="w-6 h-6" />
+                </motion.div>
               </motion.button>
             </div>
           </div>
@@ -96,19 +111,6 @@ function Footer() {
               <div className="text-sm text-gray-400">
                 ©2025 Aptecode. All Rights Reserved.
               </div>
-
-              {/* Scroll to Top Button */}
-              <motion.button
-                onClick={scrollToTop}
-                className="w-12 h-12 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-              >
-                <ChevronUp className="w-5 h-5 text-white group-hover:text-purple-400 transition-colors" />
-              </motion.button>
             </div>
           </div>
         </section>
