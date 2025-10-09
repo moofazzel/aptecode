@@ -54,7 +54,7 @@ function Chunk() {
   );
 }
 
-export default function MarqueeProjects() {
+export default function MarqueeSlider() {
   return (
     <section
       className="relative isolate w-full overflow-hidden overly"
