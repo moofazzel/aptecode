@@ -1,6 +1,7 @@
 // components/ProcessSection.tsx
 import Link from "next/link";
 import { FaChevronRight } from "react-icons/fa";
+import "../../../app/about/about.css";
 
 type Step = {
   id: string; // "01", "02", ...

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import * as React from "react";
 import { FaArrowRight } from "react-icons/fa";
+import "../../../app/about/about.css";
 
 export default function AboutSec() {
   return (
