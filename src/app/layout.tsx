@@ -1,4 +1,6 @@
+import Footer from "@/components/shared/Footer";
 import Navbar from "@/components/shared/Navbar";
+import ScrollToTopButton from "@/components/shared/ScrollToTopButton";
 import { AnimationProvider } from "@/contexts/AnimationContext";
 import type { Metadata } from "next";
 import { Hind_Madurai, Plus_Jakarta_Sans } from "next/font/google";
@@ -17,7 +19,7 @@ const hindMadurai = Hind_Madurai({
 });
 
 export const metadata: Metadata = {
-  title: "Clay - Global Branding and UX Design Agency",
+  title: "Aptecode - Global Branding and UX Design Agency",
   description:
     "We build transformative digital experiences for the world's leading brands by blending AI, design, and technology.",
 };
@@ -41,6 +43,9 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
+          {/* Scroll to top button */}
+          <ScrollToTopButton />
         </AnimationProvider>
       </body>
     </html>

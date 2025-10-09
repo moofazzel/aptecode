@@ -1,4 +1,3 @@
-import AboutCta from "@/components/modules/About/AboutCta";
 import AboutSec from "@/components/modules/About/AboutSec";
 import CounterStrip from "@/components/modules/About/CounterStrip";
 import MarqueeSlider from "@/components/modules/About/MarqeeSlider";
@@ -16,7 +15,7 @@ export default function AboutPage() {
       <MarqueeSlider />
       <MissionVision />
       <TestimonialsSection />
-      <AboutCta />
+      {/* <AboutCta /> */}
     </div>
   );
 }
