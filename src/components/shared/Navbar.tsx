@@ -177,13 +177,13 @@ function Navbar() {
   return (
     <>
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-        <div className="w-full flex justify-center px-5">
+        <div className="w-full flex justify-center">
           <div
             ref={containerRef}
             className="px-4 shadow-sm border border-[#E4E4E4] "
             style={{ margin: "20px 0", maxWidth: "1280px", width: "100%" }}
           >
-            <div className="flex items-center justify-between h-16">
+            <div className="flex items-center justify-between h-24">
               {/* Logo */}
               <div ref={logoRef} className="flex-shrink-0">
                 <Link href="/">
