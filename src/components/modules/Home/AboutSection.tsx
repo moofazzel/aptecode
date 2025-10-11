@@ -137,6 +137,7 @@ function AboutSection() {
               viewport={{ once: true }}
             >
               <GradientButton
+                href="/about"
                 variant="primary"
                 size="md"
                 className="w-full sm:w-auto"
@@ -145,6 +146,7 @@ function AboutSection() {
               </GradientButton>
 
               <GradientButton
+                href="/portfolio"
                 variant="primary"
                 size="md"
                 className="w-full sm:w-auto"

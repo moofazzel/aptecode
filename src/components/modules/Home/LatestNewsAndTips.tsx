@@ -123,13 +123,12 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
           delay: index * 0.1,
           ease: "easeOut",
         }}
-        whileHover={{ scale: 1.05 }}
       >
         <Image
           src={post.image}
           alt={post.imageAlt}
           fill
-          className="object-cover transition-all duration-700 group-hover:scale-110"
+          className="object-cover"
         />
         {/* Enhanced overlay with gradient */}
         <motion.div
@@ -178,10 +177,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          <motion.div
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div>
             <User className="w-4 h-4 mr-2" />
           </motion.div>
           <span>{post.author}</span>
@@ -218,26 +214,16 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
         </motion.h3>
 
         {/* Enhanced Read More Button */}
-        <motion.div
-          className="flex justify-start"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.2 }}
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+        <div className="flex justify-start">
+          <GradientButton
+            variant="ghost"
+            size="md"
+            className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 group-hover:shadow-xl transition-all duration-300"
+            showArrow={true}
           >
-            <GradientButton
-              variant="ghost"
-              size="md"
-              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 group-hover:shadow-xl transition-all duration-300"
-              showArrow={true}
-            >
-              Read More
-            </GradientButton>
-          </motion.div>
-        </motion.div>
+            Read More
+          </GradientButton>
+        </div>
       </motion.div>
     </motion.article>
   );

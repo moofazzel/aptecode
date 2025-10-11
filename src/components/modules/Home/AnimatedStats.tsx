@@ -2,7 +2,7 @@
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Register ScrollTrigger
 if (typeof window !== "undefined") {
@@ -11,68 +11,249 @@ if (typeof window !== "undefined") {
 
 const AnimatedStats = () => {
   const statsRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Sound effect function
+  const playCompletionSound = () => {
+    if (typeof window !== "undefined" && window.AudioContext) {
+      const audioContext = new (window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext })
+          .webkitAudioContext)();
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+
+      oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(
+        1200,
+        audioContext.currentTime + 0.1
+      );
+
+      gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(
+        0.01,
+        audioContext.currentTime + 0.1
+      );
+
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.1);
+    }
+  };
 
   useEffect(() => {
     if (!statsRef.current) return;
 
     const statNumbers = statsRef.current.querySelectorAll(".stat-number");
+    const statLabels = statsRef.current.querySelectorAll(".stat-label");
+    const progressBars = statsRef.current.querySelectorAll(".progress-bar");
 
-    statNumbers.forEach((number) => {
+    // Initial setup - hide elements
+    gsap.set([statNumbers, statLabels], {
+      opacity: 0,
+      y: 30,
+      scale: 0.8,
+    });
+
+    // Set initial progress bar width
+    gsap.set(progressBars, { width: "0%" });
+
+    // Create timeline for coordinated animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: statsRef.current,
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    statNumbers.forEach((number, index) => {
       const finalValue = number.textContent;
       const numericValue = parseInt(finalValue?.replace(/\D/g, "") || "0");
+      const suffix = finalValue?.replace(/\d/g, "") || "";
 
-      gsap.fromTo(
+      // Set initial value to 0
+      number.textContent = "0" + suffix;
+
+      // Add to timeline with stagger
+      tl.to(
         number,
-        { textContent: 0 },
         {
-          textContent: numericValue,
-          duration: 2,
-          ease: "power2.out",
-          snap: { textContent: 1 },
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: isMobile ? 0.4 : 0.6,
+          ease: "back.out(1.7)",
+        },
+        index * (isMobile ? 0.05 : 0.1)
+      ).to(
+        number,
+        {
+          innerHTML: numericValue,
+          duration: isMobile ? 2 : 2.5,
+          ease: "power1.out",
+          snap: { innerHTML: 1 },
           onUpdate: function () {
-            const currentValue = Math.round(this.targets()[0].textContent);
-            number.textContent = currentValue + "+";
+            const currentValue = Math.round(this.targets()[0].innerHTML);
+            number.innerHTML = currentValue + suffix;
+
+            // Color transition during counting
+            const progress = currentValue / numericValue;
+            const hue = 200 + progress * 40; // Blue to cyan transition
+            (number as HTMLElement).style.color = `hsl(${hue}, 70%, 60%)`;
           },
-          scrollTrigger: {
-            trigger: number,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
+          onComplete: () => {
+            // Play completion sound
+            playCompletionSound();
           },
-        }
+        },
+        index * (isMobile ? 0.05 : 0.1) + 0.3
+      );
+
+      // Animate progress bar
+      tl.to(
+        progressBars[index],
+        {
+          width: "70%",
+          duration: isMobile ? 2 : 2.5,
+          ease: "power1.out",
+        },
+        index * (isMobile ? 0.05 : 0.1) + 0.3
+      );
+
+      // Animate corresponding label
+      tl.to(
+        statLabels[index],
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        index * (isMobile ? 0.05 : 0.1) + 0.2
       );
     });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div ref={statsRef} className="stats-container grid grid-cols-3 gap-8">
-      <div className="text-center">
-        <div className="stat-number text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
-          568+
+      <div className="text-center group cursor-pointer relative overflow-hidden rounded-lg p-6 transition-all duration-300">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-blue-500/5 to-cyan-500/10 backdrop-blur-sm opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:backdrop-blur-md"></div>
+        <div className="relative z-10">
+          <div className="stat-number text-4xl lg:text-5xl font-bold text-blue-400 mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-cyan-400">
+            300+
+          </div>
+          <div className="mx-auto progress-bar h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mb-2 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50"></div>
+          <div className="stat-label text-sm font-semibold tracking-wider uppercase text-gray-300 transition-colors duration-300 group-hover:text-white">
+            Project Complete
+          </div>
         </div>
-        <div className="text-sm font-semibold tracking-wider uppercase text-gray-300">
-          Project Complete
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-0 rounded-full opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:w-96 group-hover:h-96 group-hover:-top-48 group-hover:-left-48"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(59,130,246,0.2) 30%, rgba(6,182,212,0.1) 60%, transparent 100%)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(59,130,246,0.3)",
+            }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-0 rounded-full opacity-0 transition-all duration-1000 group-hover:opacity-60 group-hover:w-80 group-hover:h-80 group-hover:-top-40 group-hover:-left-40"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(6,182,212,0.15) 50%, transparent 100%)",
+              backdropFilter: "blur(15px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+          ></div>
         </div>
       </div>
 
-      <div className="text-center">
-        <div className="stat-number text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
-          2352+
+      <div className="text-center group cursor-pointer relative overflow-hidden rounded-lg p-6 transition-all duration-300">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-blue-500/5 to-cyan-500/10 backdrop-blur-sm opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:backdrop-blur-md"></div>
+        <div className="relative z-10">
+          <div className="stat-number text-4xl lg:text-5xl font-bold text-blue-400 mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-cyan-400">
+            100+
+          </div>
+          <div className="mx-auto progress-bar h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mb-2 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50"></div>
+          <div className="stat-label text-sm font-semibold tracking-wider uppercase text-gray-300 transition-colors duration-300 group-hover:text-white">
+            Happy Clients
+          </div>
         </div>
-        <div className="text-sm font-semibold tracking-wider uppercase text-gray-300">
-          Awesome Clients
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-0 rounded-full opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:w-96 group-hover:h-96 group-hover:-top-48 group-hover:-left-48"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(59,130,246,0.2) 30%, rgba(6,182,212,0.1) 60%, transparent 100%)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(59,130,246,0.3)",
+            }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-0 rounded-full opacity-0 transition-all duration-1000 group-hover:opacity-60 group-hover:w-80 group-hover:h-80 group-hover:-top-40 group-hover:-left-40"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(6,182,212,0.15) 50%, transparent 100%)",
+              backdropFilter: "blur(15px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+          ></div>
         </div>
       </div>
 
-      <div className="text-center">
-        <div className="stat-number text-4xl lg:text-5xl font-bold text-blue-400 mb-2">
-          165+
+      <div className="text-center group cursor-pointer relative overflow-hidden rounded-lg p-6 transition-all duration-300">
+        <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-blue-500/5 to-cyan-500/10 backdrop-blur-sm opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:backdrop-blur-md"></div>
+        <div className="relative z-10">
+          <div className="stat-number text-4xl lg:text-5xl font-bold text-blue-400 mb-2 transition-all duration-300 group-hover:scale-110 group-hover:text-cyan-400">
+            15+
+          </div>
+          <div className="mx-auto progress-bar h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mb-2 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-blue-400/50"></div>
+          <div className="stat-label text-sm font-semibold tracking-wider uppercase text-gray-300 transition-colors duration-300 group-hover:text-white">
+            Countries Served
+          </div>
         </div>
-        <div className="text-sm font-semibold tracking-wider uppercase text-gray-300">
-          Award Won
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-0 rounded-full opacity-0 transition-all duration-700 group-hover:opacity-100 group-hover:w-96 group-hover:h-96 group-hover:-top-48 group-hover:-left-48"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(59,130,246,0.2) 30%, rgba(6,182,212,0.1) 60%, transparent 100%)",
+              backdropFilter: "blur(20px)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              boxShadow:
+                "inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 32px rgba(59,130,246,0.3)",
+            }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 w-0 h-0 rounded-full opacity-0 transition-all duration-1000 group-hover:opacity-60 group-hover:w-80 group-hover:h-80 group-hover:-top-40 group-hover:-left-40"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(6,182,212,0.15) 50%, transparent 100%)",
+              backdropFilter: "blur(15px)",
+              border: "1px solid rgba(255,255,255,0.1)",
+            }}
+          ></div>
         </div>
       </div>
     </div>

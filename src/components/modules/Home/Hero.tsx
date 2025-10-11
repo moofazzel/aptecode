@@ -46,7 +46,7 @@ const Hero = () => {
       title: "Get Found Online",
       description: "Optimized websites that rank higher in search.",
       buttonText: "Learn More",
-      image: "/img/images/hero-img-1.png",
+      image: "/img/images/hero-img-3.png",
       alt: "SEO performance optimization",
     },
   ];
@@ -317,30 +317,29 @@ const Hero = () => {
     <>
       <section
         ref={heroRef}
-        className="-mt-28 relative"
+        className="-mt-28 relative overflow-x-hidden"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
-        <div className="flex items-center  overflow-hidden  select-none">
-          {/* Shape background */}
-          <div className="absolute top-0 left-0 z-[-1] inset-0 h-full w-full">
-            <Image
-              className="max-w-full h-full object-cover"
-              src="/img/shapes/slider-shape-3.png"
-              alt="slider shape"
-              fill
-            />
-          </div>
-
+        {/* Shape background */}
+        <div className="absolute top-0 left-0 z-[-1] inset-0 h-full w-full">
+          <Image
+            className="max-w-full h-full object-cover"
+            src="/img/shapes/slider-shape-3.png"
+            alt="slider shape"
+            fill
+          />
+        </div>
+        <div className="flex items-center  overflow-hidden  select-none relative">
           {/* Navigation Indicators - Desktop */}
-          <div className="hidden lg:flex absolute left-[150px] top-1/2 transform -translate-y-1/2 flex-col space-y-4 z-10">
+          <div className="hidden lg:flex absolute left-[150px] top-[55%] transform -translate-y-1/2 flex-col space-y-4 z-10">
             {slides.map((slide, index) => (
               <button
                 key={slide.id}
                 className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-lg ${
                   activeSection === index
-                    ? "bg-blue-500 border-blue-500 text-white shadow-lg scale-110"
-                    : "bg-white border-gray-300 text-gray-600 hover:border-blue-300 hover:bg-blue-50"
+                    ? "bg-[#a868fa]  text-white shadow-lg scale-110"
+                    : "bg-white border-gray-300 text-gray-600 hover:border-[#a768fa89] hover:bg-[#a768fa2c]"
                 }`}
                 onClick={() => {
                   const direction =
@@ -381,7 +380,7 @@ const Hero = () => {
 
           {/* Slider Content */}
           <div
-            className={`flex justify-between w-4/5 mx-auto pt-[320px] pb-[130px] relative transition-opacity duration-300 ${
+            className={`flex justify-between items-center w-4/5 mx-auto pt-[200px] pb-[130px] relative transition-opacity duration-300 ${
               isAnimating ? "opacity-90" : "opacity-100"
             }`}
             onMouseDown={handleMouseDown}
@@ -394,18 +393,18 @@ const Hero = () => {
             style={{ cursor: isDragging ? "grabbing" : "grab" }}
           >
             {/* Content */}
-            <div ref={contentRef} className="pl-10 lg:pl-20 flex-1 max-w-2xl">
-              <h3 className="text-4xl md:text-5xl lg:text-7xl font-extralight mb-5 italic opacity-0">
+            <div ref={contentRef} className="pl-10 lg:pl-20 flex-1 max-w-2xlf">
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-extralight mb-5 italic opacity-0">
                 {currentSlide.subHeading}
               </h3>
-              <h2 className="text-5xl md:text-7xl lg:text-9xl font-extrabold mb-2.5 leading-tight opacity-0">
+              <h2 className="text-5xl md:text-7xl lg:text-7xl font-extrabold mb-2.5 leading-tight opacity-0">
                 {currentSlide.title}
               </h2>
               <p className="text-base md:text-lg text-[#74787C] font-bold mb-8 md:mb-14 max-w-lg opacity-0">
                 {currentSlide.description}
               </p>
               <div className="opacity-0">
-                <GradientButton showArrow={true}>
+                <GradientButton href="/contact" showArrow={true}>
                   Let&apos;s Talk For Collaboration
                 </GradientButton>
               </div>
@@ -414,7 +413,7 @@ const Hero = () => {
             {/* Image */}
             <div
               ref={imageRef}
-              className="max-w-[577px] w-full h-[577px] hidden lg:block opacity-0"
+              className="max-w-[570px] w-full h-[370px] hidden lg:block opacity-0"
               style={{ pointerEvents: "none" }}
             >
               <Image
@@ -428,7 +427,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <RunningText speed={100} />
+        <RunningText speed={130} />
       </section>
     </>
   );
