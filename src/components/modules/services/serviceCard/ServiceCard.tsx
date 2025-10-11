@@ -156,10 +156,10 @@ function ServiceFlipCard({
               className="flip-face back flex flex-col justify-between"
             >
               <div className="p-5">
-                <h3 className="text-xl font-semibold mb-2 text-black">
+                <h3 className="text-xl font-semibold mb-2 text-white">
                   {backTitle}
                 </h3>
-                <p className="text-[15px] leading-6 text-black/80">
+                <p className="text-[15px] leading-6 text-white/80">
                   {backText}
                 </p>
               </div>

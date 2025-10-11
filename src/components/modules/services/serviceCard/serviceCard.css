@@ -44,8 +44,9 @@
   border-radius: inherit;
 }
 .flip-face.back {
-  background: #d6b981;
+  background: #a868fa;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  color: white !important;
 }
 .serviceCard__thumb {
   position: relative;
