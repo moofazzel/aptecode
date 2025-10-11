@@ -1,0 +1,38 @@
+.pricingCard {
+  background-color: #f2f3f4;
+  border: none;
+  margin: 13px;
+  padding: 40px 50px;
+}
+
+.pricingPlan {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #11151c;
+}
+
+.pricingValue {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 15px;
+  color: #a868fa;
+}
+
+.pricingSubtitle {
+  color: #74787c;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pricingFeatureLabel {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #11151c;
+}
+.pricingFeatureText {
+  font-size: 16px;
+  color: #74787c;
+}
