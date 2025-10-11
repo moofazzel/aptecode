@@ -1,7 +1,7 @@
 /* page banner section */
 .pg_header {
   position: relative;
-  z-index: 99999999;
+  z-index: 0;
 }
 .single_shape {
   position: absolute;

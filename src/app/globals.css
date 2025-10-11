@@ -116,7 +116,8 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-plus-jakarta-sans), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-plus-jakarta-sans), system-ui, -apple-system,
+      sans-serif;
     padding-top: 96px; /* Account for fixed navbar */
   }
 }
@@ -127,9 +128,9 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .bg-gradient-theme::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -139,7 +140,7 @@
     transition: left 0.5s ease-in-out;
     z-index: 1;
   }
-  
+
   .bg-gradient-theme:hover::before {
     left: 100%;
   }
@@ -149,9 +150,9 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .hover-effect-theme::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -161,7 +162,7 @@
     transition: left 0.5s ease-in-out;
     z-index: 1;
   }
-  
+
   .hover-effect-theme:hover::before {
     left: 100%;
   }
@@ -170,28 +171,48 @@
   .accent-line {
     width: 37px;
     height: 10px;
-    background: linear-gradient(270deg, rgba(63, 90, 243, 0.4) 0%, transparent 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(63, 90, 243, 0.4) 0%,
+      transparent 100%
+    );
   }
 
   /* Alternative accent line variants */
   .accent-line-sm {
     width: 24px;
     height: 6px;
-    background: linear-gradient(270deg, rgba(63, 90, 243, 0.4) 0%, transparent 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(63, 90, 243, 0.4) 0%,
+      transparent 100%
+    );
   }
 
   .accent-line-lg {
     width: 48px;
     height: 12px;
-    background: linear-gradient(270deg, rgba(63, 90, 243, 0.4) 0%, transparent 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(63, 90, 243, 0.4) 0%,
+      transparent 100%
+    );
   }
 
   .accent-line-primary {
-    background: linear-gradient(270deg, rgba(63, 90, 243, 0.6) 0%, transparent 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(63, 90, 243, 0.6) 0%,
+      transparent 100%
+    );
   }
 
   .accent-line-secondary {
-    background: linear-gradient(270deg, rgba(168, 104, 250, 0.4) 0%, transparent 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(168, 104, 250, 0.4) 0%,
+      transparent 100%
+    );
   }
 }
 
@@ -204,13 +225,63 @@
 /* custom font  */
 /* app/globals.css */
 
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/fonts/jak.woff2") format("woff2"),
+    /* optional but recommended */ url("/fonts/jak.ttf") format("truetype");
+  font-weight: 400; /* change if your file is bold/variable */
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+}
+
 .ghost_fnt {
   font-family: Arial, sans-serif;
 }
+/* page banner section */
+.pg_header {
+  position: relative;
+  z-index: 99999999;
+}
+.single_shape {
+  position: absolute;
+  z-index: 0;
+}
 
-/* Navbar scroll animation enhancements */
-.navbar-transition {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.shp1 {
+  mix-blend-mode: multiply;
+  top: 0;
+  right: 0;
+}
+
+.shp2 {
+  bottom: 0;
+  left: 0;
+}
+.shp3 {
+  bottom: 0;
+  left: 0;
+}
+.ttl::before {
+  background: linear-gradient(270deg, #3f5af3 0%, transparent 100%);
+  content: "";
+  width: 100%;
+  height: 76%;
+  position: absolute;
+  top: 15%;
+  right: 0;
+  z-index: -1;
+  opacity: 0.95;
 }
 
 /* Prevent layout shift when navbar becomes sticky */

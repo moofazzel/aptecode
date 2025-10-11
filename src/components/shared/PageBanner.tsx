@@ -33,7 +33,7 @@ export default function PageBanner({
 
   return (
     <section
-      className="relative pg_header flex min-h-[300px] w-full items-center justify-center overflow-hidden text-white md:min-h-[620px]"
+      className="relative pg_header  flex min-h-[300px] w-full items-center justify-center overflow-hidden text-white md:min-h-[620px] mt-[-100px] "
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url(${bgImage})`,
         backgroundSize: "cover",
@@ -53,7 +53,7 @@ export default function PageBanner({
         </div>
       </div>
 
-      <div className="z-10">
+      <div className="z-10 mt-[100px]">
         <div className="relative  px-4 text-center">
           <h1 className="ttl text-[38px] sm:text-[45px] font-bold leading-tight md:text-[60px] overflow-hidden">
             {title}
