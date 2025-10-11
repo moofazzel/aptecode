@@ -123,7 +123,7 @@ function Navbar() {
         container,
         {
           margin: "20px 0",
-          maxWidth: "1280px",
+          maxWidth: "1630px",
           width: "100%",
           backgroundColor: "#F2F3F4",
           backdropFilter: "none",
@@ -190,7 +190,7 @@ function Navbar() {
           <div
             ref={containerRef}
             className="px-4 shadow-sm border border-[#E4E4E4] "
-            style={{ margin: "20px 0", maxWidth: "1280px", width: "100%" }}
+            style={{ margin: "20px 0", maxWidth: "1630px", width: "100%" }}
           >
             <div className="flex items-center justify-between h-24">
               {/* Logo */}
