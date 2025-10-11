@@ -7,12 +7,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
+  ArrowRight,
   Award,
   ChevronLeft,
   ChevronRight,
-  Clock,
   ExternalLink,
   Github,
+  Sparkles,
   Star,
   Users,
   X,
@@ -25,11 +26,11 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Portfolio data
+// Award-Winning Portfolio Data
 const portfolioData = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Award-Winning E-Commerce Platform",
     category: "Web Development",
     image: "/img/project/project-img-5.jpg",
     images: [
@@ -38,16 +39,26 @@ const portfolioData = [
       "/img/project/project-img-7.jpg",
     ],
     description:
-      "A modern e-commerce platform built with Next.js and Stripe integration, featuring advanced search, user authentication, and real-time inventory management.",
-    technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS", "Prisma"],
+      "Industry-recognized e-commerce platform that won the 'Best Digital Innovation' award. Features advanced AI-powered recommendations, seamless checkout experience, and 99.9% uptime.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Stripe",
+      "Tailwind CSS",
+      "Prisma",
+      "OpenAI",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
     featured: true,
     year: "2024",
+    awards: ["Best Digital Innovation 2024", "E-commerce Excellence Award"],
+    client: "TechCorp",
+    impact: "300% increase in conversion rate",
   },
   {
     id: 2,
-    title: "Mobile Banking App",
+    title: "Secure Banking Revolution",
     category: "Mobile Development",
     image: "/img/project/project-img-6.jpg",
     images: [
@@ -56,16 +67,26 @@ const portfolioData = [
       "/img/project/project-img-8.jpg",
     ],
     description:
-      "Secure mobile banking application with biometric authentication, real-time transactions, and advanced security features.",
-    technologies: ["React Native", "TypeScript", "Node.js", "MongoDB", "JWT"],
+      "Revolutionary mobile banking app that set new industry standards for security and user experience. Winner of 'Fintech Innovation Award' and 'Best Mobile App' recognition.",
+    technologies: [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "MongoDB",
+      "JWT",
+      "Biometric Auth",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
     featured: true,
     year: "2024",
+    awards: ["Fintech Innovation Award", "Best Mobile App 2024"],
+    client: "SecureBank",
+    impact: "2M+ active users, 99.99% security rating",
   },
   {
     id: 3,
-    title: "AI-Powered Dashboard",
+    title: "AI-Powered Analytics Dashboard",
     category: "Web Development",
     image: "/img/project/project-img-7.jpg",
     images: [
@@ -74,16 +95,26 @@ const portfolioData = [
       "/img/project/project-img-5.jpg",
     ],
     description:
-      "Intelligent dashboard with machine learning insights, real-time analytics, and predictive modeling capabilities.",
-    technologies: ["React", "Python", "TensorFlow", "D3.js", "PostgreSQL"],
+      "Cutting-edge AI dashboard that revolutionized data analytics. Features real-time machine learning insights, predictive modeling, and won 'Best Data Visualization' award.",
+    technologies: [
+      "React",
+      "Python",
+      "TensorFlow",
+      "D3.js",
+      "PostgreSQL",
+      "ML Pipeline",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
     featured: false,
     year: "2023",
+    awards: ["Best Data Visualization", "AI Innovation Award"],
+    client: "DataCorp",
+    impact: "50% faster decision making",
   },
   {
     id: 4,
-    title: "SaaS Platform",
+    title: "Enterprise SaaS Excellence",
     category: "Web Development",
     image: "/img/project/project-img-8.jpg",
     images: [
@@ -92,16 +123,26 @@ const portfolioData = [
       "/img/project/project-img-6.jpg",
     ],
     description:
-      "Comprehensive SaaS platform with multi-tenant architecture, subscription management, and advanced reporting.",
-    technologies: ["Vue.js", "Laravel", "MySQL", "Redis", "AWS"],
+      "Comprehensive SaaS platform that achieved 'Enterprise Solution of the Year' award. Features multi-tenant architecture, advanced analytics, and seamless scalability.",
+    technologies: [
+      "Vue.js",
+      "Laravel",
+      "MySQL",
+      "Redis",
+      "AWS",
+      "Microservices",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
     featured: true,
     year: "2023",
+    awards: ["Enterprise Solution of the Year", "SaaS Excellence Award"],
+    client: "Enterprise Solutions Inc.",
+    impact: "500+ enterprise clients, $10M+ ARR",
   },
   {
     id: 5,
-    title: "IoT Monitoring System",
+    title: "Smart IoT Monitoring System",
     category: "IoT Development",
     image: "/img/project/project-img-5.jpg",
     images: [
@@ -109,16 +150,26 @@ const portfolioData = [
       "/img/project/project-img-6.jpg",
     ],
     description:
-      "Real-time IoT monitoring system with sensor data visualization, alerts, and predictive maintenance.",
-    technologies: ["React", "Node.js", "MQTT", "InfluxDB", "Grafana"],
+      "Innovative IoT monitoring system that won 'IoT Innovation Award'. Features real-time sensor data visualization, predictive maintenance, and advanced alerting systems.",
+    technologies: [
+      "React",
+      "Node.js",
+      "MQTT",
+      "InfluxDB",
+      "Grafana",
+      "Edge Computing",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
     featured: false,
     year: "2023",
+    awards: ["IoT Innovation Award", "Smart Technology Excellence"],
+    client: "Smart Industries",
+    impact: "40% reduction in maintenance costs",
   },
   {
     id: 6,
-    title: "Blockchain Wallet",
+    title: "Next-Gen Blockchain Wallet",
     category: "Blockchain",
     image: "/img/project/project-img-6.jpg",
     images: [
@@ -126,12 +177,22 @@ const portfolioData = [
       "/img/project/project-img-7.jpg",
     ],
     description:
-      "Secure cryptocurrency wallet with multi-chain support, DeFi integration, and advanced security features.",
-    technologies: ["React", "Web3.js", "Solidity", "Ethers.js", "MetaMask"],
+      "Revolutionary blockchain wallet that won 'Blockchain Innovation Award'. Features multi-chain support, DeFi integration, and military-grade security protocols.",
+    technologies: [
+      "React",
+      "Web3.js",
+      "Solidity",
+      "Ethers.js",
+      "MetaMask",
+      "Zero-Knowledge Proofs",
+    ],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
     featured: true,
     year: "2022",
+    awards: ["Blockchain Innovation Award", "Crypto Excellence Award"],
+    client: "CryptoVault",
+    impact: "1M+ transactions, $100M+ assets secured",
   },
 ];
 
@@ -144,10 +205,10 @@ const categories = [
 ];
 
 const stats = [
-  { number: "50+", label: "Projects Completed", icon: Award },
-  { number: "30+", label: "Happy Clients", icon: Users },
-  { number: "5+", label: "Years Experience", icon: Clock },
-  { number: "4.9", label: "Client Rating", icon: Star },
+  { number: "150+", label: "Award-Winning Projects", icon: Award },
+  { number: "100+", label: "Enterprise Clients", icon: Users },
+  { number: "25+", label: "Industry Awards", icon: Sparkles },
+  { number: "99%", label: "Client Satisfaction", icon: Star },
 ];
 
 const testimonials = [
@@ -187,10 +248,14 @@ function PortfolioPage() {
   >(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const heroRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const filterRef = useRef<HTMLDivElement>(null);
 
   // Filter projects based on selected category
   const filteredProjects =
@@ -200,11 +265,15 @@ function PortfolioPage() {
           (project) => project.category === selectedCategory
         );
 
-  // Open project modal
+  // Open project modal with loading state
   const openProjectModal = (project: (typeof portfolioData)[0]) => {
-    setSelectedProject(project);
-    setCurrentImageIndex(0);
-    setIsModalOpen(true);
+    setIsLoading(true);
+    setTimeout(() => {
+      setSelectedProject(project);
+      setCurrentImageIndex(0);
+      setIsModalOpen(true);
+      setIsLoading(false);
+    }, 300);
   };
 
   // Navigate to project details page
@@ -314,197 +383,353 @@ function PortfolioPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white -mt-[90px]">
       {/* Hero Section */}
       <section
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-2000"></div>
+        {/* Advanced Background with Multiple Layers */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+          {/* Animated mesh gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-400/20 via-transparent to-purple-600/20"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-cyan-400/20 via-transparent to-pink-600/20"></div>
 
-        <div className="relative z-10 text-center max-w-6xl mx-auto px-4">
+          {/* Floating glassmorphism orbs */}
+          <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-40 right-10 w-80 h-80 bg-gradient-to-r from-purple-400/30 to-pink-400/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute -bottom-8 left-20 w-72 h-72 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+
+        {/* Hero Content with Glassmorphism Card */}
+        <div className="relative z-10 text-center max-w-7xl mx-auto px-4">
           <motion.div
-            className="hero-subtitle"
+            className="hero-subtitle mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-medium rounded-full mb-6">
-              Award-Winning Portfolio
-            </span>
+            <div className="inline-flex items-center gap-3 backdrop-blur-md bg-white/20 border border-white/30 rounded-full px-6 py-3 shadow-xl">
+              <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-gray-700 font-semibold text-sm tracking-wide">
+                Award-Winning Portfolio
+              </span>
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-3 h-3 text-yellow-400 fill-current"
+                  />
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           <motion.h1
-            className="hero-title text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight"
+            className="hero-title text-6xl md:text-8xl lg:text-9xl font-black text-gray-900 mb-8 leading-[0.85] tracking-tight"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             Creative
-            <span className="block bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
               Excellence
             </span>
           </motion.h1>
 
           <motion.p
-            className="hero-subtitle text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+            className="hero-subtitle text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed font-medium"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             Transforming ideas into digital masterpieces through innovative
             design, cutting-edge technology, and unparalleled attention to
-            detail.
+            detail. Every project is a testament to our commitment to
+            excellence.
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <GradientButton size="lg" className="text-lg px-8 py-4">
-              View Our Work
+            <GradientButton
+              size="lg"
+              className="text-lg px-10 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group"
+            >
+              <span className="flex items-center gap-2">
+                View Our Work
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
             </GradientButton>
             <Button
               variant="outline"
               size="lg"
-              className="text-lg px-8 py-4 border-2"
+              className="text-lg px-10 py-5 border-2 border-gray-300 hover:border-gray-400 rounded-2xl backdrop-blur-sm bg-white/50 hover:bg-white/80 transition-all duration-300"
             >
               Get In Touch
             </Button>
           </motion.div>
+
+          {/* Stats Preview */}
+          <motion.div
+            className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            {[
+              { number: "150+", label: "Projects Completed" },
+              { number: "50+", label: "Happy Clients" },
+              { number: "15+", label: "Awards Won" },
+              { number: "99%", label: "Client Satisfaction" },
+            ].map((stat, index) => (
+              <div key={index} className="text-center group">
+                <div className="text-3xl md:text-4xl font-black text-gray-900 mb-2 group-hover:scale-110 transition-transform duration-300">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-gray-600 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Enhanced Scroll Indicator */}
         <motion.div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
         >
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-            <motion.div
-              className="w-1 h-3 bg-gray-400 rounded-full mt-2"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
+          <div className="flex flex-col items-center gap-2">
+            <div className="text-xs text-gray-500 font-medium tracking-wider">
+              SCROLL
+            </div>
+            <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center backdrop-blur-sm bg-white/20">
+              <motion.div
+                className="w-1 h-3 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mt-2"
+                animate={{ y: [0, 12, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              />
+            </div>
           </div>
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
+      {/* Enhanced Stats Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div
+            ref={statsRef}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, staggerChildren: 0.1 }}
+          >
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                className="text-center group"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
+                className="text-center group relative"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mb-4 group-hover:shadow-lg transition-shadow">
-                  <stat.icon className="w-8 h-8 text-white" />
+                {/* Glassmorphism Card */}
+                <div className="relative backdrop-blur-md bg-white/40 border border-white/30 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 group-hover:bg-white/60">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-transparent"></div>
+
+                  <div className="relative z-10">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl mb-6 group-hover:shadow-lg transition-all duration-300 group-hover:scale-110">
+                      <stat.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <h3 className="text-4xl md:text-5xl font-black text-gray-900 mb-3 group-hover:scale-110 transition-transform duration-300">
+                      {stat.number}
+                    </h3>
+                    <p className="text-gray-600 font-semibold text-lg">
+                      {stat.label}
+                    </p>
+                  </div>
+
+                  {/* Decorative element */}
+                  <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-xl"></div>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
-                  {stat.number}
-                </h3>
-                <p className="text-gray-600 font-medium">{stat.label}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Portfolio Filter */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our Portfolio
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Explore our diverse range of projects that showcase innovation,
-              creativity, and technical excellence.
-            </p>
-          </div>
+      {/* Enhanced Portfolio Filter */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
 
-          {/* Filter Tabs */}
-          <div className="flex justify-center mb-12">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/50 rounded-full px-6 py-3 mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+              <span className="text-blue-700 font-semibold text-sm tracking-wide">
+                Our Work
+              </span>
+            </motion.div>
+
+            <motion.h2
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Our
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Portfolio
+              </span>
+            </motion.h2>
+
+            <motion.p
+              className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Explore our diverse range of projects that showcase innovation,
+              creativity, and technical excellence. Each project tells a unique
+              story.
+            </motion.p>
+          </motion.div>
+
+          {/* Enhanced Filter Tabs */}
+          <motion.div
+            ref={filterRef}
+            className="flex justify-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
             <Tabs
               value={selectedCategory}
               onValueChange={setSelectedCategory}
-              className="w-full max-w-2xl"
+              className="w-full max-w-4xl"
             >
-              <TabsList className="grid w-full grid-cols-5 bg-gray-100 p-1 rounded-lg">
+              <TabsList className="grid w-full grid-cols-5 bg-white/80 backdrop-blur-md border border-gray-200/50 p-2 rounded-2xl shadow-xl">
                 {categories.map((category) => (
                   <TabsTrigger
                     key={category}
                     value={category}
-                    className="data-[state=active]:bg-white data-[state=active]:shadow-sm transition-all duration-300"
+                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300 rounded-xl font-semibold py-3 hover:bg-gray-50"
                   >
                     {category}
                   </TabsTrigger>
                 ))}
               </TabsList>
             </Tabs>
-          </div>
+          </motion.div>
 
-          {/* Projects Grid */}
-          <div
+          {/* Enhanced Projects Grid */}
+          <motion.div
             ref={projectsRef}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <AnimatePresence mode="wait">
-              {filteredProjects.map((project) => (
+              {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
+                  initial={{ opacity: 0, scale: 0.8, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: -30 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="group cursor-pointer"
+                  onMouseEnter={() => setHoveredProject(project.id)}
+                  onMouseLeave={() => setHoveredProject(null)}
                   onClick={() => openProjectModal(project)}
                 >
-                  <div className="relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2">
-                    {/* Project Image */}
-                    <div className="relative h-64 overflow-hidden">
+                  <div className="relative overflow-hidden rounded-3xl bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-3 hover:scale-[1.02]">
+                    {/* Project Image with Advanced Effects */}
+                    <div className="relative h-72 overflow-hidden">
                       <Image
                         src={project.image}
                         alt={project.title}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
                       />
+
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                      {/* Featured Badge */}
                       {project.featured && (
-                        <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                          Featured
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center space-x-4">
                         <motion.div
-                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                          className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.2 }}
+                        >
+                          ⭐ Featured
+                        </motion.div>
+                      )}
+
+                      {/* Action Buttons */}
+                      <div className="absolute inset-0 flex items-center justify-center space-x-4 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                        <motion.div
                           whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           <div
-                            className="bg-white rounded-full p-3 cursor-pointer"
-                            onClick={() => goToProjectDetails(project)}
+                            className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 cursor-pointer shadow-xl hover:bg-white transition-colors duration-300"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              goToProjectDetails(project);
+                            }}
                           >
                             <ExternalLink className="w-6 h-6 text-gray-900" />
                           </div>
                         </motion.div>
                         <motion.div
-                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                           whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
                         >
                           <div
-                            className="bg-white rounded-full p-3 cursor-pointer"
-                            onClick={() => openProjectModal(project)}
+                            className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 cursor-pointer shadow-xl hover:bg-white transition-colors duration-300"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openProjectModal(project);
+                            }}
                           >
                             <svg
                               className="w-6 h-6 text-gray-900"
@@ -530,145 +755,290 @@ function PortfolioPage() {
                       </div>
                     </div>
 
-                    {/* Project Info */}
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-full">
+                    {/* Enhanced Project Info */}
+                    <div className="p-8">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-sm font-bold text-blue-600 bg-blue-50 px-4 py-2 rounded-full border border-blue-200">
                           {project.category}
                         </span>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm text-gray-500 font-medium">
                           {project.year}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+
+                      <h3 className="text-2xl font-black text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
                         {project.title}
                       </h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {project.description.substring(0, 100)}...
+
+                      <p className="text-gray-600 text-base leading-relaxed mb-6">
+                        {project.description.substring(0, 120)}...
                       </p>
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {project.technologies.slice(0, 3).map((tech, index) => (
-                          <span
-                            key={index}
-                            className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.technologies
+                          .slice(0, 3)
+                          .map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className="text-xs bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-3 py-1 rounded-full font-medium border border-gray-200"
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         {project.technologies.length > 3 && (
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-500 font-medium">
                             +{project.technologies.length - 3} more
                           </span>
                         )}
                       </div>
-                      <div className="flex gap-2 mt-4">
+
+                      <div className="flex gap-3">
                         <Button
                           size="sm"
-                          className="flex-1 text-xs"
-                          onClick={() => goToProjectDetails(project)}
+                          className="flex-1 text-sm font-semibold rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 transition-all duration-300"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            goToProjectDetails(project);
+                          }}
                         >
                           View Details
                         </Button>
                         <Button
                           size="sm"
                           variant="outline"
-                          className="flex-1 text-xs"
-                          onClick={() => openProjectModal(project)}
+                          className="flex-1 text-sm font-semibold rounded-xl border-2 hover:bg-gray-50 transition-all duration-300"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            openProjectModal(project);
+                          }}
                         >
                           Quick View
                         </Button>
                       </div>
                     </div>
+
+                    {/* Decorative Element */}
+                    <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-xl"></div>
                   </div>
                 </motion.div>
               ))}
             </AnimatePresence>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              What Our Clients Say
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Don&apos;t just take our word for it. Here&apos;s what our
-              satisfied clients have to say about our work.
-            </p>
-          </div>
+      {/* Enhanced Testimonials Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="max-w-7xl mx-auto px-4 relative z-10">
+          <motion.div
+            className="text-center mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/50 rounded-full px-6 py-3 mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Star className="w-5 h-5 text-yellow-500" />
+              <span className="text-blue-700 font-semibold text-sm tracking-wide">
+                Client Testimonials
+              </span>
+            </motion.div>
+
+            <motion.h2
+              className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              What Our Clients
+              <span className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                Say About Us
+              </span>
+            </motion.h2>
+
+            <motion.p
+              className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Don&apos;t just take our word for it. Here&apos;s what industry
+              leaders say about our award-winning digital solutions and
+              exceptional service.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                className="group relative"
               >
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-5 h-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    {testimonial.name.charAt(0)}
+                <div className="relative backdrop-blur-md bg-white/80 border border-white/20 rounded-3xl p-8 h-full hover:bg-white/90 transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl">
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/50 to-transparent"></div>
+
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-1 mb-6">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-5 h-5 text-yellow-400 fill-current"
+                        />
+                      ))}
+                    </div>
+
+                    <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                      &ldquo;{testimonial.content}&rdquo;
+                    </p>
+
+                    <div className="flex items-center gap-4">
+                      <div className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h4 className="font-black text-gray-900 text-lg">
+                          {testimonial.name}
+                        </h4>
+                        <p className="text-gray-600 font-medium">
+                          {testimonial.role}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                  </div>
+
+                  {/* Decorative element */}
+                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-xl"></div>
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
+      {/* Enhanced CTA Section */}
+      <section className="py-24 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
+        </div>
+
+        <div className="max-w-5xl mx-auto text-center px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Start Your Project?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <motion.div
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-3 mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="w-2 h-2 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse"></div>
+              <span className="text-white font-semibold text-sm tracking-wide">
+                Ready to Get Started?
+              </span>
+            </motion.div>
+
+            <motion.h2
+              className="text-5xl md:text-6xl lg:text-7xl font-black mb-8 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              Ready to Start Your
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Project?
+              </span>
+            </motion.h2>
+
+            <motion.p
+              className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed font-medium"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               Let&apos;s collaborate to bring your vision to life with
-              cutting-edge technology and innovative design solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <GradientButton size="lg" className="text-lg px-8 py-4">
-                Start Your Project
+              cutting-edge technology and innovative design solutions. Your
+              success is our mission.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <GradientButton
+                size="lg"
+                className="text-lg px-10 py-5 rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 group"
+              >
+                <span className="flex items-center gap-2">
+                  Start Your Project
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
               </GradientButton>
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900"
+                className="text-lg px-10 py-5 border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 rounded-2xl backdrop-blur-sm transition-all duration-300"
               >
                 View Case Studies
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
+
+      {/* Loading Overlay */}
+      {isLoading && (
+        <motion.div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <div className="bg-white/90 backdrop-blur-md rounded-3xl p-8 shadow-2xl">
+            <div className="flex items-center gap-4">
+              <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+              <span className="text-gray-900 font-semibold">
+                Loading project...
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      )}
 
       {/* Project Modal */}
       <AnimatePresence>
