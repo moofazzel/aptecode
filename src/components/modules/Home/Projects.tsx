@@ -111,7 +111,7 @@ function Projects() {
               </p>
               <Link
                 className="bg-white rounded-full w-12 h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 flex items-center justify-center transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-400 hover:scale-110 hover:bg-gray-100"
-                href="/contact"
+                href="/portfolio"
               >
                 <ArrowRight className="text-[#a868fa] transition-all duration-300 hover:translate-x-1 hover:scale-110 w-4 h-4 md:w-5 md:h-5" />
               </Link>
@@ -168,7 +168,7 @@ function Projects() {
                 </p>
                 <Link
                   className="bg-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-400 hover:scale-110 hover:bg-gray-100"
-                  href="/contact"
+                  href="/portfolio"
                 >
                   <ArrowRight className="text-[#a868fa] transition-all duration-300 hover:translate-x-1 hover:scale-110 w-3 h-3 md:w-4 md:h-4" />
                 </Link>

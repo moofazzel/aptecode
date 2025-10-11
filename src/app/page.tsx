@@ -12,7 +12,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <AboutSection />
       <WhyChooseUs />
       <OurServices />
       <RunningTextTwo />

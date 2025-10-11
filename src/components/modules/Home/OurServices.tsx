@@ -1,9 +1,8 @@
 "use client";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { motion } from "framer-motion";
-import { ChevronsRight, MoveLeft, MoveRight } from "lucide-react";
+import { MoveLeft, MoveRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -206,12 +205,12 @@ function OurServices() {
                   <p className="text-[#74787c] font-normal text-sm md:text-base mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  <Link
-                    href="/"
+                  {/* <Link
+                    href="/portfolio"
                     className="text-[#3F5AF3] text-sm md:text-base font-normal flex items-center gap-2 hover:gap-3 transition-all"
                   >
                     Read More <ChevronsRight className="w-4 h-4" />
-                  </Link>
+                  </Link> */}
                 </article>
               </div>
             </SwiperSlide>

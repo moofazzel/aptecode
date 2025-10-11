@@ -3,7 +3,7 @@ import RunningText from "@/components/shared/RunningText";
 function RunningTextTwo() {
   return (
     <div
-      className="w-full h-32 bg-cover bg-center bg-no-repeat relative py-[300px]"
+      className="w-full h-[350px] bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundImage: "url('/img/bg-img/running-bg-2.jpg')" }}
     >
       <div
