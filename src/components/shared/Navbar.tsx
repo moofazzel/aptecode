@@ -28,6 +28,15 @@ function Navbar() {
       href: "/",
     },
     {
+      label: "Portfolio",
+      href: "/portfolio",
+    },
+    {
+      label: "Services",
+      href: "/services",
+    },
+
+    {
       label: "About",
       href: "/about",
     },
