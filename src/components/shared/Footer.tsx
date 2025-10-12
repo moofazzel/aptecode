@@ -35,28 +35,22 @@ function Footer() {
               </div>
               <motion.button
                 onClick={() => {}}
-                className="w-20 h-20 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
+                className=" w-24 lg:w-28 h-24 lg:h-28 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
                 whileHover={{
-                  scale: 1.1,
+                  scale: 1.03,
                 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <motion.div
-                  className="group-hover:rotate-45 transition-transform duration-300 ease-out"
+                  className="group-hover:rotate-45 transition-transform duration-500 ease-out"
                   animate={{
                     color: "#ffffff",
                   }}
                   whileHover={{
                     color: "#a855f7", // purple-400
                   }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25,
-                    duration: 0.4,
-                  }}
                 >
-                  <ArrowUpRight className="w-6 h-6" />
+                  <ArrowUpRight className="w-8 h-8" />
                 </motion.div>
               </motion.button>
             </div>

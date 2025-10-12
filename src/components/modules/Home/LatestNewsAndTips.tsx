@@ -199,7 +199,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
       >
         <motion.h3
           className="text-xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-purple-600 transition-colors duration-300 relative inline-block"
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.2 }}
         >
           <span className="relative">
@@ -208,7 +208,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
               className="absolute bottom-0 left-0 h-0.5 bg-purple-600"
               initial={{ width: 0 }}
               whileHover={{ width: "100%" }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             />
           </span>
         </motion.h3>
@@ -216,9 +216,9 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
         {/* Enhanced Read More Button */}
         <div className="flex justify-start">
           <GradientButton
-            variant="ghost"
+            href="/blog"
+            variant="primary"
             size="md"
-            className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 group-hover:shadow-xl transition-all duration-300"
             showArrow={true}
           >
             Read More

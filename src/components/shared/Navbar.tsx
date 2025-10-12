@@ -123,8 +123,9 @@ function Navbar() {
         container,
         {
           margin: "20px 0",
-          maxWidth: "1280px",
+          maxWidth: "1630px",
           width: "100%",
+          // backgroundColor: "#F2F3F4",
           backgroundColor: "#F2F3F4",
           backdropFilter: "none",
           boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
@@ -186,18 +187,18 @@ function Navbar() {
   return (
     <>
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center ">
           <div
             ref={containerRef}
             className="px-4 shadow-sm border border-[#E4E4E4] "
-            style={{ margin: "20px 0", maxWidth: "1280px", width: "100%" }}
+            style={{ margin: "20px 0", maxWidth: "1530px", width: "100%" }}
           >
-            <div className="flex items-center justify-between h-24">
+            <div className="flex items-center justify-between h-20 ">
               {/* Logo */}
               <div ref={logoRef} className="flex-shrink-0">
                 <Link href="/">
                   <Image
-                    className="h-8 w-auto"
+                    className="w-[180px]"
                     src="/img/logo/aptecode.png"
                     alt="Aptecode Logo"
                     width={150}
@@ -209,13 +210,13 @@ function Navbar() {
               {/* Desktop Navigation Items - Hidden on mobile */}
               <div
                 ref={navItemsRef}
-                className="hidden md:flex items-center space-x-8"
+                className="hidden md:flex items-center space-x-8 "
               >
                 {navItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-all duration-200 ease-out hover:scale-105"
+                    className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 text-lg"
                     style={{
                       fontFamily:
                         "var(--font-hind-madurai), system-ui, sans-serif",

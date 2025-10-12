@@ -7,6 +7,7 @@ export default function AboutPage() {
   return (
     <div>
       <PageBanner title="Contact Aptecode" bgImage="/img/bg-img/bg.png" />
+      <PageBanner title="Contact Aptecode" bgImage="/img/bg-img/bg.png" />
       <ContactForm />
       <MapSection />
       <CalScheduler calLink={calLink} namespace="30min" />
