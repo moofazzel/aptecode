@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import * as React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import "../../../app/about/about.css";
 
@@ -121,7 +120,7 @@ function Feature({
   title,
   subtitle,
 }: {
-  icon: React.ReactNode;
+  icon: string;
   title: string;
   subtitle?: string;
 }) {

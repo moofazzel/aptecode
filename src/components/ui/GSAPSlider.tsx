@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 
 // Register GSAP plugins
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -24,11 +24,11 @@ interface GSAPSliderProps {
   className?: string;
 }
 
-const GSAPSlider: React.FC<GSAPSliderProps> = ({ 
-  slides, 
-  autoplay = true, 
+const GSAPSlider: React.FC<GSAPSliderProps> = ({
+  slides,
+  autoplay = true,
   duration = 4000,
-  className = '' 
+  className = "",
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const slidesRef = useRef<HTMLDivElement[]>([]);
@@ -40,7 +40,6 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
   useEffect(() => {
     if (!sliderRef.current) return;
 
-    const slider = sliderRef.current;
     const slideElements = slidesRef.current;
 
     // Create GSAP timeline
@@ -84,20 +83,24 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
 
     // Create smooth transition animation
     const tl = gsap.timeline();
-    
+
     tl.to(current, {
       xPercent: -100,
       opacity: 0,
       duration: 0.6,
-      ease: "power2.inOut"
+      ease: "power2.inOut",
     })
-    .set(next, { xPercent: 100 })
-    .to(next, {
-      xPercent: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: "power2.inOut"
-    }, "-=0.3");
+      .set(next, { xPercent: 100 })
+      .to(
+        next,
+        {
+          xPercent: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.inOut",
+        },
+        "-=0.3"
+      );
 
     setCurrentSlide(index);
   };
@@ -119,7 +122,9 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
   };
 
   return (
-    <div className={`relative w-full h-[600px] overflow-hidden rounded-2xl ${className}`}>
+    <div
+      className={`relative w-full h-[600px] overflow-hidden rounded-2xl ${className}`}
+    >
       {/* Slider Container */}
       <div ref={sliderRef} className="relative w-full h-full">
         {slides.map((slide, index) => (
@@ -133,8 +138,8 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
           >
             <div className="text-center text-white px-8">
               <div className="mb-8">
-                <img 
-                  src={slide.image} 
+                <img
+                  src={slide.image}
                   alt={slide.title}
                   className="w-64 h-64 object-cover rounded-full mx-auto shadow-2xl"
                 />
@@ -155,8 +160,18 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 19l-7-7 7-7"
+          />
         </svg>
       </button>
 
@@ -164,8 +179,18 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
         onClick={nextSlide}
         className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300"
       >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 5l7 7-7 7"
+          />
         </svg>
       </button>
 
@@ -176,9 +201,9 @@ const GSAPSlider: React.FC<GSAPSliderProps> = ({
             key={index}
             onClick={() => goToSlide(index)}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide 
-                ? 'bg-white scale-125' 
-                : 'bg-white/50 hover:bg-white/75'
+              index === currentSlide
+                ? "bg-white scale-125"
+                : "bg-white/50 hover:bg-white/75"
             }`}
           />
         ))}

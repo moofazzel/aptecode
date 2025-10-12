@@ -330,7 +330,7 @@ const Hero = () => {
             fill
           />
         </div>
-        <div className="flex items-center  overflow-hidden  select-none relative">
+        <div className="max-w-[1780px] mx-auto flex items-center  overflow-hidden  select-none relative">
           {/* Navigation Indicators - Desktop */}
           <div className="hidden lg:flex absolute left-[150px] top-[55%] transform -translate-y-1/2 flex-col space-y-4 z-10">
             {slides.map((slide, index) => (
