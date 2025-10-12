@@ -9,9 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const BG_IMAGE = "/img/about/marBg.jpg";
 
 /** -------- Tuning -------- */
-const SPEED_MS = 32000; // slower than before (higher = slower when delay is 0)
 const GAP = 48;
-const DUPES = 6;
 const OUTLINED_TEXT_SIZE = "clamp(28px, 9vw, 120px)";
 const FILLED_TEXT_SIZE = "clamp(28px, 9vw, 120px)";
 const ICON_SIZE = "clamp(28px, 7vw, 96px)";

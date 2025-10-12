@@ -1,7 +1,7 @@
 // components/ServicesCard.tsx
 "use client";
 
-import { FocusEvent, KeyboardEvent, MouseEvent, useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import type { IconType } from "react-icons";
 import { FaBitcoin, FaCode, FaLaptopCode } from "react-icons/fa";
@@ -81,11 +81,11 @@ function ServiceFlipCard({
   const onMouseEnter = () => setHovered(true);
   const onMouseLeave = () => setHovered(false);
 
-  const onFocus = (_e: FocusEvent<HTMLDivElement>) => setFocused(true);
-  const onBlur = (_e: FocusEvent<HTMLDivElement>) => setFocused(false);
+  const onFocus = () => setFocused(true);
+  const onBlur = () => setFocused(false);
 
   // Double-click resets to front immediately
-  const onDoubleClick = (_e: MouseEvent<HTMLDivElement>) => {
+  const onDoubleClick = () => {
     setHovered(false);
     setFocused(false);
   };
@@ -97,9 +97,6 @@ function ServiceFlipCard({
       setFocused(false);
     }
   };
-
-  // Keep link clicks from affecting wrapper handlers
-  const stopLink = (e: MouseEvent<HTMLAnchorElement>) => e.stopPropagation();
 
   return (
     <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">

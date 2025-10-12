@@ -1,7 +1,12 @@
 "use client";
 
 import { useMotionAnimation } from "@/hooks/useAnimations";
-import { motion } from "framer-motion";
+import {
+  motion,
+  type TargetAndTransition,
+  type Transition,
+  type Variants,
+} from "framer-motion";
 import { ReactNode, forwardRef } from "react";
 
 interface OptimizedMotionCardProps {
@@ -72,7 +77,7 @@ const OptimizedMotionCard = forwardRef<
             y: 0,
             transition: {
               duration: 0.5,
-              ease: "easeOut",
+              ease: "easeOut" as const,
             },
           },
         }
@@ -81,13 +86,17 @@ const OptimizedMotionCard = forwardRef<
     return (
       <motion.div
         ref={ref}
-        initial={motionConfig.initial}
-        animate={motionConfig.animate}
-        exit={motionConfig.exit}
-        whileHover={hover && hoverConfig ? hoverConfig.whileHover : undefined}
+        initial={motionConfig.initial as TargetAndTransition}
+        animate={motionConfig.animate as TargetAndTransition}
+        exit={motionConfig.exit as TargetAndTransition}
+        whileHover={
+          hover && hoverConfig
+            ? (hoverConfig.whileHover as TargetAndTransition)
+            : undefined
+        }
         whileTap={onClick ? { scale: 0.98 } : undefined}
         variants={containerVariants}
-        transition={motionConfig.transition}
+        transition={motionConfig.transition as Transition}
         className={`cursor-${onClick ? "pointer" : "default"} ${className}`}
         onClick={onClick}
         // Performance optimizations
@@ -98,7 +107,7 @@ const OptimizedMotionCard = forwardRef<
           // Render children with stagger animation
           <>
             {Array.from({ length: childrenCount }, (_, index) => (
-              <motion.div key={index} variants={childVariants}>
+              <motion.div key={index} variants={childVariants as Variants}>
                 {Array.isArray(children) ? children[index] : children}
               </motion.div>
             ))}

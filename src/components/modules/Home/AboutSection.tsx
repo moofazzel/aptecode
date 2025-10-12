@@ -6,7 +6,7 @@ import Image from "next/image";
 
 function AboutSection() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden">
+    <section className="py-12 md:py-20 lg:py-24 relative overflow-hidden">
       {/* Modern gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
         <div className="absolute inset-0 bg-[url('/img/new-update-2/about-img-1.png')] opacity-5 bg-cover bg-center"></div>
@@ -149,13 +149,13 @@ function AboutSection() {
               ].map((point, index) => (
                 <motion.div
                   key={point.number}
-                  className="group flex items-start space-x-4 p-6 rounded-2xl hover:bg-white/50 transition-all duration-300"
+                  className="group flex items-start space-x-4 p-2 hover:bg-white/50 transition-all duration-300"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                     <span className="text-white text-sm font-bold">
                       {point.number}
                     </span>
@@ -184,7 +184,7 @@ function AboutSection() {
                 href="/about"
                 variant="primary"
                 size="lg"
-                className="w-full sm:w-auto text-lg px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300"
+                className="w-full sm:w-auto text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300"
               >
                 Discover Our Story
               </GradientButton>
@@ -193,7 +193,7 @@ function AboutSection() {
                 href="/portfolio"
                 variant="secondary"
                 size="lg"
-                className="w-full sm:w-auto text-lg px-8 py-4 rounded-2xl border-2 border-gray-300 hover:border-blue-500 transition-all duration-300"
+                className="w-full sm:w-auto text-lg px-8 py-4 border-2 border-gray-300 hover:border-blue-500 transition-all duration-300"
               >
                 View Our Work
               </GradientButton>

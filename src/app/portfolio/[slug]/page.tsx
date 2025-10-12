@@ -233,8 +233,6 @@ interface PortfolioDetailsPageProps {
 function PortfolioDetailsPage({ params }: PortfolioDetailsPageProps) {
   const [activeTab, setActiveTab] = useState("overview");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(true);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -242,27 +240,9 @@ function PortfolioDetailsPage({ params }: PortfolioDetailsPageProps) {
 
   const project = portfolioData[params.slug as keyof typeof portfolioData];
 
-  if (!project) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Project Not Found
-          </h1>
-          <p className="text-gray-600 mb-8">
-            The project you're looking for doesn't exist.
-          </p>
-          <Link href="/portfolio">
-            <Button>Back to Portfolio</Button>
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
   // GSAP Animations
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined" || !project) return;
 
     // Hero animation
     const heroTl = gsap.timeline();
@@ -280,47 +260,69 @@ function PortfolioDetailsPage({ params }: PortfolioDetailsPageProps) {
       );
 
     // Content animation
-    gsap.fromTo(
-      contentRef.current?.children,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: contentRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    if (contentRef.current?.children) {
+      gsap.fromTo(
+        contentRef.current.children,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
 
     // Stats animation
-    gsap.fromTo(
-      statsRef.current?.children,
-      { opacity: 0, scale: 0.8 },
-      {
-        opacity: 1,
-        scale: 1,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: statsRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    if (statsRef.current?.children) {
+      gsap.fromTo(
+        statsRef.current.children,
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [project]);
+
+  if (!project) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+            Project Not Found
+          </h1>
+          <p className="text-gray-600 mb-8">
+            The project you&apos;re looking for doesn&apos;t exist.
+          </p>
+          <Link href="/portfolio">
+            <Button>Back to Portfolio</Button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   const nextImage = () => {
     setCurrentImageIndex((prev) =>
@@ -402,31 +404,26 @@ function PortfolioDetailsPage({ params }: PortfolioDetailsPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <GradientButton size="lg" className="text-lg px-8 py-4" asChild>
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              <GradientButton size="lg" className="text-lg px-8 py-4">
                 <ExternalLink className="w-5 h-5 mr-2" />
                 View Live Demo
-              </a>
-            </GradientButton>
-            <Button
-              variant="outline"
-              size="lg"
-              className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900"
-              asChild
+              </GradientButton>
+            </a>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-gray-900"
               >
                 <Github className="w-5 h-5 mr-2" />
                 View Code
-              </a>
-            </Button>
+              </Button>
+            </a>
           </motion.div>
         </div>
 
@@ -709,7 +706,7 @@ function PortfolioDetailsPage({ params }: PortfolioDetailsPageProps) {
                   </h3>
                   <div className="space-y-4">
                     <p className="text-gray-600 italic">
-                      "{project.testimonials[0].content}"
+                      &ldquo;{project.testimonials[0].content}&rdquo;
                     </p>
                     <div className="flex items-center space-x-3">
                       <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold">
@@ -796,8 +793,8 @@ function PortfolioDetailsPage({ params }: PortfolioDetailsPageProps) {
               Ready to Start Your Project?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let's collaborate to bring your vision to life with cutting-edge
-              technology and innovative design solutions.
+              Let&apos;s collaborate to bring your vision to life with
+              cutting-edge technology and innovative design solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <GradientButton size="lg" className="text-lg px-8 py-4">
