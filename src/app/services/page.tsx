@@ -1,6 +1,6 @@
-import CtaSection from "@/components/modules/Services/Ctasection/CtaSection";
-import PricingSection from "@/components/modules/Services/PricingSection/PricingSection";
-import ServicesCard from "@/components/modules/Services/ServiceCard/ServiceCard";
+import CtaSection from "@/components/modules/services/ctasection/CtaSection";
+import PricingSection from "@/components/modules/services/pricingSection/PricingSection";
+import ServicesCard from "@/components/modules/services/serviceCard/ServiceCard";
 import PageBanner from "@/components/shared/PageBanner";
 
 const Servicespage = () => {
