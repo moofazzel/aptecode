@@ -291,7 +291,7 @@ Trust is reinforced with visible testimonials, security badges, and accessible p
     title: "Security & Compliance for Startups: A Practical Site Checklist",
     date: "28 JUL, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/bl11.jpg",
+    image: "/img/blog/bl1.jpg",
     imageAlt:
       "HTTPS, headers, secrets, backups, and privacy essentials, done fast.",
     excerpt:
