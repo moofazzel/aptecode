@@ -1,7 +1,7 @@
 // app/services/web-apps/page.tsx
 "use client";
 
-import PricingSection from "@/components/modules/services/pricingSection/PricingSection";
+import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import Image from "next/image";
 import { Fragment } from "react";
 
