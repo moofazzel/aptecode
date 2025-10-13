@@ -3,13 +3,13 @@
 
 import { motion } from "framer-motion";
 import {
-    ArrowUpRight,
-    Clock,
-    Send,
-    Star,
-    Tag,
-    Twitter,
-    User2,
+  ArrowUpRight,
+  Clock,
+  Send,
+  Star,
+  Tag,
+  Twitter,
+  User2,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -171,15 +171,15 @@ export default function ArticleView({ post }: { post: Blog }) {
           >
             <a
               href="#read"
-              className="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-[#6D5CF6] to-[#F33AA0] px-6 py-3 text-white text-sm font-semibold shadow-[0_8px_30px_rgba(109,92,246,0.35)] hover:opacity-95 transition"
+              className="inline-flex items-center justify-center bg-gradient-to-r from-[#6D5CF6] to-[#F33AA0] px-6 py-3 text-white text-sm font-semibold shadow-[0_8px_30px_rgba(109,92,246,0.35)] hover:opacity-95 transition"
             >
               Start Reading <ArrowUpRight className="ml-1 h-4 w-4" />
             </a>
             <Link
               href="/blog"
-              className="inline-flex items-center justify-center rounded-2xl border border-zinc-200 bg-white px-6 py-3 text-sm font-semibold text-zinc-800 hover:bg-zinc-50"
+              className="inline-flex items-center justify-center border border-zinc-200 bg-white px-6 py-3 text-sm font-semibold text-zinc-800 hover:bg-zinc-50"
             >
-              All Posts
+              All Posts <ArrowUpRight className="ml-1 h-4 w-4" />
             </Link>
           </motion.div>
 
@@ -190,7 +190,7 @@ export default function ArticleView({ post }: { post: Blog }) {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.28 }}
             className="mx-auto mt-10 grid w-full max-w-4xl grid-cols-3 gap-4"
           >
-            <li className="rounded-2xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
+            <li className="rouded-xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
               <div className="text-2xl font-semibold text-zinc-900">
                 {new Date(post.updatedAt || post.date).toLocaleDateString(
                   undefined,
@@ -203,14 +203,14 @@ export default function ArticleView({ post }: { post: Blog }) {
               </div>
               <div className="mt-1 text-xs text-zinc-500">Published</div>
             </li>
-            <li className="rounded-2xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
+            <li className="rouded-xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
               <div className="flex items-center gap-2 text-2xl font-semibold text-zinc-900">
                 <Clock className="h-5 w-5 text-zinc-500" />
                 {readingMins} min
               </div>
               <div className="mt-1 text-xs text-zinc-500">Read Time</div>
             </li>
-            <li className="rounded-2xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
+            <li className="rouded-xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
               <div className="text-2xl font-semibold text-zinc-900">
                 {post.tags?.length ?? 0}
               </div>
@@ -268,7 +268,7 @@ export default function ArticleView({ post }: { post: Blog }) {
 
               <div className="mt-10 h-px bg-zinc-200" />
               <div className="mt-8 flex items-center gap-4">
-                <div className="relative h-12 w-12 overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-pink-500 text-white flex items-center justify-center font-bold">
+                <div className="relative h-12 w-12 overflow-hidden rounded-full bg-gradient-to-r from-indigo-500 to-pink-500 text-white flex items-center justify-center font-bold">
                   {post.authorInfo?.avatarUrl ? (
                     <Image
                       src={post.authorInfo.avatarUrl}
@@ -297,7 +297,7 @@ export default function ArticleView({ post }: { post: Blog }) {
               <div className="sticky top-24 space-y-6">
                 {/* TOC */}
                 {toc.length > 0 && (
-                  <div className="rounded-2xl border border-zinc-200 bg-white p-6">
+                  <div className="rouded-xl border border-zinc-200 bg-white p-6">
                     <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">
                       ON THIS PAGE
                     </div>
@@ -320,7 +320,7 @@ export default function ArticleView({ post }: { post: Blog }) {
                 )}
 
                 {/* Quick facts */}
-                <div className="rounded-2xl border border-zinc-200 bg-white p-6">
+                <div className="rouded-xl border border-zinc-200 bg-white p-6">
                   <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">
                     POST FACTS
                   </div>
@@ -362,7 +362,7 @@ export default function ArticleView({ post }: { post: Blog }) {
                 </div>
 
                 {/* Share */}
-                <div className="rounded-2xl border border-zinc-200 bg-white p-6">
+                <div className="rouded-xl border border-zinc-200 bg-white p-6">
                   <div className="text-xs uppercase tracking-[0.18em] text-zinc-500">
                     SHARE
                   </div>
@@ -387,7 +387,7 @@ export default function ArticleView({ post }: { post: Blog }) {
                 </div>
 
                 {/* Newsletter */}
-                <div className="rounded-2xl border border-white/20 bg-gradient-to-br from-[#6D5CF6]/10 via-[#8A54F7]/10 to-[#F33AA0]/10 backdrop-blur-sm p-6">
+                <div className="rouded-xl border border-white/20 bg-gradient-to-br from-[#6D5CF6]/10 via-[#8A54F7]/10 to-[#F33AA0]/10 backdrop-blur-sm p-6">
                   <div className="inline-flex items-center gap-2 bg-white/30 rounded-full px-3 py-1 text-white text-xs">
                     ✨ Fresh posts
                   </div>
@@ -404,9 +404,9 @@ export default function ArticleView({ post }: { post: Blog }) {
                     <input
                       type="email"
                       placeholder="your@email"
-                      className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 outline-none focus:ring-2 focus:ring-indigo-200"
+                      className="w-full border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-800 placeholder-zinc-400 outline-none focus:ring-2 focus:ring-indigo-200"
                     />
-                    <button className="rounded-xl bg-gradient-to-r from-[#6D5CF6] to-[#F33AA0] px-3 py-2 text-sm text-white hover:from-[#5c4ee8] hover:to-[#e23197] transition">
+                    <button className="bg-gradient-to-r from-[#6D5CF6] to-[#F33AA0] px-3 py-2 text-sm text-white hover:from-[#5c4ee8] hover:to-[#e23197] transition">
                       Subscribe
                     </button>
                   </form>
