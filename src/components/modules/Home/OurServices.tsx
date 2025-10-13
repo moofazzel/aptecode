@@ -17,27 +17,24 @@ function OurServices() {
   const services = [
     {
       number: 1,
-      title: "Award-Winning Web Apps",
-      description:
-        "GEO & SEO optimized applications that drive business growth and win industry recognition.",
+      title: "Website Design & Build",
+      description: "Pro look, built to convert—fast, clear, and easy to edit.",
       image: "/img/service/service-12o.jpg",
-      gradient: "from-blue-500 to-cyan-500",
+      color: "bg-blue-400",
     },
     {
       number: 2,
-      title: "Custom Software Solutions",
-      description:
-        "Scalable, secure, and innovative software tailored to your business needs.",
+      title: "Performance & SEO Fundamentals",
+      description: "Speed + structure so you rank and load fast from day one.",
       image: "/img/service/service-12o.jpg",
-      gradient: "from-purple-500 to-pink-500",
+      color: "bg-purple-400",
     },
     {
       number: 3,
-      title: "E-commerce Excellence",
-      description:
-        "Modern e-commerce platforms that convert visitors into loyal customers.",
+      title: "Migrations & Rebuilds",
+      description: "Move platforms safely—URLs, SEO, and analytics intact.",
       image: "/img/service/service-12o.jpg",
-      gradient: "from-green-500 to-emerald-500",
+      color: "bg-teal-400",
     },
   ];
 
@@ -101,7 +98,7 @@ function OurServices() {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
               >
-                What We Do
+                What We Build
               </motion.span>
               <motion.span
                 className="inline-block ml-2"
@@ -114,7 +111,7 @@ function OurServices() {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
               >
-                For Your
+                for Your
               </motion.span>
               <motion.span
                 className="inline-block ml-2 bg-gradient-to-r from-[#3F5AF3] to-[#8B5CF6] bg-clip-text text-transparent"
@@ -206,13 +203,13 @@ function OurServices() {
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
                       <div
-                        className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center`}
+                        className={`w-12 h-12 ${service.color} flex items-center justify-center`}
                       >
                         <span className="text-white text-lg font-bold">
                           {service.number}
                         </span>
                       </div>
-                      <div className="w-16 h-1 bg-gradient-to-r from-gray-300 to-transparent rounded-full"></div>
+                      <div className="w-16 h-3 bg-gradient-to-r from-gray-300 to-transparent "></div>
                     </div>
                     <h3 className="text-[#171717] text-xl md:text-2xl font-bold mb-4 leading-tight">
                       {service.title}
@@ -220,7 +217,7 @@ function OurServices() {
                     <p className="text-[#74787c] font-medium text-base md:text-lg mb-6 leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="flex items-center gap-2 text-blue-600 font-semibold text-sm md:text-base hover:gap-3 transition-all cursor-pointer">
+                    <div className="flex items-center gap-2 text-[#3F5AF3] font-semibold text-sm md:text-base hover:gap-3 transition-all cursor-pointer hover:text-[#8B5CF6]">
                       <span>Learn More</span>
                       <ArrowRight className="w-4 h-4" />
                     </div>

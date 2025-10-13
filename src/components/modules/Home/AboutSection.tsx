@@ -1,7 +1,7 @@
 "use client";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { motion } from "framer-motion";
-import { Award } from "lucide-react";
+import { Award, PhoneCall } from "lucide-react";
 import Image from "next/image";
 
 function AboutSection() {
@@ -44,22 +44,42 @@ function AboutSection() {
 
               {/* Floating Award Badge */}
               <motion.div
-                className="absolute -bottom-6 -right-6 backdrop-blur-md bg-gradient-to-br from-yellow-400/90 to-orange-500/90 border border-white/30 rounded-2xl p-6 shadow-2xl"
+                className="absolute -bottom-6 -right-6 backdrop-blur-md bg-gradient-to-br from-blue-500/90 to-purple-600/90 border border-white/30 rounded-2xl p-6 shadow-2xl"
                 initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05, rotate: 2 }}
               >
-                <div className="flex items-center space-x-3">
-                  <Award className="w-8 h-8 text-white" />
+                <motion.div
+                  className="flex items-center space-x-3"
+                  whileHover={{
+                    scale: 1.07,
+                    rotate: 3,
+                    transition: { type: "spring", stiffness: 300 },
+                  }}
+                >
+                  {/* Icon changed to Lucide PhoneCall with micro animation */}
+                  <motion.div
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 1.4,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    {/* Using Lucide PhoneCall */}
+                    <PhoneCall className="w-8 h-8 text-white" />
+                  </motion.div>
                   <div>
-                    <div className="text-2xl font-black text-white">15+</div>
+                    <div className="text-2xl font-black text-white">
+                      Book a Call
+                    </div>
                     <div className="text-sm text-white/90 font-medium uppercase tracking-wide">
-                      Awards Won
+                      Let&apos;s Discuss Your Project!
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
 
               {/* Floating stats */}
@@ -71,7 +91,7 @@ function AboutSection() {
                 viewport={{ once: true }}
               >
                 <div className="text-center">
-                  <div className="text-2xl font-black text-gray-800">500+</div>
+                  <div className="text-2xl font-black text-gray-800">300+</div>
                   <div className="text-sm text-gray-600 font-medium">
                     Projects
                   </div>
@@ -111,10 +131,10 @@ function AboutSection() {
               viewport={{ once: true }}
             >
               <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
-                Award-Winning
+                Founder-Led
               </span>
               <br />
-              <span className="text-gray-900">Digital Solutions</span>
+              <span className="text-gray-900">Website Builds</span>
             </motion.h2>
 
             {/* Enhanced Description */}
@@ -125,10 +145,9 @@ function AboutSection() {
               transition={{ duration: 0.8, delay: 0.5 }}
               viewport={{ once: true }}
             >
-              We craft exceptional digital experiences that combine cutting-edge
-              technology with award-winning design. From web applications to
-              crypto solutions, we deliver innovative, secure, and scalable
-              solutions that drive real business results.
+              We&apos;re a small, senior team building conversion-ready websites
+              for new brands and busy founders. No 20-page decks. Just a focused
+              discovery, clean design, and a site that works.
             </motion.p>
 
             {/* Enhanced Key Points */}
@@ -136,15 +155,15 @@ function AboutSection() {
               {[
                 {
                   number: "01",
-                  title: "Innovation Excellence",
+                  title: "Strategy-First Process",
                   description:
-                    "We leverage the latest technologies to build modern, scalable solutions that stand out in the market.",
+                    "We start with goals, audience, and pages. You get a one-page plan before we design a pixel.",
                 },
                 {
                   number: "02",
-                  title: "Strategic Partnership",
+                  title: "Post-Launch Support",
                   description:
-                    "Your success is our mission. We work as an extension of your team to achieve your business goals.",
+                    "Your site launches with a QA checklist, analytics setup, and a 30-day tune-up window.",
                 },
               ].map((point, index) => (
                 <motion.div
@@ -186,7 +205,7 @@ function AboutSection() {
                 size="lg"
                 className="w-full sm:w-auto text-lg px-8 py-4 shadow-xl hover:shadow-2xl transition-all duration-300"
               >
-                Discover Our Story
+                Our Story
               </GradientButton>
 
               <GradientButton
@@ -195,7 +214,7 @@ function AboutSection() {
                 size="lg"
                 className="w-full sm:w-auto text-lg px-8 py-4 border-2 border-gray-300 hover:border-blue-500 transition-all duration-300"
               >
-                View Our Work
+                See Work
               </GradientButton>
             </motion.div>
           </motion.div>
