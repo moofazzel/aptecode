@@ -21,7 +21,7 @@ const AnimatedContent = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <SectionHeader title="Why Choose Us?" />
+        <SectionHeader title="Why Aptecode?" />
       </motion.header>
 
       {/* Main Title */}
@@ -33,8 +33,8 @@ const AnimatedContent = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       >
-        Best Agency For Your{" "}
-        <span className="text-blue-400">Startup Business</span>
+        Websites that win customers{" "}
+        <span className="text-blue-400">— not just look pretty.</span>
       </motion.h2>
 
       {/* Description Paragraphs */}
@@ -46,9 +46,8 @@ const AnimatedContent = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          Lorem ipsum dolor sit amet consectetur adipiscing elit, molestie at
-          dis mollis eros euismod himenaeos dignissim, tortor congue magnis mi
-          nam purus.
+          Most sites look fine but don&apos;t convert. DIY feels cheap.
+          Freelancers slip. Agencies talk big and ship slow.
         </motion.p>
         <motion.p
           className="text-lg text-gray-300 leading-relaxed"
@@ -57,10 +56,8 @@ const AnimatedContent = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
         >
-          Consequat feugiat urna fringilla fames curae netus dis sociosqu,
-          accumsan eu per imperdiet nisl habitasse in. Vulputate enim facilisi
-          vel nam mollis magna curae neque, vestibulum eu odio suscipit viverra
-          ante egestas.
+          Here&apos;s our fix: Discover → Design → Build → Launch & Improve.
+          Fast timelines, conversion-ready pages, SEO fundamentals.
         </motion.p>
       </div>
 

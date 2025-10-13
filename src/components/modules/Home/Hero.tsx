@@ -24,30 +24,33 @@ const Hero = () => {
   const slides = [
     {
       id: 1,
-      subHeading: "Modern Web Development",
-      title: "Professional Websites",
-      description: "Fast, responsive websites that drive results.",
-      buttonText: "Get Started",
+      subHeading: "Websites for New Brands",
+      title: "Launch a site that sells.",
+      description:
+        "Strategy-led builds for founders and SMBs. Clean UX, fast load, SEO included.",
+      buttonText: "Get a Free Strategy Call",
       image: "/img/images/hero-img-1.png",
-      alt: "modern web development",
+      alt: "Strategy-led website design for new brands and founders",
     },
     {
       id: 2,
-      subHeading: "UI/UX Design",
-      title: "Beautiful Experiences",
-      description: "User-focused design that converts visitors.",
-      buttonText: "Get Started",
+      subHeading: "Conversion-Focused Design",
+      title: "Pretty isn't enough.",
+      description:
+        "We design for leads and sales—clear pages, strong CTAs, mobile-ready.",
+      buttonText: "Get a Free Strategy Call",
       image: "/img/images/hero-img-2.png",
-      alt: "UI UX design",
+      alt: "Conversion-focused website design with clear CTAs and mobile optimization",
     },
     {
       id: 3,
-      subHeading: "SEO & Performance",
-      title: "Get Found Online",
-      description: "Optimized websites that rank higher in search.",
-      buttonText: "Learn More",
+      subHeading: "Speed & SEO Fundamentals",
+      title: "Get found. Load fast.",
+      description:
+        "Core Web Vitals friendly. Clean structure. On-page SEO you don't have to babysit.",
+      buttonText: "See Work",
       image: "/img/images/hero-img-3.png",
-      alt: "SEO performance optimization",
+      alt: "Fast loading website with Core Web Vitals optimization and SEO structure",
     },
   ];
 
@@ -427,7 +430,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <RunningText speed={130} />
+        <RunningText speed={70} />
       </section>
     </>
   );

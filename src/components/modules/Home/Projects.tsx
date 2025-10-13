@@ -9,38 +9,42 @@ function Projects() {
   const projects = [
     {
       id: 1,
-      title: "GEO & SEO WEB APP",
+      title: "Local Service Business Site",
       image: "/img/project/project-img-5o.jpg",
-      category: "Marketing",
-      description: "Business Web App for Local SEO",
+      category: "Service Business",
+      description:
+        "New brand. Went live in 3 weeks. Leads up 38% in first 60 days.",
     },
     {
       id: 2,
-      title: "Web Development",
+      title: "E-Commerce Rebuild",
       image: "/img/project/project-img-5.jpg",
-      category: "Development",
-      description: "Custom Software for Business Growth",
+      category: "E-Commerce",
+      description:
+        "Migrated from Wix. Faster checkout, better SEO, 22% bump in conversions.",
     },
     {
       id: 3,
-      title: "UI/UX Design",
+      title: "SaaS Marketing Site",
       image: "/img/project/project-img-6.jpg",
-      category: "Design",
-      description: "UI/UX Design for Business Growth",
+      category: "SaaS",
+      description: "Founder-led startup. Clean IA, demo-ready in 4 weeks.",
     },
     {
       id: 4,
-      title: "Mobile App",
+      title: "Professional Services Firm",
       image: "/img/project/project-img-7.jpg",
-      category: "Mobile",
-      description: "Mobile App for Business Growth",
+      category: "Professional Services",
+      description:
+        "Credibility refresh. Modern design, clear service pages, mobile-first.",
     },
     {
       id: 5,
-      title: "Mobile App",
+      title: "Bootstrapped Founder Site",
       image: "/img/project/project-img-8.jpg",
-      category: "Mobile",
-      description: "Mobile App for Business Growth",
+      category: "Founder",
+      description:
+        "Solo founder, tight budget. Launched fast, looks pro, easy to edit.",
     },
   ];
 

@@ -280,7 +280,7 @@ function LatestNewsAndTips() {
           }}
         >
           <SectionHeader
-            title="APTECODE INSIGHTS"
+            title="Insights"
             variant="secondary"
             className="justify-center mb-4"
           />
@@ -296,7 +296,7 @@ function LatestNewsAndTips() {
               ease: "easeOut",
             }}
           >
-            Latest News & Tips
+            Latest from Aptecode
           </motion.h2>
         </motion.div>
 

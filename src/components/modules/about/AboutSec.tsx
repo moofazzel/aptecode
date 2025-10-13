@@ -127,7 +127,7 @@ function Feature({
   return (
     <div className="flex items-start gap-5">
       <div className="flex h-15 w-15 shrink-0 items-center justify-center ">
-        <img src={icon} alt="" />
+        <Image src={icon} alt="" width={60} height={60} />
       </div>
       <div>
         <p className="text-[21px] font-semibold">{title}</p>

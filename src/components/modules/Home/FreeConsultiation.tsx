@@ -30,18 +30,18 @@ function FreeConsultiation() {
           {/* Left side - Text content */}
           <div className="space-y-6 flex-2">
             {/* Purple accent line and "READY TO GROW?" */}
-            <SectionHeader title="ready to grow" variant="gradient" />
+            <SectionHeader title="Ready to Launch?" variant="gradient" />
 
             {/* Main headlines */}
             <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
-              Let&apos;s Build Your Next Project Contact Aptecode Today
+              Turn visitors into customers.
             </h2>
           </div>
 
           {/* Right side - CTA Button */}
           <div className="flex justify-center lg:justify-end flex-1">
             <GradientButton variant="ctabutton" href="/contact">
-              Get A Free Consultation
+              Get a Free Strategy Call
             </GradientButton>
           </div>
         </div>
