@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useAnimationContext } from "../../contexts/AnimationContext";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
+import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { GradientButton } from "../ui/gradient-button";
 import { Sidebar } from "../ui/sidebar";
@@ -21,6 +22,7 @@ function Navbar() {
   const { isGSAPReady, registerAnimation, unregisterAnimation } =
     useAnimationContext();
   const { isScrolled } = useScrollPosition(50);
+  const pathname = usePathname();
 
   const navItems = [
     {
@@ -184,6 +186,16 @@ function Navbar() {
     };
   }, [isScrolled, isGSAPReady, registerAnimation, unregisterAnimation]);
 
+  // Helper function to determine if the nav item is active
+  function isActiveNavItem(href: string) {
+    // Handle root
+    if (href === "/") {
+      return pathname === "/";
+    }
+    // For other paths, check substring matching at start & "/"
+    return pathname === href || pathname.startsWith(href + "/");
+  }
+
   return (
     <>
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50">
@@ -212,25 +224,33 @@ function Navbar() {
                 ref={navItemsRef}
                 className="hidden md:flex items-center space-x-8 "
               >
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 text-lg"
-                    style={{
-                      fontFamily:
-                        "var(--font-hind-madurai), system-ui, sans-serif",
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = isActiveNavItem(item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 text-lg ${
+                        isActive
+                          ? "text-blue-700 underline underline-offset-8 decoration-2"
+                          : "text-gray-700 hover:text-blue-600"
+                      }`}
+                      style={{
+                        fontFamily:
+                          "var(--font-hind-madurai), system-ui, sans-serif",
+                      }}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* Desktop Actions - Hidden on tablet and mobile */}
               <div ref={actionsRef} className="flex items-center space-x-4">
                 <GradientButton
-                  href="/"
+                  href="/contact#meeting"
                   showArrow
                   className="hidden lg:flex"
                   style={{
@@ -238,7 +258,7 @@ function Navbar() {
                       "var(--font-hind-madurai), system-ui, sans-serif",
                   }}
                 >
-                  Get Started Now
+                  Book a Meeting Now
                 </GradientButton>
                 <Button
                   variant="ghost"

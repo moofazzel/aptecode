@@ -17,27 +17,27 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "How GEO & SEO Web Apps Boost Your Business",
-    date: "25 JUNE, 2024",
+    title: "How to Choose a Website Builder: DIY vs. Pro",
+    date: "Jan 10, 2025",
     author: "POST BY: APTECODE",
     image: "/img/blog/post-15.jpg",
-    imageAlt: "Young man and woman in office setting with laptop",
+    imageAlt: "Comparison of DIY website builders and professional development",
   },
   {
     id: 2,
-    title: "Custom Software: Why Your Brand Needs It",
-    date: "25 JUNE, 2024",
+    title: "What Makes a High-Converting Homepage?",
+    date: "Jan 5, 2025",
     author: "POST BY: APTECODE",
     image: "/img/blog/post-16.jpg",
-    imageAlt: "Group of people around table looking at laptop",
+    imageAlt: "High-converting homepage design best practices",
   },
   {
     id: 3,
-    title: "Crypto Social Services: Building Strong Communities",
-    date: "25 JUNE, 2024",
+    title: "Website Migration Checklist: Don't Break SEO",
+    date: "Dec 28, 2024",
     author: "POST BY: APTECODE",
     image: "/img/blog/post-17.jpg",
-    imageAlt: "Diverse group of young people in office space",
+    imageAlt: "SEO-safe website migration checklist",
   },
 ];
 
@@ -276,7 +276,7 @@ function LatestNewsAndTips() {
           }}
         >
           <SectionHeader
-            title="APTECODE INSIGHTS"
+            title="Insights"
             variant="secondary"
             className="justify-center mb-4"
           />
@@ -292,7 +292,7 @@ function LatestNewsAndTips() {
               ease: "easeOut",
             }}
           >
-            Latest News & Tips
+            Latest from Aptecode
           </motion.h2>
         </motion.div>
 

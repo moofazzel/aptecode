@@ -13,7 +13,7 @@ export default function ServicesCard() {
           <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
-                <a href="/web-development" className="sttl">
+                <a href="/services/web-development" className="sttl">
                   WEB DEVELOPMENT
                 </a>
               </h4>
@@ -33,7 +33,10 @@ export default function ServicesCard() {
                   <FaLaptopCode className="text-4xl  text-[#74787C]" />
                 </div>
 
-                <a href="/web-development" className="serviceCard__btn">
+                <a
+                  href="/services/web-development"
+                  className="serviceCard__btn"
+                >
                   <span>Read Details</span>
                   <FaArrowRight className="serviceCard__btnIcon rotate" />
                 </a>
@@ -45,7 +48,7 @@ export default function ServicesCard() {
           <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
-                <a href="/web-apps" className="sttl">
+                <a href="/services/web-apps" className="sttl">
                   WEB APPS
                 </a>
               </h4>
@@ -67,7 +70,7 @@ export default function ServicesCard() {
                 </div>
 
                 <a
-                  href="/web-apps"
+                  href="/services/web-apps"
                   className="serviceCard__btn flex items-center gap-2"
                 >
                   <span>Read Details</span>
@@ -81,7 +84,7 @@ export default function ServicesCard() {
           <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard serviceCard--highlight m-3 ">
               <h4 className="serviceCard__title serviceCard__title--accent">
-                <a href="/moderation" className="sttl">
+                <a href="/services/moderation" className="sttl">
                   MODERATION
                 </a>
               </h4>
@@ -102,7 +105,7 @@ export default function ServicesCard() {
                 </div>
 
                 <a
-                  href="/moderation"
+                  href="/services/moderation"
                   className="serviceCard__btn flex items-center gap-2"
                 >
                   <span>Read Details</span>
@@ -116,7 +119,7 @@ export default function ServicesCard() {
           <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
             <div className="serviceCard m-3">
               <h4 className="serviceCard__title">
-                <a href="/crypto-websites" className="sttl">
+                <a href="/services/crypto-websites" className="sttl">
                   CRYPTO WEBSITES
                 </a>
               </h4>
@@ -137,7 +140,7 @@ export default function ServicesCard() {
                 </div>
 
                 <a
-                  href="/crypto-websites"
+                  href="/services/crypto-websites"
                   className="serviceCard__btn flex items-center gap-2"
                 >
                   <span>Read Details</span>

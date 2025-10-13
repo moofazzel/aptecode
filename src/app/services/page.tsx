@@ -1,13 +1,9 @@
-import CtaSection from "@/components/modules/Services/ctasection/CtaSection";
-import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
-import ServicesCard from "@/components/modules/Services/serviceCard/ServiceCard";
-import PageBanner from "@/components/shared/PageBanner";
+import CtaSection from "./components/Services/ctasection";
+import ServicesCard from "./components/Services/serviceCard";
 
-const Servicespage = () => {
+function ServicesPage() {
   return (
     <>
-      <PageBanner title="Our Services" bgImage="/img/bg-img/bg.png" />
-
       <ServicesCard />
       <CtaSection
         titleTop="Have Any Projects On Minds!"
@@ -15,9 +11,10 @@ const Servicespage = () => {
         ctaText="Make Appointment"
         ctaHref="/contact"
       />
-      <PricingSection />
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
     </>
   );
-};
+}
 
-export default Servicespage;
+export default ServicesPage;

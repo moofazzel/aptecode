@@ -2,7 +2,7 @@
 
 import { GradientButton } from "@/components/ui/gradient-button";
 import Image from "next/image";
-import "../../../app/about/about.css";
+import "../../about.css";
 
 export default function AboutSec() {
   return (
@@ -100,13 +100,7 @@ export default function AboutSec() {
 
             {/* button */}
             <div className="mt-[50px]">
-              <GradientButton
-                href="/contact"
-                showArrow
-                className=" py-[10px] text-[17px] font-[600]"
-              >
-                Get In Touch
-              </GradientButton>
+              <GradientButton>Get Started Now</GradientButton>
             </div>
           </div>
         </div>
@@ -127,7 +121,7 @@ function Feature({
   return (
     <div className="flex items-start gap-5">
       <div className="flex h-15 w-15 shrink-0 items-center justify-center ">
-        <img src={icon} alt="" />
+        <Image src={icon} alt="" width={60} height={60} />
       </div>
       <div>
         <p className="text-[21px] font-semibold">{title}</p>

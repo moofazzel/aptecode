@@ -22,9 +22,9 @@ interface RunningTextProps {
 const DEFAULT_STROKE_COLOR = "#74787C";
 
 const DEFAULT_ITEMS: RunningTextItem[] = [
-  { text: "Modern Web Development" },
-  { text: "UI/UX Design" },
-  { text: "SEO & Performance" },
+  { text: "Websites that Win Customers" },
+  { text: "Fast Builds, Real Results" },
+  { text: "Strategy-led, conversion-designed" },
 ];
 
 const STROKE_TEXT_STYLES: React.CSSProperties = {
