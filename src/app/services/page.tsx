@@ -1,9 +1,30 @@
+// import CtaSection from "@/components/modules/Services/ctasection/CtaSection";
+// import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
+
 import CtaSection from "@/components/modules/Services/ctasection/CtaSection";
 import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
-
 import ServicesCard from "@/components/modules/Services/serviceCard/ServiceCard";
 
-const Servicespage = () => {
+// import ServicesCard from "@/components/modules/Services/serviceCard/ServiceCard";
+
+// const Servicespage = () => {
+//   return (
+//     <>
+//       <ServicesCard />
+//       <CtaSection
+//         titleTop="Have Any Projects On Minds!"
+//         titleBottom="Contact Us"
+//         ctaText="Make Appointment"
+//         ctaHref="/contact"
+//       />
+//       <PricingSection />
+//     </>
+//   );
+// };
+
+// export default Servicespage;
+
+function ServicesPage() {
   return (
     <>
       <ServicesCard />
@@ -16,6 +37,6 @@ const Servicespage = () => {
       <PricingSection />
     </>
   );
-};
+}
 
-export default Servicespage;
+export default ServicesPage;
