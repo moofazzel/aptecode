@@ -43,7 +43,7 @@ export default function Breadcrumb({
   separator = "/",
   listClassName = "text-white/80",
   linkClassName = "text-[17px] font-[600] uppercase cursor-pointer hover:text-#000 text-[#444]",
-  pageClassName = "bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)] bg-clip-text text-transparent sb_head relative text-[17px] font-[600] uppercase ",
+  pageClassName = "bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)] bg-clip-text text-transparent  relative text-[17px] font-[600] uppercase ",
   sepClassName = "text-[27px] mt-[-8px] hover:text-white text-zinc-400",
   hideIfFirstMatches,
   labelMap,

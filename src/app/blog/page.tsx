@@ -4,11 +4,12 @@
 import Breadcrumb from "@/components/modules/Blog/Breadcrumb";
 import CategoriesWidget from "@/components/modules/Blog/CategoriesWidget";
 import RecentPostsWidget from "@/components/modules/Blog/RecentPostsWidget";
-import { blogPosts } from "@/data/blogs";
+
 // <-- ensure this path matches your project
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
+import { blogPosts } from "../../../data/blogs";
 
 function formatDate(d?: string) {
   // Prefer updatedAt if present

@@ -1,14 +1,15 @@
-import AboutSec from "@/components/modules/About/AboutSec";
-import CounterStrip from "@/components/modules/About/CounterStrip";
-import MarqueeSlider from "@/components/modules/About/MarqeeSlider";
-import MissionVision from "@/components/modules/About/MissionVision";
-import ProcessSection from "@/components/modules/About/ProcessSection";
-import TestimonialsSection from "@/components/modules/About/TestimonialsSection";
-import PageBanner from "../../components/shared/PageBanner";
+import AboutSec from "@/components/modules/about/AboutSec";
+import CounterStrip from "@/components/modules/about/CounterStrip";
+import MarqueeSlider from "@/components/modules/about/MarqeeSlider";
+import MissionVision from "@/components/modules/about/MissionVision";
+import ProcessSection from "@/components/modules/about/ProcessSection";
+import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
+import AboutBanner from "@/components/modules/Contact/ContactBanner";
+
 export default function AboutPage() {
   return (
     <div>
-      <PageBanner title="About Aptecode" bgImage="/img/bg-img/bg.png" />
+      <AboutBanner />
       <AboutSec />
       <ProcessSection />
       <CounterStrip />

@@ -1,8 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { GradientButton } from "@/components/ui/gradient-button";
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
 import "../../../app/about/about.css";
 
 export default function AboutSec() {
@@ -101,12 +100,13 @@ export default function AboutSec() {
 
             {/* button */}
             <div className="mt-[50px]">
-              <Button className="flex items-center justify-center bg-[linear-gradient(135deg,#6EE7F9_0%,#A78BFA_60%,#F0ABFC_100%)] text-white hover:brightness-110 py-[30px] px-[34px] text-[17px]">
-                Get Started Now
-                <span className="ml-2">
-                  <FaArrowRight />
-                </span>
-              </Button>
+              <GradientButton
+                href="/contact"
+                showArrow
+                className=" py-[10px] text-[17px] font-[600]"
+              >
+                Get In Touch
+              </GradientButton>
             </div>
           </div>
         </div>
