@@ -1,4 +1,3 @@
-import AboutSec from "@/components/modules/About/AboutSec";
 import CounterStrip from "@/components/modules/About/CounterStrip";
 import MarqueeSlider from "@/components/modules/About/MarqeeSlider";
 import MissionVision from "@/components/modules/About/MissionVision";
@@ -7,14 +6,15 @@ import TestimonialsSection from "@/components/modules/About/TestimonialsSection"
 
 export default function AboutPage() {
   return (
-    <div>
-      <AboutSec />
+    <>
+      {/* // comment this for deploy issues */}
+      {/* <AboutSec /> */}
       <ProcessSection />
       <CounterStrip />
       <MarqueeSlider />
       <MissionVision />
       <TestimonialsSection />
       {/* <AboutCta /> */}
-    </div>
+    </>
   );
 }

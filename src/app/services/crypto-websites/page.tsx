@@ -1,6 +1,5 @@
 "use client";
 
-import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import Image from "next/image";
 
 // -----------------------------
@@ -211,7 +210,9 @@ export default function CryptoWebsitesServicePage() {
       {/* Optional: case studies for crypto (commented for parity) */}
       {/* <CaseStudies /> */}
       <Faqs />
-      <PricingSection />
+
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
       <CTA />
     </main>
   );

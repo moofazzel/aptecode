@@ -1,7 +1,6 @@
 // app/services/web-apps/page.tsx
 "use client";
 
-import PricingSection from "@/components/modules/Services/pricingSection";
 import Image from "next/image";
 import { Fragment } from "react";
 
@@ -178,7 +177,8 @@ export default function WebAppsServicePage() {
       {/* <CaseStudies /> */}
 
       {/* PRICING — use your shared component */}
-      <PricingSection />
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
 
       {/* FAQ */}
       <Faqs />
