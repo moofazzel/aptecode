@@ -5,4 +5,3 @@ export { default as MarqueeSlider } from "./MarqeeSlider";
 export { default as MissionVision } from "./MissionVision";
 export { default as ProcessSection } from "./ProcessSection";
 export { default as TestimonialsSection } from "./TestimonialsSection";
-
