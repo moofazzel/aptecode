@@ -1,6 +1,7 @@
 // src/app/blog/page.tsx
 "use client";
 
+import Breadcrumb from "@/components/modules/Blog/Breadcrumb";
 import CategoriesWidget from "@/components/modules/Blog/CategoriesWidget";
 import RecentPostsWidget from "@/components/modules/Blog/RecentPostsWidget";
 import { blogPosts } from "@/data/blogs";
@@ -52,8 +53,8 @@ export default function BlogPage() {
   return (
     <main className="min-h-screen bg-neutral-50">
       {/* Breadcrumb */}
-      <div className="w-full border-b border-neutral-200 bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-4">
+      {/* <div className="w-full  border-neutral-200 bg-white">
+        <div className="mx-auto max-w-[1405px] px-4 py-4">
           <nav className="text-sm text-neutral-600">
             <ol className="flex items-center gap-2">
               <li>
@@ -65,22 +66,34 @@ export default function BlogPage() {
               <li className="text-neutral-900 font-medium">Blog</li>
             </ol>
           </nav>
-          <h1 className="mt-3 text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-neutral-900">
-            Aptecode Blog
-          </h1>
-          <p className="mt-1 text-neutral-600">
-            Product, architecture, analytics, APIs, automations, and SEO that
-            actually move the needle.
-          </p>
         </div>
+      </div> */}
+      <div className="text-center mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h1
+          className="text-2xl md:text-5xl font-bold uppercase
+      bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)]
+      bg-clip-text text-transparent sb_head relative mb-[30px]"
+          style={{ WebkitTextFillColor: "transparent" }} // Safari fix
+        >
+          ALL BLOGS
+        </h1>
+
+        <div className="flex justify-center mb-4">
+          <Breadcrumb />
+        </div>
+
+        <p className="hero-subtitle text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
+          Insights, guides, and playbooks on building modern web apps — from
+          product design and architecture to automation, analytics, and SEO.
+        </p>
       </div>
 
       {/* Content + Sidebar */}
-      <div className="mx-auto max-w-6xl px-4 py-8 lg:py-12">
+      <div className="mx-auto max-w-[1405px] px-4 py-8 lg:py-12">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Main */}
           <section className="w-full lg:w-[70%]">
-            <div className="grid gap-6 md:gap-8">
+            <div className="grid gap-6 md:gap-8 md:grid-cols-2 grid-cols-1">
               {posts.map((p) => (
                 <article
                   key={p.id}

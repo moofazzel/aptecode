@@ -1,63 +1,69 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 
-export type Crumb = { label: string; href: string; isLast: boolean };
+export type Crumb = { href: string; label: string; isLast: boolean };
 
 export type ResolveLabel = (
   segment: string,
   index: number,
-  parts: string[]
-) => string | Promise<string>;
+  href: string
+) => string | null;
 
-/** Fallback: turn "crypto-websites" -> "Crypto Websites" */
-function humanize(seg: string) {
-  return seg
-    .split("-")
-    .filter(Boolean)
-    .map((s) => s[0]?.toUpperCase() + s.slice(1))
-    .join(" ");
+/** Title-case with hyphen/underscore handling */
+function defaultTitleCase(segment: string) {
+  const s = decodeURIComponent(segment)
+    .replace(/[\?#].*$/, "") // strip ?query or #hash
+    .replace(/-/g, " ")
+    .replace(/_/g, " ")
+    .trim();
+  if (!s) return "";
+  return s.replace(/\b\w/g, (m) => m.toUpperCase());
 }
 
-/**
- * Build breadcrumbs from the current pathname.
- * If `resolveLabel` is provided, it is used (can be async) per segment.
- * Otherwise we humanize automatically.
- */
-export function useDynamicBreadcrumbs(resolveLabel?: ResolveLabel) {
-  const pathname = usePathname();
-  const parts = useMemo(() => pathname.split("/").filter(Boolean), [pathname]);
-  const [labels, setLabels] = useState<string[]>(parts.map((p) => humanize(p)));
+export function useDynamicBreadcrumbs(
+  resolveLabel?: ResolveLabel,
+  options?: {
+    /** Hide specific leading segments like locale: ["en","bn"] */
+    hideIfFirstMatches?: string[];
+    /** Map segment => label (overrides) */
+    labelMap?: Record<string, string>;
+    /** Provide a custom title-caser */
+    titleCase?: (s: string) => string;
+  }
+): Crumb[] {
+  const pathname = usePathname() || "/";
+  const segments = pathname.split("/").filter(Boolean);
 
-  useEffect(() => {
-    let cancelled = false;
+  const hide = options?.hideIfFirstMatches ?? [];
+  const titleCase = options?.titleCase ?? defaultTitleCase;
+  const map = options?.labelMap ?? {};
 
-    (async () => {
-      if (!resolveLabel) return; // keep humanized defaults
+  const effective = useMemo(() => {
+    let segs = [...segments];
+    if (segs.length > 0 && hide.includes(segs[0])) segs = segs.slice(1);
+    return segs;
+  }, [segments, hide]);
 
-      const resolved = await Promise.all(
-        parts.map((seg, i) => Promise.resolve(resolveLabel(seg, i, parts)))
-      );
+  return useMemo(() => {
+    const crumbs: Crumb[] = [];
+    let acc = "";
+    effective.forEach((seg, i) => {
+      acc += `/${seg}`;
 
-      if (!cancelled)
-        setLabels(resolved.map((v, i) => v || humanize(parts[i])));
-    })();
+      // 1) explicit map wins, 2) user resolver, 3) default title case
+      const label: string | null =
+        map[seg] ??
+        (resolveLabel ? resolveLabel(seg, i, acc) : null) ??
+        titleCase(seg);
 
-    return () => {
-      cancelled = true;
-    };
-  }, [parts, resolveLabel]);
+      // skip if resolver says null (e.g., hide segment)
+      if (label === null) return;
 
-  const crumbs: Crumb[] = useMemo(
-    () =>
-      parts.map((seg, i) => ({
-        label: labels[i] ?? humanize(seg),
-        href: "/" + parts.slice(0, i + 1).join("/"),
-        isLast: i === parts.length - 1,
-      })),
-    [parts, labels]
-  );
-
-  return crumbs;
+      const isLast = i === effective.length - 1;
+      crumbs.push({ href: acc, label, isLast });
+    });
+    return crumbs;
+  }, [effective, map, resolveLabel, titleCase]);
 }
