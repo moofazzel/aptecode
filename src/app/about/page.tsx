@@ -5,6 +5,8 @@
 // import ProcessSection from "@/components/modules/About/ProcessSection";
 // import TestimonialsSection from "@/components/modules/About/TestimonialsSection";
 
+import AboutSection from "@/components/modules/About/AboutSection";
+
 // export default function AboutPage() {
 //   return (
 //     <div>
@@ -20,7 +22,11 @@
 // }
 
 function AboutPage() {
-  return <div>AboutPage</div>;
+  return (
+    <div>
+      <AboutSection />
+    </div>
+  );
 }
 
 export default AboutPage;
