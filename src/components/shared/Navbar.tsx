@@ -3,10 +3,10 @@
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useAnimationContext } from "../../contexts/AnimationContext";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
-import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
 import { GradientButton } from "../ui/gradient-button";
 import { Sidebar } from "../ui/sidebar";
@@ -30,6 +30,10 @@ function Navbar() {
       href: "/",
     },
     {
+      label: "About",
+      href: "/about",
+    },
+    {
       label: "Portfolio",
       href: "/portfolio",
     },
@@ -39,8 +43,8 @@ function Navbar() {
     },
 
     {
-      label: "About",
-      href: "/about",
+      label: "Blogs",
+      href: "/blog",
     },
     {
       label: "Contact",

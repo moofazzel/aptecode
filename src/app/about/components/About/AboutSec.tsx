@@ -100,7 +100,13 @@ export default function AboutSec() {
 
             {/* button */}
             <div className="mt-[50px]">
-              <GradientButton>Get Started Now</GradientButton>
+              <GradientButton
+                href="/contact"
+                showArrow
+                className=" py-[10px] text-[17px] font-[600]"
+              >
+                Get In Touch
+              </GradientButton>
             </div>
           </div>
         </div>
