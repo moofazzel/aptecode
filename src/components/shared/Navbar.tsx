@@ -230,7 +230,7 @@ function Navbar() {
               {/* Desktop Actions - Hidden on tablet and mobile */}
               <div ref={actionsRef} className="flex items-center space-x-4">
                 <GradientButton
-                  href="/"
+                  href="/contact#meeting"
                   showArrow
                   className="hidden lg:flex"
                   style={{
@@ -238,7 +238,7 @@ function Navbar() {
                       "var(--font-hind-madurai), system-ui, sans-serif",
                   }}
                 >
-                  Get Started Now
+                  Book a Meeting Now
                 </GradientButton>
                 <Button
                   variant="ghost"
