@@ -68,14 +68,21 @@ export default function BlogPage() {
           </nav>
         </div>
       </div> */}
-      <div className="text-center mx-auto max-w-5xl px-4 py-16 md:py-20">
+      <div className="text-center mx-auto max-w-5xl px-4 py-16 md:py-25 ">
         <h1
-          className="text-2xl md:text-5xl font-bold uppercase
-      bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)]
-      bg-clip-text text-transparent sb_head relative mb-[30px]"
-          style={{ WebkitTextFillColor: "transparent" }} // Safari fix
+          className="text-2xl md:text-7xl font-bold uppercase text-black mb-[30px]
+      "
         >
-          ALL BLOGS
+          ALL{" "}
+          <span
+            className="text-2xl md:text-7xl font-bold uppercase
+      bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)]
+      bg-clip-text text-transparent sb_head relative "
+            style={{ WebkitTextFillColor: "transparent" }}
+          >
+            {" "}
+            BLOGS
+          </span>
         </h1>
 
         <div className="flex justify-center mb-4">
