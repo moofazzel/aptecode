@@ -2,7 +2,7 @@
 
 import { GradientButton } from "@/components/ui/gradient-button";
 import Image from "next/image";
-import "../../../app/about/about.css";
+import "../../about.css";
 
 export default function AboutSec() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import "../../../app/about/about.css";
+import "../../about.css";
 
 export default function MissionVision() {
   return (

@@ -397,7 +397,7 @@ const Hero = () => {
           >
             {/* Content */}
             <div ref={contentRef} className="pl-10 lg:pl-20 flex-1 max-w-2xlf">
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-extralight mb-5 italic opacity-0">
+              <h3 className="text-4xl md:text-5xl lg:text-5xl font-extralight mb-5 italic opacity-0">
                 {currentSlide.subHeading}
               </h3>
               <h2 className="text-5xl md:text-7xl lg:text-7xl font-extrabold mb-2.5 leading-tight opacity-0">
