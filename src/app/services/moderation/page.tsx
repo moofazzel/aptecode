@@ -1,7 +1,6 @@
 // app/services/moderation/page.tsx
 "use client";
 
-import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import Image from "next/image";
 import { Fragment } from "react";
 
@@ -114,54 +113,11 @@ export default function ModerationServicePage() {
       <CoverageSLA />
       <ComplianceRisk />
       {/* Pricing: shared module path from your project */}
-      <PricingSection />
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
       <Faqs />
       <CTA />
     </main>
-  );
-}
-
-// -----------------------------
-// Components
-// -----------------------------
-function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-zinc-950 text-white">
-      {/* different hero look: grid texture + spotlight */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[linear-gradient(transparent,transparent),radial-gradient(60%_40%_at_70%_10%,rgba(99,102,241,0.15),transparent)]" />
-        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:24px_24px]" />
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-6 py-18 md:py-24 relative">
-        <span className="inline-block text-indigo-400/80 text-xs tracking-[0.24em] uppercase">
-          Services
-        </span>
-        <h1 className="mt-3 text-4xl md:text-6xl font-bold tracking-tight uppercase">
-          Moderation (Telegram & X/Twitter)
-        </h1>
-        <p className="mt-5 max-w-3xl text-zinc-300 text-lg leading-relaxed">
-          Crypto-native moderation for high-signal communities. We protect your
-          brand, keep spam out, and convert attention into trust — across
-          launches, listings, and campaigns.
-        </p>
-
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <a
-            href="#pricing"
-            className="inline-flex items-center justify-center bg-indigo-600 px-5 py-3 text-white text-md font-medium hover:bg-indigo-700 transition"
-          >
-            See Plans
-          </a>
-          <a
-            href="/contact"
-            className="inline-flex items-center justify-center bg-white/10 px-5 py-3 text-white text-md font-medium hover:bg-white/20 transition"
-          >
-            Book a Mod Audit →
-          </a>
-        </div>
-      </div>
-    </section>
   );
 }
 

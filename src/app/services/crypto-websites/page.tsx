@@ -1,9 +1,6 @@
-// app/services/crypto-websites/page.tsx
 "use client";
 
-import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import Image from "next/image";
-import { Fragment } from "react";
 
 // -----------------------------
 // Types
@@ -213,54 +210,11 @@ export default function CryptoWebsitesServicePage() {
       {/* Optional: case studies for crypto (commented for parity) */}
       {/* <CaseStudies /> */}
       <Faqs />
-      <PricingSection />
+
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
       <CTA />
     </main>
-  );
-}
-
-// -----------------------------
-// Components
-// -----------------------------
-function Hero() {
-  return (
-    <section className="relative overflow-hidden bg-zinc-950 text-white">
-      {/* new: angled glow + faint grid, distinct from other pages */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-24 left-10 h-80 w-80 rotate-12 rounded-full bg-indigo-600/20 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 -rotate-12 rounded-full bg-indigo-500/10 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.06] bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:20px_20px]" />
-      </div>
-
-      <div className="mx-auto w-full max-w-7xl px-6 py-18 md:py-24 relative">
-        <span className="inline-block text-indigo-400/80 text-xs tracking-[0.24em] uppercase">
-          Services
-        </span>
-        <h1 className="mt-3 text-4xl md:text-6xl font-bold tracking-tight uppercase">
-          Crypto Websites
-        </h1>
-        <p className="mt-5 max-w-3xl text-zinc-300 text-lg leading-relaxed">
-          Conversion-focused sites for meme coins, utility tokens, DeFi
-          protocols, NFTs and DAOs — with tokenomics, trust badges, and launch
-          UX that actually drives buys and holders.
-        </p>
-
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <a
-            href="#pricing"
-            className="inline-flex items-center justify-center bg-indigo-600 px-5 py-3 text-white text-sm font-medium hover:bg-indigo-700 transition"
-          >
-            See Plans
-          </a>
-          <a
-            href="/contact"
-            className="inline-flex items-center justify-center bg-white/10 px-5 py-3 text-white text-sm font-medium hover:bg-white/20 transition"
-          >
-            Get a Launch Checklist →
-          </a>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -491,7 +445,7 @@ function Faqs() {
         </h2>
         <div className="mt-8 divide-y divide-zinc-200 rounded border border-zinc-200 bg-white">
           {FAQS.map((f, i) => (
-            <Fragment key={f.q}>
+            <div key={f.q}>
               <details className="group open:bg-zinc-50">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-5">
                   <span className="text-zinc-900 text-xl font-medium">
@@ -506,7 +460,7 @@ function Faqs() {
                 </div>
               </details>
               {i < FAQS.length - 1 && <div className="h-px bg-zinc-200" />}
-            </Fragment>
+            </div>
           ))}
         </div>
       </div>

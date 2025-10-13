@@ -1,22 +1,26 @@
-import AboutSec from "@/components/modules/about/AboutSec";
-import CounterStrip from "@/components/modules/about/CounterStrip";
-import MarqueeSlider from "@/components/modules/about/MarqeeSlider";
-import MissionVision from "@/components/modules/about/MissionVision";
-import ProcessSection from "@/components/modules/about/ProcessSection";
-import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
-import AboutBanner from "@/components/modules/Contact/ContactBanner";
+// import AboutSec from "@/components/modules/About/AboutSec";
+// import CounterStrip from "@/components/modules/About/CounterStrip";
+// import MarqueeSlider from "@/components/modules/About/MarqeeSlider";
+// import MissionVision from "@/components/modules/About/MissionVision";
+// import ProcessSection from "@/components/modules/About/ProcessSection";
+// import TestimonialsSection from "@/components/modules/About/TestimonialsSection";
 
-export default function AboutPage() {
-  return (
-    <div>
-      <AboutBanner />
-      <AboutSec />
-      <ProcessSection />
-      <CounterStrip />
-      <MarqueeSlider />
-      <MissionVision />
-      <TestimonialsSection />
-      {/* <AboutCta /> */}
-    </div>
-  );
+// export default function AboutPage() {
+//   return (
+//     <div>
+//       <AboutSec />
+//       <ProcessSection />
+//       <CounterStrip />
+//       <MarqueeSlider />
+//       <MissionVision />
+//       <TestimonialsSection />
+//       {/* <AboutCta /> */}
+//     </div>
+//   );
+// }
+
+function AboutPage() {
+  return <div>AboutPage</div>;
 }
+
+export default AboutPage;

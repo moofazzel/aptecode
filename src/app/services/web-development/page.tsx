@@ -1,9 +1,6 @@
-// app/services/web-development/page.tsx
 "use client";
 
-import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import Image from "next/image";
-import { Fragment } from "react";
 
 // -----------------------------
 // Types
@@ -198,7 +195,8 @@ export default function WebDevelopmentServicePage() {
       <TechStrip />
       {/* <CaseStudies /> */}
       {/* <Pricing /> */}
-      <PricingSection />
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
       <Faqs />
       <CTA />
     </main>
@@ -436,7 +434,7 @@ function Faqs() {
         </h2>
         <div className="mt-8 divide-y divide-zinc-200 rounded border border-zinc-200 bg-white">
           {FAQS.map((f, i) => (
-            <Fragment key={f.q}>
+            <div key={f.q}>
               <details className="group open:bg-zinc-50">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-5">
                   <span className="text-zinc-900 text-xl font-medium">
@@ -451,7 +449,7 @@ function Faqs() {
                 </div>
               </details>
               {i < FAQS.length - 1 && <div className="h-px bg-zinc-200" />}
-            </Fragment>
+            </div>
           ))}
         </div>
       </div>
