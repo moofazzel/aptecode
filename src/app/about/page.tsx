@@ -5,7 +5,7 @@
 // import ProcessSection from "@/components/modules/About/ProcessSection";
 // import TestimonialsSection from "@/components/modules/About/TestimonialsSection";
 
-import AboutSection from "@/components/modules/About/AboutSection";
+import AboutSection from "./AboutSection";
 
 // export default function AboutPage() {
 //   return (
