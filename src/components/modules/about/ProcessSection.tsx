@@ -73,7 +73,7 @@ export default function ProcessSection() {
               className=" bg-[#f2f3f4] p-8 md:p-10 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]"
             >
               {/* Number pill */}
-              <div className="mb-6 inline-flex items-center justify-center rounded-xl border border-[#a868fa] px-4 py-2 text-[#a868fa] h-[40px] w-[60px]">
+              <div className="mb-6 inline-flex items-center justify-center  border border-[#a868fa] px-4 py-2 text-[#a868fa] h-[40px] w-[60px]">
                 <span className="text-[16px] font-medium">{step.id}</span>
               </div>
 

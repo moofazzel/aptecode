@@ -1,13 +1,10 @@
-import CtaSection from "@/components/modules/services/ctasection/CtaSection";
-import PricingSection from "@/components/modules/services/pricingSection/PricingSection";
-import ServicesCard from "@/components/modules/services/serviceCard/ServiceCard";
-import PageBanner from "@/components/shared/PageBanner";
+import CtaSection from "@/components/modules/Services/ctasection/CtaSection";
+import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
+import ServicesCard from "@/components/modules/Services/serviceCard/ServiceCard";
 
 const Servicespage = () => {
   return (
     <>
-      <PageBanner title="Our Services" bgImage="/img/bg-img/bg.png" />
-
       <ServicesCard />
       <CtaSection
         titleTop="Have Any Projects On Minds!"

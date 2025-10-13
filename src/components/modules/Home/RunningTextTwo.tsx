@@ -8,7 +8,7 @@ function RunningTextTwo() {
   ];
   return (
     <div
-      className="w-full h-[320px] bg-cover bg-center bg-no-repeat relative"
+      className="w-full h-[310px] bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundImage: "url('/img/bg-img/running-bg-2.jpg')" }}
     >
       <div
