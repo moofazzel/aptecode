@@ -1,7 +1,7 @@
 // src/app/blog/[slug]/page.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogPosts } from "../../../data/blogs";
+import { blogPosts } from "../../../../data/blogs";
 import ArticleView from "./ArticleView";
 
 type Blog = (typeof blogPosts)[number];
