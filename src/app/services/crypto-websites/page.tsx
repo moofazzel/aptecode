@@ -1,7 +1,7 @@
 // app/services/crypto-websites/page.tsx
 "use client";
 
-import PricingSection from "@/components/modules/Services/pricingSection";
+import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import Image from "next/image";
 import { Fragment } from "react";
 
