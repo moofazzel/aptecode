@@ -31,12 +31,12 @@ function formatDate(d?: string) {
 
 export default function RecentPostsWidget({ posts }: RecentPostsWidgetProps) {
   return (
-    <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm">
+    <div className=" border border-neutral-200 bg-white p-5 shadow-sm">
       <h3 className="text-lg font-semibold text-neutral-900">Recent Posts</h3>
       <ul className="mt-4 space-y-4">
         {posts.map((p) => (
           <li key={p.id} className="flex gap-3">
-            <div className="relative h-16 w-24 overflow-hidden rounded-lg border border-neutral-200 bg-neutral-100">
+            <div className="relative h-16 w-24 overflow-hidden  border border-neutral-200 bg-neutral-100">
               <Image
                 src={p.image}
                 alt={p.imageAlt || p.title}

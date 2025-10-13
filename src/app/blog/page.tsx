@@ -106,7 +106,7 @@ export default function BlogPage() {
               {posts.map((p) => (
                 <article
                   key={p.id}
-                  className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow"
+                  className="group overflow-hidden  border border-neutral-200 bg-white shadow-sm hover:shadow-md transition-shadow"
                 >
                   <div className="relative aspect-[16/9] w-full overflow-hidden">
                     {/* Use next/image if your assets live in /public */}
