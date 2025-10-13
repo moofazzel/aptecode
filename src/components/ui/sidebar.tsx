@@ -22,9 +22,31 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "About",
+      href: "/about",
+    },
+    {
+      label: "Portfolio",
+      href: "/portfolio",
+    },
+    {
+      label: "Services",
+      href: "/services",
+    },
+
+    {
+      label: "Blogs",
+      href: "/blog",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
   ];
 
   // Smooth animation variants for elegant feel

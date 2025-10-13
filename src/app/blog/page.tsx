@@ -6,6 +6,7 @@ import CategoriesWidget from "@/components/modules/Blog/CategoriesWidget";
 import RecentPostsWidget from "@/components/modules/Blog/RecentPostsWidget";
 
 // <-- ensure this path matches your project
+import { GradientButton } from "@/components/ui/gradient-button";
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo } from "react";
@@ -78,7 +79,7 @@ export default function BlogPage() {
           <span
             className="text-2xl md:text-7xl font-bold uppercase
       bg-[linear-gradient(120deg,#5c3afa_0%,#a868fa_50%,#3dabf4_100%)]
-      bg-clip-text text-transparent sb_head relative "
+      bg-clip-text text-transparent  relative "
             style={{ WebkitTextFillColor: "transparent" }}
           >
             {" "}
@@ -166,20 +167,8 @@ export default function BlogPage() {
                     )}
 
                     <div className="mt-5">
-                      <Link
-                        href={`/blog/${p.slug}`}
-                        className="inline-flex items-center gap-2 rounded-xl border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm font-medium text-neutral-800 transition hover:bg-white hover:shadow-sm"
-                      >
-                        Read article
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="h-4 w-4"
-                        >
-                          <path d="M13.5 4.5a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75V9.75a.75.75 0 0 1-1.5 0V6.31l-8.72 8.72a.75.75 0 1 1-1.06-1.06l8.72-8.72h-3.44a.75.75 0 0 1-.75-.75Z" />
-                          <path d="M5.25 5.25A2.25 2.25 0 0 0 3 7.5v11.25A2.25 2.25 0 0 0 5.25 21h11.25A2.25 2.25 0 0 0 18.75 18.75V12a.75.75 0 0 1 1.5 0v6.75A3.75 3.75 0 0 1 16.5 22.5H5.25A3.75 3.75 0 0 1 1.5 18.75V7.5A3.75 3.75 0 0 1 5.25 3.75H12a.75.75 0 0 1 0 1.5H5.25Z" />
-                        </svg>
+                      <Link href={`/blog/${p.slug}`}>
+                        <GradientButton>Read Article</GradientButton>
                       </Link>
                     </div>
                   </div>
@@ -190,7 +179,7 @@ export default function BlogPage() {
 
           {/* Sidebar */}
           <aside className="w-full lg:w-[30%]">
-            <div className="lg:sticky lg:top-6 flex flex-col gap-6">
+            <div className="lg:sticky lg:top-[85px] flex flex-col gap-6">
               <CategoriesWidget categories={categories} />
               <RecentPostsWidget posts={recent} />
 

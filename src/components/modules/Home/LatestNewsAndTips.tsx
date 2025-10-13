@@ -7,6 +7,7 @@ import Image from "next/image";
 
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   date: string;
   author: string;
@@ -17,27 +18,30 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "How to Choose a Website Builder: DIY vs. Pro",
-    date: "Jan 10, 2025",
+    slug: "idea-to-mvp-web-app-roadmap-2025",
+    title: "From Idea to MVP: A Practical Web App Roadmap for Founders",
+    date: "13 OCT, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/post-15.jpg",
-    imageAlt: "Comparison of DIY website builders and professional development",
+    image: "/img/blog/bl1.jpg",
+    imageAlt: "Young man and woman in office setting with laptop",
   },
   {
     id: 2,
-    title: "What Makes a High-Converting Homepage?",
-    date: "Jan 5, 2025",
+    slug: "founder-analytics-blueprint-north-star",
+    title: "Turn Your App Data Into Revenue: A Founder’s Analytics Blueprint",
+    date: "29SEPT, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/post-16.jpg",
-    imageAlt: "High-converting homepage design best practices",
+    image: "/img/blog/bl3.jpg",
+    imageAlt: "Group of people around table looking at laptop",
   },
   {
     id: 3,
-    title: "Website Migration Checklist: Don't Break SEO",
-    date: "Dec 28, 2024",
+    slug: "automate-ops-7-workflows-save-10-hours",
+    title: "Automate Your Ops: 7 Workflows That Save 10+ Hours Weekly",
+    date: "01 SEPT, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/post-17.jpg",
-    imageAlt: "SEO-safe website migration checklist",
+    image: "/img/blog/bl7.jpg",
+    imageAlt: "Diverse group of young people in office space",
   },
 ];
 
@@ -216,7 +220,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
         {/* Enhanced Read More Button */}
         <div className="flex justify-start">
           <GradientButton
-            href="/blog"
+            href={`/blog/${post.slug}`}
             variant="primary"
             size="md"
             showArrow={true}
