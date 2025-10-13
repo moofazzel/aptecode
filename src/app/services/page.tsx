@@ -2,7 +2,6 @@
 // import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 
 import CtaSection from "@/components/modules/Services/ctasection";
-import PricingSection from "@/components/modules/Services/pricingSection/PricingSection";
 import ServicesCard from "@/components/modules/Services/serviceCard";
 
 // import ServicesCard from "@/components/modules/Services/serviceCard/ServiceCard";
@@ -34,7 +33,8 @@ function ServicesPage() {
         ctaText="Make Appointment"
         ctaHref="/contact"
       />
-      <PricingSection />
+      {/* // comment this for deploy issues */}
+      {/* <PricingSection /> */}
     </>
   );
 }
