@@ -195,7 +195,7 @@ export default function BlogPage() {
               <RecentPostsWidget posts={recent} />
 
               {/* Optional CTA / Newsletter */}
-              <div className="rounded-2xl border border-neutral-200 bg-gradient-to-br from-neutral-50 to-white p-5 shadow-sm">
+              {/* <div className="rounded-2xl border border-neutral-200 bg-gradient-to-br from-neutral-50 to-white p-5 shadow-sm">
                 <h3 className="text-lg font-semibold text-neutral-900">
                   Get product playbooks
                 </h3>
@@ -218,7 +218,7 @@ export default function BlogPage() {
                     Subscribe
                   </button>
                 </form>
-              </div>
+              </div> */}
             </div>
           </aside>
         </div>
