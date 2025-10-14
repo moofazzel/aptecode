@@ -2,16 +2,27 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 function Footer() {
   const socialLinks = [
-    "FACEBOOK",
-    "INSTAGRAM",
-    "TWITTER",
-    "PINTEREST",
-    "DISCORD",
-    "LINKEDIN",
+    {
+      name: "FACEBOOK",
+      url: "https://www.facebook.com/aptecode2025",
+    },
+    {
+      name: "INSTAGRAM",
+      url: "https://www.instagram.com/aptecode",
+    },
+    {
+      name: "TWITTER",
+      url: "https://www.twitter.com/aptecode",
+    },
+    {
+      name: "LINKEDIN",
+      url: "https://www.linkedin.com/company/aptecode/",
+    },
   ];
 
   return (
@@ -65,15 +76,15 @@ function Footer() {
             <div className="flex items-center justify-center space-x-8 md:space-x-12 lg:space-x-16">
               {socialLinks.map((social, index) => (
                 <motion.a
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.url}
                   className="text-sm md:text-base font-medium uppercase tracking-wider hover:text-purple-400 transition-colors duration-300"
                   whileHover={{ y: -2 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  {social}
+                  {social.name}
                 </motion.a>
               ))}
             </div>
@@ -85,22 +96,13 @@ function Footer() {
           <div className="container mx-auto max-w-7xl">
             <div className="flex items-center justify-between">
               {/* Logo */}
-              <div className="flex items-center">
-                <motion.div
-                  className="text-2xl md:text-3xl font-bold tracking-wider"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <span className="text-gray-300">APTE</span>
-                  <span className="relative">
-                    <span className="text-transparent bg-gradient-to-r from-purple-500 to-blue-500 bg-clip-text">
-                      C
-                    </span>
-                    <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full opacity-60"></div>
-                  </span>
-                  <span className="text-gray-300">ODE</span>
-                </motion.div>
+              <div>
+                <Image
+                  src="/img/logo/aptecode.png"
+                  alt="Aptecode"
+                  width={200}
+                  height={200}
+                />
               </div>
 
               {/* Copyright */}
