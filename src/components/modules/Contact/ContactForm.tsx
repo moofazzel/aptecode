@@ -145,7 +145,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="py-20 lg:py-32 ">
+    <section>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-12"
@@ -154,7 +154,6 @@ const ContactForm = () => {
           viewport={{ once: true }}
           variants={stagger}
         >
-          {/* Contact Information */}
           <div className="lg:col-span-4">
             <motion.div
               className="space-y-8 bg-[#f2f4f5] border border-[#e8eaeb] dark:bg-slate-800 dark:border-slate-600 p-8 lg:p-10"
@@ -177,7 +176,7 @@ const ContactForm = () => {
                   <span className="rrd" />
                 </div>
                 <motion.h2
-                  className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 dark:text-white leading-tight"
+                  className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white leading-tight"
                   variants={fadeInUp}
                 >
                   Let{"'"}s build something great together

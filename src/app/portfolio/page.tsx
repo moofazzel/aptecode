@@ -63,7 +63,7 @@ function PortfolioPage() {
       <PortfolioFilter onFilteredProjects={handleFilteredProjects} />
 
       {/* Projects Grid */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="pb-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <motion.div
             ref={projectsRef}

@@ -17,6 +17,7 @@ interface RunningTextProps {
   defaultStrokeColor?: string;
   speed?: number;
   direction?: "left" | "right";
+  defaultStockStyle?: React.CSSProperties;
 }
 
 const DEFAULT_STROKE_COLOR = "#74787C";
@@ -27,7 +28,7 @@ const DEFAULT_ITEMS: RunningTextItem[] = [
   { text: "Strategy-led, conversion-designed" },
 ];
 
-const STROKE_TEXT_STYLES: React.CSSProperties = {
+const getDefaultStockStyle = (): React.CSSProperties => ({
   WebkitTextFillColor: "transparent",
   WebkitTextStrokeWidth: "1px",
   fontSize: "180px",
@@ -35,15 +36,20 @@ const STROKE_TEXT_STYLES: React.CSSProperties = {
   fontStyle: "italic",
   whiteSpace: "nowrap",
   display: "inline-block",
-};
+});
 
 const RunningText: React.FC<RunningTextProps> = ({
   items = DEFAULT_ITEMS,
   className = "",
   defaultStrokeColor = DEFAULT_STROKE_COLOR,
+  defaultStockStyle,
   speed = 20,
   direction = "left",
 }) => {
+  const stockStyle = {
+    ...getDefaultStockStyle(),
+    ...defaultStockStyle,
+  };
   const containerRef = useRef<HTMLDivElement>(null);
   const ulRef = useRef<HTMLUListElement>(null);
   const { isGSAPReady, registerAnimation, unregisterAnimation } =
@@ -134,7 +140,7 @@ const RunningText: React.FC<RunningTextProps> = ({
             <li
               key={`${item.text}-${index}`}
               style={{
-                ...STROKE_TEXT_STYLES,
+                ...stockStyle,
                 WebkitTextStrokeColor: item.strokeColor || defaultStrokeColor,
               }}
             >
