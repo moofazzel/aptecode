@@ -21,9 +21,9 @@ type CaseStudy = {
 };
 type FAQ = { q: string; a: string };
 
-// -----------------------------
+// --------------------------------
 // Data (unchanged content)
-// -----------------------------
+// --------------------------------
 const STATS: Stat[] = [
   { label: "Apps Shipped", value: "60+" },
   { label: "Avg. Uptime (12m)", value: "99.95%", hint: "monitored" },
