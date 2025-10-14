@@ -78,23 +78,18 @@ const ContactForm = () => {
     setErrorMessage("");
 
     try {
-      const formsparkId = process.env.NEXT_PUBLIC_FORMSPARK_FORM_ID;
-      if (!formsparkId) {
-        throw new Error("Formspark form ID not configured");
-      }
-
-      const response = await fetch(`https://submit-form.com/${formsparkId}`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: `${formData.fullname} ${formData.lastname}`.trim(),
+          fullname: formData.fullname,
+          lastname: formData.lastname,
           email: formData.email,
           phone: formData.phone,
           topic: formData.topic || "General Inquiry",
           message: formData.message,
-          _redirect: false, // Prevent Formspark from redirecting
         }),
       });
 
@@ -111,11 +106,13 @@ const ContactForm = () => {
         });
         setSelectedTopic("General Inquiry");
       } else {
-        throw new Error("Failed to submit form");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to submit form");
       }
     } catch (error) {
       setSubmitStatus("error");
-      setErrorMessage("Something went wrong. Please try again later.");
+      const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again later.";
+      setErrorMessage(errorMessage);
       console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
