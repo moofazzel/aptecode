@@ -8,12 +8,12 @@ function RunningTextTwo() {
   ];
   return (
     <div
-      className="w-full h-[310px] bg-cover bg-center bg-no-repeat relative"
+      className="w-full h-[210px] bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundImage: "url('/img/bg-img/running-bg-2.jpg')" }}
     >
       <div
         style={{
-          backgroundColor: "#7B9AF7 ",
+          backgroundColor: "#5B9AF0 ",
           mixBlendMode: "multiply",
           content: '""',
           width: "100%",
@@ -25,7 +25,12 @@ function RunningTextTwo() {
         }}
         aria-hidden="true"
       />
-      <RunningText defaultStrokeColor="#fff" speed={100} items={items} />
+      <RunningText
+        defaultStrokeColor="#fff"
+        speed={100}
+        items={items}
+        defaultStockStyle={{ fontStyle: "normal", fontSize: "120px" }}
+      />
     </div>
   );
 }

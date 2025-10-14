@@ -40,7 +40,7 @@ const getVariantClasses = (
   disabled: boolean,
   loading: boolean
 ) => {
-  const baseClasses = "group relative z-10 transition-all duration-300";
+  const baseClasses = "group relative transition-all duration-300";
   const disabledClasses =
     disabled || loading ? "opacity-50 cursor-not-allowed" : "";
 
