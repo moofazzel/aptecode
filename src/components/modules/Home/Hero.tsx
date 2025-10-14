@@ -320,7 +320,7 @@ const Hero = () => {
     <>
       <section
         ref={heroRef}
-        className="-mt-20 sm:-mt-24 md:-mt-28 relative overflow-x-hidden"
+        className="-mt-[100px] sm:-mt-24 md:-mt-28 relative overflow-x-hidden"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
@@ -333,7 +333,7 @@ const Hero = () => {
             fill
           />
         </div>
-        <div className="max-w-[1780px] mx-auto flex items-center overflow-hidden select-none relative">
+        <div className="max-w-[1780px] mx-auto flex items-center overflow-hidden select-none relative pt-16 md:pt-0">
           {/* Navigation Indicators - Desktop */}
           <div className="hidden xl:flex absolute left-4 2xl:left-[150px] top-[55%] transform -translate-y-1/2 flex-col space-y-3 z-10">
             {slides.map((slide, index) => (
@@ -374,34 +374,12 @@ const Hero = () => {
             ))}
           </div>
 
-          {/* Mobile Navigation Indicators */}
-          <div className="flex xl:hidden absolute bottom-8 left-1/2 transform -translate-x-1/2 space-x-3 z-10">
-            {slides.map((slide, index) => (
-              <button
-                key={slide.id}
-                className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center text-sm sm:text-base font-semibold transition-all duration-300 ${
-                  activeSection === index
-                    ? "bg-[#a868fa] text-white shadow-lg scale-110"
-                    : "bg-white border-gray-300 text-gray-600 active:border-[#a768fa89] active:bg-[#a768fa2c]"
-                }`}
-                onClick={() => {
-                  const direction =
-                    index > activeSection ? "forward" : "backward";
-                  goToSlide(index, direction);
-                }}
-                aria-label={`Go to slide ${index + 1}`}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
-
           {/* Loading overlay */}
-          {isAnimating && (
+          {/* {isAnimating && (
             <div className="absolute inset-0 z-20 flex items-center justify-center">
               <div className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
             </div>
-          )}
+          )} */}
 
           {/* Slider Content */}
           <div
@@ -422,13 +400,13 @@ const Hero = () => {
               ref={contentRef}
               className="w-full lg:pl-10 xl:pl-20 text-center lg:text-left"
             >
-              <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl 2xl:text-4xl font-extralight mb-3 sm:mb-3 xl:mb-4 italic opacity-0">
+              <h3 className="text-3xl md:text-4xl lg:text-3xl 2xl:text-4xl font-extralight mb-4 italic opacity-0">
                 {currentSlide.subHeading}
               </h3>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl 2xl:text-6xl font-extrabold mb-2 sm:mb-2.5 leading-tight opacity-0">
+              <h2 className="text-4xl md:text-5xl lg:text-4xl 2xl:text-6xl font-extrabold mb-3 leading-tight opacity-0">
                 {currentSlide.title}
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#74787C] font-bold mb-6 sm:mb-8 md:mb-10 2xl:mb-14 max-w-full lg:max-w-lg mx-auto lg:mx-0 opacity-0">
+              <p className="text-sm sm:text-base md:text-lg text-[#74787C] font-bold mb-8 md:mb-10 2xl:mb-14 max-w-full lg:max-w-lg mx-auto lg:mx-0 opacity-0">
                 {currentSlide.description}
               </p>
               <div className="opacity-0 flex justify-center lg:justify-start">
@@ -459,7 +437,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <RunningText defaultStrokeColor="#4f39f6" speed={70} />
+        <RunningText defaultStrokeColor="#4f39f6" speed={100} />
       </section>
     </>
   );

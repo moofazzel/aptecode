@@ -62,7 +62,7 @@ function OurServices() {
   }, []);
 
   return (
-    <section className="py-32">
+    <section className="py-32 px-4 lg:px-0">
       {/* service content */}
       <div className="w-full">
         <div className="container flex items-center justify-between">
@@ -128,9 +128,10 @@ function OurServices() {
               </motion.span>
             </motion.h3>
           </motion.div>
+
           {/* slider button */}
           <motion.div
-            className="flex items-center gap-3"
+            className="hidden md:flex items-center gap-3"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
