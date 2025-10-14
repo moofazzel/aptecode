@@ -420,7 +420,7 @@ const Hero = () => {
             {/* Content */}
             <div
               ref={contentRef}
-              className="w-full   lg:max-w-2xl lg:pl-10 xl:pl-20 text-center lg:text-left"
+              className="w-full lg:pl-10 xl:pl-20 text-center lg:text-left"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-3xl 2xl:text-4xl font-extralight mb-3 sm:mb-3 xl:mb-4 italic opacity-0">
                 {currentSlide.subHeading}

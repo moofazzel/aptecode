@@ -19,14 +19,14 @@ function OurServices() {
       number: 1,
       title: "Website Design & Build",
       description: "Pro look, built to convert—fast, clear, and easy to edit.",
-      image: "/img/service/service-12o.jpg",
+      image: "/img/service/service-13o.jpg",
       color: "bg-blue-400",
     },
     {
       number: 2,
       title: "Performance & SEO Fundamentals",
       description: "Speed + structure so you rank and load fast from day one.",
-      image: "/img/service/service-12o.jpg",
+      image: "/img/service/service-13.jpg",
       color: "bg-purple-400",
     },
     {
@@ -177,7 +177,7 @@ function OurServices() {
               slidesPerView: 2,
               spaceBetween: 0,
             },
-            1024: {
+            1550: {
               slidesPerView: 3,
               spaceBetween: 0,
             },
@@ -185,21 +185,9 @@ function OurServices() {
         >
           {circularServices.map((service, index) => (
             <SwiperSlide key={`${service.number}-${index}`}>
-              <div className="flex w-full h-[400px]">
-                {/* Image on the left */}
-                <div className="w-1/2 h-full relative">
-                  <Image
-                    src={service.image}
-                    alt={`service-${service.number}`}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-
+              <div className=" xl:flex w-full 2xl:h-[300px]">
                 {/* Modern Content on the right */}
-                <article className="w-1/2 relative backdrop-blur-sm bg-white/80 border border-white/20 p-6 md:p-8 flex flex-col justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-r-3xl"></div>
+                <article className="xl:w-1/2 bg-[#F2F3F4] relative backdrop-blur-sm border border-white/20 p-6 md:p-8 flex flex-col justify-center mr-4">
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-6">
                       <div
@@ -223,6 +211,17 @@ function OurServices() {
                     </div>
                   </div>
                 </article>
+
+                {/* Image on the left */}
+                <div className="xl:w-1/2 h-[300px] md:h-[400px] xl:h-full relative mr-4">
+                  <Image
+                    src={service.image}
+                    alt={`service-${service.number}`}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
               </div>
             </SwiperSlide>
           ))}

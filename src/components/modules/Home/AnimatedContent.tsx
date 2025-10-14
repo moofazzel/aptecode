@@ -27,7 +27,7 @@ const AnimatedContent = () => {
       {/* Main Title */}
       <motion.h2
         id="why-choose-us-heading"
-        className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-8"
+        className="text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-8"
         initial={{ x: 200, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}

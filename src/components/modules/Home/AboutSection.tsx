@@ -28,9 +28,9 @@ function AboutSection() {
             {/* Main Image Container */}
             <div className="relative max-w-[600px] w-full h-[500px] lg:h-[600px] mx-auto lg:mx-0">
               {/* Glassmorphism frame */}
-              <div className="absolute inset-0 backdrop-blur-sm bg-white/10 border border-white/20 rounded-3xl p-6 shadow-2xl">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/20 to-white/5"></div>
-                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              <div className="absolute inset-0 backdrop-blur-sm bg-white/10 border border-white/20 p-6 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5"></div>
+                <div className="relative w-full h-full overflow-hidden">
                   <Image
                     src="/img/new-update-2/about-img-1.png"
                     alt="Team working on laptop"
@@ -44,7 +44,7 @@ function AboutSection() {
 
               {/* Floating Award Badge */}
               <motion.div
-                className="absolute -bottom-6 -right-6 backdrop-blur-md bg-gradient-to-br from-blue-500/90 to-purple-600/90 border border-white/30 rounded-2xl p-6 shadow-2xl"
+                className="absolute -bottom-6 -right-6 backdrop-blur-md bg-gradient-to-br from-blue-500/90 to-purple-600/90 border-2 border-white/30 p-6 shadow-2xl"
                 initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -72,10 +72,10 @@ function AboutSection() {
                     <PhoneCall className="w-8 h-8 text-white" />
                   </motion.div>
                   <div>
-                    <div className="text-2xl font-black text-white">
+                    <div className="text-xl font-black text-white">
                       Book a Call
                     </div>
-                    <div className="text-sm text-white/90 font-medium uppercase tracking-wide">
+                    <div className="text-xs text-white/90 font-medium uppercase tracking-wide">
                       Let&apos;s Discuss Your Project!
                     </div>
                   </div>
@@ -84,7 +84,7 @@ function AboutSection() {
 
               {/* Floating stats */}
               <motion.div
-                className="absolute -top-6 -left-6 backdrop-blur-md bg-white/20 border border-white/30 rounded-2xl p-4 shadow-xl"
+                className="absolute -top-6 -left-6 backdrop-blur-lg bg-white/20 border border-white/30 p-4 shadow-xl"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
@@ -110,7 +110,7 @@ function AboutSection() {
           >
             {/* Modern badge */}
             <motion.div
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/50 rounded-full px-6 py-3"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/50  px-6 py-3"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
