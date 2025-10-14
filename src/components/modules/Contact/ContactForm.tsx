@@ -6,7 +6,7 @@ import { ChevronDown, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 
 interface FormData {
-  fullname: string;
+  firstname: string;
   lastname: string;
   email: string;
   phone: string;
@@ -16,7 +16,7 @@ interface FormData {
 
 const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
-    fullname: "",
+    firstname: "",
     lastname: "",
     email: "",
     phone: "",
@@ -67,7 +67,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!formData.email || !formData.phone || !formData.fullname) {
+    if (!formData.email || !formData.phone || !formData.firstname) {
       setSubmitStatus("error");
       setErrorMessage("Please fill in all required fields.");
       return;
@@ -84,7 +84,7 @@ const ContactForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          fullname: formData.fullname,
+          firstname: formData.firstname,
           lastname: formData.lastname,
           email: formData.email,
           phone: formData.phone,
@@ -97,7 +97,7 @@ const ContactForm = () => {
         setSubmitStatus("success");
         // Reset form
         setFormData({
-          fullname: "",
+          firstname: "",
           lastname: "",
           email: "",
           phone: "",
@@ -246,11 +246,12 @@ const ContactForm = () => {
                   <div className="space-y-2">
                     <input
                       type="text"
-                      id="fullname"
-                      name="fullname"
-                      value={formData.fullname}
+                      id="firstname"
+                      name="firstname"
+                      value={formData.firstname}
                       onChange={handleInputChange}
-                      placeholder="Your Name"
+                      placeholder="First Name*"
+                      required
                       className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                     />
                   </div>

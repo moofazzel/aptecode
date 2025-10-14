@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 interface ContactFormData {
-  fullname: string;
+  firstname: string;
   lastname: string;
   email: string;
   phone: string;
@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const formData: ContactFormData = await request.json();
 
     // Validate required fields
-    if (!formData.email || !formData.phone || !formData.fullname) {
+    if (!formData.email || !formData.phone || !formData.firstname) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     // Create simple HTML email content
     const htmlContent = `
       <h2>New Contact Form Submission</h2>
-      <p><strong>Name:</strong> ${formData.fullname} ${formData.lastname}</p>
+      <p><strong>Name:</strong> ${formData.firstname} ${formData.lastname}</p>
       <p><strong>Email:</strong> ${formData.email}</p>
       <p><strong>Phone:</strong> ${formData.phone}</p>
       <p><strong>Topic:</strong> ${formData.topic || 'General Inquiry'}</p>
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     const textContent = `
       New Contact Form Submission
       
-      Name: ${formData.fullname} ${formData.lastname}
+      Name: ${formData.firstname} ${formData.lastname}
       Email: ${formData.email}
       Phone: ${formData.phone}
       Topic: ${formData.topic || 'General Inquiry'}
