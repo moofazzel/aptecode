@@ -141,9 +141,75 @@ const ContactForm = () => {
     },
   };
 
+  // Structured Data for LocalBusiness and ContactPage
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://aptecode.com/#organization",
+        "name": "Aptecode",
+        "alternateName": "Aptecode Web Development",
+        "description": "Fast, conversion-ready websites for new brands and founders. No fluff. Just strategy, clean UX, and sites that sell.",
+        "url": "https://aptecode.com",
+        "telephone": "+13342007299",
+        "email": "support@ivey.solutions",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Ozark",
+          "addressRegion": "AL", 
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "31.4593",
+          "longitude": "-85.6405"
+        },
+        "areaServed": "United States",
+        "serviceType": [
+          "Web Development",
+          "Digital Strategy", 
+          "Custom Software Development",
+          "E-commerce Solutions"
+        ],
+        "priceRange": "$$"
+      },
+      {
+        "@type": "ContactPage",
+        "@id": "https://aptecode.com/contact/#webpage",
+        "url": "https://aptecode.com/contact",
+        "name": "Contact Aptecode | Get Your Free Strategy Call Today",
+        "description": "Ready to build something great? Contact Aptecode for web development, digital strategy, and custom solutions.",
+        "mainEntity": {
+          "@type": "Organization", 
+          "@id": "https://aptecode.com/#organization"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aptecode.com/#website",
+        "url": "https://aptecode.com",
+        "name": "Aptecode",
+        "publisher": {
+          "@id": "https://aptecode.com/#organization"
+        }
+      }
+    ]
+  };
+
   return (
-    <section className="py-20 lg:py-32 ">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
+      
+      <section className="py-20 lg:py-32 " itemScope itemType="https://schema.org/ContactPage">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-9 gap-8 lg:gap-12"
           initial="hidden"
@@ -195,12 +261,12 @@ const ContactForm = () => {
                   <div className="flex-shrink-0 w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-800/50 transition-colors duration-300">
                     <MapPin className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                   </div>
-                  <div className="space-y-1">
-                    <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
-                      Our Address
+                    <div className="space-y-1" itemScope itemType="https://schema.org/PostalAddress">
+                      <h4 className="text-lg font-semibold text-slate-900 dark:text-white">
+                        Our Address
                     </h4>
-                    <p className="text-slate-600 dark:text-slate-300">
-                      Ozark, AL, United States
+                    <p className="text-slate-600 dark:text-slate-300" itemProp="address">
+                      <span itemProp="addressLocality">Ozark</span>, <span itemProp="addressRegion">AL</span>, <span itemProp="addressCountry">United States</span>
                     </p>
                   </div>
                 </div>
@@ -218,12 +284,14 @@ const ContactForm = () => {
                       <a
                         href="tel:+13342007299"
                         className="block text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        itemProp="telephone"
                       >
                         +1 334-200-7299
                       </a>
                       <a
                         href="mailto:support@ivey.solutions"
                         className="block text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
+                        itemProp="email"
                       >
                         support@ivey.solutions
                       </a>
@@ -240,10 +308,13 @@ const ContactForm = () => {
               className="bg-white dark:bg-slate-800 border border-[#e8eaeb] p-8 lg:p-10"
               variants={fadeInUp}
             >
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-label="Contact form">
                 {/* Name Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
+                    <label htmlFor="firstname" className="sr-only">
+                      First Name (required)
+                    </label>
                     <input
                       type="text"
                       id="firstname"
@@ -252,10 +323,15 @@ const ContactForm = () => {
                       onChange={handleInputChange}
                       placeholder="First Name*"
                       required
+                      aria-required="true"
+                      aria-describedby="firstname-error"
                       className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                     />
                   </div>
                   <div className="space-y-2">
+                    <label htmlFor="lastname" className="sr-only">
+                      Last Name
+                    </label>
                     <input
                       type="text"
                       id="lastname"
@@ -263,6 +339,7 @@ const ContactForm = () => {
                       value={formData.lastname}
                       onChange={handleInputChange}
                       placeholder="Last Name"
+                      aria-describedby="lastname-error"
                       className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                     />
                   </div>
@@ -271,6 +348,9 @@ const ContactForm = () => {
                 {/* Email and Phone */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
+                    <label htmlFor="email" className="sr-only">
+                      Email address (required)
+                    </label>
                     <input
                       type="email"
                       id="email"
@@ -279,10 +359,16 @@ const ContactForm = () => {
                       onChange={handleInputChange}
                       placeholder="Email address*"
                       required
+                      aria-required="true"
+                      aria-describedby="email-error"
+                      autoComplete="email"
                       className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                     />
                   </div>
                   <div className="space-y-2">
+                    <label htmlFor="phone" className="sr-only">
+                      Phone number (required)
+                    </label>
                     <input
                       type="tel"
                       id="phone"
@@ -291,6 +377,9 @@ const ContactForm = () => {
                       onChange={handleInputChange}
                       placeholder="Phone number*"
                       required
+                      aria-required="true"
+                      aria-describedby="phone-error"
+                      autoComplete="tel"
                       className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
                     />
                   </div>
@@ -341,6 +430,9 @@ const ContactForm = () => {
 
                 {/* Message */}
                 <div className="space-y-2">
+                  <label htmlFor="message" className="sr-only">
+                    Your message
+                  </label>
                   <textarea
                     id="message"
                     name="message"
@@ -348,8 +440,12 @@ const ContactForm = () => {
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Message"
+                    aria-describedby="message-help"
                     className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200 resize-none"
                   />
+                  <div id="message-help" className="sr-only">
+                    Optional: Tell us more about your project or inquiry
+                  </div>
                 </div>
 
                 {/* Submit Button */}
@@ -402,6 +498,7 @@ const ContactForm = () => {
         </motion.div>
       </div>
     </section>
+    </>
   );
 };
 

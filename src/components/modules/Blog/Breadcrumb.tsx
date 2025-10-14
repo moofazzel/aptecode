@@ -13,6 +13,7 @@ import {
   useDynamicBreadcrumbs,
 } from "@/hooks/useDynamicBreadcrumbs";
 import Link from "next/link";
+import { Fragment } from "react";
 
 type Props = {
   /** Optional custom label resolver */
@@ -53,8 +54,37 @@ export default function Breadcrumb({
     labelMap,
   });
 
+  // Generate structured data for breadcrumbs
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      showHome && {
+        "@type": "ListItem",
+        "position": 1,
+        "name": homeLabel,
+        "item": `https://aptecode.com${homeHref}`
+      },
+      ...crumbs.map((crumb, index) => ({
+        "@type": "ListItem",
+        "position": showHome ? index + 2 : index + 1,
+        "name": crumb.label,
+        "item": `https://aptecode.com${crumb.href}`
+      }))
+    ].filter(Boolean)
+  };
+
   return (
-    <UIBreadcrumb>
+    <>
+      {/* Structured Data for Breadcrumbs */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData),
+        }}
+      />
+      
+      <UIBreadcrumb>
       <BreadcrumbList className={listClassName}>
         {showHome && (
           <>
@@ -73,7 +103,7 @@ export default function Breadcrumb({
           </>
         )}
 
-        {crumbs.map((c, i) => (
+        {crumbs.map((c) => (
           <Fragment key={c.href}>
             <BreadcrumbItem>
               {c.isLast ? (
@@ -95,7 +125,6 @@ export default function Breadcrumb({
         ))}
       </BreadcrumbList>
     </UIBreadcrumb>
+    </>
   );
 }
-
-import { Fragment } from "react";

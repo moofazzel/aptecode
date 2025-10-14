@@ -2,8 +2,8 @@ import Breadcrumb from "../Blog/Breadcrumb";
 
 const ContactBanner = () => {
   return (
-    <div className="text-center mx-auto max-w-5xl px-4 py-16 md:pt-25">
-      <h1 className="text-2xl md:text-7xl font-bold uppercase text-black mb-[30px]">
+    <header className="text-center mx-auto max-w-5xl px-4 py-16 md:pt-25" role="banner">
+      <h1 className="text-2xl md:text-7xl font-bold uppercase text-black mb-[30px]" itemProp="headline">
         CONTACT{" "}
         <span
           className="text-2xl md:text-7xl font-bold uppercase
@@ -15,16 +15,16 @@ const ContactBanner = () => {
         </span>
       </h1>
 
-      <div className="flex justify-center mb-4">
+      <nav className="flex justify-center mb-4" aria-label="Breadcrumb navigation">
         <Breadcrumb />
-      </div>
+      </nav>
 
-      <p className="hero-subtitle text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium">
+      <p className="hero-subtitle text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed font-medium" itemProp="description">
         Have a project in mind or just want to say hello? Let’s start a
         conversation about how we can bring your digital vision to life with
         strategy, design, and innovation.
       </p>
-    </div>
+    </header>
   );
 };
 
