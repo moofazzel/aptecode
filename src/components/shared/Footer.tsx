@@ -26,9 +26,9 @@ function Footer() {
         {/* CTA Section */}
         <section className="py-16 px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="flex items-center justify-between">
+            <div className="min-[400px]:flex items-center justify-between">
               <div className="flex items-center space-x-4">
-                <h2 className="text-4xl md:text-5xl lg:text-7xl leading-24 font-bold uppercase tracking-wider">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl md:leading-24 leading-16 font-bold uppercase tracking-wider">
                   Ready to Launch a Site that Sells?
                 </h2>
               </div>

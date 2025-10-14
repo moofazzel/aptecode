@@ -26,6 +26,8 @@ export function PortfolioFilter({ onFilteredProjects }: PortfolioFilterProps) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [activeTabIndex, setActiveTabIndex] = useState(0);
   const tabsListRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
   // Filter projects based on selected category
   const filteredProjects =
@@ -46,6 +48,29 @@ export function PortfolioFilter({ onFilteredProjects }: PortfolioFilterProps) {
     setActiveTabIndex(index);
   }, [selectedCategory]);
 
+  // Update indicator position and width based on active tab
+  useEffect(() => {
+    const updateIndicator = () => {
+      const activeTab = tabRefs.current[activeTabIndex];
+      const tabsList = tabsListRef.current;
+
+      if (activeTab && tabsList) {
+        const tabsListRect = tabsList.getBoundingClientRect();
+        const activeTabRect = activeTab.getBoundingClientRect();
+
+        setIndicatorStyle({
+          left: activeTabRect.left - tabsListRect.left,
+          width: activeTabRect.width,
+        });
+      }
+    };
+
+    updateIndicator();
+    window.addEventListener("resize", updateIndicator);
+
+    return () => window.removeEventListener("resize", updateIndicator);
+  }, [activeTabIndex]);
+
   // Notify parent of filtered projects whenever category changes
   useEffect(() => {
     onFilteredProjects(filteredProjects);
@@ -53,7 +78,7 @@ export function PortfolioFilter({ onFilteredProjects }: PortfolioFilterProps) {
 
   return (
     <motion.section
-      className="py-20 bg-white relative overflow-hidden"
+      className=" bg-white relative overflow-hidden"
       initial={{ opacity: 0, y: 50 }}
       animate={filterInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -109,21 +134,19 @@ export function PortfolioFilter({ onFilteredProjects }: PortfolioFilterProps) {
           <Tabs
             value={selectedCategory}
             onValueChange={handleCategoryChange}
-            className="w-full"
+            className="w-full "
           >
             <TabsList
               ref={tabsListRef}
-              className="flex w-full h-full bg-gray-100/80 backdrop-blur-md border border-gray-300/50 shadow-xl p-2 relative rounded-xl overflow-visible"
+              className="flex w-full h-full bg-gray-100/80 backdrop-blur-md border border-gray-300/50 shadow-xl p-2 relative  overflow-visible rounded-none"
             >
               {/* Sliding Background Indicator */}
               <motion.div
-                className="absolute bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 rounded-lg shadow-2xl z-0"
+                className="absolute bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600  shadow-2xl z-0"
                 initial={false}
                 animate={{
-                  left: `calc(${
-                    (activeTabIndex * 100) / categories.length
-                  }% + 8px)`,
-                  width: `calc(${100 / categories.length}% - 16px)`,
+                  left: indicatorStyle.left,
+                  width: indicatorStyle.width,
                 }}
                 transition={{
                   type: "spring",
@@ -136,11 +159,14 @@ export function PortfolioFilter({ onFilteredProjects }: PortfolioFilterProps) {
                   top: "8px",
                 }}
               />
-              {categories.map((category) => (
+              {categories.map((category, index) => (
                 <TabsTrigger
                   key={category}
                   value={category}
-                  className="relative z-10 data-[state=active]:text-white data-[state=active]:font-bold data-[state=active]:bg-transparent data-[state=inactive]:text-gray-700 data-[state=inactive]:font-medium data-[state=inactive]:bg-transparent transition-all duration-300 px-3 sm:px-4 py-2 sm:py-3 hover:text-gray-900 hover:bg-transparent text-xs sm:text-sm flex-1 rounded-lg border-none shadow-none"
+                  ref={(el) => {
+                    tabRefs.current[index] = el;
+                  }}
+                  className="relative z-10 data-[state=active]:text-white data-[state=active]:font-bold data-[state=active]:bg-transparent data-[state=inactive]:text-gray-700 data-[state=inactive]:font-medium data-[state=inactive]:bg-transparent transition-all duration-300 px-3 sm:px-4 py-2 sm:py-3 hover:text-gray-900 hover:bg-transparent text-xs sm:text-sm flex-1 border-none shadow-none"
                 >
                   {category}
                 </TabsTrigger>

@@ -10,7 +10,6 @@ import {
   Calendar,
   ChevronLeft,
   ChevronRight,
-  Code,
   Target,
   User,
   Zap,
@@ -107,24 +106,12 @@ export default function PortfolioDetailsClient({
                     View Live Site
                   </GradientButton>
                 )}
-                {project.githubUrl && (
-                  <Button variant="outline" asChild>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Code className="w-4 h-4 mr-2" />
-                      View Code
-                    </a>
-                  </Button>
-                )}
               </div>
             </div>
 
             {/* Right: Image Gallery */}
             <div className="relative">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
+              <div className="relative aspect-[4/3]  overflow-hidden bg-gray-100">
                 <Image
                   src={project.images[currentImageIndex]}
                   alt={`${project.title} - Image ${currentImageIndex + 1}`}
@@ -213,7 +200,7 @@ export default function PortfolioDetailsClient({
             </p>
           </div>
 
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl border border-green-200 shadow-lg">
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-8  border border-green-200 shadow-lg">
             <div className="flex items-center gap-3 mb-4">
               <Zap className="w-6 h-6 text-green-600" />
               <h3 className="text-2xl font-bold text-gray-900">Impact</h3>
@@ -245,7 +232,7 @@ export default function PortfolioDetailsClient({
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-6 bg-white rounded-xl shadow-sm border border-gray-200"
+                  className="flex items-center gap-4 p-6 bg-white  shadow-sm border border-gray-200"
                 >
                   <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <Award className="w-6 h-6 text-yellow-600" />
@@ -259,10 +246,10 @@ export default function PortfolioDetailsClient({
       )}
 
       {/* Back to Portfolio */}
-      <section className="py-16">
+      <section className="pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Link href="/portfolio">
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="rounded-none">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Portfolio
             </Button>
