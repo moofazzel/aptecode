@@ -1,8 +1,8 @@
-// src/app/blog/[slug]/page.tsx  (Server Component)
+// src/app/blog/[slug]/page.tsx
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { blogPosts } from "../../../../data/blogs"; // <-- adjust if needed
-import { SITE, abs } from "../../config/seo"; // <-- adjust if needed
+import { blogPosts } from "../../../../data/blogs";
+import { SITE, abs } from "../../config/seo"; // adjust path if needed
 import ArticleView from "./ArticleView";
 
 type Blog = (typeof blogPosts)[number];
@@ -17,13 +17,14 @@ export async function generateStaticParams() {
   return blogPosts.map((b) => ({ slug: b.slug }));
 }
 
-// ✅ Correct param types (no Promise here)
+// NOTE: params is a Promise<{ slug: string }> to satisfy your PageProps
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const post = getBySlug(params.slug);
+  const { slug } = await params;
+  const post = getBySlug(slug);
   if (!post) return {};
 
   const url = abs(`/blog/${post.slug}`);
@@ -35,15 +36,7 @@ export async function generateMetadata({
     metadataBase: new URL(SITE.baseUrl),
     title,
     description,
-    alternates: {
-      canonical: `/blog/${post.slug}`,
-      // Add these only if you truly have localized routes:
-      // languages: {
-      //   "en-US": `/en/blog/${post.slug}`,
-      //   "bn-BD": `/bn/blog/${post.slug}`,
-      //   "x-default": `/blog/${post.slug}`,
-      // },
-    },
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
       url,
@@ -57,7 +50,6 @@ export async function generateMetadata({
           url: post.image?.startsWith("http") ? post.image : abs(post.image),
           width: 1200,
           height: 630,
-          alt: post.imageAlt || post.title,
         },
       ],
     },
@@ -71,11 +63,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const post = getBySlug(params.slug);
+// NOTE: params is a Promise<{ slug: string }> here too
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getBySlug(slug);
   if (!post) notFound();
 
-  // -------- JSON-LD: BlogPosting + BreadcrumbList --------
   const ldArticle = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -87,10 +84,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     author: post.authorInfo?.name
       ? [{ "@type": "Person", name: post.authorInfo.name }]
       : [{ "@type": "Organization", name: SITE.name }],
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": abs(`/blog/${post.slug}`),
-    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": abs(`/blog/${post.slug}`) },
     image: post.image?.startsWith("http") ? post.image : abs(post.image),
     keywords: post.tags?.join(", "),
   };
@@ -120,7 +114,6 @@ export default async function Page({ params }: { params: { slug: string } }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(ldBreadcrumb) }}
       />
-
       <ArticleView post={post} />
     </>
   );
