@@ -98,7 +98,7 @@ export function PortfolioFilter({ onFilteredProjects }: PortfolioFilterProps) {
           transition={{ duration: 0.8 }}
         >
           <motion.h2
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight"
+            className="text-4xl pt-16 md:pt-0 md:text-6xl lg:text-7xl font-black text-gray-900 mb-8 leading-tight"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

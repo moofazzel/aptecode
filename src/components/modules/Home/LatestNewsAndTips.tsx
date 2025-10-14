@@ -164,7 +164,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
         }}
       >
         <motion.div
-          className="flex items-center font-semibold text-white text-sm"
+          className="flex items-center font-semibold text-white text-xs sm:text-sm"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
@@ -177,7 +177,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
           <span>{post.date}</span>
         </motion.div>
         <motion.div
-          className="flex items-center font-semibold text-white text-sm"
+          className="flex items-center font-semibold text-white text-xs sm:text-sm"
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
@@ -190,7 +190,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
 
       {/* Enhanced Content */}
       <motion.div
-        className="p-6"
+        className="p-4 sm:p-6"
         variants={contentVariants}
         initial="hidden"
         whileInView="visible"
@@ -265,7 +265,7 @@ function LatestNewsAndTips() {
   };
 
   return (
-    <section className="py-20 bg-white">
+    <section className="pb-20 md:pt-10 bg-white">
       <div className="container px-4">
         {/* Section Header */}
         <motion.div

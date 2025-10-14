@@ -118,10 +118,7 @@ export default function MissionVision() {
                 ))}
               </TabsList>
 
-              <TabsContent
-                value="mission"
-                className="md:pt-6  mt-[75px] md:mt-0"
-              >
+              <TabsContent value="mission" className="pt-6 md:mt-0">
                 <motion.div
                   key="mission"
                   initial={{ opacity: 0, y: 20 }}
@@ -164,10 +161,7 @@ export default function MissionVision() {
                 </motion.div>
               </TabsContent>
 
-              <TabsContent
-                value="vision"
-                className="md:pt-6  mt-[75px] md:mt-0"
-              >
+              <TabsContent value="vision" className="pt-6  md:mt-0">
                 <motion.div
                   key="vision"
                   initial={{ opacity: 0, y: 20 }}
@@ -210,7 +204,7 @@ export default function MissionVision() {
                 </motion.div>
               </TabsContent>
 
-              <TabsContent value="goal" className="md:pt-6  mt-[75px] md:mt-0">
+              <TabsContent value="goal" className="pt-6  md:mt-0">
                 <motion.div
                   key="goal"
                   initial={{ opacity: 0, y: 20 }}

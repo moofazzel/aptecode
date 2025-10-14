@@ -73,7 +73,7 @@ function Footer() {
         {/* Social Links Section */}
         <section className="py-8 px-6 border-y border-gray-700">
           <div className="container mx-auto max-w-7xl">
-            <div className="flex items-center justify-center space-x-8 md:space-x-12 lg:space-x-16">
+            <div className="flex items-center justify-center space-x-4 md:space-x-12 lg:space-x-16">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={social.name}
@@ -94,9 +94,9 @@ function Footer() {
         {/* Logo and Copyright Section */}
         <section className="py-8 px-6">
           <div className="container mx-auto max-w-7xl">
-            <div className="flex items-center justify-between">
+            <div className="sm:flex justify-center items-center sm:justify-between">
               {/* Logo */}
-              <div>
+              <div className="flex justify-center items-center sm:flex-none">
                 <Image
                   src="/img/logo/aptecode.png"
                   alt="Aptecode"
@@ -106,7 +106,7 @@ function Footer() {
               </div>
 
               {/* Copyright */}
-              <div className="text-sm text-gray-400">
+              <div className="text-sm text-center sm:text-left text-gray-400">
                 ©2025 Aptecode. We build websites that win customers.
               </div>
             </div>

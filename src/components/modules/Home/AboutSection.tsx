@@ -44,7 +44,7 @@ function AboutSection() {
 
               {/* Floating Award Badge */}
               <motion.div
-                className="absolute -bottom-6 -right-6 backdrop-blur-md bg-gradient-to-br from-blue-500/90 to-purple-600/90 border-2 border-white/30 p-6 shadow-2xl"
+                className="absolute -bottom-6 -right-3 md:-right-6 backdrop-blur-md bg-gradient-to-br from-blue-500/90 to-purple-600/90 border-2 border-white/30 p-6 shadow-2xl"
                 initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
@@ -69,7 +69,7 @@ function AboutSection() {
                     }}
                   >
                     {/* Using Lucide PhoneCall */}
-                    <PhoneCall className="w-8 h-8 text-white" />
+                    <PhoneCall className="w-6 md:w-8 h-6 md:h-8 text-white" />
                   </motion.div>
                   <div>
                     <div className="text-xl font-black text-white">
