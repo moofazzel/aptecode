@@ -1,4 +1,5 @@
 import CtaSection from "./components/Services/ctasection";
+import PricingSection from "./components/Services/pricingSection/PricingSection";
 import ServicesCard from "./components/Services/serviceCard";
 
 function ServicesPage() {
@@ -12,7 +13,7 @@ function ServicesPage() {
         ctaHref="/contact"
       />
       {/* // comment this for deploy issues */}
-      {/* <PricingSection /> */}
+      <PricingSection />
     </>
   );
 }

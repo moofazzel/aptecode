@@ -1,6 +1,8 @@
+// src/app/web-development/page.tsx
 "use client";
 
 import Image from "next/image";
+import CtaSection from "../components/Services/ctasection";
 
 // -----------------------------
 // Types
@@ -175,19 +177,64 @@ const FAQS: FAQ[] = [
   },
 ];
 
+// GEO constant (non-visual)
+const CITY = "Dhaka";
+
 // -----------------------------
 // Page
 // -----------------------------
 export default function WebDevelopmentServicePage() {
+  // ——— JSON-LD (invisible) ———
+  // 1) WebPage + Service entity for this page
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Web Development",
+    description:
+      "We build reliable, high-performance web experiences for scale. Production-grade builds with performance, accessibility, and SEO baked in.",
+    mainEntity: {
+      "@type": "Service",
+      name: "Web Development",
+      serviceType: "Web Development",
+      areaServed: { "@type": "Place", name: CITY },
+      // You can add "provider" later when your Organization schema lives site-wide
+    },
+  };
+
+  // 2) Breadcrumbs (invisible, no visible UI added)
+  const breadcrumbsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "/services" },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Web Development",
+        item: "/services/web-development",
+      },
+    ],
+  };
+
+  // 3) FAQPage (built from your FAQS array)
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
-    <main className="bg-white text-zinc-800">
-      {/* <PageHeader
-        title="Web Development"
-        content="We build reliable, high-performance web experiences for scale."
-        bgWord="DEVELOPMENT"
-        align="left"
-        size="xl"
-      /> */}
+    <main
+      className="bg-white text-zinc-800"
+      itemScope
+      itemType="https://schema.org/WebPage"
+    >
+      {/* <PageHeader ... /> */}
 
       <TrustStats />
       <FeatureGrid />
@@ -195,10 +242,29 @@ export default function WebDevelopmentServicePage() {
       <TechStrip />
       {/* <CaseStudies /> */}
       {/* <Pricing /> */}
-      {/* // comment this for deploy issues */}
       {/* <PricingSection /> */}
       <Faqs />
-      <CTA />
+      {/* <CTA /> */}
+      <CtaSection
+        titleTop="Have Any Projects On Minds!"
+        titleBottom="Contact Us"
+        ctaText="Make Appointment"
+        ctaHref="/contact"
+      />
+
+      {/* ——— Invisible JSON-LD blocks (additive; no UI impact) ——— */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </main>
   );
 }
@@ -211,20 +277,33 @@ function TrustStats() {
   return (
     <section className="bg-white border-b border-zinc-200">
       <div className="mx-auto w-full max-w-7xl px-6 py-10">
-        {/* Bonus: visual band */}
-        <div className="my-8 overflow-hidden rounded border border-zinc-200 bg-[url('/img/service/sr1.jpg')] bg-cover bg-center min-h-[640px]" />
+        {/* visual band */}
+        <div
+          className="my-8 overflow-hidden rounded border border-zinc-200 bg-[url('/img/service/sr1.jpg')] bg-cover bg-center min-h-[640px]"
+          role="img"
+          aria-label="Web development hero — project highlights"
+        />
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {STATS.map((s) => (
             <li
               key={s.label}
               className="rounded border border-zinc-200 p-6 bg-white shadow-sm"
+              itemScope
+              itemType="https://schema.org/QuantitativeValue"
             >
-              <div className="text-3xl font-semibold tracking-tight text-zinc-900">
+              <div
+                className="text-3xl font-semibold tracking-tight text-zinc-900"
+                itemProp="value"
+              >
                 {s.value}
               </div>
-              <div className="mt-1 text-md text-zinc-500">{s.label}</div>
+              <div className="mt-1 text-md text-zinc-500" itemProp="name">
+                {s.label}
+              </div>
               {s.hint && (
-                <div className="mt-2 text-xs text-zinc-400">{s.hint}</div>
+                <div className="mt-2 text-xs text-zinc-400" aria-hidden="true">
+                  {s.hint}
+                </div>
               )}
             </li>
           ))}
@@ -254,11 +333,27 @@ function FeatureGrid() {
             <li
               key={f.title}
               className="rounded-lg bg-white border border-zinc-200 p-6 transition duration-300 hover:shadow-lg "
+              itemScope
+              itemType="https://schema.org/Offer"
             >
-              <h3 className="text-xl font-bold text-zinc-900">{f.title}</h3>
-              <p className="mt-2 text-zinc-600 text-md leading-relaxed">
+              <h3 className="text-xl font-bold text-zinc-900" itemProp="name">
+                {f.title}
+              </h3>
+              <p
+                className="mt-2 text-zinc-600 text-md leading-relaxed"
+                itemProp="description"
+              >
                 {f.desc}
               </p>
+              {/* GEO signal tied to features (invisible) */}
+              <span
+                itemProp="areaServed"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </li>
           ))}
         </ul>
@@ -279,16 +374,33 @@ function ProcessTimeline() {
             <li
               key={s.step}
               className="relative rounded border border-zinc-200 bg-white p-6"
+              itemScope
+              itemType="https://schema.org/HowToStep"
             >
               <span className="absolute -top-3 -left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white text-md font-semibold shadow">
                 {s.step}
               </span>
-              <h3 className="pl-8 text-xl font-bold text-zinc-900">
+              <h3
+                className="pl-8 text-xl font-bold text-zinc-900"
+                itemProp="name"
+              >
                 {s.title}
               </h3>
-              <p className="pl-8 mt-2 text-zinc-600 text-md leading-relaxed">
+              <p
+                className="pl-8 mt-2 text-zinc-600 text-md leading-relaxed"
+                itemProp="text"
+              >
                 {s.desc}
               </p>
+              {/* GEO signal for service delivery */}
+              <span
+                itemProp="areaServed"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </li>
           ))}
         </ol>
@@ -313,6 +425,8 @@ function TechStrip() {
                 height={56}
                 className="opacity-80 hover:opacity-100 transition"
               />
+              {/* small, invisible hint that these tools are used in Dhaka projects as well */}
+              <meta itemProp="areaServed" content={CITY} />
             </div>
           ))}
         </div>
@@ -332,6 +446,7 @@ function CaseStudies() {
           <a
             href="#contact"
             className="text-md text-indigo-600 hover:text-indigo-700 font-medium"
+            aria-label="Discuss replicating these results for your project in Dhaka"
           >
             Let’s replicate this →
           </a>
@@ -342,6 +457,8 @@ function CaseStudies() {
             <li
               key={c.title}
               className="overflow-hidden rounded-3xl border border-zinc-200 bg-white hover:shadow-xl transition"
+              itemScope
+              itemType="https://schema.org/CreativeWork"
             >
               <div className="relative aspect-[16/9]">
                 <Image
@@ -356,10 +473,15 @@ function CaseStudies() {
                 <div className="text-xs uppercase tracking-[0.18em] text-indigo-600 font-semibold">
                   {c.result}
                 </div>
-                <h3 className="mt-1 text-lg font-semibold text-zinc-900">
+                <h3
+                  className="mt-1 text-lg font-semibold text-zinc-900"
+                  itemProp="name"
+                >
                   {c.title}
                 </h3>
-                <p className="mt-2 text-md text-zinc-600">{c.summary}</p>
+                <p className="mt-2 text-md text-zinc-600" itemProp="abstract">
+                  {c.summary}
+                </p>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   {c.stats.map((s) => (
@@ -375,6 +497,15 @@ function CaseStudies() {
                   ))}
                 </div>
               </div>
+              {/* GEO tag (invisible) */}
+              <span
+                itemProp="spatialCoverage"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </li>
           ))}
         </ul>
@@ -396,9 +527,18 @@ function Pricing() {
             <div
               key={p.title}
               className="rounded-2xl border border-zinc-200 bg-white p-6 hover:shadow-lg transition"
+              itemScope
+              itemType="https://schema.org/Offer"
             >
-              <h3 className="text-lg font-semibold text-zinc-900">{p.title}</h3>
-              <p className="mt-2 text-md text-zinc-600">{p.desc}</p>
+              <h3
+                className="text-lg font-semibold text-zinc-900"
+                itemProp="name"
+              >
+                {p.title}
+              </h3>
+              <p className="mt-2 text-md text-zinc-600" itemProp="description">
+                {p.desc}
+              </p>
               <ul className="mt-4 space-y-2">
                 {p.points.map((pt) => (
                   <li
@@ -414,9 +554,20 @@ function Pricing() {
               <a
                 href="#contact"
                 className="mt-6 inline-flex items-center justify-center rounded-xl bg-indigo-600 px-4 py-2 text-white text-md font-medium hover:bg-indigo-700 transition"
+                aria-label={`Get a tailored estimate for ${p.title} in ${CITY}`}
               >
                 Get a tailored estimate
               </a>
+
+              {/* GEO semantics for offers */}
+              <span
+                itemProp="areaServed"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </div>
           ))}
         </div>
@@ -434,18 +585,25 @@ function Faqs() {
         </h2>
         <div className="mt-8 divide-y divide-zinc-200 rounded border border-zinc-200 bg-white">
           {FAQS.map((f, i) => (
-            <div key={f.q}>
+            <div key={f.q} itemScope itemType="https://schema.org/Question">
               <details className="group open:bg-zinc-50">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-5">
-                  <span className="text-zinc-900 text-xl font-medium">
+                  <span
+                    className="text-zinc-900 text-xl font-medium"
+                    itemProp="name"
+                  >
                     {f.q}
                   </span>
                   <span className="ml-6 inline-flex h-6 w-6 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 group-open:rotate-45 transition">
                     +
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-md text-zinc-600 leading-relaxed">
-                  {f.a}
+                <div
+                  className="px-6 pb-6 text-md text-zinc-600 leading-relaxed"
+                  itemScope
+                  itemType="https://schema.org/Answer"
+                >
+                  <span itemProp="text">{f.a}</span>
                 </div>
               </details>
               {i < FAQS.length - 1 && <div className="h-px bg-zinc-200" />}
@@ -480,12 +638,14 @@ function CTA() {
             <a
               href="mailto:info@aptecode.com"
               className="inline-flex items-center justify-center bg-indigo-600 px-5 py-3 text-white text-md font-medium hover:bg-indigo-700 transition"
+              aria-label={`Email us your brief — Web Development in ${CITY}`}
             >
               Email us your brief
             </a>
             <a
               href="/contact"
               className="inline-flex items-center justify-center  bg-gray-700 px-5 py-3 text-white text-md font-medium hover:bg-white/20 transition"
+              aria-label={`Get started now — Web Development in ${CITY}`}
             >
               Get Started Now
             </a>
