@@ -169,15 +169,9 @@ export default function ArticleView({ post }: { post: Blog }) {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.22 }}
             className="mx-auto mt-7 flex w-full flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <a
-              href="#read"
-              className="inline-flex items-center justify-center bg-gradient-to-r from-[#6D5CF6] to-[#F33AA0] px-6 py-3 text-white text-sm font-semibold shadow-[0_8px_30px_rgba(109,92,246,0.35)] hover:opacity-95 transition"
-            >
-              Start Reading <ArrowUpRight className="ml-1 h-4 w-4" />
-            </a>
             <Link
               href="/blog"
-              className="inline-flex items-center justify-center border border-zinc-200 bg-white px-6 py-3 text-sm font-semibold text-zinc-800 hover:bg-zinc-50"
+              className="inline-flex items-center justify-center bg-gradient-to-r from-[#6D5CF6] to-[#F33AA0] px-6 py-3 text-white text-sm font-semibold shadow-[0_8px_30px_rgba(109,92,246,0.35)] hover:opacity-95 transition"
             >
               All Posts <ArrowUpRight className="ml-1 h-4 w-4" />
             </Link>
@@ -191,7 +185,7 @@ export default function ArticleView({ post }: { post: Blog }) {
             className="mx-auto mt-10 grid w-full max-w-4xl grid-cols-3 gap-4"
           >
             <li className="rouded-xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
-              <div className="text-2xl font-semibold text-zinc-900">
+              <div className="text-lg md:text-2xl font-semibold text-zinc-900">
                 {new Date(post.updatedAt || post.date).toLocaleDateString(
                   undefined,
                   {
@@ -204,14 +198,14 @@ export default function ArticleView({ post }: { post: Blog }) {
               <div className="mt-1 text-xs text-zinc-500">Published</div>
             </li>
             <li className="rouded-xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
-              <div className="flex items-center gap-2 text-2xl font-semibold text-zinc-900">
+              <div className="flex items-center gap-2 text-lg md:text-2xl font-semibold text-zinc-900">
                 <Clock className="h-5 w-5 text-zinc-500" />
                 {readingMins} min
               </div>
               <div className="mt-1 text-xs text-zinc-500">Read Time</div>
             </li>
             <li className="rouded-xl bg-white/70 px-4 py-4 text-sm text-zinc-700 ring-1 ring-black/5 backdrop-blur">
-              <div className="text-2xl font-semibold text-zinc-900">
+              <div className="text-lg md:text-2xl font-semibold text-zinc-900">
                 {post.tags?.length ?? 0}
               </div>
               <div className="mt-1 text-xs text-zinc-500">Tags</div>
@@ -225,7 +219,7 @@ export default function ArticleView({ post }: { post: Blog }) {
       <section className="bg-white border-b border-zinc-200">
         <div className="mx-auto w-full max-w-7xl px-6 py-6">
           <div className="relative overflow-hidden rounded-3xl border border-zinc-200">
-            <div className="relative aspect-[16/8] md:aspect-[16/6]">
+            <div className="relative aspect-[16/8] md:aspect-[16/9]">
               <Image
                 src={post.image}
                 alt={post.imageAlt || post.title}
