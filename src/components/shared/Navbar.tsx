@@ -267,7 +267,7 @@ function Navbar() {
                 <Button
                   variant="ghost"
                   onClick={handleSidebarToggle}
-                  className="p-2 hover:bg-gray-100 transition-all duration-200 ease-out hover:scale-105"
+                  className="p-2 hover:bg-gray-100 transition-all duration-200 ease-out hover:scale-110"
                 >
                   <svg
                     width="23"
