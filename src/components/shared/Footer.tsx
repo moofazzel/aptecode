@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 function Footer() {
   const socialLinks = [
@@ -28,37 +29,32 @@ function Footer() {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-4">
                 <h2 className="text-4xl md:text-5xl lg:text-7xl leading-24 font-bold uppercase tracking-wider">
-                  LET&apos;S START YOUR NEXT
-                  <br />
-                  DREAM PROJECT
+                  Ready to Launch a Site that Sells?
                 </h2>
               </div>
-              <motion.button
-                onClick={() => {}}
-                className="w-20 h-20 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
+              <motion.div
                 whileHover={{
-                  scale: 1.1,
+                  scale: 1.03,
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <motion.div
-                  className="group-hover:rotate-45 transition-transform duration-300 ease-out"
-                  animate={{
-                    color: "#ffffff",
-                  }}
-                  whileHover={{
-                    color: "#a855f7", // purple-400
-                  }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 400,
-                    damping: 25,
-                    duration: 0.4,
-                  }}
+                <Link
+                  href="/contact"
+                  className="w-24 lg:w-28 h-24 lg:h-28 border-2 border-purple-500 rounded-full flex items-center justify-center hover:bg-purple-500/10 transition-all duration-300 group"
                 >
-                  <ArrowUpRight className="w-6 h-6" />
-                </motion.div>
-              </motion.button>
+                  <motion.div
+                    className="group-hover:rotate-45 transition-transform duration-500 ease-out"
+                    animate={{
+                      color: "#ffffff",
+                    }}
+                    whileHover={{
+                      color: "#a855f7", // purple-400
+                    }}
+                  >
+                    <ArrowUpRight className="w-8 h-8" />
+                  </motion.div>
+                </Link>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -109,7 +105,7 @@ function Footer() {
 
               {/* Copyright */}
               <div className="text-sm text-gray-400">
-                ©2025 Aptecode. All Rights Reserved.
+                ©2025 Aptecode. We build websites that win customers.
               </div>
             </div>
           </div>

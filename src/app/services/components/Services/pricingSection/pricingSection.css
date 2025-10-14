@@ -1,0 +1,76 @@
+.pricingCard {
+  background-color: #f2f3f4;
+  border: none;
+  margin: 13px;
+  padding: 40px 50px;
+}
+
+.pricingPlan {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #11151c;
+}
+
+.pricingValue {
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 15px;
+  color: #a868fa;
+}
+
+.pricingSubtitle {
+  color: #74787c;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.pricingFeatureLabel {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #11151c;
+}
+.pricingFeatureText {
+  font-size: 16px;
+  color: #74787c;
+}
+
+.lrd {
+  background: linear-gradient(
+    270deg,
+    rgba(63, 90, 243, 0.4) 0%,
+    transparent 100%
+  );
+  content: "";
+  width: 37px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.rrd {
+  background: linear-gradient(
+    90deg,
+    rgba(63, 90, 243, 0.4) 0%,
+    transparent 100%
+  );
+  content: "";
+  width: 37px;
+  height: 10px;
+
+  transform: translateY(-50%);
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}

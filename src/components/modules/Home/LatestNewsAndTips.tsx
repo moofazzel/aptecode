@@ -7,6 +7,7 @@ import Image from "next/image";
 
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   date: string;
   author: string;
@@ -17,26 +18,29 @@ interface BlogPost {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "How GEO & SEO Web Apps Boost Your Business",
-    date: "25 JUNE, 2024",
+    slug: "idea-to-mvp-web-app-roadmap-2025",
+    title: "From Idea to MVP: A Practical Web App Roadmap for Founders",
+    date: "13 OCT, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/post-15.jpg",
+    image: "/img/blog/bl1.jpg",
     imageAlt: "Young man and woman in office setting with laptop",
   },
   {
     id: 2,
-    title: "Custom Software: Why Your Brand Needs It",
-    date: "25 JUNE, 2024",
+    slug: "founder-analytics-blueprint-north-star",
+    title: "Turn Your App Data Into Revenue: A Founder’s Analytics Blueprint",
+    date: "29SEPT, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/post-16.jpg",
+    image: "/img/blog/bl3.jpg",
     imageAlt: "Group of people around table looking at laptop",
   },
   {
     id: 3,
-    title: "Crypto Social Services: Building Strong Communities",
-    date: "25 JUNE, 2024",
+    slug: "automate-ops-7-workflows-save-10-hours",
+    title: "Automate Your Ops: 7 Workflows That Save 10+ Hours Weekly",
+    date: "01 SEPT, 2025",
     author: "POST BY: APTECODE",
-    image: "/img/blog/post-17.jpg",
+    image: "/img/blog/bl7.jpg",
     imageAlt: "Diverse group of young people in office space",
   },
 ];
@@ -123,13 +127,12 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
           delay: index * 0.1,
           ease: "easeOut",
         }}
-        whileHover={{ scale: 1.05 }}
       >
         <Image
           src={post.image}
           alt={post.imageAlt}
           fill
-          className="object-cover transition-all duration-700 group-hover:scale-110"
+          className="object-cover"
         />
         {/* Enhanced overlay with gradient */}
         <motion.div
@@ -178,10 +181,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.2 }}
         >
-          <motion.div
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div>
             <User className="w-4 h-4 mr-2" />
           </motion.div>
           <span>{post.author}</span>
@@ -203,7 +203,7 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
       >
         <motion.h3
           className="text-xl font-bold text-gray-900 mb-6 leading-tight group-hover:text-purple-600 transition-colors duration-300 relative inline-block"
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.2 }}
         >
           <span className="relative">
@@ -212,32 +212,22 @@ function BlogPostCard({ post, index }: BlogPostCardProps) {
               className="absolute bottom-0 left-0 h-0.5 bg-purple-600"
               initial={{ width: 0 }}
               whileHover={{ width: "100%" }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
             />
           </span>
         </motion.h3>
 
         {/* Enhanced Read More Button */}
-        <motion.div
-          className="flex justify-start"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.2 }}
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+        <div className="flex justify-start">
+          <GradientButton
+            href={`/blog/${post.slug}`}
+            variant="primary"
+            size="md"
+            showArrow={true}
           >
-            <GradientButton
-              variant="ghost"
-              size="md"
-              className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 group-hover:shadow-xl transition-all duration-300"
-              showArrow={true}
-            >
-              Read More
-            </GradientButton>
-          </motion.div>
-        </motion.div>
+            Read More
+          </GradientButton>
+        </div>
       </motion.div>
     </motion.article>
   );
@@ -290,7 +280,7 @@ function LatestNewsAndTips() {
           }}
         >
           <SectionHeader
-            title="APTECODE INSIGHTS"
+            title="Insights"
             variant="secondary"
             className="justify-center mb-4"
           />
@@ -306,7 +296,7 @@ function LatestNewsAndTips() {
               ease: "easeOut",
             }}
           >
-            Latest News & Tips
+            Latest from Aptecode
           </motion.h2>
         </motion.div>
 

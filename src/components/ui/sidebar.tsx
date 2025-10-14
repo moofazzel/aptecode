@@ -22,9 +22,31 @@ interface SidebarProps {
 
 export function Sidebar({ isOpen, onClose }: SidebarProps) {
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    {
+      label: "Home",
+      href: "/",
+    },
+    {
+      label: "About",
+      href: "/about",
+    },
+    {
+      label: "Portfolio",
+      href: "/portfolio",
+    },
+    {
+      label: "Services",
+      href: "/services",
+    },
+
+    {
+      label: "Blogs",
+      href: "/blog",
+    },
+    {
+      label: "Contact",
+      href: "/contact",
+    },
   ];
 
   // Smooth animation variants for elegant feel
@@ -229,12 +251,12 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     whileTap={{ scale: 0.98 }}
                   >
                     <GradientButton
-                      href="/"
+                      href="/contact#meeting"
                       onClick={onClose}
                       showArrow
                       fullWidth
                     >
-                      Get Started
+                      Book a Meeting Now
                     </GradientButton>
                   </motion.div>
                 </motion.div>
@@ -257,10 +279,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     variants={itemVariants}
                     className="text-gray-600 text-sm leading-relaxed mb-6"
                   >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Ready to turn visitors into loyal clients? Don&apos;t let
+                    your competitors get ahead—partner with Aptecode and unlock
+                    real growth now.
                   </motion.p>
                   <motion.div
                     whileHover={{
@@ -325,7 +346,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         <MapPin className="w-5 h-5 text-blue-600" />
                       </motion.div>
                       <span className="text-gray-600 text-sm">
-                        12/A, Miranda City Tower, NYC
+                        Ozark, AL, United States
                       </span>
                     </motion.div>
                     <motion.div
@@ -353,7 +374,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         <Phone className="w-5 h-5 text-blue-600" />
                       </motion.div>
                       <span className="text-gray-600 text-sm">
-                        +000 123 (456) 789
+                        +1 334-200-7299
                       </span>
                     </motion.div>
                     <motion.div
@@ -381,7 +402,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         <Mail className="w-5 h-5 text-blue-600" />
                       </motion.div>
                       <span className="text-gray-600 text-sm">
-                        aptecodecontact@gmail.com
+                        support@ivey.solutions
                       </span>
                     </motion.div>
                   </motion.div>

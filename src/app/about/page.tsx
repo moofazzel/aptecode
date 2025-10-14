@@ -1,25 +1,20 @@
-import AboutSec from "@/components/modules/about/AboutSec";
-import CounterStrip from "@/components/modules/about/CounterStrip";
-import MarqeeSlider from "@/components/modules/about/MarqeeSlider";
-import MissionVision from "@/components/modules/about/MissionVision";
-import ProcessSection from "@/components/modules/about/ProcessSection";
-import TestimonialsSection from "@/components/modules/about/TestimonialsSection";
-import PageBanner from "../../components/shared/PageBanner";
+import AboutSec from "./components/About/AboutSec";
+import CounterStrip from "./components/About/CounterStrip";
+import MarqueeSlider from "./components/About/MarqeeSlider";
+import MissionVision from "./components/About/MissionVision";
+import ProcessSection from "./components/About/ProcessSection";
+import TestimonialsSection from "./components/About/TestimonialsSection";
+
 export default function AboutPage() {
   return (
-    <div>
-      <PageBanner
-        title="About Aptecode"
-        subtitle="We build great digital products"
-        bgImage="/img/bg-img/bg.png"
-      />
+    <>
       <AboutSec />
       <ProcessSection />
       <CounterStrip />
-      <MarqeeSlider />
+      <MarqueeSlider />
       <MissionVision />
       <TestimonialsSection />
       {/* <AboutCta /> */}
-    </div>
+    </>
   );
 }

@@ -27,30 +27,30 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     quote:
-      "The Aptecode team built our crypto community site and helped moderate our group. Professional and reliable!",
+      "Site launched in 3 weeks. Leads started same day. Aptecode nailed it.",
     author: {
-      name: "William Edward",
-      title: "Crypto Project Lead",
+      name: "Sarah M.",
+      title: "Founder, Local Service Co.",
       image: "/img/testi/testi-author-6.png",
     },
   },
   {
     id: 2,
     quote:
-      "Exceptional development work and outstanding support. They delivered exactly what we needed for our project.",
+      "Finally, a team that gets strategy and ships fast. No endless revisions.",
     author: {
-      name: "Sarah Johnson",
-      title: "Product Manager",
+      name: "James P.",
+      title: "CEO, SaaS Startup",
       image: "/img/testi/testi-author-7.png",
     },
   },
   {
     id: 3,
     quote:
-      "Working with Aptecode was a game-changer for our business. Their expertise and dedication are unmatched.",
+      "Migrated from Squarespace without breaking SEO. Conversion rate up 22%.",
     author: {
-      name: "Michael Chen",
-      title: "CEO & Founder",
+      name: "Emily R.",
+      title: "Owner, E-Commerce Brand",
       image: "/img/testi/testi-author-6.png",
     },
   },
@@ -111,7 +111,7 @@ function Clients() {
                 viewport={{ once: true }}
               >
                 <SectionHeader
-                  title="APTECODE CLIENTS"
+                  title="Client Stories"
                   className="mb-6"
                   variant="secondary"
                 />
@@ -125,7 +125,7 @@ function Clients() {
                 viewport={{ once: true }}
                 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-6 leading-tight"
               >
-                What Our Customers Say
+                What Clients Say
               </motion.h2>
 
               {/* Rating */}

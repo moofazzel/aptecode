@@ -3,6 +3,7 @@
 import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { useAnimationContext } from "../../contexts/AnimationContext";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
@@ -21,6 +22,7 @@ function Navbar() {
   const { isGSAPReady, registerAnimation, unregisterAnimation } =
     useAnimationContext();
   const { isScrolled } = useScrollPosition(50);
+  const pathname = usePathname();
 
   const navItems = [
     {
@@ -30,6 +32,19 @@ function Navbar() {
     {
       label: "About",
       href: "/about",
+    },
+    {
+      label: "Portfolio",
+      href: "/portfolio",
+    },
+    {
+      label: "Services",
+      href: "/services",
+    },
+
+    {
+      label: "Blogs",
+      href: "/blog",
     },
     {
       label: "Contact",
@@ -114,8 +129,9 @@ function Navbar() {
         container,
         {
           margin: "20px 0",
-          maxWidth: "1280px",
+          maxWidth: "1630px",
           width: "100%",
+          // backgroundColor: "#F2F3F4",
           backgroundColor: "#F2F3F4",
           backdropFilter: "none",
           boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
@@ -174,21 +190,31 @@ function Navbar() {
     };
   }, [isScrolled, isGSAPReady, registerAnimation, unregisterAnimation]);
 
+  // Helper function to determine if the nav item is active
+  function isActiveNavItem(href: string) {
+    // Handle root
+    if (href === "/") {
+      return pathname === "/";
+    }
+    // For other paths, check substring matching at start & "/"
+    return pathname === href || pathname.startsWith(href + "/");
+  }
+
   return (
     <>
       <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center ">
           <div
             ref={containerRef}
             className="px-4 shadow-sm border border-[#E4E4E4] "
-            style={{ margin: "20px 0", maxWidth: "1280px", width: "100%" }}
+            style={{ margin: "20px 0", maxWidth: "1530px", width: "100%" }}
           >
-            <div className="flex items-center justify-between h-24">
+            <div className="flex items-center justify-between h-20 ">
               {/* Logo */}
               <div ref={logoRef} className="flex-shrink-0">
                 <Link href="/">
                   <Image
-                    className="h-8 w-auto"
+                    className="w-[180px]"
                     src="/img/logo/aptecode.png"
                     alt="Aptecode Logo"
                     width={150}
@@ -200,27 +226,35 @@ function Navbar() {
               {/* Desktop Navigation Items - Hidden on mobile */}
               <div
                 ref={navItemsRef}
-                className="hidden md:flex items-center space-x-8"
+                className="hidden md:flex items-center space-x-8 "
               >
-                {navItems.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-all duration-200 ease-out hover:scale-105"
-                    style={{
-                      fontFamily:
-                        "var(--font-hind-madurai), system-ui, sans-serif",
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = isActiveNavItem(item.href);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 text-lg ${
+                        isActive
+                          ? "text-blue-700 underline underline-offset-8 decoration-2"
+                          : "text-gray-700 hover:text-blue-600"
+                      }`}
+                      style={{
+                        fontFamily:
+                          "var(--font-hind-madurai), system-ui, sans-serif",
+                      }}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* Desktop Actions - Hidden on tablet and mobile */}
               <div ref={actionsRef} className="flex items-center space-x-4">
                 <GradientButton
-                  href="/"
+                  href="/contact#meeting"
                   showArrow
                   className="hidden lg:flex"
                   style={{
@@ -228,7 +262,7 @@ function Navbar() {
                       "var(--font-hind-madurai), system-ui, sans-serif",
                   }}
                 >
-                  Get Started Now
+                  Book a Meeting Now
                 </GradientButton>
                 <Button
                   variant="ghost"

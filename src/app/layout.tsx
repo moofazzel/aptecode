@@ -19,9 +19,9 @@ const hindMadurai = Hind_Madurai({
 });
 
 export const metadata: Metadata = {
-  title: "Aptecode - Global Branding and UX Design Agency",
+  title: "Aptecode — Websites that Win Customers",
   description:
-    "We build transformative digital experiences for the world's leading brands by blending AI, design, and technology.",
+    "Fast, conversion-ready websites for new brands and founders. No fluff. Just strategy, clean UX, and sites that sell. Get a free strategy call.",
 };
 
 export default function RootLayout({

@@ -4,62 +4,39 @@ import {
   ScrollProgressIndicator,
   ScrollToTopButton,
 } from "@/components/shared/ScrollProgressIndicator";
-import {
-  useAdvancedScrollAnimation,
-  useCounterAnimation,
-  useImageRevealAnimation,
-  useParallaxAnimation,
-  useProgressBarAnimation,
-  useTextRevealAnimation,
-} from "@/hooks/useAdvancedScrollAnimations";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { useScrollAnimation, useStaggeredGSAP } from "@/hooks/useAnimations";
 import Image from "next/image";
+import { useState } from "react";
 
 export const ScrollAnimationShowcase: React.FC = () => {
-  // Various scroll animations
-  const { ref: revealUpRef } = useAdvancedScrollAnimation("revealUp");
-  const { ref: revealLeftRef } = useAdvancedScrollAnimation("revealLeft");
-  const { ref: revealRightRef } = useAdvancedScrollAnimation("revealRight");
-  const { ref: zoomInRef } = useAdvancedScrollAnimation("zoomIn");
-  const { ref: flipInRef } = useAdvancedScrollAnimation("flipIn");
-  const { ref: blurInRef } = useAdvancedScrollAnimation("blurIn");
+  // Various scroll animations (simplified for demo)
+  const { ref: revealUpRef } = useScrollAnimation("fadeInUp");
+  const { ref: revealLeftRef } = useScrollAnimation("fadeInLeft");
+  const { ref: revealRightRef } = useScrollAnimation("fadeInRight");
+  const { ref: zoomInRef } = useScrollAnimation("zoomIn");
+  const { ref: flipInRef } = useScrollAnimation("flipInX");
+  const { ref: blurInRef } = useScrollAnimation("fadeIn");
 
-  // Parallax effects
-  const { ref: parallaxUpRef } = useParallaxAnimation({
-    speed: 0.5,
-    direction: "up",
-  });
-  const { ref: parallaxDownRef } = useParallaxAnimation({
-    speed: 0.3,
-    direction: "down",
-  });
+  // Parallax effects (simplified)
+  const { ref: parallaxUpRef } = useScrollAnimation("parallaxUp");
+  const { ref: parallaxDownRef } = useScrollAnimation("parallaxDown");
 
-  // Text reveal animations
-  const { ref: textRevealRef } = useTextRevealAnimation({
-    direction: "up",
-    distance: 50,
+  // Text reveal animations (simplified)
+  const { addToRefs: textRevealRef } = useStaggeredGSAP("fadeInUp", {
+    staggerDelay: 0.1,
   });
 
-  // Image reveal animations
-  const { ref: imageRevealRef } = useImageRevealAnimation({
-    direction: "up",
-    distance: 60,
-  });
+  // Image reveal animations (simplified)
+  const { ref: imageRevealRef } = useScrollAnimation("scaleIn");
 
-  // Counter animation
-  const { ref: counterRef } = useCounterAnimation(100, {
-    suffix: "%",
-    duration: 2,
-  });
+  // Counter animation (simplified - static values for demo)
+  const { ref: counterRef } = useScrollAnimation("fadeInUp");
 
-  // Progress bar animation
-  const { ref: progressRef } = useProgressBarAnimation(85, { duration: 1.5 });
+  // Progress bar animation (simplified - static values for demo)
+  const { ref: progressRef } = useScrollAnimation("fadeInUp");
 
-  // Intersection observer example
-  const { ref: intersectionRef, isIntersecting } = useIntersectionObserver({
-    threshold: 0.5,
-    freezeOnceVisible: true,
-  });
+  // Intersection observer example (simplified for demo)
+  const [isIntersecting, setIsIntersecting] = useState(false);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -245,7 +222,10 @@ export const ScrollAnimationShowcase: React.FC = () => {
       {/* Intersection Observer Example */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div ref={intersectionRef} className="text-center">
+          <div
+            className="text-center cursor-pointer"
+            onClick={() => setIsIntersecting(!isIntersecting)}
+          >
             <h2 className="text-4xl font-bold text-gray-900 mb-8">
               Intersection Observer
             </h2>

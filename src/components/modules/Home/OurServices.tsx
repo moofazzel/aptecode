@@ -1,9 +1,8 @@
 "use client";
 import SectionHeader from "@/components/shared/SectionHeader";
 import { motion } from "framer-motion";
-import { ChevronsRight, MoveLeft, MoveRight } from "lucide-react";
+import { ArrowRight, MoveLeft, MoveRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,21 +17,24 @@ function OurServices() {
   const services = [
     {
       number: 1,
-      title: " GEO & SEO Web App",
-      description: "Optimized web apps for business growth and visibility.",
+      title: "Website Design & Build",
+      description: "Pro look, built to convert—fast, clear, and easy to edit.",
       image: "/img/service/service-12o.jpg",
+      color: "bg-blue-400",
     },
     {
       number: 2,
-      title: "Custom Software",
-      description: "Scalable, secure, and tailored software solutions.",
+      title: "Performance & SEO Fundamentals",
+      description: "Speed + structure so you rank and load fast from day one.",
       image: "/img/service/service-12o.jpg",
+      color: "bg-purple-400",
     },
     {
       number: 3,
-      title: "E-commerce Solutions",
-      description: "Scalable, secure, and tailored software solutions.",
+      title: "Migrations & Rebuilds",
+      description: "Move platforms safely—URLs, SEO, and analytics intact.",
       image: "/img/service/service-12o.jpg",
+      color: "bg-teal-400",
     },
   ];
 
@@ -96,7 +98,7 @@ function OurServices() {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
               >
-                What We Do
+                What We Build
               </motion.span>
               <motion.span
                 className="inline-block ml-2"
@@ -109,7 +111,7 @@ function OurServices() {
                   ease: [0.25, 0.46, 0.45, 0.94],
                 }}
               >
-                For Your
+                for Your
               </motion.span>
               <motion.span
                 className="inline-block ml-2 bg-gradient-to-r from-[#3F5AF3] to-[#8B5CF6] bg-clip-text text-transparent"
@@ -195,23 +197,31 @@ function OurServices() {
                   />
                 </div>
 
-                {/* Content on the right */}
-                <article className="w-1/2 bg-[#F2F3F4] p-6 md:p-8 flex flex-col justify-center">
-                  <span className="text-[#171717] text-4xl md:text-5xl font-extrabold opacity-[0.2] mb-4 inline-block">
-                    {String(service.number).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-[#171717] text-lg md:text-xl font-bold mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-[#74787c] font-normal text-sm md:text-base mb-4 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <Link
-                    href="/"
-                    className="text-[#3F5AF3] text-sm md:text-base font-normal flex items-center gap-2 hover:gap-3 transition-all"
-                  >
-                    Read More <ChevronsRight className="w-4 h-4" />
-                  </Link>
+                {/* Modern Content on the right */}
+                <article className="w-1/2 relative backdrop-blur-sm bg-white/80 border border-white/20 p-6 md:p-8 flex flex-col justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 to-transparent rounded-r-3xl"></div>
+                  <div className="relative z-10">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div
+                        className={`w-12 h-12 ${service.color} flex items-center justify-center`}
+                      >
+                        <span className="text-white text-lg font-bold">
+                          {service.number}
+                        </span>
+                      </div>
+                      <div className="w-16 h-3 bg-gradient-to-r from-gray-300 to-transparent "></div>
+                    </div>
+                    <h3 className="text-[#171717] text-xl md:text-2xl font-bold mb-4 leading-tight">
+                      {service.title}
+                    </h3>
+                    <p className="text-[#74787c] font-medium text-base md:text-lg mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                    <div className="flex items-center gap-2 text-[#3F5AF3] font-semibold text-sm md:text-base hover:gap-3 transition-all cursor-pointer hover:text-[#8B5CF6]">
+                      <span>Learn More</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
                 </article>
               </div>
             </SwiperSlide>

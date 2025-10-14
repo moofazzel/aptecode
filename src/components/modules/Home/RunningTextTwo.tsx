@@ -1,14 +1,19 @@
 import RunningText from "@/components/shared/RunningText";
 
 function RunningTextTwo() {
+  const items = [
+    { text: "Generative AI GEO Optimization," },
+    { text: "Local Search AI-Ready," },
+    { text: "Next-Gen Local SEO," },
+  ];
   return (
     <div
-      className="w-full h-32 bg-cover bg-center bg-no-repeat relative py-[300px]"
+      className="w-full h-[310px] bg-cover bg-center bg-no-repeat relative"
       style={{ backgroundImage: "url('/img/bg-img/running-bg-2.jpg')" }}
     >
       <div
         style={{
-          backgroundColor: "#3F5AF3",
+          backgroundColor: "#7B9AF7 ",
           mixBlendMode: "multiply",
           content: '""',
           width: "100%",
@@ -20,7 +25,7 @@ function RunningTextTwo() {
         }}
         aria-hidden="true"
       />
-      <RunningText defaultStrokeColor="#fff" speed={100} />
+      <RunningText defaultStrokeColor="#fff" speed={100} items={items} />
     </div>
   );
 }

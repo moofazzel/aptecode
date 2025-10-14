@@ -9,38 +9,42 @@ function Projects() {
   const projects = [
     {
       id: 1,
-      title: "GEO & SEO WEB APP",
+      title: "Local Service Business Site",
       image: "/img/project/project-img-5o.jpg",
-      category: "Marketing",
-      description: "Business Web App for Local SEO",
+      category: "Service Business",
+      description:
+        "New brand. Went live in 3 weeks. Leads up 38% in first 60 days.",
     },
     {
       id: 2,
-      title: "Web Development",
+      title: "E-Commerce Rebuild",
       image: "/img/project/project-img-5.jpg",
-      category: "Development",
-      description: "Custom Software for Business Growth",
+      category: "E-Commerce",
+      description:
+        "Migrated from Wix. Faster checkout, better SEO, 22% bump in conversions.",
     },
     {
       id: 3,
-      title: "UI/UX Design",
+      title: "SaaS Marketing Site",
       image: "/img/project/project-img-6.jpg",
-      category: "Design",
-      description: "UI/UX Design for Business Growth",
+      category: "SaaS",
+      description: "Founder-led startup. Clean IA, demo-ready in 4 weeks.",
     },
     {
       id: 4,
-      title: "Mobile App",
+      title: "Professional Services Firm",
       image: "/img/project/project-img-7.jpg",
-      category: "Mobile",
-      description: "Mobile App for Business Growth",
+      category: "Professional Services",
+      description:
+        "Credibility refresh. Modern design, clear service pages, mobile-first.",
     },
     {
       id: 5,
-      title: "Mobile App",
+      title: "Bootstrapped Founder Site",
       image: "/img/project/project-img-8.jpg",
-      category: "Mobile",
-      description: "Mobile App for Business Growth",
+      category: "Founder",
+      description:
+        "Solo founder, tight budget. Launched fast, looks pro, easy to edit.",
     },
   ];
 
@@ -111,7 +115,7 @@ function Projects() {
               </p>
               <Link
                 className="bg-white rounded-full w-12 h-12 md:w-14 md:h-14 lg:w-15 lg:h-15 flex items-center justify-center transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-400 hover:scale-110 hover:bg-gray-100"
-                href="/contact"
+                href="/portfolio"
               >
                 <ArrowRight className="text-[#a868fa] transition-all duration-300 hover:translate-x-1 hover:scale-110 w-4 h-4 md:w-5 md:h-5" />
               </Link>
@@ -168,7 +172,7 @@ function Projects() {
                 </p>
                 <Link
                   className="bg-white rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-800 ease-[cubic-bezier(0.34,1.56,0.64,1)] delay-400 hover:scale-110 hover:bg-gray-100"
-                  href="/contact"
+                  href="/portfolio"
                 >
                   <ArrowRight className="text-[#a868fa] transition-all duration-300 hover:translate-x-1 hover:scale-110 w-3 h-3 md:w-4 md:h-4" />
                 </Link>

@@ -22,9 +22,9 @@ interface RunningTextProps {
 const DEFAULT_STROKE_COLOR = "#74787C";
 
 const DEFAULT_ITEMS: RunningTextItem[] = [
-  { text: "Modern Web Development" },
-  { text: "UI/UX Design" },
-  { text: "SEO & Performance" },
+  { text: "Websites that Win Customers" },
+  { text: "Fast Builds, Real Results" },
+  { text: "Strategy-led, conversion-designed" },
 ];
 
 const STROKE_TEXT_STYLES: React.CSSProperties = {
@@ -122,9 +122,9 @@ const RunningText: React.FC<RunningTextProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`bg-transparent pb-[80px] mt-[-80px] pt-0 ${className}`}
+      className={`bg-transparent pb-[80px] mt-[-80px] pt-0 overflow-x-hidden ${className}`}
     >
-      <div className="">
+      <div className="overflow-x-hidden">
         <ul
           ref={ulRef}
           className="flex text-[#a868fa] bgsize-[20px] overflow-hidden gap-16"

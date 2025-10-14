@@ -24,10 +24,6 @@ const RunningTextSlider = ({
 
     const slider = sliderRef.current;
     const sliderWidth = slider.scrollWidth;
-    const containerWidth = slider.parentElement?.offsetWidth || 0;
-
-    // Duplicate items for seamless loop
-    const duplicatedItems = [...items, ...items];
 
     // Create the running animation
     const animate = () => {
