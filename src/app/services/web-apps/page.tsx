@@ -3,9 +3,10 @@
 
 import Image from "next/image";
 import { Fragment } from "react";
+import CtaSection from "../components/Services/ctasection";
 
 // -----------------------------
-// Types
+// Types (unchanged)
 // -----------------------------
 type Stat = { label: string; value: string; hint?: string };
 type Feature = { title: string; desc: string };
@@ -20,9 +21,9 @@ type CaseStudy = {
 };
 type FAQ = { q: string; a: string };
 
-// -----------------------------
-// Data (static) — tailored for WEB APPS
-// -----------------------------
+// --------------------------------
+// Data (unchanged content)
+// --------------------------------
 const STATS: Stat[] = [
   { label: "Apps Shipped", value: "60+" },
   { label: "Avg. Uptime (12m)", value: "99.95%", hint: "monitored" },
@@ -149,12 +150,62 @@ const FAQS: FAQ[] = [
   },
 ];
 
+// GEO constant (non-visual)
+const CITY = "Dhaka";
+
 // -----------------------------
 // Page
 // -----------------------------
 export default function WebAppsServicePage() {
+  // ——— JSON-LD (invisible) ———
+  // 1) WebPage + Service entity for this page
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Web Apps",
+    description:
+      "We design & build production-grade web applications — secure auth, real-time UX, offline resilience, and observability by default.",
+    mainEntity: {
+      "@type": "Service",
+      name: "Web Apps",
+      serviceType: "Web Apps",
+      areaServed: { "@type": "Place", name: CITY },
+    },
+  };
+
+  // 2) Breadcrumbs
+  const breadcrumbsJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "/" },
+      { "@type": "ListItem", position: 2, name: "Services", item: "/services" },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "Web Apps",
+        item: "/services/web-apps",
+      },
+    ],
+  };
+
+  // 3) FAQPage
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
-    <main className="bg-white text-zinc-800">
+    <main
+      className="bg-white text-zinc-800"
+      itemScope
+      itemType="https://schema.org/WebPage"
+    >
       {/* HERO */}
       {/* <Hero /> */}
 
@@ -173,24 +224,43 @@ export default function WebAppsServicePage() {
       {/* TECH */}
       <TechStrip />
 
-      {/* CASES (commented for parity with your pattern; enable if needed) */}
+      {/* CASES (commented for parity; enable if needed) */}
       {/* <CaseStudies /> */}
 
-      {/* PRICING — use your shared component */}
-      {/* // comment this for deploy issues */}
+      {/* PRICING — shared component */}
       {/* <PricingSection /> */}
 
       {/* FAQ */}
       <Faqs />
 
       {/* CTA */}
-      <CTA />
+      {/* <CTA /> */}
+      <CtaSection
+        titleTop="Have Any Projects On Minds!"
+        titleBottom="Contact Us"
+        ctaText="Make Appointment"
+        ctaHref="/contact"
+      />
+
+      {/* ——— Invisible JSON-LD blocks (no UI impact) ——— */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </main>
   );
 }
 
 // -----------------------------
-// Components
+// Components (additive semantics only)
 // -----------------------------
 function Hero() {
   return (
@@ -217,12 +287,14 @@ function Hero() {
           <a
             href="#pricing"
             className="inline-flex items-center justify-center bg-indigo-600 px-5 py-3 text-white text-sm font-medium hover:bg-indigo-700 transition"
+            aria-label={`See engagement options for Web Apps in ${CITY}`}
           >
             See Engagement Options
           </a>
           <a
             href="/contact"
             className="inline-flex items-center justify-center bg-white/10 px-5 py-3 text-white text-sm font-medium hover:bg-white/20 transition"
+            aria-label={`Plan my Web Apps MVP — ${CITY}`}
           >
             Plan my MVP →
           </a>
@@ -237,19 +309,32 @@ function TrustStats() {
     <section className="bg-white border-b border-zinc-200">
       <div className="mx-auto w-full max-w-7xl px-6 py-10">
         {/* Visual band */}
-        <div className="my-8 overflow-hidden rounded border border-zinc-200 bg-[url('/img/service/sr1.jpg')] bg-cover bg-center min-h-[640px]" />
+        <div
+          className="my-8 overflow-hidden rounded border border-zinc-200 bg-[url('/img/service/sr1.jpg')] bg-cover bg-center min-h-[640px]"
+          role="img"
+          aria-label="Web apps hero — production-grade applications"
+        />
         <ul className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {STATS.map((s) => (
             <li
               key={s.label}
               className="rounded border border-zinc-200 p-6 bg-white shadow-sm"
+              itemScope
+              itemType="https://schema.org/QuantitativeValue"
             >
-              <div className="text-3xl font-semibold tracking-tight text-zinc-900">
+              <div
+                className="text-3xl font-semibold tracking-tight text-zinc-900"
+                itemProp="value"
+              >
                 {s.value}
               </div>
-              <div className="mt-1 text-md text-zinc-500">{s.label}</div>
+              <div className="mt-1 text-md text-zinc-500" itemProp="name">
+                {s.label}
+              </div>
               {s.hint && (
-                <div className="mt-2 text-xs text-zinc-400">{s.hint}</div>
+                <div className="mt-2 text-xs text-zinc-400" aria-hidden="true">
+                  {s.hint}
+                </div>
               )}
             </li>
           ))}
@@ -279,11 +364,27 @@ function FeatureGrid() {
             <li
               key={f.title}
               className="rounded-lg bg-white border border-zinc-200 p-6 transition duration-300 hover:shadow-lg"
+              itemScope
+              itemType="https://schema.org/Offer"
             >
-              <h3 className="text-xl font-bold text-zinc-900">{f.title}</h3>
-              <p className="mt-2 text-zinc-600 text-md leading-relaxed">
+              <h3 className="text-xl font-bold text-zinc-900" itemProp="name">
+                {f.title}
+              </h3>
+              <p
+                className="mt-2 text-zinc-600 text-md leading-relaxed"
+                itemProp="description"
+              >
                 {f.desc}
               </p>
+              {/* GEO signal */}
+              <span
+                itemProp="areaServed"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </li>
           ))}
         </ul>
@@ -353,16 +454,32 @@ function ProcessTimeline() {
             <li
               key={s.step}
               className="relative rounded border border-zinc-200 bg-white p-6"
+              itemScope
+              itemType="https://schema.org/HowToStep"
             >
               <span className="absolute -top-3 -left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white text-md font-semibold shadow">
                 {s.step}
               </span>
-              <h3 className="pl-8 text-xl font-bold text-zinc-900">
+              <h3
+                className="pl-8 text-xl font-bold text-zinc-900"
+                itemProp="name"
+              >
                 {s.title}
               </h3>
-              <p className="pl-8 mt-2 text-zinc-600 text-md leading-relaxed">
+              <p
+                className="pl-8 mt-2 text-zinc-600 text-md leading-relaxed"
+                itemProp="text"
+              >
                 {s.desc}
               </p>
+              <span
+                itemProp="areaServed"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </li>
           ))}
         </ol>
@@ -386,6 +503,8 @@ function TechStrip() {
                 height={56}
                 className="opacity-80 hover:opacity-100 transition"
               />
+              {/* GEO hint (invisible) */}
+              <meta itemProp="areaServed" content={CITY} />
             </div>
           ))}
         </div>
@@ -405,6 +524,7 @@ function CaseStudies() {
           <a
             href="/contact"
             className="text-md text-indigo-600 hover:text-indigo-700 font-medium"
+            aria-label={`Discuss replicating these results for your web app in ${CITY}`}
           >
             Let’s replicate this →
           </a>
@@ -415,6 +535,8 @@ function CaseStudies() {
             <li
               key={c.title}
               className="overflow-hidden rounded-3xl border border-zinc-200 bg-white hover:shadow-xl transition"
+              itemScope
+              itemType="https://schema.org/CreativeWork"
             >
               <div className="relative aspect-[16/9]">
                 <Image
@@ -428,10 +550,15 @@ function CaseStudies() {
                 <div className="text-xs uppercase tracking-[0.18em] text-indigo-600 font-semibold">
                   {c.result}
                 </div>
-                <h3 className="mt-1 text-lg font-semibold text-zinc-900">
+                <h3
+                  className="mt-1 text-lg font-semibold text-zinc-900"
+                  itemProp="name"
+                >
                   {c.title}
                 </h3>
-                <p className="mt-2 text-md text-zinc-600">{c.summary}</p>
+                <p className="mt-2 text-md text-zinc-600" itemProp="abstract">
+                  {c.summary}
+                </p>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   {c.stats.map((s) => (
@@ -447,6 +574,15 @@ function CaseStudies() {
                   ))}
                 </div>
               </div>
+              {/* GEO tag */}
+              <span
+                itemProp="spatialCoverage"
+                itemScope
+                itemType="https://schema.org/Place"
+                hidden
+              >
+                <meta itemProp="name" content={CITY} />
+              </span>
             </li>
           ))}
         </ul>
@@ -467,15 +603,22 @@ function Faqs() {
             <Fragment key={f.q}>
               <details className="group open:bg-zinc-50">
                 <summary className="flex cursor-pointer list-none items-center justify-between px-6 py-5">
-                  <span className="text-zinc-900 text-xl font-medium">
+                  <span
+                    className="text-zinc-900 text-xl font-medium"
+                    itemProp="name"
+                  >
                     {f.q}
                   </span>
                   <span className="ml-6 inline-flex h-6 w-6 items-center justify-center rounded-full border border-zinc-300 text-zinc-500 group-open:rotate-45 transition">
                     +
                   </span>
                 </summary>
-                <div className="px-6 pb-6 text-md text-zinc-600 leading-relaxed">
-                  {f.a}
+                <div
+                  className="px-6 pb-6 text-md text-zinc-600 leading-relaxed"
+                  itemScope
+                  itemType="https://schema.org/Answer"
+                >
+                  <span itemProp="text">{f.a}</span>
                 </div>
               </details>
               {i < FAQS.length - 1 && <div className="h-px bg-zinc-200" />}
@@ -510,12 +653,14 @@ function CTA() {
             <a
               href="mailto:info@aptecode.com"
               className="inline-flex items-center justify-center bg-indigo-600 px-5 py-3 text-white text-md font-medium hover:bg-indigo-700 transition"
+              aria-label={`Email us your brief — Web Apps in ${CITY}`}
             >
               Email us your brief
             </a>
             <a
               href="/contact"
               className="inline-flex items-center justify-center bg-gray-700 px-5 py-3 text-white text-md font-medium hover:bg-white/20 transition"
+              aria-label={`Book a scope call — Web Apps in ${CITY}`}
             >
               Book a scope call
             </a>

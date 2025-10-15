@@ -218,7 +218,7 @@ export default function ArticleView({ post }: { post: Blog }) {
       {/* HERO IMAGE */}
       <section className="bg-white border-b border-zinc-200">
         <div className="mx-auto w-full max-w-7xl px-6 py-6">
-          <div className="relative overflow-hidden rounded-3xl border border-zinc-200">
+          <div className="relative overflow-hidden rounded border border-zinc-200">
             <div className="relative aspect-[16/8] md:aspect-[16/9]">
               <Image
                 src={post.image}
