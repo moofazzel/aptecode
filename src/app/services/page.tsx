@@ -5,36 +5,35 @@ import RunningCards from "./components/Services/RunningCards/RunningCards";
 import ServicesCard from "./components/Services/serviceCard";
 
 // src/app/services/page.tsx
-export const metadata = {
-  title: "Industry-Specific Web Design | Aptecode",
-  description:
-    "Design that speaks your industry. Fast, SEO-ready websites for healthcare, travel, SaaS, e-commerce, portfolios and more.",
-  alternates: {
-    canonical: "https://yourdomain.com/services",
-    languages: {
-      en: "https://yourdomain.com/en/services",
-      // add hreflang variants if you have them
-    },
-  },
-  openGraph: {
-    type: "website",
-    url: "https://yourdomain.com/services",
-    title: "Industry-Specific Web Design | Aptecode",
-    description:
-      "Design that speaks your industry. See real examples by category.",
-    images: [{ url: "https://yourdomain.com/og/services.png" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Industry-Specific Web Design | Aptecode",
-    description: "Design that speaks your industry.",
-    images: ["https://yourdomain.com/og/services.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+// export const metadata = {
+//   title: "Aptecode | Industry-Specific Web Design ",
+//   description:
+//     "Design that speaks your industry. Fast, SEO-ready websites for healthcare, travel, SaaS, e-commerce, portfolios and more.",
+//   alternates: {
+//     canonical: "https://yourdomain.com/services",
+//     languages: {
+//       en: "https://yourdomain.com/en/services",
+//     },
+//   },
+//   openGraph: {
+//     type: "website",
+//     url: "https://yourdomain.com/services",
+//     title: "Industry-Specific Web Design | Aptecode",
+//     description:
+//       "Design that speaks your industry. See real examples by category.",
+//     images: [{ url: "https://yourdomain.com/og/services.png" }],
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//     title: "Industry-Specific Web Design | Aptecode",
+//     description: "Design that speaks your industry.",
+//     images: ["https://yourdomain.com/og/services.png"],
+//   },
+//   robots: {
+//     index: true,
+//     follow: true,
+//   },
+// };
 
 function ServicesPage() {
   return (
