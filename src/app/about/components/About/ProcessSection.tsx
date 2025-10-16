@@ -32,8 +32,32 @@ const STEPS: Step[] = [
 ];
 
 export default function ProcessSection() {
+  // Structured data for the development process
+  const processStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Web Development Process at Aptecode",
+    "description": "Our systematic approach to delivering successful web development projects",
+    "step": STEPS.map((step, index) => ({
+      "@type": "HowToStep",
+      "position": index + 1,
+      "name": step.title,
+      "text": step.desc,
+      "url": `https://aptecode.com/about#step-${step.id}`
+    }))
+  };
+
   return (
-    <section className="relative pb-16 lg:pb-[96px] md:py-24">
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(processStructuredData),
+        }}
+      />
+      
+      <section className="relative pb-16 lg:pb-[96px] md:py-24" itemScope itemType="https://schema.org/HowTo">
       {/* Watermark word behind the heading (optional) */}
       <div
         aria-hidden
@@ -59,18 +83,21 @@ export default function ProcessSection() {
         </div>
 
         {/* Title */}
-        <h2 className="relative z-10 text-center text-3xl lg:text-[48px] font-[700] tracking-tight text-[#11151c]">
+        <h2 className="relative z-10 text-center text-3xl lg:text-[48px] font-[700] tracking-tight text-[#11151c]" itemProp="name">
           Our Development Process
           <br className="hidden sm:block" />
           <span className="block">For Digital Success</span>
         </h2>
 
         {/* Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 sm:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 sm:grid-cols-2" itemProp="step">
           {STEPS.map((step) => (
             <article
               key={step.id}
+              id={`step-${step.id}`}
               className=" bg-[#f2f3f4] p-8 md:p-10 shadow-[0_1px_0_0_rgba(0,0,0,0.02)]"
+              itemScope 
+              itemType="https://schema.org/HowToStep"
             >
               {/* Number pill */}
               <div className="mb-6 inline-flex items-center justify-center  border border-[#a868fa] px-4 py-2 text-[#a868fa] h-[40px] w-[60px]">
@@ -78,12 +105,12 @@ export default function ProcessSection() {
               </div>
 
               {/* Heading */}
-              <h3 className="text-xl md:text-2xl font-semibold text-neutral-900">
+              <h3 className="text-xl md:text-2xl font-semibold text-neutral-900" itemProp="name">
                 {step.title}
               </h3>
 
               {/* Description */}
-              <p className="mt-3 text-[#74787c] leading-relaxed">{step.desc}</p>
+              <p className="mt-3 text-[#74787c] leading-relaxed" itemProp="text">{step.desc}</p>
 
               {/* Read more */}
               <div className="mt-6">
@@ -106,5 +133,6 @@ export default function ProcessSection() {
         </div>
       </div>
     </section>
+    </>
   );
 }

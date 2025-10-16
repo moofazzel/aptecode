@@ -3,9 +3,40 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import "../../about.css";
 
 export default function MissionVision() {
+  // Structured data for organization mission, vision, and goals
+  const organizationStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://aptecode.com/#organization",
+    "name": "Aptecode",
+    "description": "Digital Web Design Agency focused on creating exceptional web experiences for local and global clients",
+    "mission": "To provide innovative web design solutions that transform digital presence for businesses and individuals through creativity, technical expertise, and strategic thinking.",
+    "vision": "To be the leading web design agency that shapes the future of digital experiences through artistry of visual storytelling and user experience creation.",
+    "goals": [
+      "Satisfy local and global clients with exceptional web solutions",
+      "Create dynamic hubs of creativity and technical expertise",
+      "Deliver strategic thinking in every project"
+    ],
+    "serviceType": [
+      "Web Design",
+      "Digital Strategy",
+      "User Experience Design",
+      "Visual Storytelling"
+    ]
+  };
+
   return (
-    <section className="about-company-section relative overflow-hidden">
-      <div className="mx-auto max-w-[1405px] px-4 py-20 md:py-28">
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationStructuredData),
+        }}
+      />
+      
+      <section className="about-company-section relative overflow-hidden" itemScope itemType="https://schema.org/Organization">
+        <div className="mx-auto max-w-[1405px] px-4 py-20 md:py-28">
         {/* FLEX LAYOUT */}
         <div className="md:flex flex-col  gap-12 lg:flex-row lg:items-center">
           {/* LEFT: Copy + Tabs */}
@@ -23,7 +54,7 @@ export default function MissionVision() {
             </div>
 
             {/* Title */}
-            <h2 className="mt-4 md:mb-14 mb-[30px] ab_ttl md:text-[48px] font-[700] md:leading-[60px] leading-[45px] text-[32px]">
+            <h2 className="mt-4 md:mb-14 mb-[30px] ab_ttl md:text-[48px] font-[700] md:leading-[60px] leading-[45px] text-[32px]" itemProp="description">
               Our Main Goal to Satisfied <br /> local &amp; Global Clients
             </h2>
 
@@ -53,55 +84,59 @@ export default function MissionVision() {
               <TabsContent
                 value="mission"
                 className="md:pt-6  mt-[75px] md:mt-0"
+                itemScope 
+                itemType="https://schema.org/Mission"
               >
-                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c] ">
-                  Digital Web Design Agency
+                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c] " itemProp="name">
+                  Our Mission: Excellence in Digital Solutions
                 </h3>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  A web design agency is a multifaceted entity that plays a
-                  pivotal role in shaping the digital presence of businesses and
-                  individuals alike. These agencies are dynamic hubs of
-                  creativity, technical expertise, and strategic thinking.
-                </p>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  At the core of a web design agency&apos;s essence lies the
-                  artistry of visual storytelling and user experience creation.
-                </p>
+                <div itemProp="description">
+                  <p className="mb-[20px] text-[#74787C] text-[16px]">
+                    Our mission is to provide innovative web design solutions that transform digital presence for businesses and 
+                    individuals alike. We are a dynamic hub of creativity, technical expertise, and strategic thinking.
+                  </p>
+                  <p className="mb-[20px] text-[#74787C] text-[16px]">
+                    At the core of our mission lies the artistry of visual storytelling and exceptional user experience creation 
+                    that drives meaningful results for our clients.
+                  </p>
+                </div>
               </TabsContent>
 
               <TabsContent
                 value="vision"
                 className="md:pt-6  mt-[75px] md:mt-0"
+                itemScope 
+                itemType="https://schema.org/Vision"
               >
-                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]">
-                  Digital Web Design Agency
+                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]" itemProp="name">
+                  Our Vision: Leading Digital Innovation
                 </h3>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  A web design agency is a multifaceted entity that plays a
-                  pivotal role in shaping the digital presence of businesses and
-                  individuals alike. These agencies are dynamic hubs of
-                  creativity, technical expertise, and strategic thinking.
-                </p>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  At the core of a web design agency&apos;s essence lies the
-                  artistry of visual storytelling and user experience creation.
-                </p>
+                <div itemProp="description">
+                  <p className="mb-[20px] text-[#74787C] text-[16px]">
+                    Our vision is to be the leading web design agency that shapes the future of digital experiences. 
+                    We envision a world where every business has access to cutting-edge digital solutions that drive growth.
+                  </p>
+                  <p className="mb-[20px] text-[#74787C] text-[16px]">
+                    We strive to set industry standards through innovative design approaches and technological excellence 
+                    that create lasting impact for our clients worldwide.
+                  </p>
+                </div>
               </TabsContent>
 
-              <TabsContent value="goal" className="md:pt-6  mt-[75px] md:mt-0">
-                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]">
-                  Digital Web Design Agency
+              <TabsContent value="goal" className="md:pt-6  mt-[75px] md:mt-0" itemScope itemType="https://schema.org/Goal">
+                <h3 className=" text-[24px] font-[700] mb-[30px] text-[#11151c]" itemProp="name">
+                  Our Goals: Client Satisfaction & Excellence
                 </h3>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  A web design agency is a multifaceted entity that plays a
-                  pivotal role in shaping the digital presence of businesses and
-                  individuals alike. These agencies are dynamic hubs of
-                  creativity, technical expertise, and strategic thinking.
-                </p>
-                <p className="mb-[20px] text-[#74787C] text-[16px]">
-                  At the core of a web design agency&apos;s essence lies the
-                  artistry of visual storytelling and user experience creation.
-                </p>
+                <div itemProp="description">
+                  <p className="mb-[20px] text-[#74787C] text-[16px]">
+                    Our primary goal is to satisfy both local and global clients through exceptional web design solutions. 
+                    We are committed to delivering projects that exceed expectations and drive meaningful business results.
+                  </p>
+                  <p className="mb-[20px] text-[#74787C] text-[16px]">
+                    We focus on building long-term partnerships by consistently delivering high-quality work, 
+                    maintaining transparent communication, and ensuring every project achieves its strategic objectives.
+                  </p>
+                </div>
               </TabsContent>
             </Tabs>
           </div>
@@ -141,5 +176,6 @@ export default function MissionVision() {
         </div>
       </div>
     </section>
+    </>
   );
 }

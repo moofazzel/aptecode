@@ -5,9 +5,56 @@ import Image from "next/image";
 import "../../about.css";
 
 export default function AboutSec() {
+  // Structured data for the About section
+  const aboutStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "@id": "https://aptecode.com/#organization",
+      "name": "Aptecode",
+      "description": "We build modern web solutions and crypto services for digital success. Aptecode specializes in creating GEO & SEO friendly web applications, custom software solutions, and crypto social services.",
+      "url": "https://aptecode.com",
+      "foundingDate": "2020",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ozark",
+        "addressRegion": "AL",
+        "addressCountry": "US"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+13342007299",
+        "contactType": "Customer Service",
+        "email": "support@ivey.solutions"
+      },
+      "sameAs": [
+        "https://linkedin.com/company/aptecode",
+        "https://twitter.com/aptecode"
+      ],
+      "serviceArea": "United States",
+      "knowsAbout": [
+        "Web Development",
+        "Digital Strategy", 
+        "SEO Optimization",
+        "Custom Software Solutions",
+        "Crypto Services"
+      ]
+    }
+  };
+
   return (
-    <section className="relative bg-white text-black">
-      <div className="max-w-[1405px] mx-auto px-[20px] lg:px-0 py-16 md:py-24 mb-[70px]">
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(aboutStructuredData),
+        }}
+      />
+      
+      <section className="relative bg-white text-black" itemScope itemType="https://schema.org/AboutPage">
+        <div className="max-w-[1405px] mx-auto px-[20px] lg:px-0 py-16 md:py-24 mb-[70px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-[129px] items-center">
           {/* LEFT: stacked images */}
           <div className="order-2 lg:order-1 lg:col-span-5  abt_box relative">
@@ -27,11 +74,12 @@ export default function AboutSec() {
             <div className="  overflow-hidden img1 ">
               <Image
                 src="/img/about/ab1.jpg"
-                alt="Team collaborating"
+                alt="Aptecode team collaborating on web development projects in modern office environment"
                 width={880}
                 height={660}
                 className="h-auto w-full object-cover "
                 priority
+                itemProp="image"
               />
             </div>
 
@@ -39,10 +87,11 @@ export default function AboutSec() {
             <div className="img2">
               <Image
                 src="/img/about/ab2.jpg"
-                alt="Team discussing"
+                alt="Aptecode developers discussing digital strategy and custom software solutions"
                 width={560}
                 height={420}
                 className="h-auto w-full object-cover img2"
+                itemProp="image"
               />
             </div>
 
@@ -68,7 +117,7 @@ export default function AboutSec() {
             </div>
 
             {/* heading */}
-            <h1 className="lg:text-[53px] text-[36px] font-semibold leading-[37px]  md:leading-[1.05] lg:leading-[1.02]">
+            <h1 className="lg:text-[53px] text-[36px] font-semibold leading-[37px]  md:leading-[1.05] lg:leading-[1.02]" itemProp="headline">
               We build modern web solutions
               <br className="hidden md:block" />
               and crypto services for digital
@@ -76,7 +125,7 @@ export default function AboutSec() {
             </h1>
 
             {/* paragraph */}
-            <p className="mt-6 text-base md:text-lg text-[#74787C] max-w-2xl">
+            <p className="mt-6 text-base md:text-lg text-[#74787C] max-w-2xl" itemProp="description">
               Aptecode specializes in creating GEO &amp; SEO friendly web
               applications, custom software solutions, and crypto social
               services. We help businesses establish their digital presence and
@@ -112,6 +161,7 @@ export default function AboutSec() {
         </div>
       </div>
     </section>
+    </>
   );
 }
 
@@ -125,13 +175,13 @@ function Feature({
   subtitle?: string;
 }) {
   return (
-    <div className="flex items-start gap-5">
+    <div className="flex items-start gap-5" itemScope itemType="https://schema.org/Service">
       <div className="flex h-15 w-15 shrink-0 items-center justify-center ">
-        <Image src={icon} alt="" width={60} height={60} />
+        <Image src={icon} alt={`${title} service icon`} width={60} height={60} />
       </div>
       <div>
-        <p className="text-[21px] font-semibold">{title}</p>
-        {subtitle ? <p className="text-sm text-black/60">{subtitle}</p> : null}
+        <h3 className="text-[21px] font-semibold" itemProp="name">{title}</h3>
+        {subtitle ? <p className="text-sm text-black/60" itemProp="description">{subtitle}</p> : null}
       </div>
     </div>
   );

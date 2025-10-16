@@ -17,11 +17,12 @@ const ICON_SIZE = "clamp(28px, 7vw, 96px)";
 /** One chunk so seams never put stars next to each other */
 function Chunk() {
   return (
-    <div className="flex items-center" style={{ gap: GAP }}>
+    <div className="flex items-center" style={{ gap: GAP }} itemScope itemType="https://schema.org/Service">
       {/* WEB DEVELOPMENT (outlined) */}
       <span
         className="stroke_txt uppercase font-extrabold tracking-tight text-transparent [-webkit-text-stroke:2px_white]"
         style={{ fontSize: OUTLINED_TEXT_SIZE }}
+        itemProp="name"
       >
         WEB DEVELOPMENT
       </span>
@@ -37,6 +38,7 @@ function Chunk() {
       <span
         className="simple_txt uppercase font-extrabold tracking-tight text-white"
         style={{ fontSize: FILLED_TEXT_SIZE }}
+        itemProp="description"
       >
         LATEST PROJECTS
       </span>
@@ -61,12 +63,15 @@ export default function MarqueeSlider() {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      role="banner"
+      aria-label="Web Development and Latest Projects showcase"
     >
       {/* thin top/bottom borders */}
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-white/70" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-white/70" />
 
       <div className="py-6 md:py-8">
+        <h2 className="sr-only">Our Services and Projects</h2>
         <Swiper
           modules={[Autoplay, FreeMode]}
           loop
@@ -81,6 +86,7 @@ export default function MarqueeSlider() {
           }}
           spaceBetween={48}
           className="!px-4"
+          aria-label="Scrolling showcase of web development services and projects"
         >
           {Array.from({ length: 6 }).map((_, i) => (
             <SwiperSlide key={i} className="!w-auto">
