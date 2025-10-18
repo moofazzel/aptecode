@@ -151,7 +151,7 @@ export const GradientButton = forwardRef<
             position === "left" ? "mr-2" : "ml-2"
           )}
           whileHover={{
-            scale: 1.1,
+            scale: 1.05,
             transition: { duration: 0.2 },
           }}
         >
@@ -169,7 +169,7 @@ export const GradientButton = forwardRef<
           animate={{
             rotate: isHovered ? 45 : 0,
           }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <ArrowUpRight className="w-4 h-4" />
         </motion.div>
@@ -203,14 +203,13 @@ export const GradientButton = forwardRef<
     const motionProps = {
       whileHover: !isDisabled
         ? {
-            scale: 1.02,
-            y: -2,
-            transition: { duration: 0.3 },
+            y: -1,
+            transition: { duration: 0.2, ease: "easeOut" },
           }
         : undefined,
       whileTap: !isDisabled
         ? {
-            scale: 0.98,
+            scale: 0.99,
             transition: { duration: 0.1 },
           }
         : undefined,

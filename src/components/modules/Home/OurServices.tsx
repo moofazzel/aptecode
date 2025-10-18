@@ -206,10 +206,13 @@ function OurServices() {
                     <p className="text-[#74787c] font-medium text-base md:text-lg mb-6 leading-relaxed">
                       {service.description}
                     </p>
-                    <div className="flex items-center gap-2 text-[#3F5AF3] font-semibold text-sm md:text-base hover:gap-3 transition-all cursor-pointer hover:text-[#8B5CF6]">
+                    <a
+                      href="/services"
+                      className="flex items-center gap-2 text-[#3F5AF3] font-semibold text-sm md:text-base hover:gap-3 transition-all cursor-pointer hover:text-[#8B5CF6] underline underline-offset-2"
+                    >
                       <span>Learn More</span>
                       <ArrowRight className="w-4 h-4" />
-                    </div>
+                    </a>
                   </div>
                 </article>
 

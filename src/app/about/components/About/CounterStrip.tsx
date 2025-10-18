@@ -10,10 +10,10 @@ type Stat = {
 };
 
 const STATS: Stat[] = [
-  { value: 10, l1: "Years of", l2: "Experience" },
-  { value: 18, l1: "Skilled", l2: "Performance" },
-  { value: 32, l1: "Visited", l2: "Conference" },
-  { value: 1, suffix: "K", l1: "Years of", l2: "Experience" },
+  { value: 4, l1: "Years of", l2: "Experience" },
+  { value: 150, l1: "Projects", l2: "Completed" },
+  { value: 50, l1: "Happy", l2: "Clients" },
+  { value: 11, l1: "Countries", l2: "Served" },
 ];
 
 export default function CounterStrip() {

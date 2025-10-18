@@ -31,12 +31,15 @@ function FreeConsultiation() {
           <div className="space-y-4 sm:space-y-6 flex-1 lg:flex-2 text-center lg:text-left">
             {/* Purple accent line and "READY TO GROW?" */}
             <div className="flex justify-center lg:justify-start">
-              <SectionHeader title="Ready to Launch?" variant="gradient" />
+              <SectionHeader
+                title="Stop Losing Money to Poor Web Design"
+                variant="gradient"
+              />
             </div>
 
             {/* Main headlines */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
-              Turn visitors into customers.
+              Turn visitors into customers in 30 days.
             </h2>
           </div>
 
@@ -48,7 +51,7 @@ function FreeConsultiation() {
               size="lg"
               className="w-full sm:w-auto min-w-[200px] sm:min-w-[250px]"
             >
-              Get a Free Strategy Call
+              Get My Free Website Audit
             </GradientButton>
           </div>
         </div>

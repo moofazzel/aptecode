@@ -20,9 +20,9 @@ function AboutSection() {
           {/* Left Section - Modern Image with Glassmorphism */}
           <motion.div
             className="relative w-full lg:w-1/2"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             {/* Main Image Container */}
@@ -36,54 +36,39 @@ function AboutSection() {
                     alt="Team working on laptop"
                     width={600}
                     height={700}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover hover:scale-102 transition-transform duration-500"
                     priority
                   />
                 </div>
               </div>
 
-              {/* Floating Award Badge */}
-              <motion.div
-                className="absolute -bottom-6 -right-3 md:-right-6 backdrop-blur-md bg-gradient-to-br from-blue-500/90 to-purple-600/90 border-2 border-white/30 p-6 shadow-2xl"
-                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+              {/* Book a Call Button */}
+              <motion.a
+                href="/contact#meeting"
+                className="absolute -bottom-4 -right-4 md:-right-8 bg-white/95 backdrop-blur-sm border border-gray-200/50 p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer block"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.05, rotate: 2 }}
+                whileHover={{ y: -2 }}
               >
-                <motion.div
-                  className="flex items-center space-x-3"
-                  whileHover={{
-                    scale: 1.07,
-                    rotate: 3,
-                    transition: { type: "spring", stiffness: 300 },
-                  }}
-                >
-                  {/* Icon changed to Lucide PhoneCall with micro animation */}
-                  <motion.div
-                    animate={{ y: [0, -4, 0] }}
-                    transition={{
-                      repeat: Infinity,
-                      duration: 1.4,
-                      ease: "easeInOut",
-                    }}
-                  >
-                    {/* Using Lucide PhoneCall */}
-                    <PhoneCall className="w-6 md:w-8 h-6 md:h-8 text-white" />
-                  </motion.div>
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                    <PhoneCall className="w-5 h-5 text-white" />
+                  </div>
                   <div>
-                    <div className="text-xl font-black text-white">
+                    <div className="text-sm font-semibold text-gray-900">
                       Book a Call
                     </div>
-                    <div className="text-xs text-white/90 font-medium uppercase tracking-wide">
-                      Let&apos;s Discuss Your Project!
+                    <div className="text-xs text-gray-600">
+                      Let&apos;s discuss your project
                     </div>
                   </div>
-                </motion.div>
-              </motion.div>
+                </div>
+              </motion.a>
 
               {/* Floating stats */}
-              <motion.div
+              {/* <motion.div
                 className="absolute -top-6 -left-6 backdrop-blur-lg bg-white/20 border border-white/30 p-4 shadow-xl"
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -96,24 +81,24 @@ function AboutSection() {
                     Projects
                   </div>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
 
           {/* Right Section - Modern Content */}
           <motion.div
             className="space-y-8 w-full lg:w-1/2 order-1 lg:order-2"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             viewport={{ once: true }}
           >
             {/* Modern badge */}
             <motion.div
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-blue-200/50  px-6 py-3"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
               <Award className="w-5 h-5 text-blue-600" />
@@ -125,9 +110,9 @@ function AboutSection() {
             {/* Main Title with gradient */}
             <motion.h2
               className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
               <span className="bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
@@ -140,9 +125,9 @@ function AboutSection() {
             {/* Enhanced Description */}
             <motion.p
               className="text-lg sm:text-xl text-gray-600 leading-relaxed max-w-2xl"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
             >
               We&apos;re a small, senior team building conversion-ready websites
@@ -168,13 +153,13 @@ function AboutSection() {
               ].map((point, index) => (
                 <motion.div
                   key={point.number}
-                  className="group flex items-start space-x-4 p-2 hover:bg-white/50 transition-all duration-300"
-                  initial={{ opacity: 0, y: 20 }}
+                  className="group flex items-start space-x-4 p-2 hover:bg-white/30 transition-all duration-300"
+                  initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                     <span className="text-white text-sm font-bold">
                       {point.number}
                     </span>
@@ -194,9 +179,9 @@ function AboutSection() {
             {/* Enhanced CTA Buttons */}
             <motion.div
               className="flex flex-col sm:flex-row gap-4 pt-4"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.8 }}
               viewport={{ once: true }}
             >
               <GradientButton
