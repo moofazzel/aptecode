@@ -201,18 +201,8 @@ export const GradientButton = forwardRef<
     );
 
     const motionProps = {
-      whileHover: !isDisabled
-        ? {
-            y: -1,
-            transition: { duration: 0.2, ease: "easeOut" },
-          }
-        : undefined,
-      whileTap: !isDisabled
-        ? {
-            scale: 0.99,
-            transition: { duration: 0.1 },
-          }
-        : undefined,
+      whileHover: !isDisabled ? { y: -1 } : undefined,
+      whileTap: !isDisabled ? { scale: 0.99 } : undefined,
       initial: { scale: 1 },
       animate: { scale: 1 },
       onHoverStart: () => setIsHovered(true),
