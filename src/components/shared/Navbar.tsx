@@ -1,11 +1,9 @@
 "use client";
 
-import { gsap } from "gsap";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { useAnimationContext } from "../../contexts/AnimationContext";
+import { useState } from "react";
 import { useScrollPosition } from "../../hooks/useScrollPosition";
 import { Button } from "../ui/button";
 import { GradientButton } from "../ui/gradient-button";
@@ -13,14 +11,6 @@ import { Sidebar } from "../ui/sidebar";
 
 function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const navRef = useRef<HTMLElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLDivElement>(null);
-  const navItemsRef = useRef<HTMLDivElement>(null);
-  const actionsRef = useRef<HTMLDivElement>(null);
-
-  const { isGSAPReady, registerAnimation, unregisterAnimation } =
-    useAnimationContext();
   const { isScrolled } = useScrollPosition(50);
   const pathname = usePathname();
 
@@ -60,136 +50,6 @@ function Navbar() {
     setIsSidebarOpen(false);
   };
 
-  // Professional navbar scroll animation
-  useEffect(() => {
-    if (!isGSAPReady || !navRef.current || !containerRef.current) return;
-
-    const nav = navRef.current;
-    const container = containerRef.current;
-    const logo = logoRef.current;
-    const navItems = navItemsRef.current;
-    const actions = actionsRef.current;
-
-    const animateToSticky = () => {
-      // Navbar is already fixed, just animate the properties
-      gsap.set(nav, {
-        y: -10,
-        opacity: 0.8,
-      });
-
-      const tl = gsap.timeline({ ease: "power2.out" });
-
-      // Animate the visual properties smoothly
-      tl.to(nav, {
-        y: 0,
-        opacity: 1,
-        duration: 0.4,
-        ease: "power2.out",
-      })
-        .to(
-          container,
-          {
-            margin: "0",
-            maxWidth: "100%",
-            width: "100%",
-            backgroundColor: "rgba(255, 255, 255, 0.95)",
-            backdropFilter: "blur(20px)",
-            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-            border: "1px solid rgba(255, 255, 255, 0.2)",
-            duration: 0.5,
-            ease: "power2.out",
-          },
-          0
-        )
-        .to(
-          logo,
-          {
-            scale: 0.9,
-            duration: 0.4,
-            ease: "back.out(1.2)",
-          },
-          0.1
-        )
-        .to(
-          [navItems, actions],
-          {
-            opacity: 0.95,
-            duration: 0.4,
-            ease: "power2.out",
-          },
-          0.1
-        );
-    };
-
-    const animateToNormal = () => {
-      const tl = gsap.timeline({ ease: "power2.out" });
-
-      // First, animate the container to its final centered state
-      tl.to(
-        container,
-        {
-          margin: "20px 0",
-          maxWidth: "1630px",
-          width: "100%",
-          // backgroundColor: "#F2F3F4",
-          backgroundColor: "#F2F3F4",
-          backdropFilter: "none",
-          boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-          border: "1px solid #E4E4E4",
-          duration: 0.5,
-          ease: "power2.out",
-        },
-        0
-      )
-        .to(
-          logo,
-          {
-            scale: 1,
-            duration: 0.4,
-            ease: "back.out(1.2)",
-          },
-          0
-        )
-        .to(
-          [navItems, actions],
-          {
-            opacity: 1,
-            duration: 0.4,
-            ease: "power2.out",
-          },
-          0
-        )
-        .to(
-          nav,
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.4,
-            ease: "power2.out",
-          },
-          0
-        );
-    };
-
-    // Register animation cleanup
-    const cleanup = () => {
-      gsap.killTweensOf([nav, container, logo, navItems, actions]);
-    };
-
-    registerAnimation("navbar-scroll", cleanup);
-
-    // Apply animation based on scroll state
-    if (isScrolled) {
-      animateToSticky();
-    } else {
-      animateToNormal();
-    }
-
-    return () => {
-      unregisterAnimation("navbar-scroll");
-    };
-  }, [isScrolled, isGSAPReady, registerAnimation, unregisterAnimation]);
-
   // Helper function to determine if the nav item is active
   function isActiveNavItem(href: string) {
     // Handle root
@@ -202,17 +62,23 @@ function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className="fixed top-0 left-0 right-0 z-50">
-        <div className="w-full flex justify-center ">
+      <nav className="fixed top-0 left-0 right-0 z-50">
+        <div className="w-full flex justify-center">
           <div
-            ref={containerRef}
-            className="px-4 shadow-sm border border-[#E4E4E4] "
-            style={{ margin: "20px 0", maxWidth: "1530px", width: "100%" }}
+            className={`px-4 shadow-sm border border-[#E4E4E4] transition-all duration-500 ease-out ${
+              isScrolled
+                ? "m-0 max-w-full w-full bg-white/95 backdrop-blur-xl shadow-lg border-white/20"
+                : "my-5 max-w-[1530px] w-full bg-[#F2F3F4]"
+            }`}
           >
-            <div className="flex items-center justify-between h-20 ">
+            <div className="flex items-center justify-between h-20">
               {/* Logo */}
-              <div ref={logoRef} className="flex-shrink-0">
-                <Link href="/">
+              <div
+                className={`flex-shrink-0 transition-transform duration-400 ease-out ${
+                  isScrolled ? "scale-90" : "scale-100"
+                }`}
+              >
+                <Link href="/" className="block">
                   <Image
                     className="w-[180px]"
                     src="/img/logo/aptecode.png"
@@ -224,17 +90,14 @@ function Navbar() {
               </div>
 
               {/* Desktop Navigation Items - Hidden on mobile */}
-              <div
-                ref={navItemsRef}
-                className="hidden md:flex items-center space-x-8 "
-              >
+              <div className="hidden md:flex items-center space-x-8">
                 {navItems.map((item) => {
                   const isActive = isActiveNavItem(item.href);
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 text-lg ${
+                      className={`px-3 py-2 font-medium transition-all duration-200 ease-out hover:scale-105 text-lg relative z-10 ${
                         isActive
                           ? "text-blue-700 underline underline-offset-8 decoration-2"
                           : "text-gray-700 hover:text-blue-600"
@@ -244,6 +107,14 @@ function Navbar() {
                           "var(--font-hind-madurai), system-ui, sans-serif",
                       }}
                       aria-current={isActive ? "page" : undefined}
+                      onClick={(e) => {
+                        // Ensure click event is properly handled
+                        e.stopPropagation();
+                        // Close sidebar if open
+                        if (isSidebarOpen) {
+                          setIsSidebarOpen(false);
+                        }
+                      }}
                     >
                       {item.label}
                     </Link>
@@ -252,7 +123,7 @@ function Navbar() {
               </div>
 
               {/* Desktop Actions - Hidden on tablet and mobile */}
-              <div ref={actionsRef} className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4">
                 <GradientButton
                   href="/contact#meeting"
                   showArrow
