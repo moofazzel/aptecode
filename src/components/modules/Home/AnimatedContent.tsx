@@ -15,7 +15,7 @@ const AnimatedContent = () => {
     >
       {/* Section Header */}
       <motion.header
-        className="mb-4"
+        className="mb-3 sm:mb-4"
         initial={{ y: 80, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -27,7 +27,7 @@ const AnimatedContent = () => {
       {/* Main Title */}
       <motion.h2
         id="why-choose-us-heading"
-        className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-8"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-4 sm:mb-6 md:mb-8"
         initial={{ x: 200, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -38,9 +38,9 @@ const AnimatedContent = () => {
       </motion.h2>
 
       {/* Description Paragraphs */}
-      <div className="space-y-6 mb-12">
+      <div className="space-y-4 sm:space-y-5 md:space-y-6 mb-8 sm:mb-10 md:mb-12">
         <motion.p
-          className="text-lg text-gray-300 leading-relaxed"
+          className="text-base sm:text-lg text-gray-300 leading-relaxed"
           initial={{ y: 80, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -50,7 +50,7 @@ const AnimatedContent = () => {
           Freelancers slip. Agencies talk big and ship slow.
         </motion.p>
         <motion.p
-          className="text-lg text-gray-300 leading-relaxed"
+          className="text-base sm:text-lg text-gray-300 leading-relaxed"
           initial={{ y: 80, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}

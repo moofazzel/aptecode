@@ -7,7 +7,7 @@ import WhyChooseUsAnimations from "./WhyChooseUsAnimations";
 const WhyChooseUs = () => {
   return (
     <section
-      className="container bg-[#11151C] p-32 relative"
+      className="container bg-[#11151C] px-4 py-12 sm:px-6 sm:py-16 md:px-8 md:py-20 lg:px-12 lg:py-24 xl:px-16 xl:py-32 relative"
       aria-labelledby="why-choose-us-heading "
       itemScope
       itemType="https://schema.org/Organization"
@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
       <SEOContent />
 
       <WhyChooseUsAnimations>
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center z-10 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center z-10 relative">
           {/* Left Column - Image Section */}
           <AnimatedImage />
 

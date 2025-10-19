@@ -320,7 +320,7 @@ const Hero = () => {
     <>
       <section
         ref={heroRef}
-        className="-mt-28 relative overflow-x-hidden"
+        className="-mt-[100px] sm:-mt-24 md:-mt-28 relative overflow-x-hidden"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
@@ -333,15 +333,15 @@ const Hero = () => {
             fill
           />
         </div>
-        <div className="max-w-[1780px] mx-auto flex items-center  overflow-hidden  select-none relative">
+        <div className="max-w-[1780px] mx-auto flex items-center overflow-hidden select-none relative pt-16 md:pt-0">
           {/* Navigation Indicators - Desktop */}
-          <div className="hidden lg:flex absolute left-[150px] top-[55%] transform -translate-y-1/2 flex-col space-y-4 z-10">
+          <div className="hidden xl:flex absolute left-4 2xl:left-[150px] top-[55%] transform -translate-y-1/2 flex-col space-y-3 z-10">
             {slides.map((slide, index) => (
               <button
                 key={slide.id}
-                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-lg ${
+                className={`w-10 h-10 xl:w-12 xl:h-12 rounded-full border-2 flex items-center justify-center text-base xl:text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-lg ${
                   activeSection === index
-                    ? "bg-[#a868fa]  text-white shadow-lg scale-110"
+                    ? "bg-[#a868fa] text-white shadow-lg scale-110"
                     : "bg-white border-gray-300 text-gray-600 hover:border-[#a768fa89] hover:bg-[#a768fa2c]"
                 }`}
                 onClick={() => {
@@ -375,15 +375,15 @@ const Hero = () => {
           </div>
 
           {/* Loading overlay */}
-          {isAnimating && (
+          {/* {isAnimating && (
             <div className="absolute inset-0 z-20 flex items-center justify-center">
-              <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+              <div className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
             </div>
-          )}
+          )} */}
 
           {/* Slider Content */}
           <div
-            className={`flex justify-between items-center w-4/5 mx-auto pt-[200px] pb-[130px] relative transition-opacity duration-300 ${
+            className={`flex flex-col lg:flex-row justify-between items-center w-full sm:w-[95%] md:w-[90%] lg:w-[85%] xl:w-4/5 mx-auto pt-28 sm:pt-32 md:pt-40 lg:pt-48 xl:pt-[200px] pb-20 sm:pb-24 md:pb-28 lg:pb-32 xl:pb-[130px] px-4 sm:px-6 md:px-8 lg:px-0 relative transition-opacity duration-300 ${
               isAnimating ? "opacity-90" : "opacity-100"
             }`}
             onMouseDown={handleMouseDown}
@@ -396,19 +396,25 @@ const Hero = () => {
             style={{ cursor: isDragging ? "grabbing" : "grab" }}
           >
             {/* Content */}
-            <div ref={contentRef} className="pl-10 lg:pl-20 flex-1 max-w-2xlf">
-              <h3 className="text-4xl md:text-5xl lg:text-5xl font-extralight mb-5 italic opacity-0">
+            <div
+              ref={contentRef}
+              className="w-full lg:pl-10 xl:pl-20 text-center lg:text-left"
+            >
+              <h3 className="text-3xl md:text-4xl lg:text-3xl 2xl:text-4xl font-extralight mb-4 italic opacity-0">
                 {currentSlide.subHeading}
               </h3>
-              <h2 className="text-5xl md:text-7xl lg:text-7xl font-extrabold mb-2.5 leading-tight opacity-0">
+              <h2 className="text-4xl md:text-5xl lg:text-4xl 2xl:text-6xl font-extrabold mb-3 leading-tight opacity-0">
                 {currentSlide.title}
               </h2>
-              <p className="text-base md:text-lg text-[#74787C] font-bold mb-8 md:mb-14 max-w-lg opacity-0">
+              <p className="text-sm sm:text-base md:text-lg text-[#74787C] font-bold mb-8 md:mb-10 2xl:mb-14 max-w-full lg:max-w-lg mx-auto lg:mx-0 opacity-0">
                 {currentSlide.description}
               </p>
-              <div className="opacity-0">
+              <div className="opacity-0 flex justify-center lg:justify-start">
                 <GradientButton href="/contact" showArrow={true}>
-                  Let&apos;s Talk For Collaboration
+                  <span className="hidden sm:inline">
+                    Let&apos;s Talk For Collaboration
+                  </span>
+                  <span className="sm:hidden">Let&apos;s Collaborate</span>
                 </GradientButton>
               </div>
             </div>
@@ -416,7 +422,7 @@ const Hero = () => {
             {/* Image */}
             <div
               ref={imageRef}
-              className="max-w-[570px] w-full h-[370px] hidden lg:block opacity-0"
+              className="w-full max-w-[400px] md:max-w-[500px] lg:max-w-[400px] xl:max-w-[570px] h-[250px] sm:h-[300px] md:h-[350px] lg:h-[370px] mt-8 lg:mt-0 hidden md:block opacity-0"
               style={{ pointerEvents: "none" }}
             >
               <Image
@@ -426,11 +432,12 @@ const Hero = () => {
                 height={600}
                 className="w-full h-full object-contain"
                 draggable={false}
+                priority
               />
             </div>
           </div>
         </div>
-        <RunningText speed={70} />
+        <RunningText defaultStrokeColor="#4f39f6" speed={100} />
       </section>
     </>
   );

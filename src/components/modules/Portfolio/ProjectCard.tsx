@@ -4,7 +4,6 @@ import { GradientButton } from "@/components/ui/gradient-button";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 
 interface Project {
   id: number;
@@ -141,14 +140,14 @@ export function ProjectCard({ project, index, onOpenModal }: ProjectCardProps) {
           </div>
 
           <div className="flex gap-3">
-            <Link href={`/portfolio/${project.slug}`}>
-              <GradientButton
-                className="text-sm cursor-pointer"
-                variant="primary"
-              >
-                See details →
-              </GradientButton>
-            </Link>
+            <GradientButton
+              href={`/portfolio/${project.slug}`}
+              className="text-sm cursor-pointer"
+              variant="primary"
+            >
+              See details →
+            </GradientButton>
+
             <GradientButton
               href={`/portfolio/${project.slug}`}
               className="text-sm cursor-pointer"

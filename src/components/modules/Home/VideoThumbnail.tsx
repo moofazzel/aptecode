@@ -40,24 +40,24 @@ const VideoThumbnail = () => {
 
   return (
     <>
-      <div className="absolute -bottom-[50px] right-[70px]">
+      <div className="absolute -bottom-[30px] sm:-bottom-[40px] md:-bottom-[50px] right-[10px] sm:right-[30px] md:right-[50px] lg:right-[70px] hidden sm:block">
         <div
-          className="relative group cursor-pointer border-8 border-[#11151C] border-b-0 h-[232px]"
+          className="relative group cursor-pointer border-4 sm:border-6 md:border-8 border-[#11151C] border-b-0"
           onClick={handlePlayClick}
         >
-          <div className="w-[300px] h-[232px]">
+          <div className="w-[200px] h-[155px] sm:w-[250px] sm:h-[193px] md:w-[300px] md:h-[232px]">
             <Image
               src="/img/images/req-img.jpg"
               alt="Video thumbnail showing business professionals in office"
               width={270}
               height={232}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-t-sm"
             />
           </div>
 
           {/* Play Button */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-3 group-hover:scale-110 transition-transform duration-300">
-            <PlayIcon className="w-8 h-8 text-blue-600" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-full p-2 sm:p-3 group-hover:scale-110 transition-transform duration-300">
+            <PlayIcon className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600" />
           </div>
         </div>
       </div>

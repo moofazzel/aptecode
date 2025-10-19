@@ -40,7 +40,7 @@ const getVariantClasses = (
   disabled: boolean,
   loading: boolean
 ) => {
-  const baseClasses = "group relative z-10 transition-all duration-300";
+  const baseClasses = "group relative transition-all duration-300";
   const disabledClasses =
     disabled || loading ? "opacity-50 cursor-not-allowed" : "";
 
@@ -151,7 +151,7 @@ export const GradientButton = forwardRef<
             position === "left" ? "mr-2" : "ml-2"
           )}
           whileHover={{
-            scale: 1.1,
+            scale: 1.05,
             transition: { duration: 0.2 },
           }}
         >
@@ -169,7 +169,7 @@ export const GradientButton = forwardRef<
           animate={{
             rotate: isHovered ? 45 : 0,
           }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <ArrowUpRight className="w-4 h-4" />
         </motion.div>
@@ -201,19 +201,8 @@ export const GradientButton = forwardRef<
     );
 
     const motionProps = {
-      whileHover: !isDisabled
-        ? {
-            scale: 1.02,
-            y: -2,
-            transition: { duration: 0.3 },
-          }
-        : undefined,
-      whileTap: !isDisabled
-        ? {
-            scale: 0.98,
-            transition: { duration: 0.1 },
-          }
-        : undefined,
+      whileHover: !isDisabled ? { y: -1 } : undefined,
+      whileTap: !isDisabled ? { scale: 0.99 } : undefined,
       initial: { scale: 1 },
       animate: { scale: 1 },
       onHoverStart: () => setIsHovered(true),
