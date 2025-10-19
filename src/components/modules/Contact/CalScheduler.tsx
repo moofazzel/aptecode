@@ -4,7 +4,7 @@ import "./CalScheduler.css";
 
 export default function BookingPage() {
   return (
-    <section className="w-full py-8">
+    <section className="w-full py-8" aria-labelledby="scheduler-heading">
       {/* no Bootstrap container */}
       <div
         className="mx-auto"
@@ -32,16 +32,22 @@ export default function BookingPage() {
         </div>
 
         {/* Title */}
-        <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 lg:mb-[90px] mb-[60px] uppercase">
+        <h2 
+          id="scheduler-heading"
+          className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 lg:mb-[90px] mb-[60px] uppercase"
+          itemProp="name"
+        >
           pick a time that works
         </h2>
 
+        <div role="application" aria-label="Meeting scheduler calendar">
         <Cal
           namespace="30min"
           calLink="gazi-jakia-sultana-jui-ofjboj/30min"
           style={{ width: "100%", height: "100%" }}
           config={{ layout: "month_view", theme: "light" }}
         />
+        </div>
       </div>
     </section>
   );

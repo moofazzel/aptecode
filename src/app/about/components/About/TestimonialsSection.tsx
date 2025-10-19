@@ -34,9 +34,52 @@ const ITEMS: Testimonial[] = [
 ];
 
 export default function TestimonialsSection() {
+  // Structured data for testimonials/reviews
+  const reviewsStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://aptecode.com/#organization",
+    "name": "Aptecode",
+    "review": ITEMS.map((testimonial, index) => ({
+      "@type": "Review",
+      "@id": `https://aptecode.com/about#review-${index + 1}`,
+      "reviewBody": testimonial.quote,
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5",
+        "bestRating": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": testimonial.name,
+        "jobTitle": testimonial.role
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aptecode"
+      }
+    })),
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": ITEMS.length,
+      "bestRating": "5",
+      "worstRating": "5"
+    }
+  };
+
   return (
-    <section className="relative py-16 md:py-24">
-      <div className="max-w-[1405px] mx-auto  px-4 md:px-6">
+    <>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(reviewsStructuredData),
+        }}
+      />
+      
+      <section className="relative py-16 md:py-24" itemScope itemType="https://schema.org/Organization">
+        <div className="max-w-[1405px] mx-auto  px-4 md:px-6">
         {/* Eyebrow */}
 
         <div className="flex items-center justify-center gap-3 mb-4">
@@ -53,16 +96,19 @@ export default function TestimonialsSection() {
           <span className="rrd" />
         </div>
         {/* Title */}
-        <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 lg:mb-[150px] mb-[113px]">
+        <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 lg:mb-[150px] mb-[113px]" itemProp="name">
           Clients Feedback
         </h2>
 
         {/* Cards */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3" itemProp="review">
           {ITEMS.map((t, i) => (
             <article
               key={i}
+              id={`review-${i + 1}`}
               className="relative overflow-visible  bg-[#f2f3f4] px-6 pb-[60px] pt-16 text-center md:px-10 mb-[65px] lg:mb-0"
+              itemScope 
+              itemType="https://schema.org/Review"
             >
               {/* Avatar (overlapping) */}
               <div className="absolute lg:-top-[33%] left-1/2 -translate-x-1/2 -top-[22%]">
@@ -78,23 +124,32 @@ export default function TestimonialsSection() {
               </div>
 
               {/* Name */}
-              <h3 className="mt-[20px] text-xl md:text-2xl font-semibold text-neutral-900">
-                {t.name}
-              </h3>
+              <div itemScope itemType="https://schema.org/Person" itemProp="author">
+                <h3 className="mt-[20px] text-xl md:text-2xl font-semibold text-neutral-900" itemProp="name">
+                  {t.name}
+                </h3>
 
-              {/* Role */}
-              <p className="mt-3 text-[12px] font-semibold uppercase tracking-wider text-[#a868fa]">
-                {t.role}
-              </p>
+                {/* Role */}
+                <p className="mt-3 text-[12px] font-semibold uppercase tracking-wider text-[#a868fa]" itemProp="jobTitle">
+                  {t.role}
+                </p>
+              </div>
 
               {/* Quote */}
-              <p className="mx-auto mt-5 max-w-md leading-relaxed text-[#74787c]">
+              <p className="mx-auto mt-5 max-w-md leading-relaxed text-[#74787c]" itemProp="reviewBody">
                 {t.quote}
               </p>
+              
+              {/* Hidden rating for schema */}
+              <div itemScope itemType="https://schema.org/Rating" itemProp="reviewRating" className="sr-only">
+                <meta itemProp="ratingValue" content="5" />
+                <meta itemProp="bestRating" content="5" />
+              </div>
             </article>
           ))}
         </div>
       </div>
     </section>
+    </>
   );
 }
