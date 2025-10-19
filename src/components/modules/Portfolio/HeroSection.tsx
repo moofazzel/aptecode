@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -71,21 +70,15 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.7 }}
         >
           <GradientButton
+            href="/contact#meeting"
             size="lg"
             className="text-lg px-10 py-5 shadow-2xl hover:shadow-3xl transition-all duration-300 group"
           >
             <span className="flex items-center gap-2">
-              See Case Studies
+              Book a Meeting
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </span>
           </GradientButton>
-          <Button
-            variant="outline"
-            size="lg"
-            className="text-lg px-10 py-5 border-2 border-gray-300 hover:border-gray-400 backdrop-blur-sm bg-white/50 hover:bg-white/80 transition-all duration-300"
-          >
-            Book Strategy Call
-          </Button>
         </motion.div>
       </div>
 

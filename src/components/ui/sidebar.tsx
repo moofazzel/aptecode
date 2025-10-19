@@ -49,6 +49,25 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
     },
   ];
 
+  const socialLinks = [
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/aptecode2025",
+      delay: 0,
+    },
+    { icon: Twitter, href: "https://www.twitter.com/aptecode", delay: 0.08 },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/aptecode",
+      delay: 0.16,
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/aptecode/",
+      delay: 0.24,
+    },
+  ];
+
   // Smooth animation variants for elegant feel
   const sidebarVariants = {
     closed: {
@@ -115,7 +134,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
               staggerChildren: 0.08,
               delayChildren: 0.3,
             }}
-            className="fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl shadow-2xl z-50 rounded-l-2xl border-l border-gray-100/50"
+            className="fixed top-0 right-0 h-full w-80 bg-white/95 backdrop-blur-xl shadow-2xl z-50 border-l border-gray-100/50"
             style={{
               boxShadow:
                 "0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)",
@@ -293,7 +312,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2">
                       Contact Us
                     </Button>
                   </motion.div>
@@ -416,12 +435,7 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                     }}
                     className="flex space-x-3 mt-6"
                   >
-                    {[
-                      { icon: Facebook, delay: 0 },
-                      { icon: Twitter, delay: 0.08 },
-                      { icon: Instagram, delay: 0.16 },
-                      { icon: Linkedin, delay: 0.24 },
-                    ].map(({ icon: Icon, delay }, idx) => (
+                    {socialLinks.map(({ icon: Icon, delay, href }, idx) => (
                       <motion.div
                         key={idx}
                         variants={itemVariants}
@@ -436,13 +450,15 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
                         whileTap={{ scale: 0.9 }}
                         transition={{ delay }}
                       >
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-10 h-10 p-0 rounded-lg border-gray-300 hover:bg-gray-50 hover:border-blue-300"
-                        >
-                          <Icon className="w-4 h-4 text-gray-600 hover:text-blue-600 transition-colors" />
-                        </Button>
+                        <Link href={href}>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-10 h-10 p-0 rounded-lg border-gray-300 hover:bg-gray-50 hover:border-blue-300"
+                          >
+                            <Icon className="w-4 h-4 text-gray-600 hover:text-blue-600 transition-colors" />
+                          </Button>
+                        </Link>
                       </motion.div>
                     ))}
                   </motion.div>

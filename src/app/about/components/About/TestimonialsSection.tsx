@@ -1,5 +1,7 @@
 // components/TestimonialsSection.tsx
 
+import Image from "next/image";
+
 type Testimonial = {
   name: string;
   role: string;
@@ -13,21 +15,21 @@ const ITEMS: Testimonial[] = [
     role: "WRITER",
     quote:
       "Excellent service and professional development. Aptecode delivered exactly what we needed for our business.",
-    avatar: "/img/about/author.png",
+    avatar: "/img/about/daniel.png",
   },
   {
     name: "Victoria Madison",
     role: "BUSINESS OWNER",
     quote:
       "Professional team that understands our business needs. Great communication throughout the project.",
-    avatar: "/img/about/author.png",
+    avatar: "/img/about/victoria.jpg",
   },
   {
-    name: "Nicholas Thomas",
+    name: "Nick Thomas",
     role: "MARKETING MANAGER",
     quote:
       "Outstanding web development services. Our website performance improved significantly after working with Aptecode.",
-    avatar: "/img/about/author.png",
+    avatar: "/img/about/nicko.jpeg",
   },
 ];
 
@@ -65,10 +67,12 @@ export default function TestimonialsSection() {
               {/* Avatar (overlapping) */}
               <div className="absolute lg:-top-[33%] left-1/2 -translate-x-1/2 -top-[22%]">
                 <div className="rounded-full lg:border-10 lg:border-white ">
-                  <img
+                  <Image
                     src={t.avatar}
                     alt={`${t.name} avatar`}
                     className="h-[130px] w-[130px] rounded-full lg:object-cover lg:border-none lg:border-none border-10 border-white"
+                    width={130}
+                    height={130}
                   />
                 </div>
               </div>
@@ -91,12 +95,6 @@ export default function TestimonialsSection() {
           ))}
         </div>
       </div>
-
-      {/* Optional decorative purple dot (as in screenshot) */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute right-[18%] top-40 hidden h-2 w-2 rounded-full bg-indigo-500 md:block"
-      />
     </section>
   );
 }
