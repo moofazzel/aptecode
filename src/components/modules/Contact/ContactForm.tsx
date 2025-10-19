@@ -6,7 +6,7 @@ import { ChevronDown, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 
 interface FormData {
-  fullname: string;
+  firstname: string;
   lastname: string;
   email: string;
   phone: string;
@@ -16,7 +16,7 @@ interface FormData {
 
 const ContactForm = () => {
   const [formData, setFormData] = useState<FormData>({
-    fullname: "",
+    firstname: "",
     lastname: "",
     email: "",
     phone: "",
@@ -67,7 +67,7 @@ const ContactForm = () => {
     e.preventDefault();
 
     // Basic validation
-    if (!formData.email || !formData.phone || !formData.fullname) {
+    if (!formData.email || !formData.phone || !formData.firstname) {
       setSubmitStatus("error");
       setErrorMessage("Please fill in all required fields.");
       return;
@@ -78,23 +78,18 @@ const ContactForm = () => {
     setErrorMessage("");
 
     try {
-      const formsparkId = process.env.NEXT_PUBLIC_FORMSPARK_FORM_ID;
-      if (!formsparkId) {
-        throw new Error("Formspark form ID not configured");
-      }
-
-      const response = await fetch(`https://submit-form.com/${formsparkId}`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: `${formData.fullname} ${formData.lastname}`.trim(),
+          firstname: formData.firstname,
+          lastname: formData.lastname,
           email: formData.email,
           phone: formData.phone,
           topic: formData.topic || "General Inquiry",
           message: formData.message,
-          _redirect: false, // Prevent Formspark from redirecting
         }),
       });
 
@@ -102,7 +97,7 @@ const ContactForm = () => {
         setSubmitStatus("success");
         // Reset form
         setFormData({
-          fullname: "",
+          firstname: "",
           lastname: "",
           email: "",
           phone: "",
@@ -111,11 +106,13 @@ const ContactForm = () => {
         });
         setSelectedTopic("General Inquiry");
       } else {
-        throw new Error("Failed to submit form");
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to submit form");
       }
     } catch (error) {
       setSubmitStatus("error");
-      setErrorMessage("Something went wrong. Please try again later.");
+      const errorMessage = error instanceof Error ? error.message : "Something went wrong. Please try again later.";
+      setErrorMessage(errorMessage);
       console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
@@ -235,6 +232,38 @@ const ContactForm = () => {
           </motion.div>
 
           {/* Contact Form */}
+          <div className="lg:col-span-5">
+            <motion.div
+              className="bg-white dark:bg-slate-800 border border-[#e8eaeb] p-8 lg:p-10"
+              variants={fadeInUp}
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name Fields */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      id="firstname"
+                      name="firstname"
+                      value={formData.firstname}
+                      onChange={handleInputChange}
+                      placeholder="First Name*"
+                      required
+                      className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <input
+                      type="text"
+                      id="lastname"
+                      name="lastname"
+                      value={formData.lastname}
+                      onChange={handleInputChange}
+                      placeholder="Last Name"
+                      className="w-full px-4 py-3 bg-[#f2f4f5] dark:bg-slate-700 text-slate-900 dark:text-white placeholder-slate-500 dark:placeholder-slate-400 focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+                    />
+                  </div>
+                </div>
 
           <motion.div
             className="bg-white dark:bg-slate-800 border border-[#e8eaeb] p-8 lg:p-10"
