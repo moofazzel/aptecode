@@ -11,6 +11,28 @@ export default function MissionVision() {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const [indicatorStyle, setIndicatorStyle] = useState({ left: 0, width: 0 });
 
+  const organizationStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Aptecode",
+    description:
+      "Digital Web Design Agency focused on creating exceptional digital experiences for local and global clients",
+    url: "https://aptecode.com",
+    logo: "https://aptecode.com/img/logo/aptecode.png",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Ozark",
+      addressRegion: "AL",
+      addressCountry: "US",
+    },
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+13342007299",
+      contactType: "customer service",
+      email: "support@ivey.solutions",
+    },
+  };
+
   const tabsData = useMemo(
     () => [
       { value: "mission", label: "Our Mission" },
