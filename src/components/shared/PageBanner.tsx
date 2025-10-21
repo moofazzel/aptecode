@@ -1,18 +1,6 @@
 "use client";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import {
-  useDynamicBreadcrumbs,
-  type ResolveLabel,
-} from "@/hooks/useDynamicBreadcrumbs";
-import Link from "next/link";
+import { type ResolveLabel } from "@/hooks/useDynamicBreadcrumbs";
 import type { ReactNode } from "react";
 import "./pageBanner.css";
 
@@ -29,8 +17,6 @@ export default function PageBanner({
   separator = "»",
   resolveLabel,
 }: BannerProps) {
-  const crumbs = useDynamicBreadcrumbs(resolveLabel);
-
   return (
     <section
       className="relative pg_header  flex min-h-[300px] w-full items-center justify-center overflow-hidden text-white md:min-h-[620px] mt-[-100px] "
@@ -61,52 +47,7 @@ export default function PageBanner({
 
           {/* Breadcrumb */}
         </div>
-        <div className="flex justify-center items-center mt-5">
-          <Breadcrumb>
-            <BreadcrumbList className="text-white/80 ">
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link
-                    href="/"
-                    className="text-[17px] font-[600] uppercase cursor-pointer hover:text-white text-zinc-400"
-                  >
-                    Home
-                  </Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-
-              {crumbs.length > 0 && (
-                <BreadcrumbSeparator className="text-[27px] mt-[-8px] hover:text-white text-zinc-400">
-                  {separator}
-                </BreadcrumbSeparator>
-              )}
-
-              {crumbs.map((c) => (
-                <div key={c.href} className="flex items-center">
-                  <BreadcrumbItem>
-                    {c.isLast ? (
-                      <BreadcrumbPage className="text-[17px] font-[600] uppercase  hover:text-white text-zinc-200">
-                        {c.label}
-                      </BreadcrumbPage>
-                    ) : (
-                      <BreadcrumbLink
-                        asChild
-                        className="text-[18px] font-[600] uppercase cursor-pointer hover:text-white"
-                      >
-                        <Link href={c.href} style={{ fontSize: "18px" }}>
-                          {c.label}
-                        </Link>
-                      </BreadcrumbLink>
-                    )}
-                  </BreadcrumbItem>
-                  {!c.isLast && (
-                    <BreadcrumbSeparator>{separator}</BreadcrumbSeparator>
-                  )}
-                </div>
-              ))}
-            </BreadcrumbList>
-          </Breadcrumb>
-        </div>
+        <div className="flex justify-center items-center mt-5"></div>
       </div>
     </section>
   );
