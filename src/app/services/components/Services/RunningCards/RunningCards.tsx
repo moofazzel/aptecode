@@ -99,12 +99,17 @@ const RunningCards: React.FC<RunningCardsProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`bg-transparent pb-[80px] mt-[40px] pt-0 overflow-x-hidden ${className}`}
+      className={`bg-transparent py-0 overflow-x-hidden ${className}`}
     >
-      <h2 className="uppercase text-center text-2xl md:text-5xl font-bold tracking-wide pb-12">
-        Design That Speaks Your Industry
-      </h2>
-      <div className="overflow-x-hidden bg-gray-100">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+          Design That Speaks
+          <span className="ml-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Your Industry
+          </span>
+        </h2>
+      </div>
+      <div className="overflow-x-hidden bg-gray-100 py-10">
         <ul
           ref={ulRef}
           className="flex gap-8 sm:gap-10 md:gap-14 items-stretch"
@@ -119,14 +124,14 @@ const RunningCards: React.FC<RunningCardsProps> = ({
               {...(i >= items.length ? { tabIndex: -1 } : {})}
             >
               <div
-                className={`h-full rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur
+                className={`h-full  border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur
                             hover:bg-white/7 transition-colors ${cardClassName}`}
               >
                 <h3 className="text-gray-700 text-center text-xl md:text-2xl font-semibold tracking-tight mb-4 pb-6">
                   {item.title}
                 </h3>
 
-                <div className="relative rounded-xl overflow-hidden bg-black/20 aspect-[16/10]">
+                <div className="relative  overflow-hidden bg-black/20 aspect-[16/10]">
                   <Image
                     src={item.imageSrc}
                     alt={item.alt ?? item.title}

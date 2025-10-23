@@ -26,9 +26,9 @@ function PortfolioPage() {
 
   // Open project modal
   const openProjectModal = (project: Project) => {
-    setSelectedProject(project);
-    setCurrentImageIndex(0);
-    setIsModalOpen(true);
+      setSelectedProject(project);
+      setCurrentImageIndex(0);
+      setIsModalOpen(true);
   };
 
   // Close project modal

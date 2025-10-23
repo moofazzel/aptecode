@@ -1,306 +1,258 @@
-// src/components/ServicesCard.tsx
 "use client";
 
-import { FaArrowRight, FaBitcoin, FaCode, FaLaptopCode } from "react-icons/fa";
-import { FaShieldHalved } from "react-icons/fa6";
+import { motion, Variants } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { FaArrowRight, FaStar } from "react-icons/fa";
+import { generateServicesJsonLd, servicesData } from "../../../servicesData";
 import "./serviceCard.css";
 
 export default function ServicesCard() {
-  // ——— Invisible JSON-LD (no UI change) ———
-  const itemListJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        item: {
-          "@type": "Service",
-          name: "Web Development",
-          url: "/services/web-development",
-          image: "/img/service/sr1.jpg",
-          areaServed: { "@type": "Place", name: "Dhaka" },
-        },
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const jsonLd = generateServicesJsonLd();
+
+  // Featured service (center) - Website Development
+  const featuredService =
+    servicesData.find((s) => s.id === 1) || servicesData[0];
+
+  // Other services arranged around it
+  const otherServices = servicesData.filter((s) => s.id !== 1);
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.06,
+        delayChildren: 0.1,
       },
-      {
-        "@type": "ListItem",
-        position: 2,
-        item: {
-          "@type": "Service",
-          name: "Web Apps",
-          url: "/services/web-apps",
-          image: "/img/service/sr2.jpg",
-          areaServed: { "@type": "Place", name: "Dhaka" },
-        },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.4, 0, 0.2, 1],
       },
-      {
-        "@type": "ListItem",
-        position: 3,
-        item: {
-          "@type": "Service",
-          name: "Moderation",
-          url: "/services/moderation",
-          image: "/img/service/sr3.jpg",
-          areaServed: { "@type": "Place", name: "Dhaka" },
-        },
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        item: {
-          "@type": "Service",
-          name: "Crypto Websites",
-          url: "/services/crypto-websites",
-          image: "/img/service/sr4.jpg",
-          areaServed: { "@type": "Place", name: "Dhaka" },
-        },
-      },
-    ],
+    },
   };
 
   return (
-    <section className="services md:py-[90px] py-[60px]">
-      <div className="mx-auto max-w-[1405px] px-[15px] md:px-0">
-        <div className="flex flex-wrap ">
-          {/* Item 1 */}
-          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
-            <div
-              className="serviceCard m-3"
+    <section className="services bg-gradient-to-brf from-blue-50f via-purple-50f to-pink-50f relative overflow-hidden py-10">
+      {/* Background Effects */}
+      {/* <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(99,102,241,0.08),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(168,85,247,0.08),transparent_50%)]"></div> */}
+
+      <div className="mx-auto max-w-[1400px] px-4 md:px-6 relative z-10">
+        {/* Header Section */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+            Our{" "}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              Services
+            </span>
+          </h2>
+          <p className="text-base text-gray-600 max-w-2xl mx-auto">
+            {servicesData.length} comprehensive solutions designed to power your
+            digital transformation
+          </p>
+        </motion.div> */}
+
+        {/* Bento Grid Layout */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="bento-grid"
+        >
+          {/* Featured Center Card - Large */}
+          <motion.div
+            variants={cardVariants}
+            className="bento-item bento-featured"
+            onMouseEnter={() => setHoveredCard(featuredService.id)}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
+            <a
+              href={`/services/${featuredService.slug}`}
+              className="block h-full group"
               itemScope
               itemType="https://schema.org/Service"
             >
-              <h4 className="serviceCard__title" itemProp="name">
-                <a
-                  href="/services/web-development"
-                  className="sttl"
+              <div className="bento-card h-full relative overflow-hidden bg-white border border-gray-200 shadow-xl">
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={featuredService.image}
+                    alt={featuredService.title}
+                    fill
+                    className="object-cover opacity-30 group-hover:scale-105 transition-all duration-700"
+                  />
+                </div>
+
+                {/* Animated Orb Background */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                  <div className="orb-container">
+                    <div className="orb orb-1"></div>
+                    <div className="orb orb-2"></div>
+                    <div className="orb orb-3"></div>
+                  </div>
+                </div>
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/85 to-white/90"></div>
+
+                {/* Content */}
+                <div className="relative z-10 h-full flex flex-col justify-between p-8">
+                  <div className="flex items-start justify-between">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg flex items-center justify-center group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
+                      <featuredService.icon className="text-3xl text-white" />
+                    </div>
+                    <FaStar className="w-6 h-6 text-yellow-500 animate-pulse" />
+                  </div>
+
+                  <div>
+                    <h3
+                      className="text-3xl md:text-4xl font-black text-gray-900 mb-4"
+                      itemProp="name"
+                    >
+                      {featuredService.title}
+                    </h3>
+                    <p
+                      className="text-gray-700 text-base mb-6 leading-relaxed"
+                      itemProp="description"
+                    >
+                      {featuredService.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {featuredService.features?.map((feature, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 text-xs font-semibold bg-gradient-to-r from-blue-100 to-purple-100 border border-blue-200 text-blue-700 "
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="inline-flex items-center gap-2 text-blue-600 font-bold group-hover:gap-4 transition-all">
+                      <span>Explore Service</span>
+                      <FaArrowRight className="w-5 h-5" />
+                    </div>
+                  </div>
+                </div>
+
+                <meta itemProp="serviceType" content={featuredService.title} />
+                <meta
                   itemProp="url"
-                  aria-label="Web Development service in Dhaka"
-                >
-                  WEB DEVELOPMENT
-                </a>
-              </h4>
-
-              <div className="serviceCard__thumb">
-                <span className="serviceCard__overlay" />
-                <div className="trans_shape">
-                  <img src="/img/service/shp.png" alt="shape" />
-                </div>
-
-                {/* keep your original image & classes to preserve effects */}
-                <img
-                  src="/img/service/sr1.jpg"
-                  alt="Web Development — responsive websites for SMBs in Dhaka"
-                  className="serviceCard__img"
-                  itemProp="image"
+                  content={`/services/${featuredService.slug}`}
                 />
-
-                <div className="serviceCard__icon">
-                  <FaLaptopCode className="text-4xl  text-[#74787C]" />
-                </div>
-
-                <a
-                  href="/services/web-development"
-                  className="serviceCard__btn"
-                  aria-label="Read details about Web Development in Dhaka"
-                >
-                  <span>Read Details</span>
-                  <FaArrowRight className="serviceCard__btnIcon rotate" />
-                </a>
               </div>
+            </a>
+          </motion.div>
 
-              {/* Invisible GEO semantics */}
-              <meta itemProp="serviceType" content="Web Development" />
-              <span
-                itemProp="areaServed"
-                itemScope
-                itemType="https://schema.org/Place"
-                hidden
+          {/* Other Services - Small Cards */}
+          {otherServices.map((service, index) => {
+            const IconComponent = service.icon;
+            const isHovered = hoveredCard === service.id;
+            // Determine card size class
+            const sizeClass =
+              index === 0 || index === 4 ? "bento-medium" : "bento-small";
+
+            return (
+              <motion.div
+                key={service.id}
+                variants={cardVariants}
+                className={`bento-item ${sizeClass}`}
+                onMouseEnter={() => setHoveredCard(service.id)}
+                onMouseLeave={() => setHoveredCard(null)}
               >
-                <meta itemProp="name" content="Dhaka" />
-              </span>
-            </div>
-          </div>
-
-          {/* Item 2 */}
-          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
-            <div
-              className="serviceCard m-3"
-              itemScope
-              itemType="https://schema.org/Service"
-            >
-              <h4 className="serviceCard__title" itemProp="name">
-                <a
-                  href="/services/web-apps"
-                  className="sttl"
-                  itemProp="url"
-                  aria-label="Web Apps development service in Dhaka"
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="block h-full group"
+                  itemScope
+                  itemType="https://schema.org/Service"
                 >
-                  WEB APPS
-                </a>
-              </h4>
+                  <div className="bento-card h-full relative overflow-hidden bg-white border border-gray-200 hover:border-blue-300 hover:shadow-2xl transition-all duration-500">
+                    {/* Background Image */}
+                    <div className="absolute inset-0">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover opacity-25 group-hover:scale-110 transition-all duration-700"
+                      />
+                    </div>
 
-              <div className="serviceCard__thumb">
-                <span className="serviceCard__overlay" />
-                <div className="trans_shape">
-                  <img src="/img/service/shp.png" alt="shape" />
-                </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-blue-50/70 to-purple-50/80 group-hover:from-white/85 group-hover:via-blue-50/60 group-hover:to-purple-50/70 transition-all duration-500"></div>
 
-                <img
-                  src="/img/service/sr2.jpg"
-                  alt="High-performance web apps with clean UX — Dhaka"
-                  className="serviceCard__img"
-                  itemProp="image"
-                />
+                    <div className="relative z-10 h-full flex flex-col justify-between p-6">
+                      <div className="flex items-start justify-between">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-purple-100 border border-blue-200 flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-600 transition-all duration-300">
+                          <IconComponent className="text-xl text-blue-600 group-hover:text-white transition-colors duration-300" />
+                        </div>
+                        {service.highlight && (
+                          <div className="w-5 h-5 bg-gradient-to-br from-yellow-400 to-orange-500  flex items-center justify-center shadow-md">
+                            <FaStar className="w-2.5 h-2.5 text-white" />
+                          </div>
+                        )}
+                      </div>
 
-                <div className="serviceCard__icon">
-                  <FaCode className="text-4xl  text-[#74787C]" />
-                </div>
+                      <div>
+                        <h3
+                          className="text-gray-900 font-bold text-lg mb-2"
+                          itemProp="name"
+                        >
+                          {service.title}
+                        </h3>
+                        <p
+                          className={`text-gray-600 text-sm leading-snug overflow-hidden transition-all duration-300 ${
+                            isHovered ? "max-h-24" : "max-h-12"
+                          }`}
+                          itemProp="description"
+                        >
+                          {service.description}
+                        </p>
 
-                <a
-                  href="/services/web-apps"
-                  className="serviceCard__btn flex items-center gap-2"
-                  aria-label="Read details about Web Apps in Dhaka"
-                >
-                  <span>Read Details</span>
-                  <FaArrowRight className="text-sm rotate" />
-                </a>
-              </div>
+                        <div className="mt-3 flex items-center gap-2 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <span className="text-xs font-semibold">
+                            Learn more
+                          </span>
+                          <FaArrowRight className="w-3 h-3" />
+                        </div>
+                      </div>
+                    </div>
 
-              <meta itemProp="serviceType" content="Web Apps" />
-              <span
-                itemProp="areaServed"
-                itemScope
-                itemType="https://schema.org/Place"
-                hidden
-              >
-                <meta itemProp="name" content="Dhaka" />
-              </span>
-            </div>
-          </div>
-
-          {/* Item 3 (highlight) */}
-          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
-            <div
-              className="serviceCard serviceCard--highlight m-3 "
-              itemScope
-              itemType="https://schema.org/Service"
-            >
-              <h4
-                className="serviceCard__title serviceCard__title--accent"
-                itemProp="name"
-              >
-                <a
-                  href="/services/moderation"
-                  className="sttl"
-                  itemProp="url"
-                  aria-label="Moderation service in Dhaka"
-                >
-                  MODERATION
-                </a>
-              </h4>
-
-              <div className="serviceCard__thumb">
-                <span className="serviceCard__overlay" />
-                <div className="trans_shape">
-                  <img src="/img/service/shp.png" alt="shape" />
-                </div>
-
-                <img
-                  src="/img/service/sr3.jpg"
-                  alt="Content moderation and safety operations — Dhaka"
-                  className="serviceCard__img"
-                  itemProp="image"
-                />
-
-                <div className="serviceCard__icon">
-                  <FaShieldHalved className="text-4xl  text-[#74787C]" />
-                </div>
-
-                <a
-                  href="/services/moderation"
-                  className="serviceCard__btn flex items-center gap-2"
-                  aria-label="Read details about Moderation in Dhaka"
-                >
-                  <span>Read Details</span>
-                  <FaArrowRight className="text-sm rotate" />
-                </a>
-              </div>
-
-              <meta itemProp="serviceType" content="Moderation" />
-              <span
-                itemProp="areaServed"
-                itemScope
-                itemType="https://schema.org/Place"
-                hidden
-              >
-                <meta itemProp="name" content="Dhaka" />
-              </span>
-            </div>
-          </div>
-
-          {/* Item 4 */}
-          <div className="w-full lg:w-[25%] md:w-[50%] sm:w-[50%]">
-            <div
-              className="serviceCard m-3"
-              itemScope
-              itemType="https://schema.org/Service"
-            >
-              <h4 className="serviceCard__title" itemProp="name">
-                <a
-                  href="/services/crypto-websites"
-                  className="sttl"
-                  itemProp="url"
-                  aria-label="Crypto Websites service in Dhaka"
-                >
-                  CRYPTO WEBSITES
-                </a>
-              </h4>
-
-              <div className="serviceCard__thumb">
-                <span className="serviceCard__overlay" />
-                <div className="trans_shape">
-                  <img src="/img/service/shp.png" alt="shape" />
-                </div>
-
-                <img
-                  src="/img/service/sr4.jpg"
-                  alt="Crypto project websites and token landing pages — Dhaka"
-                  className="serviceCard__img"
-                  itemProp="image"
-                />
-
-                <div className="serviceCard__icon">
-                  <FaBitcoin className="text-4xl  text-[#74787C]" />
-                </div>
-
-                <a
-                  href="/services/crypto-websites"
-                  className="serviceCard__btn flex items-center gap-2"
-                  aria-label="Read details about Crypto Websites in Dhaka"
-                >
-                  <span>Read Details</span>
-                  <FaArrowRight className="text-sm rotate" />
-                </a>
-              </div>
-
-              <meta itemProp="serviceType" content="Crypto Websites" />
-              <span
-                itemProp="areaServed"
-                itemScope
-                itemType="https://schema.org/Place"
-                hidden
-              >
-                <meta itemProp="name" content="Dhaka" />
-              </span>
-            </div>
-          </div>
-        </div>
+                    <meta itemProp="serviceType" content={service.title} />
+                    <meta
+                      itemProp="url"
+                      content={`/services/${service.slug}`}
+                    />
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </div>
 
-      {/* JSON-LD (invisible) */}
+      {/* JSON-LD for SEO */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
     </section>
   );

@@ -7,9 +7,9 @@ import "./pricingSection.css";
 export default function PricingSection() {
   // Keep your exact visible plan copy; only used below to build invisible JSON-LD.
   const PLANS = [
-    { tier: "Basic Plan", price: "$39" },
-    { tier: "Standard Plan", price: "$49" },
-    { tier: "Premium Plan", price: "$59" },
+    { tier: "Starter Website", price: "$2,500" },
+    { tier: "Business Website", price: "$4,500" },
+    { tier: "E-Commerce Store", price: "$7,500" },
   ];
 
   // —— Invisible JSON-LD for the whole section (no UI change) ——
@@ -40,13 +40,13 @@ export default function PricingSection() {
             bg-clip-text text-transparent h-[30px] relative z-50"
             style={{ WebkitTextFillColor: "transparent" }}
           >
-            our pricing plans
+            transparent pricing
           </h3>
           <span className="rrd" />
         </div>
 
         <h2 className="text-center text-3xl md:text-5xl font-[700] tracking-tight text-neutral-900 lg:mb-[90px] mb-[60px] uppercase">
-          Our flexible pricing
+          Investment that pays off
         </h2>
 
         <div className="pricingGrid flex flex-wrap items-center ">
