@@ -6,6 +6,7 @@
   grid-template-columns: repeat(12, 1fr);
   gap: 1rem;
   grid-auto-rows: minmax(200px, auto);
+  touch-action: manipulation;
 }
 
 /* Featured Card - Large Center */

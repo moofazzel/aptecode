@@ -97,7 +97,7 @@ export default function ServicesCard() {
                     src={featuredService.image}
                     alt={featuredService.title}
                     fill
-                    className="object-cover opacity-30 group-hover:scale-105 transition-all duration-700"
+                    className="object-cover opacity-30 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700 ease-out"
                   />
                 </div>
 
@@ -111,10 +111,10 @@ export default function ServicesCard() {
                 </div>
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/85 to-white/90"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-white/85 to-white/90 group-hover:from-white/70 group-hover:via-white/65 group-hover:to-white/70 transition-all duration-500"></div>
 
                 {/* Content */}
-                <div className="relative z-10 h-full flex flex-col justify-between p-8">
+                <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-8">
                   <div className="flex items-start justify-between">
                     <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg flex items-center justify-center group-hover:scale-110 group-hover:shadow-xl transition-all duration-300">
                       <featuredService.icon className="text-3xl text-white" />
@@ -180,26 +180,27 @@ export default function ServicesCard() {
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <Link
-                  href={`/services/${service.slug}`}
+                  // href={`/services/${service.slug}`}
+                  href={`#`}
                   className="block h-full group"
                   itemScope
                   itemType="https://schema.org/Service"
                 >
-                  <div className="bento-card h-full relative overflow-hidden bg-white border border-gray-200 hover:border-blue-300 hover:shadow-2xl transition-all duration-500">
+                  <div className="bento-card h-full relative overflow-hidden bg-white border border-gray-200 hover:border-blue-300 hover:shadow-2xl transition-all duration-500 touch-manipulation">
                     {/* Background Image */}
                     <div className="absolute inset-0">
                       <Image
                         src={service.image}
                         alt={service.title}
                         fill
-                        className="object-cover opacity-25 group-hover:scale-110 transition-all duration-700"
+                        className="object-cover opacity-25 group-hover:opacity-65 group-hover:scale-110 transition-all duration-600 ease-out"
                       />
                     </div>
 
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-blue-50/70 to-purple-50/80 group-hover:from-white/85 group-hover:via-blue-50/60 group-hover:to-purple-50/70 transition-all duration-500"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-blue-50/70 to-purple-50/80 group-hover:from-white/70 group-hover:via-blue-50/40 group-hover:to-purple-50/50 transition-all duration-500"></div>
 
-                    <div className="relative z-10 h-full flex flex-col justify-between p-6">
+                    <div className="relative z-10 h-full flex flex-col justify-between p-4 md:p-6">
                       <div className="flex items-start justify-between">
                         <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-purple-100 border border-blue-200 flex items-center justify-center group-hover:scale-110 group-hover:shadow-lg group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-purple-600 transition-all duration-300">
                           <IconComponent className="text-xl text-blue-600 group-hover:text-white transition-colors duration-300" />
@@ -227,12 +228,12 @@ export default function ServicesCard() {
                           {service.description}
                         </p>
 
-                        <div className="mt-3 flex items-center gap-2 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        {/* <div className="mt-3 flex items-center gap-2 text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <span className="text-xs font-semibold">
                             Learn more
                           </span>
                           <FaArrowRight className="w-3 h-3" />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 

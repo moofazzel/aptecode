@@ -274,6 +274,18 @@ function ServicesPage() {
         </div>
       </section>
 
+      <CtaSection
+        titleTop="Ready to Build Your"
+        titleBottom="Winning Website?"
+        ctaText="Get Strategy Call"
+        ctaHref="/contact"
+      />
+
+      {/* <RunningCards speed={35} direction="left" className="mt-20" /> */}
+
+      {/* // comment this for deploy issues */}
+      <PricingSection />
+
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
         <div className="max-w-4xl mx-auto px-4">
@@ -338,18 +350,6 @@ function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <CtaSection
-        titleTop="Ready to Build Your"
-        titleBottom="Winning Website?"
-        ctaText="Get Strategy Call"
-        ctaHref="/contact"
-      />
-
-      {/* <RunningCards speed={35} direction="left" className="mt-20" /> */}
-
-      {/* // comment this for deploy issues */}
-      <PricingSection />
     </>
   );
 }
