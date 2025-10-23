@@ -1,6 +1,5 @@
 import Breadcrumb from "@/components/modules/Blog/Breadcrumb";
 import CtaSection from "./components/Services/ctasection";
-import PricingSection from "./components/Services/pricingSection/PricingSection";
 import RunningCards from "./components/Services/RunningCards/RunningCards";
 import ServicesCard from "./components/Services/serviceCard";
 
@@ -284,7 +283,7 @@ function ServicesPage() {
       {/* <RunningCards speed={35} direction="left" className="mt-20" /> */}
 
       {/* // comment this for deploy issues */}
-      <PricingSection />
+      {/* <PricingSection /> */}
 
       {/* FAQ Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">

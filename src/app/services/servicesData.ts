@@ -115,7 +115,7 @@ export const servicesData: Service[] = [
     slug: "restaurant-websites",
     description:
       "Beautiful websites with online ordering, reservations, and menu management for restaurants.",
-    image: "/img/service/sr2.jpg",
+    image: "/img/service/rest.jpg",
     icon: FaUtensils,
     category: "Industry Specific",
     highlight: false,
@@ -151,7 +151,7 @@ export const servicesData: Service[] = [
     slug: "nonprofit-sites",
     description:
       "Websites for charities and nonprofits with donation systems and volunteer management to support your mission.",
-    image: "/img/service/nonprofit.avif",
+    image: "/img/service/non-p.jpg",
     icon: FaBriefcase,
     category: "Industry Specific",
     highlight: false,
@@ -167,7 +167,7 @@ export const servicesData: Service[] = [
     slug: "portfolio-websites",
     description:
       "Stunning, interactive portfolios for creatives and agencies to highlight work and attract clients.",
-    image: "/img/service/portfolio.avif",
+    image: "/img/service/port.jpg",
     icon: FaUserTie,
     category: "Core Service",
     highlight: false,

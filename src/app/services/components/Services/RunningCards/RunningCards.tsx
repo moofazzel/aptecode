@@ -25,7 +25,7 @@ interface RunningCardsProps {
 const DEFAULT_ITEMS: RunningCardItem[] = [
   { title: "Healthcare & Wellness", imageSrc: "/img/service/health.avif" },
   { title: "Event & Travel", imageSrc: "/img/service/event.avif" },
-  { title: "Personal Brand Websites", imageSrc: "/img/service/tem.avif" },
+  { title: "Finance and Insurance", imageSrc: "/img/service/fin.avif" },
   { title: "SaaS & Tech Startups", imageSrc: "/img/service/sas.avif" },
   { title: "E-commerce & Retail", imageSrc: "/img/service/ecom.avif" },
   { title: "Portfolio Websites", imageSrc: "/img/service/tem.avif" },
