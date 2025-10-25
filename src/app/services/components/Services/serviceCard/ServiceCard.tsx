@@ -4,7 +4,7 @@ import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaArrowRight, FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { generateServicesJsonLd, servicesData } from "../../../servicesData";
 import "./serviceCard.css";
 
@@ -84,8 +84,8 @@ export default function ServicesCard() {
             onMouseEnter={() => setHoveredCard(featuredService.id)}
             onMouseLeave={() => setHoveredCard(null)}
           >
-            <a
-              href={`/services/${featuredService.slug}`}
+            <div
+              // href={`#`}
               className="block h-full group"
               itemScope
               itemType="https://schema.org/Service"
@@ -147,10 +147,10 @@ export default function ServicesCard() {
                       ))}
                     </div>
 
-                    <div className="inline-flex items-center gap-2 text-blue-600 font-bold group-hover:gap-4 transition-all">
+                    {/* <div className="inline-flex items-center gap-2 text-blue-600 font-bold group-hover:gap-4 transition-all">
                       <span>Explore Service</span>
                       <FaArrowRight className="w-5 h-5" />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
@@ -160,7 +160,7 @@ export default function ServicesCard() {
                   content={`/services/${featuredService.slug}`}
                 />
               </div>
-            </a>
+            </div>
           </motion.div>
 
           {/* Other Services - Small Cards */}

@@ -2,13 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Github,
-  X,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, X } from "lucide-react";
 import Image from "next/image";
 
 interface Project {
@@ -20,7 +14,6 @@ interface Project {
   description: string;
   technologies: string[];
   liveUrl: string;
-  githubUrl: string;
   featured: boolean;
   year: string;
   awards: string[];
@@ -166,7 +159,7 @@ export function ProjectModal({
                   </div>
 
                   <div className="flex gap-4">
-                    <Button asChild className="flex-1">
+                    <Button asChild className="w-full">
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -174,16 +167,6 @@ export function ProjectModal({
                       >
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Live Demo
-                      </a>
-                    </Button>
-                    <Button variant="outline" asChild className="flex-1">
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Github className="w-4 h-4 mr-2" />
-                        View Code
                       </a>
                     </Button>
                   </div>

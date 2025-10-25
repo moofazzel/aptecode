@@ -8,7 +8,6 @@ export interface Project {
   description: string;
   technologies: string[];
   liveUrl: string;
-  githubUrl: string;
   featured: boolean;
   year: string;
   awards: string[];

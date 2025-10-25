@@ -24,13 +24,6 @@ function PortfolioPage() {
     setFilteredProjects(projects);
   };
 
-  // Open project modal
-  const openProjectModal = (project: Project) => {
-      setSelectedProject(project);
-      setCurrentImageIndex(0);
-      setIsModalOpen(true);
-  };
-
   // Close project modal
   const closeProjectModal = () => {
     setIsModalOpen(false);
@@ -75,12 +68,7 @@ function PortfolioPage() {
           >
             <AnimatePresence>
               {filteredProjects.map((project, index) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  index={index}
-                  onOpenModal={openProjectModal}
-                />
+                <ProjectCard key={project.id} project={project} index={index} />
               ))}
             </AnimatePresence>
           </motion.div>

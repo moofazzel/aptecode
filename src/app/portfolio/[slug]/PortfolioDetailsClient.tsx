@@ -1,7 +1,7 @@
 "use client";
 
+import QuickViewModal from "@/components/modules/Portfolio/QuickViewModal";
 import { Button } from "@/components/ui/button";
-import { GradientButton } from "@/components/ui/gradient-button";
 import { Project } from "@/types/portfolio";
 import { motion } from "framer-motion";
 import {
@@ -102,9 +102,7 @@ export default function PortfolioDetailsClient({
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 {project.liveUrl && (
-                  <GradientButton href={project.liveUrl} showArrow>
-                    View Live Site
-                  </GradientButton>
+                  <QuickViewModal gradientButton={true} project={project} />
                 )}
               </div>
             </div>
