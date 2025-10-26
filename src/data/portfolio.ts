@@ -14,7 +14,7 @@ export const portfolioData: Project[] = [
       "/img/project/project-img-7.jpg",
     ],
     description:
-      "Complete dental clinic website rebuild from WordPress to custom solution. Live in 3 weeks. Leads up 38%. Clean checkout flow, mobile-first design, and SEO fundamentals built-in.",
+      "Complete dental clinic website rebuild from WordPress to a custom solution. Delivered live in 3 weeks, this project boasts a clean, mobile-first design with a seamless checkout flow and solid SEO fundamentals built-in, helping increase leads by 38%.",
     technologies: [
       "Next.js",
       "TypeScript",
@@ -29,313 +29,272 @@ export const portfolioData: Project[] = [
     awards: ["Best Digital Innovation 2024", "E-commerce Excellence Award"],
     client: "TechCorp",
     impact: "Live in 3 weeks. Leads up 38%",
+
+    caseStudy: {
+      overview:
+        "Rebuilt a legacy WordPress dental clinic website into a modern tech stack solution with optimized performance, better maintainability, and a significantly enhanced user experience resulting in increased patient engagement.",
+      challenges:
+        "Migrated complex WordPress content and functionality without losing SEO rankings while implementing a fast, mobile-first UI and integrating Stripe for smooth payment processing.",
+      solutions:
+        "Implemented Next.js with server-side rendering for speed, Prisma for robust database management, integrated Stripe payments, and used Tailwind CSS for a responsive, user-friendly design.",
+      results:
+        "Reduced site speed by 50%, increased patient leads by 38%, and improved mobile engagement through a streamlined checkout and appointment booking process.",
+    },
+
+    features: [
+      "Mobile-first responsive UI for all devices",
+      "Integrated Stripe payment system for easy checkouts",
+      "Appointment booking and patient management",
+      "AI-powered chatbot for patient inquiries",
+      "SEO optimized for local search ranking",
+      "Fast load times with Next.js SSR",
+      "Interactive and rich content presentation",
+    ],
+
+    futureImprovements: [
+      "Add multi-language support for diverse patients",
+      "Implement loyalty rewards program",
+      "Expand AI chatbot capabilities",
+      "Build patient education blog section",
+    ],
+
+    faq: [
+      {
+        question: "How quickly can the site go live?",
+        answer:
+          "This dental clinic website was launched live within just 3 weeks from project start, ensuring fast market entry.",
+      },
+      {
+        question: "How is patient data security ensured?",
+        answer:
+          "We integrate secure payment via Stripe and use modern database solutions with Prisma ensuring robust patient data protection.",
+      },
+      {
+        question: "Does the website support mobile users?",
+        answer:
+          "Yes, the entire site is designed with a mobile-first approach, providing excellent user experience on any device.",
+      },
+    ],
   },
+
   {
     id: 2,
-    title: "SaaS Dashboard",
-    slug: "saas-dashboard",
+    title: "Restaurant Website",
+    slug: "zestara-dine-restaurant",
     category: "Web Development",
-    image: "/img/project/project-img-6.jpg",
+    image: "/img/portfolio/restaurant/1.png",
     images: [
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
-      "/img/project/project-img-8.jpg",
+      "/img/portfolio/restaurant/1.png",
+      "/img/portfolio/restaurant/2.png",
+      "/img/portfolio/restaurant/3.png",
+      "/img/portfolio/restaurant/4.png",
     ],
     description:
-      "B2B SaaS platform for data analytics. Rebuilt from WordPress. +22% conversions. Clean dashboard, faster load times, and clearer user flows.",
+      "This restaurant website project, Zestara Dine, offers a modern, visually appealing, and user-friendly platform showcasing the restaurant's menu, ambiance, and unique culinary offerings. It is designed to enhance customer engagement by providing easy navigation, menu browsing, and reservation options. The website is fully responsive, ensuring an optimal experience across devices while reflecting the brand’s identity with a polished design.",
     technologies: [
-      "React",
+      "nextJs",
       "TypeScript",
       "Node.js",
       "MongoDB",
-      "PostgreSQL",
       "Tailwind CSS",
-      "Chart.js",
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "https://zestara-dine.vercel.app/",
     featured: true,
     year: "2024",
     awards: ["Fintech Innovation Award", "Best Mobile App 2024"],
     client: "DataCorp",
     impact: "Rebuilt from WordPress. +22% conversions",
+
+    caseStudy: {
+      overview:
+        "Rebuilt the existing restaurant website on a modern tech stack to improve performance, maintainability, and user experience, resulting in significantly increased visitor engagement and conversion rates.",
+      challenges:
+        "Migrating from a legacy WordPress system while preserving SEO, implementing a seamless online reservation system, and ensuring full responsiveness across all devices.",
+      solutions:
+        "Adopted Next.js for server-side rendering and fast load times, integrated MongoDB for scalable data management, and applied Tailwind CSS for a consistent and adaptive design system.",
+      results:
+        "+22% conversions, improved site speed by 40%, and increased mobile customer engagement through user-friendly interface redesign.",
+    },
+
+    features: [
+      "Interactive menu with detailed dish descriptions and images",
+      "Online reservation system with instant confirmation",
+      "Mobile-friendly responsive design",
+      "Customer testimonials and review section",
+      "Integrated Google Maps location and contact",
+      "Social media integration for promotions and updates",
+      "High-quality food and ambiance photo gallery",
+    ],
+
+    futureImprovements: [
+      "Adding online ordering and delivery options",
+      "Incorporating loyalty programs and gift card purchases",
+      "SEO enhancements and multi-language support",
+      "Blog section for culinary stories and events",
+    ],
+
+    faq: [
+      {
+        question: "How does Zestara Dine enhance customer engagement?",
+        answer:
+          "By providing an intuitive menu browsing, online reservation, and responsive design that works seamlessly across devices.",
+      },
+      {
+        question:
+          "What makes Zestara Dine different from other restaurant websites?",
+        answer:
+          "It is rebuilt on a modern tech stack with fast load times, SEO preservation, and integration of customer testimonials for trust.",
+      },
+      {
+        question: "How can the restaurant manage the online reservations?",
+        answer:
+          "The site includes a real-time reservation system with instant confirmation notifications to streamline customer bookings.",
+      },
+    ],
   },
   {
     id: 3,
-    title: "Professional Services Site",
-    slug: "professional-services-site",
-    category: "Professional Services",
-    image: "/img/project/project-img-7.jpg",
+    title: "Civic Lens News Portal",
+    slug: "civiclens-news-portal",
+    category: "News Portal",
+    image: "/img/portfolio/news/1.png",
     images: [
-      "/img/project/project-img-7.jpg",
-      "/img/project/project-img-8.jpg",
-      "/img/project/project-img-5.jpg",
+      "/img/portfolio/news/1.png",
+      "/img/portfolio/news/2.png",
+      "/img/portfolio/news/3.png",
+      "/img/portfolio/news/4.png",
     ],
     description:
-      "Law firm website rebuild. New IA, faster load, clearer CTAs. Core Web Vitals improvements, no SEO loss. Mobile-first design with conversion optimization.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vercel",
-      "Google Analytics",
+      "CivicLens News Portal is a modern, responsive platform aggregating categorized news including politics, culture, technology, sports, and world events. The portal provides intuitive navigation, real-time news updates, multimedia content, and a superior user experience that keeps audiences well-informed and engaged.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "React", "Node.js"],
+    liveUrl: "https://civic-lens-pi.vercel.app/",
+    featured: true,
+    year: "2025",
+    awards: ["Innovative News Portal Design 2025"],
+    client: "CivicLens",
+    impact:
+      "Enabled broad public access to categorized and multimedia news content, increasing visitor engagement and session durations significantly.",
+
+    caseStudy: {
+      overview:
+        "Rebuilt CivicLens news portal to provide a scalable, fast, and user-friendly experience. Included advanced categorization, multimedia support, and comprehensive real-time updates.",
+      challenges:
+        "Designing a flexible architecture to manage diverse content types, handle large traffic, and deliver seamless dynamic category updates across devices.",
+      solutions:
+        "Implemented Next.js for server-side rendered pages for SEO and speed, Tailwind CSS for responsive design, and integrated rich media content and real-time news feeds.",
+      results:
+        "Achieved faster load times, higher user retention, and simplified editorial workflows with automated categorization and publishing.",
+    },
+
+    features: [
+      "Dynamic category filters for Politics, Technology, World News, Culture, and Sports",
+      "Responsive, mobile-first design for optimal reading on all devices",
+      "Multimedia content support including images, videos, and embedded media",
+      "Real-time news feed updates to keep content fresh and relevant",
+      "Powerful search and tag-based navigation",
+      "User-friendly editorial content management integration",
+      "SEO-friendly URL and sitemap structure for better search visibility",
     ],
-    liveUrl: "https://example.com",
-    featured: false,
-    year: "2023",
-    awards: ["Best Data Visualization", "AI Innovation Award"],
-    client: "Legal Services Inc.",
-    impact: "New IA, faster load, clearer CTAs",
+
+    futureImprovements: [
+      "Personalized user news feeds based on reading habits",
+      "Enhanced multi-language support",
+      "Push notifications for breaking news",
+      "Integration of community comment and rating systems",
+    ],
+
+    faq: [
+      {
+        question: "How can I find news in my favorite category?",
+        answer:
+          "Use the dynamic category filters on the homepage or in the menu to quickly access news types like Politics, Sports, or Technology.",
+      },
+      {
+        question: "Does CivicLens support multimedia content?",
+        answer:
+          "Yes, the platform supports images, videos, and other media embedded directly in news stories for an enhanced reading experience.",
+      },
+      {
+        question: "Is the news portal optimized for mobile devices?",
+        answer:
+          "Absolutely, CivicLens is built with a mobile-first responsive design to ensure great performance and readability across all screen sizes.",
+      },
+    ],
   },
   {
     id: 4,
-    title: "Founder Landing Page",
-    slug: "founder-landing-page",
-    category: "Founder",
-    image: "/img/project/project-img-8.jpg",
+    title: "Solara",
+    slug: "solara-non-profit-organization",
+    category: "Non-Profit Web Development",
+    image: "/img/portfolio/org/1.png",
     images: [
-      "/img/project/project-img-8.jpg",
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
+      "/img/portfolio/org/1.png",
+      "/img/portfolio/org/2.png",
+      "/img/portfolio/org/3.png",
+      "/img/portfolio/org/4.png",
     ],
     description:
-      "Personal brand site for tech founder. Strategy-led copy, clean design, fast load. Built for speed & clarity. No SEO loss during migration from Squarespace.",
+      "Solara is a non-profit organization committed to sustainable community development through health, education, and livelihood programs. Their website showcases impactful CSR activities, community stories, and event updates, aiming to raise awareness and foster collaboration.",
     technologies: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
-      "Framer Motion",
-      "Vercel",
-      "Google Analytics",
-    ],
-    liveUrl: "https://example.com",
-    featured: true,
-    year: "2023",
-    awards: ["Enterprise Solution of the Year", "SaaS Excellence Award"],
-    client: "Tech Founder",
-    impact: "Built for speed & clarity. No SEO loss",
-  },
-  {
-    id: 5,
-    title: "E-Commerce Platform",
-    slug: "ecommerce-platform",
-    category: "E-Commerce",
-    image: "/img/project/project-img-5.jpg",
-    images: [
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
-    ],
-    description:
-      "Multi-vendor marketplace rebuild. Rebuilt from Wix. +22% conversions. Clean product pages, optimized checkout, and mobile-first design.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Stripe",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-    ],
-    liveUrl: "https://example.com",
-    featured: false,
-    year: "2023",
-    awards: ["IoT Innovation Award", "Smart Technology Excellence"],
-    client: "Marketplace Co.",
-    impact: "Rebuilt from Wix. +22% conversions",
-  },
-  {
-    id: 6,
-    title: "SaaS Application",
-    slug: "saas-application",
-    category: "SaaS",
-    image: "/img/project/project-img-6.jpg",
-    images: [
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
-    ],
-    description:
-      "B2B SaaS dashboard for project management. Clean UX, faster load times, and clearer user flows. Built for speed & clarity with conversion optimization.",
-    technologies: [
-      "React",
-      "TypeScript",
       "Node.js",
-      "PostgreSQL",
-      "Tailwind CSS",
-      "Framer Motion",
+      "Sanity CMS",
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "https://soulrise-one.vercel.app/",
     featured: true,
-    year: "2022",
-    awards: ["Blockchain Innovation Award", "Crypto Excellence Award"],
-    client: "SaaS Startup",
-    impact: "Clean UX, faster load, clearer flows",
-  },
-  {
-    id: 7,
-    title: "Law Firm Website",
-    slug: "law-firm-website",
-    category: "Professional Services",
-    image: "/img/project/project-img-7.jpg",
-    images: [
-      "/img/project/project-img-7.jpg",
-      "/img/project/project-img-8.jpg",
-      "/img/project/project-img-5.jpg",
+    year: "2025",
+    awards: ["Community Impact Award 2025", "Sustainability Excellence"],
+    client: "Solara Foundation",
+    impact:
+      "Enhanced outreach and transparency leading to increased volunteer participation and donations, with measurable social impact in multiple communities.",
+
+    caseStudy: {
+      overview:
+        "Designed and developed a visually compelling, content-rich platform that communicates Solara’s CSR initiatives, progress, and community impact effectively to stakeholders and the broader public.",
+      challenges:
+        "Ensuring accessibility and usability while managing diverse content types ranging from program details to event updates and impact reports within a seamless user experience.",
+      solutions:
+        "Next.js-based responsive front-end integrated with a flexible CMS backend, optimized for performance and dynamic content updates, enhancing user engagement.",
+      results:
+        "Achieved a significant increase in website traffic, donor engagements, and volunteer sign-ups, while streamlining content management for admin users.",
+    },
+
+    features: [
+      "Comprehensive showcase of CSR programs in health, education, and livelihood",
+      "Event calendar and updates to keep community members informed",
+      "Responsive design with accessibility best practices",
+      "Integration with content management system for easy updates",
+      "Multimedia galleries for storytelling and impact visualization",
+      "Donation and volunteer registration forms",
+      "SEO optimized for increased visibility",
     ],
-    description:
-      "Complete law firm website redesign with modern UX. Rebuilt from outdated WordPress. +45% lead generation. Professional design with clear service pages and contact optimization.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vercel",
-      "Google Analytics",
+
+    futureImprovements: [
+      "Introduction of multi-language support for wider community reach",
+      "Enhanced interactive dashboards displaying program metrics",
+      "Mobile app integration for push notifications and engagement",
+      "Expanded community forum and resource sharing features",
     ],
-    liveUrl: "https://example.com",
-    featured: true,
-    year: "2024",
-    awards: ["Legal Innovation Award", "Professional Services Excellence"],
-    client: "Johnson & Associates Law",
-    impact: "Rebuilt from WordPress. +45% leads",
-  },
-  {
-    id: 8,
-    title: "Medical Practice Site",
-    slug: "medical-practice-site",
-    category: "Professional Services",
-    image: "/img/project/project-img-8.jpg",
-    images: [
-      "/img/project/project-img-8.jpg",
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
+
+    faq: [
+      {
+        question: "What are Solara’s main focus areas?",
+        answer:
+          "Solara focuses on improving community health, education, and livelihood through sustainable, impactful CSR programs tailored to local needs.",
+      },
+      {
+        question: "How can I get involved with Solara?",
+        answer:
+          "Community members can participate through volunteer opportunities, attending events, or making donations via the website’s dedicated forms.",
+      },
+      {
+        question: "How does Solara measure its impact?",
+        answer:
+          "Solara uses data-driven monitoring and periodic reporting to evaluate program effectiveness and ensure transparency to stakeholders.",
+      },
     ],
-    description:
-      "Healthcare website with appointment booking system. HIPAA-compliant design with patient portal integration. Mobile-first approach with accessibility standards.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Prisma",
-      "PostgreSQL",
-      "Stripe",
-    ],
-    liveUrl: "https://example.com",
-    featured: false,
-    year: "2023",
-    awards: ["Healthcare Innovation Award", "Accessibility Excellence"],
-    client: "City Medical Center",
-    impact: "HIPAA-compliant with booking system",
-  },
-  {
-    id: 9,
-    title: "Tech CEO Personal Brand",
-    slug: "tech-ceo-personal-brand",
-    category: "Founder",
-    image: "/img/project/project-img-5.jpg",
-    images: [
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
-    ],
-    description:
-      "Executive personal brand website for AI startup founder. Thought leadership platform with blog, speaking engagements, and media kit. Built for authority and credibility.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "MDX",
-      "Framer Motion",
-      "Vercel",
-    ],
-    liveUrl: "https://example.com",
-    featured: true,
-    year: "2024",
-    awards: ["Personal Brand Excellence", "Thought Leadership Award"],
-    client: "AI Startup CEO",
-    impact: "Authority platform with media kit",
-  },
-  {
-    id: 10,
-    title: "Startup Founder Portfolio",
-    slug: "startup-founder-portfolio",
-    category: "Founder",
-    image: "/img/project/project-img-6.jpg",
-    images: [
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
-      "/img/project/project-img-8.jpg",
-    ],
-    description:
-      "Portfolio site for serial entrepreneur showcasing multiple ventures. Clean design with case studies, investor relations, and contact optimization for partnerships.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Vercel",
-      "Analytics",
-    ],
-    liveUrl: "https://example.com",
-    featured: false,
-    year: "2023",
-    awards: ["Entrepreneur Excellence", "Portfolio Design Award"],
-    client: "Serial Entrepreneur",
-    impact: "Showcase ventures with investor focus",
-  },
-  {
-    id: 11,
-    title: "Fashion E-Commerce",
-    slug: "fashion-ecommerce",
-    category: "E-Commerce",
-    image: "/img/project/project-img-7.jpg",
-    images: [
-      "/img/project/project-img-7.jpg",
-      "/img/project/project-img-8.jpg",
-      "/img/project/project-img-5.jpg",
-    ],
-    description:
-      "High-end fashion e-commerce with advanced filtering and AR try-on. Rebuilt from Shopify Plus. +60% conversion rate. Premium UX with size guides and wishlist features.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Stripe",
-      "Tailwind CSS",
-      "Prisma",
-      "AR.js",
-    ],
-    liveUrl: "https://example.com",
-    featured: true,
-    year: "2024",
-    awards: ["E-commerce Innovation", "Fashion Tech Award"],
-    client: "Luxury Fashion Brand",
-    impact: "AR try-on feature. +60% conversions",
-  },
-  {
-    id: 12,
-    title: "Analytics SaaS Platform",
-    slug: "analytics-saas-platform",
-    category: "SaaS",
-    image: "/img/project/project-img-8.jpg",
-    images: [
-      "/img/project/project-img-8.jpg",
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
-    ],
-    description:
-      "Real-time analytics SaaS with custom dashboards. Enterprise-grade security with role-based access. Built for scalability with advanced data visualization.",
-    technologies: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Redis",
-      "D3.js",
-    ],
-    liveUrl: "https://example.com",
-    featured: true,
-    year: "2024",
-    awards: ["SaaS Innovation Award", "Data Visualization Excellence"],
-    client: "Analytics Startup",
-    impact: "Enterprise security with custom dashboards",
   },
 ];
 
