@@ -2,83 +2,10 @@ import { Project, Testimonial } from "@/types/portfolio";
 
 // Award-Winning Portfolio Data
 export const portfolioData: Project[] = [
+  
+
   {
     id: 1,
-    title: "Dental Clinic Website",
-    slug: "dental-clinic-website",
-    category: "Web Development",
-    image: "/img/project/project-img-5.jpg",
-    images: [
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
-    ],
-    description:
-      "Complete dental clinic website rebuild from WordPress to a custom solution. Delivered live in 3 weeks, this project boasts a clean, mobile-first design with a seamless checkout flow and solid SEO fundamentals built-in, helping increase leads by 38%.",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Stripe",
-      "Tailwind CSS",
-      "Prisma",
-      "OpenAI",
-    ],
-    liveUrl: "https://dental-care-next.vercel.app",
-    featured: true,
-    year: "2024",
-    awards: ["Best Digital Innovation 2024", "E-commerce Excellence Award"],
-    client: "TechCorp",
-    impact: "Live in 3 weeks. Leads up 38%",
-
-    caseStudy: {
-      overview:
-        "Rebuilt a legacy WordPress dental clinic website into a modern tech stack solution with optimized performance, better maintainability, and a significantly enhanced user experience resulting in increased patient engagement.",
-      challenges:
-        "Migrated complex WordPress content and functionality without losing SEO rankings while implementing a fast, mobile-first UI and integrating Stripe for smooth payment processing.",
-      solutions:
-        "Implemented Next.js with server-side rendering for speed, Prisma for robust database management, integrated Stripe payments, and used Tailwind CSS for a responsive, user-friendly design.",
-      results:
-        "Reduced site speed by 50%, increased patient leads by 38%, and improved mobile engagement through a streamlined checkout and appointment booking process.",
-    },
-
-    features: [
-      "Mobile-first responsive UI for all devices",
-      "Integrated Stripe payment system for easy checkouts",
-      "Appointment booking and patient management",
-      "AI-powered chatbot for patient inquiries",
-      "SEO optimized for local search ranking",
-      "Fast load times with Next.js SSR",
-      "Interactive and rich content presentation",
-    ],
-
-    futureImprovements: [
-      "Add multi-language support for diverse patients",
-      "Implement loyalty rewards program",
-      "Expand AI chatbot capabilities",
-      "Build patient education blog section",
-    ],
-
-    faq: [
-      {
-        question: "How quickly can the site go live?",
-        answer:
-          "This dental clinic website was launched live within just 3 weeks from project start, ensuring fast market entry.",
-      },
-      {
-        question: "How is patient data security ensured?",
-        answer:
-          "We integrate secure payment via Stripe and use modern database solutions with Prisma ensuring robust patient data protection.",
-      },
-      {
-        question: "Does the website support mobile users?",
-        answer:
-          "Yes, the entire site is designed with a mobile-first approach, providing excellent user experience on any device.",
-      },
-    ],
-  },
-
-  {
-    id: 2,
     title: "Restaurant Website",
     slug: "zestara-dine-restaurant",
     category: "Web Development",
@@ -153,10 +80,10 @@ export const portfolioData: Project[] = [
     ],
   },
   {
-    id: 3,
+    id:2,
     title: "Civic Lens News Portal",
     slug: "civiclens-news-portal",
-    category: "News Portal",
+    category: "Web Development",
     image: "/img/portfolio/news/1.png",
     images: [
       "/img/portfolio/news/1.png",
@@ -222,10 +149,10 @@ export const portfolioData: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     title: "Solara",
     slug: "solara-non-profit-organization",
-    category: "Non-Profit Web Development",
+    category: "Web Development",
     image: "/img/portfolio/org/1.png",
     images: [
       "/img/portfolio/org/1.png",
