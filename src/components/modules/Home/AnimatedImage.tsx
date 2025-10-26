@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import VideoThumbnail from "./VideoThumbnail";
 
 const AnimatedImage = () => {
   return (
@@ -23,7 +22,8 @@ const AnimatedImage = () => {
       />
 
       {/* Video Overlay - Client Component for interactivity */}
-      <VideoThumbnail />
+      {/* TODO: Need to add real video thumbnail here */}
+      {/* <VideoThumbnail /> */}
     </motion.div>
   );
 };
