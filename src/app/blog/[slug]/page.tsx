@@ -71,6 +71,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
   const post = getBySlug(slug);
+ 
   if (!post) notFound();
 
   const ldArticle = {
