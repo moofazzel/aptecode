@@ -4,63 +4,221 @@ import { Project, Testimonial } from "@/types/portfolio";
 export const portfolioData: Project[] = [
   {
     id: 1,
-    title: "Dental Clinic Website",
-    slug: "dental-clinic-website",
-    category: "Web Development",
-    image: "/img/project/project-img-5.jpg",
+    title: "Travalio — Travel Agency Website",
+    slug: "travalio-travel-agency",
+    category: "Travel & Tourism",
+    image: "/img/project/travalio/cover.jpg",
     images: [
-      "/img/project/project-img-5.jpg",
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
+      "/img/project/travalio/hero.jpg",
+      "/img/project/travalio/search-flow.jpg",
+      "/img/project/travalio/itinerary.jpg",
+      "/img/project/travalio/booking.jpg",
     ],
     description:
-      "Complete dental clinic website rebuild from WordPress to custom solution. Live in 3 weeks. Leads up 38%. Clean checkout flow, mobile-first design, and SEO fundamentals built-in.",
+      "Conversion-focused travel agency site with destination pages, trip search, and a frictionless booking flow. Built for speed, SEO, and an editorial workflow that scales.",
     technologies: [
       "Next.js",
-      "TypeScript",
+
+      "Bootstrap",
+      "Node.js",
       "Stripe",
-      "Tailwind CSS",
-      "Prisma",
-      "OpenAI",
+      "Zod",
+      "Swiper.js",
     ],
-    liveUrl: "https://dental-care-next.vercel.app",
+    liveUrl: "https://travalio.vercel.app/",
     featured: true,
-    year: "2024",
-    awards: ["Best Digital Innovation 2024", "E-commerce Excellence Award"],
-    client: "TechCorp",
-    impact: "Live in 3 weeks. Leads up 38%",
+    year: "2025",
+    awards: [],
+    client: "Travalio",
+    impact:
+      "Funnel clarity boosts booking intent and reduces drop-offs on mobile.",
+    // ----- Added keys for rich single-page case study -----
+    problem:
+      "Old brochure-style pages weren’t converting on mobile; adding new destinations took too long and SEO was weak.",
+    solution: [
+      "Modular destination & itinerary blocks (CMS-ready structure).",
+      "One-page booking with Stripe and transparent pricing.",
+      "Search & filters by region, budget, duration, and theme.",
+      "Reusable testimonial slices and trust badges across pages.",
+    ],
+    features: [
+      "Trip search & filtering",
+      "Itinerary sections (highlights, map, FAQs)",
+      "One-page checkout (Stripe)",
+      "Reviews & social proof",
+      "Editorial blog templates (SEO-first)",
+      "Sticky mobile CTA (Book / WhatsApp / Call)",
+    ],
+    results: [
+      "Mobile-first UX with clear primary CTAs",
+      "Minutes-to-publish destination templates",
+      "Clean analytics events for funnel insights",
+    ],
+    performance: {
+      lighthouseTarget: {
+        performance: "95+",
+        accessibility: "95+",
+        seo: "95+",
+      },
+      imageStrategy: "next/image responsive sets, lazyload, AVIF/JPEG fallback",
+      caching: "ISR on destination pages + CDN cache",
+    },
+    seo: {
+      schema: ["Organization", "BreadcrumbList", "Product (Trip)"],
+      metaHighlights: [
+        "Geo + intent keywords in H1/H2 & slugs",
+        "FAQ blocks with JSON-LD",
+        "Canonical + OG/Twitter cards per page",
+      ],
+    },
+    timeline: "Design 1.5 weeks • Build 1.5 weeks • Content & QA 1 week",
   },
   {
     id: 2,
-    title: "SaaS Dashboard",
-    slug: "saas-dashboard",
-    category: "Web Development",
-    image: "/img/project/project-img-6.jpg",
+    title: "Child Aid — Charity & Donations",
+    slug: "child-aid-charity-site",
+    category: "Nonprofit",
+    image: "/img/project/child-aid/cover.jpg",
     images: [
-      "/img/project/project-img-6.jpg",
-      "/img/project/project-img-7.jpg",
-      "/img/project/project-img-8.jpg",
+      "/img/project/child-aid/hero.jpg",
+      "/img/project/child-aid/programs.jpg",
+      "/img/project/child-aid/donate.jpg",
+      "/img/project/child-aid/impact-stories.jpg",
     ],
     description:
-      "B2B SaaS platform for data analytics. Rebuilt from WordPress. +22% conversions. Clean dashboard, faster load times, and clearer user flows.",
+      "Trust-building nonprofit site with clear programs, recurring donations, and impact storytelling. Designed to make giving simple and transparent.",
     technologies: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "MongoDB",
-      "PostgreSQL",
+      "Next.js",
+
       "Tailwind CSS",
-      "Chart.js",
+
+      "Node.js",
+      "Stripe (One-time & Recurring)",
+      "Zod",
+      "Swiper.js",
     ],
-    liveUrl: "https://example.com",
+    liveUrl: "https://child-aid.vercel.app/",
     featured: true,
-    year: "2024",
-    awards: ["Fintech Innovation Award", "Best Mobile App 2024"],
-    client: "DataCorp",
-    impact: "Rebuilt from WordPress. +22% conversions",
+    year: "2025",
+    awards: [],
+    client: "Child Aid",
+    impact:
+      "Reduced donation friction; clearer program pages increased donor trust.",
+    // ----- Added keys -----
+    problem:
+      "Donors couldn’t see where funds went; the donation form was confusing and slow on mobile.",
+    solution: [
+      "Three-step donation flow with suggested amounts and recurring toggle.",
+      "Program templates with budgets, milestones, and outcomes.",
+      "Impact stories with galleries, quotes, and progress bars.",
+      "Automated receipts and thank-you notes.",
+    ],
+    features: [
+      "Recurring & one-time donations (Stripe)",
+      "Donor receipts & confirmations",
+      "Programs directory with filters",
+      "Impact meters and progress bars",
+      "Volunteer signup & contact flow",
+      "WCAG-friendly color/contrast & keyboard nav",
+    ],
+    results: [
+      "Higher mobile completion rate for donations",
+      "Fewer support emails due to transparent FAQs",
+      "Shareable program URLs that convert from social",
+    ],
+    performance: {
+      lighthouseTarget: {
+        performance: "95+",
+        accessibility: "98+",
+        seo: "95+",
+      },
+      imageStrategy: "next/image with smart cropping & lazyload",
+      caching: "Static routes + ISR for stories & programs",
+    },
+    seo: {
+      schema: ["NGO", "DonateAction", "FAQPage"],
+      metaHighlights: [
+        "Mission & program keywords in titles/descriptions",
+        "OG images for each program",
+        "Clean, human-readable slugs",
+      ],
+    },
+    timeline: "Design 2 weeks • Build 2 weeks • Content & QA 1 week",
   },
   {
     id: 3,
+    title: "Glamora — Women’s Salon & Booking",
+    slug: "glamora-womens-salon",
+    category: "Beauty & Wellness",
+    image: "/img/project/glamora/cover.jpg",
+    images: [
+      "/img/project/glamora/hero.jpg",
+      "/img/project/glamora/services.jpg",
+      "/img/project/glamora/pricing.jpg",
+      "/img/project/glamora/booking.jpg",
+    ],
+    description:
+      "Elegant salon site with services, packages, reviews, and a sleek booking flow tuned for mobile. Built to turn Instagram traffic into appointments.",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+
+      "Bootstrap",
+      "Node.js",
+      "Stripe",
+      "Zod",
+      "Swiper.js",
+    ],
+    liveUrl: "https://glamora-og2d.vercel.app/",
+    featured: true,
+    year: "2025",
+    awards: [],
+    client: "Glamora",
+    impact: "Clear services → booking flow with deposit-ready checkout.",
+
+    problem:
+      "Outdated menu and no clear path to book—mobile users dropped before selecting a service.",
+    solution: [
+      "Card-based services & packages with add-ons and upsells.",
+      "Pinned one-tap booking CTA on mobile.",
+      "Review carousel, gallery, and social proof sections.",
+      "Local SEO boosters for maps & ‘near me’ queries.",
+    ],
+    features: [
+      "Service catalog with variations & add-ons",
+      "Appointment request with optional Stripe deposit",
+      "Google Map, hours, and location highlights",
+      "Testimonials & before/after gallery",
+      "Promo banner + coupon support",
+      "Quick actions (WhatsApp / Call)",
+    ],
+    results: [
+      "Higher service discovery and booking intent",
+      "Brand-consistent visuals and tone",
+      "Local rankings foundation for target services",
+    ],
+    performance: {
+      lighthouseTarget: {
+        performance: "95+",
+        accessibility: "95+",
+        seo: "95+",
+      },
+      imageStrategy: "next/image responsive breakpoints + lazyload",
+      caching: "Static marketing pages + ISR for gallery updates",
+    },
+    seo: {
+      schema: ["LocalBusiness", "Service", "Review"],
+      metaHighlights: [
+        "City + service keywords in headings",
+        "Service JSON-LD with pricing hints",
+        "OG/Twitter images per service",
+      ],
+    },
+    timeline: "Design 1 week • Build 1.5 weeks • Content & QA 0.5 week",
+  },
+
+  {
+    id: 4,
     title: "Professional Services Site",
     slug: "professional-services-site",
     category: "Professional Services",
@@ -88,7 +246,7 @@ export const portfolioData: Project[] = [
     impact: "New IA, faster load, clearer CTAs",
   },
   {
-    id: 4,
+    id: 5,
     title: "Founder Landing Page",
     slug: "founder-landing-page",
     category: "Founder",
@@ -116,7 +274,7 @@ export const portfolioData: Project[] = [
     impact: "Built for speed & clarity. No SEO loss",
   },
   {
-    id: 5,
+    id: 6,
     title: "E-Commerce Platform",
     slug: "ecommerce-platform",
     category: "E-Commerce",
@@ -143,7 +301,7 @@ export const portfolioData: Project[] = [
     impact: "Rebuilt from Wix. +22% conversions",
   },
   {
-    id: 6,
+    id: 7,
     title: "SaaS Application",
     slug: "saas-application",
     category: "SaaS",
@@ -170,7 +328,7 @@ export const portfolioData: Project[] = [
     impact: "Clean UX, faster load, clearer flows",
   },
   {
-    id: 7,
+    id: 8,
     title: "Law Firm Website",
     slug: "law-firm-website",
     category: "Professional Services",
@@ -198,7 +356,7 @@ export const portfolioData: Project[] = [
     impact: "Rebuilt from WordPress. +45% leads",
   },
   {
-    id: 8,
+    id: 9,
     title: "Medical Practice Site",
     slug: "medical-practice-site",
     category: "Professional Services",
@@ -226,7 +384,7 @@ export const portfolioData: Project[] = [
     impact: "HIPAA-compliant with booking system",
   },
   {
-    id: 9,
+    id: 10,
     title: "Tech CEO Personal Brand",
     slug: "tech-ceo-personal-brand",
     category: "Founder",
@@ -254,7 +412,7 @@ export const portfolioData: Project[] = [
     impact: "Authority platform with media kit",
   },
   {
-    id: 10,
+    id: 11,
     title: "Startup Founder Portfolio",
     slug: "startup-founder-portfolio",
     category: "Founder",
@@ -282,7 +440,7 @@ export const portfolioData: Project[] = [
     impact: "Showcase ventures with investor focus",
   },
   {
-    id: 11,
+    id: 12,
     title: "Fashion E-Commerce",
     slug: "fashion-ecommerce",
     category: "E-Commerce",
@@ -310,7 +468,7 @@ export const portfolioData: Project[] = [
     impact: "AR try-on feature. +60% conversions",
   },
   {
-    id: 12,
+    id: 13,
     title: "Analytics SaaS Platform",
     slug: "analytics-saas-platform",
     category: "SaaS",
