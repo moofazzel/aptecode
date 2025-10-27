@@ -240,11 +240,51 @@ export default function ArticleView({ post }: { post: Blog }) {
             <article className="lg:col-span-8">
               {/* excerpt card removed here (now in hero) */}
               <div ref={contentRef} className="mt-2 space-y-5">
-                {paragraphs.map((p, i) => (
-                  <p key={i} className="text-[17px] leading-8 text-zinc-700">
-                    {p}
-                  </p>
-                ))}
+                {paragraphs.map((p, i) => {
+                  // Render markdown-lite: headings (##), bold **text**, links [text](url), inline code `code`
+                  const isH2 = /^##\s+/.test(p);
+                  if (isH2) {
+                    const text = p.replace(/^##\s+/, "").trim();
+                    const id = text.toLowerCase().replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-");
+                    return (
+                      <h2
+                        id={id}
+                        key={i}
+                        className="text-2xl font-semibold text-zinc-900"
+                        dangerouslySetInnerHTML={{ __html: text }}
+                      />
+                    );
+                  }
+
+                  const mdToHtml = (text: string) => {
+                    // escape basic HTML to avoid accidental injection
+                    let out = text
+                      .replace(/&/g, "&amp;")
+                      .replace(/</g, "&lt;")
+                      .replace(/>/g, "&gt;");
+
+                    // bold **text**
+                    out = out.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+                    // inline code `code`
+                    out = out.replace(/`([^`]+?)`/g, "<code class='bg-zinc-100 px-1 rounded'>$1</code>");
+
+                    // links [text](url) - allow http(s) only
+                    out = out.replace(/\[(.+?)\]\((https?:\/\/[^)\s]+)\)/g, "<a href='$2' target='_blank' rel='noopener noreferrer' class='text-indigo-600 hover:underline'>$1</a>");
+
+                    // simple line breaks
+                    out = out.replace(/\n/g, "<br/>\n");
+                    return out;
+                  };
+
+                  return (
+                    <div
+                      key={i}
+                      className="text-[17px] leading-8 text-zinc-700"
+                      dangerouslySetInnerHTML={{ __html: mdToHtml(p) }}
+                    />
+                  );
+                })}
               </div>
 
               {!!post.tags?.length && (
