@@ -232,7 +232,7 @@ export default function PortfolioDetailsClient({
                   src={project.images[currentImageIndex]}
                   alt={`${project.title} - Image ${currentImageIndex + 1}`}
                   fill
-                  className="object-cover rounded"
+                  className="object-fill rounded"
                   priority
                 />
 

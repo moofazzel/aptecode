@@ -302,7 +302,7 @@ export const portfolioData: Project[] = [
     "/img/portfolio/pests/1.png",
     "/img/portfolio/pests/2.png",
     "/img/portfolio/pests/3.png",
-    "/img/portfolio/pests/4.png",
+    
   ],
   description:
     "321 No Pests is an online pest control platform offering PestGuard solutions. The site features a unique area-based price calculator, allowing users to estimate service costs depending on location and pest type, while providing clear information about services, prevention tips, and expert guidance.",
@@ -371,7 +371,6 @@ export const portfolioData: Project[] = [
     "/img/portfolio/builders/1.png",
     "/img/portfolio/builders/2.png",
     "/img/portfolio/builders/3.png",
-    "/img/portfolio/builders/4.png",
   ],
   description:
     "GabeCo Builders is a construction services platform showcasing comprehensive interior and exterior solutions, custom remodels, and property maintenance. The website highlights their services, project references, and expertise for residential and commercial clients.",
@@ -440,8 +439,6 @@ export const portfolioData: Project[] = [
   images: [
     "/img/portfolio/landscape/1.png",
     "/img/portfolio/landscape/2.png",
-    "/img/portfolio/landscape/3.png",
-    "/img/portfolio/landscape/4.png",
   ],
   description:
     "SOG Landscape provides comprehensive landscaping services across Brevard County, including landscape maintenance, installation, tree trimming, storm cleanup, and specialized services like sea wall installations and camper storage. The site highlights the full spectrum of offerings for both residential and commercial properties.",
@@ -508,8 +505,6 @@ export const portfolioData: Project[] = [
   images: [
     "/img/portfolio/barbershop/1.png",
     "/img/portfolio/barbershop/2.png",
-    "/img/portfolio/barbershop/3.png",
-    "/img/portfolio/barbershop/4.png",
   ],
   description:
     "Darlene’s Barbershop website provides everything a customer needs—from opening hours, pricing, and services to staff profiles and online appointment booking. The site also features dynamic updates, such as a CV submission page for new hires, ensuring the barbershop’s online presence remains current and fully functional.",
@@ -580,6 +575,7 @@ export const portfolioData: Project[] = [
     "/img/portfolio/finance/2.png",
     "/img/portfolio/finance/3.png",
     "/img/portfolio/finance/4.png",
+    "/img/portfolio/finance/5.png",
   ],
   description:
     "CashQuiver is a fintech platform that simplifies budgeting, dividend tracking, and passive income forecasting. Users can create portfolios, input budgets, track dividends, and visualize projected income streams, helping them plan for retirement and personal financial goals with precision.",
@@ -647,8 +643,7 @@ export const portfolioData: Project[] = [
   images: [
     "/img/portfolio/capacitater/1.png",
     "/img/portfolio/capacitater/2.png",
-    "/img/portfolio/capacitater/3.png",
-    "/img/portfolio/capacitater/4.png",
+
   ],
   description:
     "CapaciTater is a team capacity planning platform that helps managers visualize team allocations and resource assignments. It enables better decision-making, saves time, and optimizes project planning by providing easy-to-understand visualizations of team workloads and assignments.",
