@@ -123,7 +123,7 @@ export function ProjectModal({
                             alt={`${project.title} ${index + 1}`}
                             width={80}
                             height={80}
-                            className="object-cover w-full h-full"
+                            className="object-fill w-full h-full"
                           />
                         </button>
                       ))}

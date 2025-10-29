@@ -45,7 +45,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
+            className="object-fill transition-all duration-700 group-hover:scale-110 group-hover:rotate-1"
           />
 
           {/* Gradient Overlay */}
