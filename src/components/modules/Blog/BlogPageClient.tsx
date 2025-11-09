@@ -30,6 +30,7 @@ function formatDate(d?: string) {
 export default function BlogPageClient() {
   const posts = useMemo(() => {
     const copy = [...blogPosts];
+    console.log("blogPosts:", blogPosts);
     copy.sort((a, b) => {
       const ad = new Date(a.updatedAt || a.date || 0).getTime();
       const bd = new Date(b.updatedAt || b.date || 0).getTime();
